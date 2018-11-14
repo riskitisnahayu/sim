@@ -4,11 +4,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+	<title>Edukasi</title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href="{!! asset('panel/assets/css/icons/icomoon/styles.css') !!}" rel="stylesheet" type="text/css">
+	<link href="{!! asset('panel/assets/css/icons/fontawesome/styles.min.css') !!}" rel="stylesheet" type="text/css">
 	<link href="{!! asset('panel/assets/css/bootstrap.css') !!}" rel="stylesheet" type="text/css">
 	<link href="{!! asset('panel/assets/css/core.css') !!}" rel="stylesheet" type="text/css">
 	<link href="{!! asset('panel/assets/css/components.css') !!}" rel="stylesheet" type="text/css">
@@ -31,10 +32,16 @@
 	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/ui/moment/moment.min.js') !!}"></script>
 	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/pickers/daterangepicker.js') !!}"></script>
 
+	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/tables/datatables/datatables.min.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/forms/selects/select2.min.js') !!}"></script>
+
+
 	<script type="text/javascript" src="{!! asset('panel/assets/js/core/app.js') !!}"></script>
-	<script type="text/javascript" src="{!! asset('panel/assets/js/pages/dashboard.js') !!}"></script>
+	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/dashboard.js') !!}"></script> --}}
+	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/datatables_data_sources.js') !!}"></script> --}}
 
 	<!-- /theme JS files -->
+
 
 </head>
 
@@ -120,11 +127,11 @@
 
 								<!-- Main -->
 								{{-- <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li> --}}
-								<li class=""><a href="{!! route('admin.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+								<li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}"><a href="{!! route('admin.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 								@if (Auth::user()->type=="Admin")
-									<li class=""><a href="{!! route('admin.minigames') !!}"><i class="icon-puzzle2"></i> <span>Mini Games</span></a></li>
+									<li class="{{ request()->is('admin/mini-games') ? 'active' : '' }}"><a href="{!! route('admin.minigames') !!}"><i class="icon-puzzle2"></i> <span>Mini Games</span></a></li>
 									@else
-										<li class=""><a href="index.html"><i class="icon-book"></i> <span>Materi</span></a></li>
+										<li class="{{ request()->is('materi') ? 'active' : '' }}"><a href="index.html"><i class="icon-book"></i> <span>Materi</span></a></li>
 								@endif
 
                                 <!-- /main -->
@@ -146,13 +153,13 @@
 					<div class="page-header-content">
 						<div class="page-title">
 							<h4><b>@yield('page_title')</b></h4>
-							{{-- <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Dashboard</h4> --}}
+							<!-- <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Dashboard</h4> -->
 						</div>
 					</div>
 				</div>
 				<!-- /page header -->
 				<div class="page-header-content">
-					<div class="page-title">
+					<div class="page-title" style="padding-top: 0">
 						@yield('content_section')
 
 					</div>
@@ -180,6 +187,6 @@
 
 	</div>
 	<!-- /page container -->
-
+	@yield('script')
 </body>
 </html>

@@ -17,9 +17,10 @@ class CreateGamesTable extends Migration
             $table->increments('id');
             $table->string('name',190);
             $table->enum('level',['Easy','Medium','Hard']); //enum == pilihan di dropdown
-            $table->enum('for',['1','2','3']);
+            $table->enum('for',['1','2','3'])->nullable();
             $table->string('image')->nullable();
             $table->string('description',190);
+            $table->string('url',190);
             $table->timestamps();
         });
     }
