@@ -12,66 +12,90 @@
     <table class="table datatable-html">
         <thead>
             <tr>
-               <th>#</th>
+               <th>No</th>
                <th>Nama</th>
-               <th>Level</th>
+               <th>Kelas</th>
+               <th>Game</th>
+               <th>Kategori</th>
            </tr>
         </thead>
         <tbody>
             <tr>
                 <td>1</td>
                 <td>Tiger Nixon</td>
-                <td>1</td>
+                <td>2</td>
+                <td>Asteroid Garden</td>
+                <td>Arcade</td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Garrett Winters</td>
-                <td>2</td>
+                <td>1</td>
+                <td>Lap Track</td>
+                <td>Racing</td>
             </tr>
             <tr>
                 <td>3</td>
-                <td>Junior Technical Author</td>
+                <td>Junior Reyhan</td>
                 <td>3</td>
+                <td>Burger Stack</td>
+                <td>Puzzle</td>
             </tr>
             <tr>
                 <td>4</td>
-                <td>Senior Javascript Developer</td>
+                <td>Yohan Adi</td>
                 <td>2</td>
+                <td>oHamster</td>
+                <td>Arcade</td>
             </tr>
             <tr>
                 <td>5</td>
-                <td>Accountant</td>
-                <td>3</td>
+                <td>Hafidz Pratama</td>
+                <td>1</td>
+                <td>Snake</td>
+                <td>Classic</td>
             </tr>
             <tr>
                 <td>6</td>
-                <td>Integration Specialist</td>
-                <td>1</td>
+                <td>Muhammad Naufal</td>
+                <td>2</td>
+                <td>Chicken Dodge</td>
+                <td>Platform</td>
             </tr>
             <tr>
                 <td>7</td>
-                <td>Specialist</td>
+                <td>Riski Tisnahayu</td>
                 <td>1</td>
+                <td>Small Football</td>
+                <td>Shooter</td>
             </tr>
             <tr>
                 <td>8</td>
                 <td>Iration</td>
                 <td>2</td>
+                <td>Lap Track</td>
+                <td>Racing</td>
             </tr>
             <tr>
                 <td>9</td>
                 <td>Cialist</td>
-                <td>1</td>
+                <td>3</td>
+                <td>Small Football</td>
+                <td>Shooter</td>
             </tr>
             <tr>
                 <td>10</td>
                 <td>Gration</td>
                 <td>1</td>
+                <td>Chicken Dodge</td>
+                <td>Platform</td>
             </tr>
             <tr>
                 <td>11</td>
                 <td>List</td>
-                <td>2</td>
+                <td>1</td>
+                <td>Dagger Master</td>
+                <td>Arcade</td>
             </tr>
         </tbody>
     </table>

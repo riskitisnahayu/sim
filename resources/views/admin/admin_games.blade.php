@@ -13,8 +13,8 @@
 
 	</div>
     <div class="row">
-        <div class="col-sm-6 col-md-2">
-            <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="location.href='{{url('admin/games/add')}}'"><i class="fa fa-plus mg-r-10"></i>Tambah Mini Games</button>
+        <div class="col-sm-4 col-md-2">
+            <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="location.href='{{url('admin/games/add')}}'"><i class="fa fa-plus mg-r-10"></i> Tambah Mini Games</button>
         </div>
     </div>
 
@@ -22,10 +22,10 @@
     <table class="table datatable-html">
         <thead>
             <tr>
-               <th>#</th>
+               <th>No.</th>
+               <th>Gambar</th>
                <th>Nama</th>
-               <th>Level</th>
-               <th>Foto</th>
+               <th>Kategori</th>
                <th>Deskripsi</th>
                <th>Url</th>
                <th class="text-center">Aksi</th>
@@ -34,14 +34,17 @@
         <tbody>
             @foreach ($games as $key => $value)
                 <tr>
-                    <td>{{ $value->id }}</td>
-                    <td>{{ $value->name }}</td>
-                    <td>{{ $value->level }}</td>
+                    <td>{{ ++$i }}</td>
                     <td>
                         <img src="{{ URL::to('/images/'.$value->image)}}" style="width:50px" alt="">
                     </td>
+                    <td>{{ $value->name }}</td>
+                    <td>{{ $value->gamecategory['name'] }}</td>
+
                     <td>{{ $value->description }}</td>
-                    <td>{{ $value->url }}</td>
+                    <td>
+                        <a href="{{ $value->url }}">{{ $value->url }}</a>
+                    </td>
                     <td class="text-center">
                         <a href="{{ url('admin/games/detail/'.$value->id) }}" class="btn btn-info btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Detail">
                             <i class="fa fa-info" style="font-size:0.9em"></i>
@@ -72,7 +75,6 @@
                     </td> --}}
                 </tr>
             @endforeach
-
         </tbody>
     </table>
 

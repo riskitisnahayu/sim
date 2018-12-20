@@ -16,7 +16,8 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',190);
-            $table->enum('level',['Easy','Medium','Hard']); //enum == pilihan di dropdown
+            // $table->enum('category',['Arcade', 'Classic', 'Platform', 'Puzzle', 'Racing','Shooter']); //enum == pilihan di dropdown
+            $table->integer('gamecategories_id',11);
             $table->enum('for',['1','2','3'])->nullable();
             $table->string('image')->nullable();
             $table->string('description',190);

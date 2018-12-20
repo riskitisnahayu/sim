@@ -129,6 +129,8 @@
 								{{-- <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li> --}}
 								<li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}"><a href="{!! route('admin.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 								@if (Auth::user()->type=="Admin")
+									<li class="{{ request()->is('') ? 'active' : '' }}"><a href="{!! route('admin.minigames') !!}"><i class="icon-user"></i> <span>Daftar Pemain Game</span></a></li>
+									<li class="{{ request()->is('admin/kelola-kategori-game') ? 'active' : '' }}"><a href="{!! route('admin.gamecategory') !!}"><i class="icon-list2"></i> <span>Kelola Kategori Game</span></a></li>
 									<li class="{{ request()->is('admin/mini-games') ? 'active' : '' }}"><a href="{!! route('admin.minigames') !!}"><i class="icon-puzzle2"></i> <span>Mini Games</span></a></li>
 									@else
 										<li class="{{ request()->is('materi') ? 'active' : '' }}"><a href="index.html"><i class="icon-book"></i> <span>Materi</span></a></li>
@@ -171,8 +173,9 @@
 
 
 					<!-- Footer -->
+					 {{-- target="_blank" == untuk new page --}}
 					<div class="footer text-muted">
-						&copy; 2015. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+						&copy; 2018. <a href="#">Dashboard Permainan Edukasi</a> by <a href="#">Riski Tisnahayu</a>
 					</div>
 					<!-- /footer -->
 

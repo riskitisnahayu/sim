@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Game;
+use App\GameCategory;
 use App\ModelFile;
 
 class GamesController extends Controller
@@ -13,11 +14,12 @@ class GamesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() // untuk dashboard/halaman2 awal &&&& return view ditaruh di index aja
+    public function index(Request $request) // untuk dashboard/halaman2 awal &&&& return view ditaruh di index aja
     {
         $games = Game::all();
+        $gamecategories = GameCategory::all();
         // dd($games);
-        return view('admin.admin_games', compact('games')); //melempar data ke view
+        return view('admin.admin_games', compact('games','gamecategories'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 
     /**
@@ -27,7 +29,8 @@ class GamesController extends Controller
      */
     public function create() // untuk menampilkan form tmbah data
     {
-        return view('admin.games_add');
+        $gamecategories = GameCategory::all();
+        return view('admin.games_add',compact('gamecategories'));
     }
 
 
@@ -39,14 +42,23 @@ class GamesController extends Controller
      */
     public function store(Request $request) // untuk menghandel form tambah data
     {
+       $this->validate($request, [
+             'name'          => 'required',
+             'gamecategories_id'      => 'required',
+             'image'         => 'required',
+             'description'   => 'required',
+             'url'           => 'required',
+       ]);
+
+
        $games = new Game();
        $games->name=$request->name;
-       $games->level=$request->level;
+       $games->gamecategories_id=$request->gamecategories_id;
        $games->description=$request->description;
        $games->url=$request->url;
 
-       $image = $request->file('image');
-       $ext = $image->getClientOriginalExtension();
+       $image   = $request->file('image');
+       $ext     = $image->getClientOriginalExtension();
        $newName = rand(100000,1001238912).".".$ext;
        $image->move('images',$newName);
        $games->image = $newName;
@@ -66,7 +78,8 @@ class GamesController extends Controller
     {
         $games = Game::find($id);
            // dd($games);
-        return view('admin.games_detail', compact('games'));
+        $gamecategories = GameCategory::all();
+        return view('admin.games_detail', compact('games','gamecategories'));
     }
 
     /**
@@ -78,7 +91,8 @@ class GamesController extends Controller
     public function edit($id) // untuk menampilkan form untuk edit data
     {
         $games = Game::find($id);
-        return view('admin.games_edit', compact('games'));
+        $gamecategories = GameCategory::all();
+        return view('admin.games_edit', compact('games','gamecategories'));
     }
     // compact == untuk push data ke view
     /**
@@ -90,9 +104,17 @@ class GamesController extends Controller
      */
     public function update(Request $request, $id) // untuk menghandel form edit data
     {
+        $this->validate($request, [
+              'name'          => 'required',
+              'gamecategories_id'      => 'required',
+              'image'         => 'required',
+              'description'   => 'required',
+              'url'           => 'required',
+        ]);
+
         $games = Game::where('id',$id)->first();
         $games->name  = $request->name;
-        $games->level = $request->level;
+        $games->gamecategories_id = $request->gamecategories_id;
         $games->description = $request->description;
         $games->url   = $request->url;
         $games->save();

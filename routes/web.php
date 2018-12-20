@@ -21,6 +21,8 @@ Route::get('/', function () {
 // Dashboard admin
 Route::get('admin/dashboard', 'DashboardController@adminDashboard')->name('admin.dashboard');
 Route::get('admin/mini-games', 'GamesController@index')->name('admin.minigames');
+Route::get('admin/kelola-kategori-game', 'GameCategoryController@index')->name('admin.gamecategory');
+// Route::get('admin/daftar-pemain-game', 'DashboardController@index')->name('admin.user_dashboard');
 
 // mini games
 // Route::get('admin/admin-games', 'GamesController@index')->name('admin.');
@@ -45,6 +47,18 @@ Route::get('admin/user-dashboard', function () {
     return view('admin.user_dashboard');
 });
 
+// managekategorigame
+// Route::get('gamecategory', 'GameCategoryController@index');
+
+Route::get('gamecategory/add','GameCategoryController@create')->name('gamecategory.add');
+Route::post('gamecategory/store', 'GameCategoryController@store')->name('gamecategory.store');
+
+Route::get('gamecategory/detail/{id}', 'GameCategoryController@show')->name('gamecategory.detail');
+
+Route::get('gamecategory/edit/{id}', 'GameCategoryController@edit')->name('gamecategory.edit');
+Route::post('gamecategory/update/{id}', 'GameCategoryController@update')->name('gamecategory.update');
+
+Route::get('gamecategory/delete/{id}', 'GameCategoryController@destroy')->name('gamecategory.delete');
 // Route::get('admin/games_edit', function () {
 //     return view('admin.games_edit');
 // });

@@ -27,9 +27,9 @@
     		</div>
 
             <div class="form-group">
-            	<label class="control-label col-lg-2">Level</label>
+            	<label class="control-label col-lg-2">Kategori</label>
             	<div class="col-lg-10">
-                    <input type="text" class="form-control" name="name" placeholder="{{ $games->level }}" readonly="" type="text">
+                    <input type="text" class="form-control" name="name" placeholder="{{ $games->gamecategory['name'] }}" readonly="" type="text">
                 </div>
             </div>
 

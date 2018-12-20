@@ -6,148 +6,234 @@
 @endsection
 
 @section('content_section')
-    {{-- <p>ini halaman daftar games</p> --}}
-<div class="panel panel-flat content-group-lg">
-    <div class="row"></div>
-<table class="table datatable-html">
-    <thead>
-        <tr>
-           <th>#</th>
-           <th>Nama</th>
-           <th>Level</th>
-           <th>Foto</th>
-           <th>Deskripsi</th>
-           <th>Url</th>
-       </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Tiger Nixon</td>
-            <td>1</td>
-            <td>tiger.png</td>
-            <td>ini game tiger</td>
-            <td>www.tiger.com</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Garrett Winters</td>
-            <td>2</td>
-            <td>garet.jpg</td>
-            <td>ini game garet</td>
-            <td>www.garet.com</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Junior Technical Author</td>
-            <td>3</td>
-            <td>junior.png</td>
-            <td>ini game junior</td>
-            <td>www.junior.com</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Senior Javascript Developer</td>
-            <td>2</td>
-            <td>senior.png</td>
-            <td>ini game senior</td>
-            <td>www.senior.com</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Accountant</td>
-            <td>3</td>
-            <td>accountant.png</td>
-            <td>ini game accountant</td>
-            <td>www.accountant.com</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>Integration Specialist</td>
-            <td>1</td>
-            <td>int.png</td>
-            <td>ini game int</td>
-            <td>www.int.com</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>Specialist</td>
-            <td>1</td>
-            <td>spe.png</td>
-            <td>ini game spe</td>
-            <td>www.spe.com</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>Iration</td>
-            <td>2</td>
-            <td>ira.png</td>
-            <td>ini game ira</td>
-            <td>www.ira.com</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>Cialist</td>
-            <td>1</td>
-            <td>cia.png</td>
-            <td>ini game cia</td>
-            <td>www.cia.com</td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>Gration</td>
-            <td>1</td>
-            <td>gra.png</td>
-            <td>ini game gra</td>
-            <td>www.gra.com</td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>List</td>
-            <td>2</td>
-            <td>list.png</td>
-            <td>ini game list</td>
-            <td>www.list.com</td>
-        </tr>
-    </tbody>
-</table>
+    <!-- Basic thumbnails -->
+{{-- <h6 class="content-group text-semibold">
+	Basic thumbnails
+	<small class="display-block">Basic examples with options</small>
+</h6> --}}
+
+<div class="row">
+    <div class="col-md-4">
+		<div class="thumbnail">
+			<div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+			</div>
+
+			<div class="caption text-center">
+				<h6 class="text-semibold no-margin">Asteroid Garden</h6>
+                <p>Arcade</p>
+				<p class="text-muted mb-15 mt-5">Ini game asteroid</p>
+				<a href="https://gimbot.co.id/game/d/14/asteroid-garden" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+			</div>
+		</div>
+	</div>
+
+    <div class="col-md-4">
+		<div class="thumbnail">
+			<div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+			</div>
+
+			<div class="caption text-center">
+				<h6 class="text-semibold no-margin">Burger Stuck</h6>
+                <p>Puzzle</p>
+				<p class="text-muted mb-15 mt-5">Ini game burger stuck</p>
+				<a href="https://gimbot.co.id/game/d/21/burger-stack" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+			</div>
+		</div>
+	</div>
+
+    <div class="col-md-4">
+		<div class="thumbnail">
+			<div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+			</div>
+
+			<div class="caption text-center">
+				<h6 class="text-semibold no-margin">Chicken Dodge</h6>
+                <p>Platform</p>
+				<p class="text-muted mb-15 mt-5">Ini game chicken</p>
+				<a href="https://gimbot.co.id/game/d/24/chicken-dodge" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+			</div>
+		</div>
+	</div>
+
+    <div class="col-md-4">
+		<div class="thumbnail">
+			<div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+			</div>
+
+			<div class="caption text-center">
+				<h6 class="text-semibold no-margin">Club Magnon</h6>
+                <p>Arcade</p>
+				<p class="text-muted mb-15 mt-5">Ini game club</p>
+				<a href="https://gimbot.co.id/game/d/6/club-magnon" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+			</div>
+		</div>
+	</div>
+
+    <div class="col-md-4">
+		<div class="thumbnail">
+			<div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+			</div>
+
+			<div class="caption text-center">
+				<h6 class="text-semibold no-margin">Dagger Master</h6>
+                <p>Arcade</p>
+				<p class="text-muted mb-15 mt-5">Ini game lempar pisau</p>
+				<a href="https://gimbot.co.id/game/d/11/dagger-master" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+			</div>
+		</div>
+	</div>
+
+    <div class="col-md-4">
+		<div class="thumbnail">
+			<div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+			</div>
+
+			<div class="caption text-center">
+				<h6 class="text-semibold no-margin">Double Car</h6>
+                <p>Racing</p>
+				<p class="text-muted mb-15 mt-5">Ini game balap mobil</p>
+				<a href="https://gimbot.co.id/game/d/32/double-car" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+			</div>
+		</div>
+	</div>
+
+    <div class="col-md-4">
+		<div class="thumbnail">
+			<div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+			</div>
+
+			<div class="caption text-center">
+				<h6 class="text-semibold no-margin">Small Football</h6>
+                <p>Shooter</p>
+				<p class="text-muted mb-15 mt-5">Ini game sepak bola</p>
+				<a href="https://gimbot.co.id/game/d/1/small-football" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+			</div>
+		</div>
+	</div>
+
+    <div class="col-md-4">
+		<div class="thumbnail">
+			<div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+			</div>
+
+			<div class="caption text-center">
+				<h6 class="text-semibold no-margin">Island Dodge</h6>
+                <p>Arcade</p>
+				<p class="text-muted mb-15 mt-5">Ini game island</p>
+				<a href="https://gimbot.co.id/game/d/4/island-dodge" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+			</div>
+		</div>
+	</div>
+
+    <div class="col-md-4">
+		<div class="thumbnail">
+			<div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+			</div>
+
+			<div class="caption text-center">
+				<h6 class="text-semibold no-margin">Lap Track</h6>
+                <p>Racing</p>
+				<p class="text-muted mb-15 mt-5">Ini game balap mobil single</p>
+				<a href="https://gimbot.co.id/game/d/27/lap-track" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+			</div>
+		</div>
+	</div>
+
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+            </div>
+
+            <div class="caption text-center">
+                <h6 class="text-semibold no-margin">oHamster</h6>
+                <p>Arcade</p>
+                <p class="text-muted mb-15 mt-5">Ini game hamster nyari makan</p>
+                <a href="https://gimbot.co.id/game/d/7/ohamster" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+            </div>
+
+            <div class="caption text-center">
+                <h6 class="text-semibold no-margin">Planet Conquerors</h6>
+                <p>Shooter</p>
+                <p class="text-muted mb-15 mt-5">Ini game perjalanan dengan pesawat</p>
+                <a href="https://gimbot.co.id/game/d/2/planet-conquerors" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+            </div>
+
+            <div class="caption text-center">
+                <h6 class="text-semibold no-margin">Snake</h6>
+                <p>Classic</p>
+                <p class="text-muted mb-15 mt-5">Ini game ular makan</p>
+                <a href="https://gimbot.co.id/game/d/22/snake" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <div class="thumb">
+                <a href="assets/images/12400831.jpg" data-popup="lightbox">
+                    <img src="assets/images/12400831.jpg" alt="">
+                </a>
+            </div>
+
+            <div class="caption text-center">
+                <h6 class="text-semibold no-margin">Wire Hoop</h6>
+                <p>Arcade</p>
+                <p class="text-muted mb-15 mt-5">Ini game wire hoop</p>
+                <a href="https://gimbot.co.id/game/d/33/wire-hoop" class="btn bg-teal"><i class="icon-puzzle2 position-left"></i> Play</a>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-@endsection
-
-@section('script')
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.datatable-html').dataTable({
-                autoWidth: false,
-                columnDefs: [{
-                    orderable: false,
-                    width: '100px',
-                    targets: [ 0 ]
-                }],
-                dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
-                language: {
-                    search: '<span>Filter:</span> _INPUT_',
-                    lengthMenu: '<span>Show:</span> _MENU_',
-                    paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' }
-                },
-                drawCallback: function () {
-                    $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').addClass('dropup');
-                },
-                preDrawCallback: function() {
-                    $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').removeClass('dropup');
-                }
-            });
-
-            // Add placeholder to the datatable filter option
-            $('.dataTables_filter input[type=search]').attr('placeholder','Type to filter...');
-
-
-            // Enable Select2 select for the length option
-            $('.dataTables_length select').select2({
-                minimumResultsForSearch: Infinity,
-                width: 'auto'
-            });
-        });
-    </script>
 @endsection
