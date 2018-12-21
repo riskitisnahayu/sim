@@ -20,9 +20,10 @@ Route::get('/', function () {
 
 // Dashboard admin
 Route::get('admin/dashboard', 'DashboardController@adminDashboard')->name('admin.dashboard');
-Route::get('admin/mini-games', 'GamesController@index')->name('admin.minigames');
+Route::get('admin/daftar-pemain-game', 'UserLevelController@index')->name('admin.user_dashboard');
 Route::get('admin/kelola-kategori-game', 'GameCategoryController@index')->name('admin.gamecategory');
-// Route::get('admin/daftar-pemain-game', 'DashboardController@index')->name('admin.user_dashboard');
+Route::get('admin/mini-games', 'GamesController@index')->name('admin.minigames');
+
 
 // mini games
 // Route::get('admin/admin-games', 'GamesController@index')->name('admin.');

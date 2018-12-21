@@ -11,9 +11,9 @@ class UserLevelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('admin.user_dashboard')->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 
     /**

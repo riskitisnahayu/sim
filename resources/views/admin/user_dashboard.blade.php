@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('page_title')
-    Daftar Pemain
+    Daftar Pemain Game
 
 @endsection
 
