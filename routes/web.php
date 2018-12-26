@@ -23,7 +23,8 @@ Route::get('admin/dashboard', 'DashboardController@adminDashboard')->name('admin
 Route::get('admin/daftar-pemain-game', 'UserLevelController@index')->name('admin.user_dashboard');
 Route::get('admin/kelola-kategori-game', 'GameCategoryController@index')->name('admin.gamecategory');
 Route::get('admin/mini-games', 'GamesController@index')->name('admin.minigames');
-
+Route::get('admin/e-book', 'EbookController@index')->name('admin.ebook');
+Route::get('admin/bank-soal', 'BankSoalController@index')->name('admin.banksoal'); //controller diganti ya
 
 // mini games
 // Route::get('admin/admin-games', 'GamesController@index')->name('admin.');
@@ -60,6 +61,9 @@ Route::get('gamecategory/edit/{id}', 'GameCategoryController@edit')->name('gamec
 Route::post('gamecategory/update/{id}', 'GameCategoryController@update')->name('gamecategory.update');
 
 Route::get('gamecategory/delete/{id}', 'GameCategoryController@destroy')->name('gamecategory.delete');
+
+
+
 // Route::get('admin/games_edit', function () {
 //     return view('admin.games_edit');
 // });

@@ -132,6 +132,9 @@
 									<li class="{{ request()->is('admin/daftar-pemain-game') ? 'active' : '' }}"><a href="{!! route('admin.user_dashboard') !!}"><i class="icon-user"></i> <span>Daftar Pemain Game</span></a></li>
 									<li class="{{ request()->is('admin/kelola-kategori-game') ? 'active' : '' }}"><a href="{!! route('admin.gamecategory') !!}"><i class="icon-list2"></i> <span>Kelola Kategori Game</span></a></li>
 									<li class="{{ request()->is('admin/mini-games') ? 'active' : '' }}"><a href="{!! route('admin.minigames') !!}"><i class="icon-puzzle2"></i> <span>Mini Games</span></a></li>
+									<li class="{{ request()->is('admin/e-book') ? 'active' : '' }}"><a href="{!! route('admin.ebook') !!}"><i class="icon-book"></i> <span>E-Book</span></a></li>
+									<li class="{{ request()->is('admin/bank-soal') ? 'active' : '' }}"><a href="{!! route('admin.banksoal') !!}"><i class="icon-folder2"></i> <span>Bank Soal</span></a></li>
+
 									@else
 										<li class="{{ request()->is('materi') ? 'active' : '' }}"><a href="index.html"><i class="icon-book"></i> <span>Materi</span></a></li>
 								@endif

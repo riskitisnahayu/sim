@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('page_title')
-    Kelola Kategori Game
+    E-Book
 
 @endsection
 
@@ -13,7 +13,7 @@
 	</div>
     <div class="row">
         <div class="col-sm-4 col-md-2">
-            <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="#"><i class="fa fa-plus mg-r-10"></i> Tambah Kategori Game</button>
+            <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="location.href='{{url('gamecategory/add')}}'"><i class="fa fa-plus mg-r-10"></i> Tambah E-Book</button>
         </div>
     </div>
 
@@ -21,31 +21,17 @@
     <table class="table datatable-html">
         <thead>
             <tr>
-               <th>No.</th>
-               <th>Nama Kategori</th>
-               <th style="width:820px">Deskripsi</th>
-               <th class="text-center" style="width:150px">Aksi</th>
+                <th>No.</th>
+                <th>Gambar</th>
+                <th>Mata Pelajaran</th>
+                <th>Kategori Pelajaran</th>
+                <th>Kelas</th>
+                <th>Url</th>
+                <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($gamecategories as $key => $value)
-                <tr>
-                    <td>{{ ++$i }}</td>
-                    <td>{{ $value->name }}</td>
-                    <td>{{ $value->description }}</td>
-                    <td class="text-center">
-                        <a href="{{ url('gamecategory/detail/'.$value->id) }}" class="btn btn-info btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Detail">
-                            <i class="fa fa-info" style="font-size:0.9em"></i>
-                        </a>
-                        <a href="{!! route('gamecategory.edit', ['id'=>$value->id]) !!}" class="btn btn-warning btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Edit">
-                            <i class="fa fa-pencil" style="font-size:0.9em"></i>
-                        </a>
-                        <a href="{!! route('gamecategory.delete', ['id'=>$value->id]) !!}" class="btn btn-danger btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Delete">
-                            <i class="fa fa-trash" style="font-size:0.9em"></i>
-                        </a>
-                    </td>
-                </tr>
-            @endforeach
+
         </tbody>
     </table>
 </div>
