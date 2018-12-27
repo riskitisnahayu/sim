@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::get('admin/dashboard', 'DashboardController@adminDashboard')->name('admin.dashboard');
 Route::get('admin/daftar-pemain-game', 'UserLevelController@index')->name('admin.user_dashboard');
 Route::get('admin/kelola-kategori-game', 'GameCategoryController@index')->name('admin.gamecategory');
+Route::get('admin/kelola-mata-pelajaran', 'SubjectsCategoryController@index')->name('admin.subjectscategory');
 Route::get('admin/mini-games', 'GamesController@index')->name('admin.minigames');
 Route::get('admin/e-book', 'EbookController@index')->name('admin.ebook');
 Route::get('admin/bank-soal', 'BankSoalController@index')->name('admin.banksoal'); //controller diganti ya
@@ -62,7 +63,16 @@ Route::post('gamecategory/update/{id}', 'GameCategoryController@update')->name('
 
 Route::get('gamecategory/delete/{id}', 'GameCategoryController@destroy')->name('gamecategory.delete');
 
+// manage mata pelajaran
+Route::get('subjectscategory/add','SubjectsCategoryController@create')->name('subjectscategory.add');
+Route::post('subjectscategory/store', 'SubjectsCategoryController@store')->name('subjectscategory.store');
 
+Route::get('subjectscategory/detail/{id}', 'SubjectsCategoryController@show')->name('subjectscategory.detail');
+
+Route::get('subjectscategory/edit/{id}', 'SubjectsCategoryController@edit')->name('subjectscategory.edit');
+Route::post('subjectscategory/update/{id}', 'SubjectsCategoryController@update')->name('subjectscategory.update');
+
+Route::get('subjectscategory/delete/{id}', 'SubjectsCategoryController@destroy')->name('subjectscategory.delete');
 
 // Route::get('admin/games_edit', function () {
 //     return view('admin.games_edit');
