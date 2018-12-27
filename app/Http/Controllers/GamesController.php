@@ -107,7 +107,6 @@ class GamesController extends Controller
         $this->validate($request, [
               'name'          => 'required',
               'gamecategories_id'      => 'required',
-              'image'         => 'required',
               'description'   => 'required',
               'url'           => 'required',
         ]);

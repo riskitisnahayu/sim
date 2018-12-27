@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGamesTable extends Migration
+class CreateEbooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateGamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('ebooks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',190);
-            // $table->enum('category',['Arcade', 'Classic', 'Platform', 'Puzzle', 'Racing','Shooter']); //enum == pilihan di dropdown
-            $table->integer('gamecategories_id');
-            $table->enum('for',['1','2','3'])->nullable();
             $table->string('image')->nullable();
-            $table->string('description',190);
+            $table->string('title',190);
+            $table->integer('subjectscategories_id')->unsigned();
+            $table->enum('class',['1','2','3'])->nullable();
+            $table->enum('semester',['I','II','Both'])->nullable();
+            $table->string('author',190);
+            $table->string('publisher',190);
+            $table->integer('year');
             $table->string('url',190);
             $table->timestamps();
         });
@@ -33,6 +35,6 @@ class CreateGamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('ebooks');
     }
 }

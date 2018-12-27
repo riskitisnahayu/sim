@@ -74,6 +74,11 @@ Route::post('subjectscategory/update/{id}', 'SubjectsCategoryController@update')
 
 Route::get('subjectscategory/delete/{id}', 'SubjectsCategoryController@destroy')->name('subjectscategory.delete');
 
+
+// ebook
+Route::get('ebook/add','EbookController@create')->name('ebook.add');
+Route::post('ebook/store', 'EbookController@store')->name('ebook.store');
+
 // Route::get('admin/games_edit', function () {
 //     return view('admin.games_edit');
 // });
