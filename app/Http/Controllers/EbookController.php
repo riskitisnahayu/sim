@@ -99,4 +99,11 @@ class EbookController extends Controller
             $ebooks->save();
             return redirect()->route('admin.ebook')->with('alert-success','Data berhasil diubah!');
         }
+
+        public function destroy($id) // delete
+        {
+             $ebooks = EBook::where('id',$id)->first();
+             $ebooks->delete();
+             return redirect()->route('admin.ebook')->with('sukses', 'Data Berhasil Dihapus!');
+        }
 }

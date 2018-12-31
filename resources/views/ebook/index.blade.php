@@ -58,7 +58,7 @@
                         <a href="{!! route('ebook.edit', ['id'=>$value->id]) !!}" class="btn btn-warning btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Edit">
                             <i class="fa fa-pencil" style="font-size:0.9em"></i>
                         </a>
-                        <a href="{!! route('admin.games.delete', ['id'=>$value->id]) !!}" class="btn btn-danger btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Delete">
+                        <a href="{!! route('ebook.delete', ['id'=>$value->id]) !!}" class="btn btn-danger btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Delete">
                             <i class="fa fa-trash" style="font-size:0.9em"></i>
                         </a>
                     </td>
