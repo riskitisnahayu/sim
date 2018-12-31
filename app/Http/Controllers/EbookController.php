@@ -58,4 +58,45 @@ class EbookController extends Controller
             // redirect menggunakan url lengkap sedangkan route menggunakan route name
             return redirect()->route('admin.ebook');
         }
+
+        public function show($id) // untuk menampilkan/ melihat data
+        {
+            $ebooks = EBook::find($id);
+               // dd($ebooks);
+            $subjectscategories = SubjectsCategory::all();
+            return view('ebook.detail', compact('ebooks','subjectscategories'));
+        }
+
+        public function edit($id) // untuk menampilkan form untuk edit data
+        {
+            $ebooks = EBook::find($id);
+            $subjectscategories = SubjectsCategory::all();
+            return view('ebook.edit', compact('ebooks','subjectscategories'));
+        }
+
+        public function update(Request $request, $id) // untuk menghandel form edit data
+        {
+            $this->validate($request, [
+                'title'          => 'required',
+                'subjectscategories_id'      => 'required',
+                'class'         => 'required',
+                'semester'      => 'required',
+                'author'        => 'required',
+                'publisher'     => 'required',
+                'year'          => 'required',
+                'url'           => 'required',
+            ]);
+
+            $ebooks = EBook::where('id',$id)->first();
+            $ebooks->title=$request->title;
+            $ebooks->subjectscategories_id=$request->subjectscategories_id;
+            $ebooks->class=$request->class;
+            $ebooks->semester=$request->semester;
+            $ebooks->author=$request->author;
+            $ebooks->publisher=$request->publisher;
+            $ebooks->year=$request->year;
+            $ebooks->url=$request->url;
+            $ebooks->save();
+            return redirect()->route('admin.ebook')->with('alert-success','Data berhasil diubah!');
+        }
 }

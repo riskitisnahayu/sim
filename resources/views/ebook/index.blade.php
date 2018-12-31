@@ -52,10 +52,10 @@
                         <a href="{{ $value->url }}">{{ $value->url }}</a>
                     </td>
                     <td class="text-center">
-                        <a href="{{ url('admin/games/detail/'.$value->id) }}" class="btn btn-info btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Detail">
+                        <a href="{{ url('ebook/detail/'.$value->id) }}" class="btn btn-info btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Detail">
                             <i class="fa fa-info" style="font-size:0.9em"></i>
                         </a>
-                        <a href="{!! route('admin.games.edit', ['id'=>$value->id]) !!}" class="btn btn-warning btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Edit">
+                        <a href="{!! route('ebook.edit', ['id'=>$value->id]) !!}" class="btn btn-warning btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Edit">
                             <i class="fa fa-pencil" style="font-size:0.9em"></i>
                         </a>
                         <a href="{!! route('admin.games.delete', ['id'=>$value->id]) !!}" class="btn btn-danger btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Delete">

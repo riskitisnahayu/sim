@@ -179,7 +179,7 @@
 					<!-- Footer -->
 					 {{-- target="_blank" == untuk new page --}}
 					<div class="footer text-muted">
-						&copy; 2018. <a href="#">Dashboard Permainan Edukasi</a> by <a href="#">Riski Tisnahayu</a>
+						&copy; 2018. <a href="#">Aplikasi Dashboard Pembelajaran dan Buku Interaktif</a> by <a href="#">Riski Tisnahayu</a>
 					</div>
 					<!-- /footer -->
 
