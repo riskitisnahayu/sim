@@ -116,6 +116,15 @@ class GamesController extends Controller
         $games->gamecategories_id = $request->gamecategories_id;
         $games->description = $request->description;
         $games->url   = $request->url;
+
+        if (!empty($request->file('image')))
+        {
+            $image   = $request->file('image');
+            $ext     = $image->getClientOriginalExtension();
+            $newName = rand(100000,1001238912).".".$ext;
+            $image->move('images',$newName);
+            $games->image = $newName;
+        }
         $games->save();
         return redirect()->route('admin.minigames')->with('alert-success','Data berhasil diubah!');
 
