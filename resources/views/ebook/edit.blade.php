@@ -55,25 +55,11 @@
     			<label class="control-label col-lg-2">Kelas</label>
     			<div class="col-lg-10">
                     <select class="form-control" name="class">
-                        {{-- {!! Form::model($model, []) !!}
-                        {!! Form::select('class',['1'=>'1','2'=>'2','3'=>'3']) !!}
-                        {!! Form::close() !!}
-                        <input type="text" name="class" value="['1'=>'1','2'=>'2','3'=>'3']"> --}}
-                        {{-- @foreach($subjectscategories as $value)
-                            <option value="{{$value->id}}" {{collect(old('class'))->contains($value->id) ? 'selected':''}} @if($value->id == $ebooks['class']) selected='selected' @endif>{{$value->class}}</option>
-                       @endforeach --}}
 
-                           {{-- <option value="1" @if ($ebooks->class == 1)"selected" @endif>1</option>
-                           <option value="2" @if ($ebooks->class == 2)"selected" @endif>2</option>
-                           <option value="3" @if ($ebooks->class == 3)"selected" @endif>3</option> --}}
+                           <option value="1" @if ($ebooks->class == '1') selected="selected" @endif>1</option>
+                           <option value="2" @if ($ebooks->class == '2') selected="selected" @endif>2</option>
+                           <option value="3" @if ($ebooks->class == '3') selected="selected" @endif>3</option>
 
-                            @foreach ($ebooks as $class)
-                                <option value="{{$class}}" selected="">{{$class}}</option>
-                            @endforeach
-
-                       {{-- @foreach(["1" => "1", "2" => "2", "3" => "3"] as $value => $key)
-                           <option value="{{ $value }}" {{ old("class" ? "selected" : "" }}>{{ $key }}</option>
-                       @endforeach --}}
                     </select>
     			</div>
     		</div>
@@ -81,9 +67,9 @@
                 <label class="control-label col-lg-2">Semester</label>
                 <div class="col-lg-10">
                 <select name="semester" class="form-control" required>
-                    <option value="I" @if ($ebooks->semester == 1)"selected" @endif>I</option>
-                    <option value="II" @if ($ebooks->semester == 2)"selected" @endif>II</option>
-                    <option value="Both" @if ($ebooks->semester == 3)"selected" @endif>Both</option>
+                    <option value="I" @if ($ebooks->semester == 'I') selected="selected" @endif>I</option>
+                    <option value="II" @if ($ebooks->semester == 'II') selected="selected" @endif>II</option>
+                    <option value="Both" @if ($ebooks->semester == 'Both') selected="selected" @endif>Both</option>
                 </select>
                 </div>
             </div>
