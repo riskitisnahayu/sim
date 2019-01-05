@@ -96,6 +96,16 @@ class EbookController extends Controller
             $ebooks->publisher=$request->publisher;
             $ebooks->year=$request->year;
             $ebooks->url=$request->url;
+
+            // if ($request->file('image') != NOTNULL)
+            if (!empty($request->file('image'))) 
+            {
+                $image   = $request->file('image');
+                $ext     = $image->getClientOriginalExtension();
+                $newName = rand(100000,1001238912).".".$ext;
+                $image->move('images',$newName);
+                $ebooks->image = $newName;
+            }
             $ebooks->save();
             return redirect()->route('admin.ebook')->with('alert-success','Data berhasil diubah!');
         }
