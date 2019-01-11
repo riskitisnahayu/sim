@@ -15,15 +15,4 @@ class EBook extends Model
         return $this->belongsTo('App\SubjectsCategory', 'subjectscategories_id', 'id');
     }
 
-    // protected $class = [
-    //     '1' => '1',
-    //     '2' => '2',
-    //     '3' => '3'
-    // ];
-    //
-    // public function getclass()
-    // {
-    //     return $this->class;
-    // }
-
 }

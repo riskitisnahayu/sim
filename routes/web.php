@@ -94,6 +94,13 @@ Route::get('ebook/delete/{id}', 'EbookController@destroy')->name('ebook.delete')
 //     return view('admin.admin_materi'); // salah
 // });
 
+// Untuk siswa
+
+// UI user
+Route::get('/student', function() {
+	return view('student');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');// ini baru benar

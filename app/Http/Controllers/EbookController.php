@@ -98,7 +98,7 @@ class EbookController extends Controller
             $ebooks->url=$request->url;
 
             // if ($request->file('image') != NOTNULL)
-            if (!empty($request->file('image'))) 
+            if (!empty($request->file('image')))
             {
                 $image   = $request->file('image');
                 $ext     = $image->getClientOriginalExtension();
