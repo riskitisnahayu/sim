@@ -25,7 +25,7 @@ Route::get('admin/kelola-kategori-game', 'GameCategoryController@index')->name('
 Route::get('admin/kelola-mata-pelajaran', 'SubjectsCategoryController@index')->name('admin.subjectscategory');
 Route::get('admin/mini-games', 'GamesController@index')->name('admin.minigames');
 Route::get('admin/e-book', 'EbookController@index')->name('admin.ebook');
-Route::get('admin/bank-soal', 'BankSoalController@index')->name('admin.banksoal'); //controller diganti ya
+Route::get('admin/bank-soal', 'TaskMasterController@index')->name('admin.banksoal'); //controller diganti ya
 
 // mini games
 // Route::get('admin/admin-games', 'GamesController@index')->name('admin.');
@@ -93,6 +93,17 @@ Route::get('ebook/delete/{id}', 'EbookController@destroy')->name('ebook.delete')
 // Route::get('/admin_materi', function () {
 //     return view('admin.admin_materi'); // salah
 // });
+
+// bank soal
+Route::get('banksoal/add','TaskMasterController@create')->name('taskmaster.add');
+Route::post('banksoal/store', 'TaskMasterController@store')->name('taskmaster.store');
+
+Route::get('banksoal/detail/{id}', 'TaskMasterController@show')->name('taskmaster.detail');
+
+Route::get('banksoal/edit/{id}', 'TaskMasterController@edit')->name('taskmaster.edit');
+Route::post('banksoal/update/{id}', 'TaskMasterController@update')->name('taskmaster.update');
+
+Route::get('banksoal/delete/{id}', 'TaskMasterController@destroy')->name('taskmaster.delete');
 
 // Untuk siswa
 

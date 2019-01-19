@@ -13,7 +13,7 @@
 	</div>
     <div class="row">
         <div class="col-sm-4 col-md-2">
-            <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="#"><i class="fa fa-plus mg-r-10"></i> Tambah Bank Soal</button>
+            <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="location.href='{{url('banksoal/add')}}'"><i class="fa fa-plus mg-r-10"></i> Tambah Bank Soal</button>
         </div>
     </div>
 
@@ -22,13 +22,33 @@
         <thead>
             <tr>
                <th>No.</th>
-               <th>Nama Kategori</th>
-               <th style="width:820px">Deskripsi</th>
+               <th>Judul</th>
+               <th>Kelas</th>
+               <th>Mata Pelajaran</th>
                <th class="text-center" style="width:150px">Aksi</th>
             </tr>
         </thead>
         <tbody>
-
+            @foreach ($task_masters as $key => $value)
+                <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{ $value->title }}</td>
+                    <td>{{ $value->class }}</td>
+                    <td>{{ $value->subjectscategory['name'] }}</td>
+                    </td>
+                    <td class="text-center">
+                        <a href="{{ url('banksoal/detail/'.$value->id) }}" class="btn btn-info btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Detail">
+                            <i class="fa fa-info" style="font-size:0.9em"></i>
+                        </a>
+                        <a href="{!! route('taskmaster.edit', ['id'=>$value->id]) !!}" class="btn btn-warning btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Edit">
+                            <i class="fa fa-pencil" style="font-size:0.9em"></i>
+                        </a>
+                        <a href="{!! route('taskmaster.delete', ['id'=>$value->id]) !!}" class="btn btn-danger btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Delete">
+                            <i class="fa fa-trash" style="font-size:0.9em"></i>
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

@@ -56,9 +56,9 @@
     			<div class="col-lg-10">
                     <select class="form-control" name="class">
 
-                           <option value="1" @if ($ebooks->class == '1') selected="selected" @endif>1</option>
-                           <option value="2" @if ($ebooks->class == '2') selected="selected" @endif>2</option>
-                           <option value="3" @if ($ebooks->class == '3') selected="selected" @endif>3</option>
+                           <option value="7" @if ($ebooks->class == '7') selected="selected" @endif>7</option>
+                           <option value="8" @if ($ebooks->class == '8') selected="selected" @endif>8</option>
+                           <option value="9" @if ($ebooks->class == '9') selected="selected" @endif>9</option>
 
                     </select>
     			</div>
