@@ -24,6 +24,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="control-label col-lg-2">Semester</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" name="class" placeholder="{{ $task_masters->semester }}" readonly="" type="text">
+                </div>
+            </div>
+            <div class="form-group">
     			<label class="control-label col-lg-2">Mata Pelajaran</label>
                 <div class="col-lg-10">
                     <input type="text" class="form-control" name="subjectscategories_id" placeholder="{{ $task_masters->subjectscategory['name'] }}" readonly="" type="text">

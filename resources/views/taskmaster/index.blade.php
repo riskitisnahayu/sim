@@ -24,6 +24,7 @@
                <th>No.</th>
                <th>Judul</th>
                <th>Kelas</th>
+               <th>Semester</th>
                <th>Mata Pelajaran</th>
                <th class="text-center" style="width:150px">Aksi</th>
             </tr>
@@ -34,6 +35,7 @@
                     <td>{{ ++$i }}</td>
                     <td>{{ $value->title }}</td>
                     <td>{{ $value->class }}</td>
+                    <td>{{ $value->semester }}</td>
                     <td>{{ $value->subjectscategory['name'] }}</td>
                     </td>
                     <td class="text-center">

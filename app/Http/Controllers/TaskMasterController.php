@@ -45,6 +45,8 @@ class TaskMasterController extends Controller
     {
         $this->validate($request, [
               'title'          => 'required',
+              'class'          => 'required',
+              'semester'       => 'required',
               'subjectscategories_id'      => 'required',
         ]);
 
@@ -52,6 +54,7 @@ class TaskMasterController extends Controller
         $task_masters = new TaskMaster();
         $task_masters->title=$request->title;
         $task_masters->class=$request->class;
+        $task_masters->semester=$request->semester;
         $task_masters->subjectscategories_id=$request->subjectscategories_id;
         $task_masters->save();
 
@@ -97,12 +100,15 @@ class TaskMasterController extends Controller
     {
         $this->validate($request, [
             'title'          => 'required',
+            'class'          => 'required',
+            'semester'       => 'required',
             'subjectscategories_id'      => 'required',
         ]);
 
         $task_masters = TaskMaster::where('id',$id)->first();
         $task_masters->title=$request->title;
         $task_masters->class=$request->class;
+        $task_masters->semester=$request->semester;
         $task_masters->subjectscategories_id=$request->subjectscategories_id;
 
         $task_masters->save();

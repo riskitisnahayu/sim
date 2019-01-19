@@ -41,6 +41,16 @@
     			</div>
     		</div>
             <div class="form-group">
+                <label class="control-label col-lg-2">Semester</label>
+                <div class="col-lg-10">
+                <select name="semester" class="form-control" required>
+                    <option value="I" @if ($task_masters->semester == 'I') selected="selected" @endif>I</option>
+                    <option value="II" @if ($task_masters->semester == 'II') selected="selected" @endif>II</option>
+                    <option value="Both" @if ($task_masters->semester == 'Both') selected="selected" @endif>Both</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-group">
     			<label class="control-label col-lg-2">Mata Pelajaran</label>
                 <div class="col-lg-10">
                     <select class="form-control" name="subjectscategories_id">
