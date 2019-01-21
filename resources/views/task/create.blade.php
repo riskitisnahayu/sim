@@ -20,94 +20,57 @@
         </div>
     @endif
 
-    <form class="form-horizontal" action="{!! route('taskmaster.store') !!}" enctype="multipart/form-data" method="post">
+    <form class="form-horizontal" action="{!! route('task.store') !!}" enctype="multipart/form-data" method="post">
         {{ csrf_field() }}
+        <input type="hidden" name="taskmaster_id" value="{{ $taskmaster_id }}">
     	<fieldset class="content-group">
-    		<div class="form-group">
-    			<label class="control-label col-lg-2">Judul</label>
-    			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="title" >
-    			</div>
-    		</div>
-            <div class="form-group">
-    			<label class="control-label col-lg-2">Kelas</label>
-    			<div class="col-lg-10">
-                    <select name="class" class="form-control" >
-                        <option  selected disabled>
-                            @if($errors->any())
-                                @if ($errors)
+            @for ($i=0; $i < $total; $i++)
+                <div class="form-group">
+        			<label class="control-label col-lg-2">Soal {{ " ".$i+1 }}</label>
+        			<div class="col-lg-12">
+                        <textarea name="task[description][{{ $i }}]" rows="8" style="width: 100%" required></textarea>
+        			</div>
+        		</div>
+                @for ($j=0; $j < 4; $j++)
+                    <div class="form-group">
+            			<label class="control-label col-lg-1">{{ $choices[$j] . "."}}</label>
+            			<div class="col-lg-10">
+            				{{-- <input type="text" class="form-control" name="answer[{{ $i }}][]" required> --}}
+                            <textarea name="answer[{{ $i }}][]" rows="3" style="width: 100%" required></textarea>
+            			</div>
+            		</div>
+                @endfor
+                <div class="form-group">
+					<label class="display-block text-semibold">Jawaban yang benar</label>
+					<label class="radio-inline">
+						<input type="radio" value="1" name="true_answer[{{ $i }}]" class="styled">
+						a.
+					</label>
 
-                                @endif
-                                {{ old('class') }}
-                            @else
-                                ---- Pilih Kelas ---
-                            @endif
-                        </option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                    </select>
-    			</div>
-    		</div>
-            <div class="form-group">
-                <label class="control-label col-lg-2">Semester</label>
-                <div class="col-lg-10">
-                <select name="semester" class="form-control" >
-                    <option  selected disabled>
-                        @if($errors->any())
-                            @if ($errors)
+					<label class="radio-inline">
+						<input type="radio" value="2" name="true_answer[{{ $i }}]" class="styled">
+						b.
+					</label>
 
-                            @endif
-                            {{ old('semester') }}
-                        @else
-                            ---- Pilih Semester ---
-                        @endif
-                    </option>
-                    <option value="I">I</option>
-                    <option value="II">II</option>
-                    <option value="Both">Both</option>
-                </select>
+                    <label class="radio-inline">
+						<input type="radio" value="3" name="true_answer[{{ $i }}]" class="styled">
+						c.
+					</label>
+
+                    <label class="radio-inline">
+						<input type="radio" value="4" name="true_answer[{{ $i }}]" class="styled">
+						d.
+					</label>
+				</div>
+                <div class="form-group">
+                    <label class="control-label col-lg-1">Pembahasan</label>
+                    <div class="col-lg-10">
+                        {{-- <input type="text" class="form-control" name="answer[{{ $i }}][]" required> --}}
+                        <textarea name="task[discussion][{{ $i }}]" rows="3" style="width: 100%"></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-    			<label class="control-label col-lg-2">Mata Pelajaran</label>
-                <div class="col-lg-10">
-                    <select class="form-control" name="subjectscategories_id">
-                        <option  selected disabled>
-                            @if($errors->any())
-                                @if ($errors)
+            @endfor
 
-                                @endif
-                                {{ old('subjectscategories_id') }}
-                            @else
-                                ---- Pilih Mata Pelajaran ---
-                            @endif
-                        </option>
-                            @foreach($subjectscategories as $value)
-                                <option value="{{$value->id}}" {{collect(old('subjectscategories'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
-                            @endforeach
-                    </select>
-                </div>
-    		</div>
-            <div class="form-group">
-                <label class="control-label col-lg-2">Jumlah Soal</label>
-                <div class="col-lg-10">
-                <select name="total" class="form-control" >
-                    <option  selected disabled>
-                        @if($errors->any())
-                            @if ($errors)
-
-                            @endif
-                            {{ old('total') }}
-                        @else
-                            0
-                        @endif
-                    </option>
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                </select>
-                </div>
-            </div>
     	</fieldset>
 
         <div class="row" style="margin-top: 10px;">

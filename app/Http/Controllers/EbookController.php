@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\EBook;
 use App\SubjectsCategory;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class EbookController extends Controller
 {
@@ -35,7 +37,22 @@ class EbookController extends Controller
                  'publisher'     => 'required',
                  'year'          => 'required',
                  'url'           => 'required',
-           ]);
+           ],
+
+           [
+                'image.required'     => 'Gambar harus diisi!',
+                'title.required'     => 'Judul harus diisi!',
+                'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
+                'class.required'      => 'Kelas harus diisi!',
+                'semester.required'  => 'Semester harus diisi!',
+                'author.required'    => 'Penulis harus diisi!',
+                'publisher.required' => 'Penerbit harus diisi!',
+                'year.required'      => 'Tahun harus diisi!',
+                'url.required'       => 'Url harus diisi!',
+
+            ]
+
+       );
 
 
            $ebooks = new EBook();
@@ -54,6 +71,8 @@ class EbookController extends Controller
            $image->move('images',$newName);
            $ebooks->image = $newName;
            $ebooks->save();
+
+           Alert::success('Sukses', 'E-Book berhasil ditambahkan!');
 
             // redirect menggunakan url lengkap sedangkan route menggunakan route name
             return redirect()->route('admin.ebook');
@@ -85,7 +104,22 @@ class EbookController extends Controller
                 'publisher'     => 'required',
                 'year'          => 'required',
                 'url'           => 'required',
-            ]);
+        ],
+
+        [
+             // 'image.required'     => 'Gambar harus diisi!',
+             'title.required'     => 'Judul harus diisi!',
+             'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
+             'class.required'      => 'Kelas harus diisi!',
+             'semester.required'  => 'Semester harus diisi!',
+             'author.required'    => 'Penulis harus diisi!',
+             'publisher.required' => 'Penerbit harus diisi!',
+             'year.required'      => 'Tahun harus diisi!',
+             'url.required'       => 'Url harus diisi!',
+
+         ]
+     );
+
 
             $ebooks = EBook::where('id',$id)->first();
             $ebooks->title=$request->title;
@@ -107,13 +141,16 @@ class EbookController extends Controller
                 $ebooks->image = $newName;
             }
             $ebooks->save();
-            return redirect()->route('admin.ebook')->with('alert-success','Data berhasil diubah!');
+
+            Alert::success('Sukses', 'E-Book berhasil diubah!');
+
+            return redirect()->route('admin.ebook');
         }
 
         public function destroy($id) // delete
         {
              $ebooks = EBook::where('id',$id)->first();
              $ebooks->delete();
-             return redirect()->route('admin.ebook')->with('sukses', 'Data Berhasil Dihapus!');
+             return redirect()->route('admin.ebook');
         }
 }

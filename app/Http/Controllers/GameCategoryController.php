@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\GameCategory;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class GameCategoryController extends Controller
 {
@@ -25,14 +27,24 @@ class GameCategoryController extends Controller
        $this->validate($request, [
              'name'          => 'required',
              'description'   => 'required',
-       ]);
+       ],
+
+       [
+            'name.required'         => 'Nama harus diisi!',
+            'description.required'  => 'Deskripsi harus diisi!',
+        ]
+    );
+
 
        $gamecategories = new GameCategory();
        $gamecategories->name=$request->name;
        $gamecategories->description=$request->description;
        $gamecategories->save();
+
+       Alert::success('Sukses', 'Kategori game berhasil ditambahkan!');
+
         // redirect menggunakan url lengkap sedangkan route menggunakan route name
-        return redirect()->route('admin.gamecategory')->with('success','Kategori game berhasil ditambahkan!');
+        return redirect()->route('admin.gamecategory');
     }
 
     public function show($id) // untuk menampilkan/ melihat data
@@ -53,20 +65,31 @@ class GameCategoryController extends Controller
         $this->validate($request, [
               'name'          => 'required',
               'description'   => 'required',
-        ]);
+        ],
+
+        [
+             'name.required'         => 'Nama harus diisi!',
+             'description.required'  => 'Deskripsi harus diisi!',
+         ]
+     );
+
+
 
         $gamecategories = GameCategory::where('id',$id)->first();
         $gamecategories->name  = $request->name;
         $gamecategories->description = $request->description;
         $gamecategories->save();
-        return redirect()->route('admin.gamecategory')->with('alert-success','Kategori game berhasil diubah!');
+
+        Alert::success('Sukses', 'Kategori game berhasil diubah!');
+
+        return redirect()->route('admin.gamecategory');
     }
 
     public function destroy($id) // delete
     {
          $gamecategories = GameCategory::where('id',$id)->first();
          $gamecategories->delete();
-         return redirect()->route('admin.gamecategory')->with('sukses', 'Kategori game berhasil dihapus!');
+         return redirect()->route('admin.gamecategory');
     }
 
 }

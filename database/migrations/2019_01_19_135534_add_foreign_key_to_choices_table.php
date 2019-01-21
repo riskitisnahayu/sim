@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddClassColumnToTaskMastersTable extends Migration
+class AddForeignKeyToChoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddClassColumnToTaskMastersTable extends Migration
      */
     public function up()
     {
-        Schema::table('task_masters', function (Blueprint $table) {
-            $table->enum('class',['7','8','9'])->nullable()->after('subjectscategories_id');
+        Schema::table('choices', function (Blueprint $table) {
+            $table->foreign('task_id','fk_choices_tasks')->references('id')->on('tasks')->onUpdate('CASCADE')->onDelete('CASCADE');
+
         });
     }
 
@@ -25,7 +26,7 @@ class AddClassColumnToTaskMastersTable extends Migration
      */
     public function down()
     {
-        Schema::table('task_masters', function (Blueprint $table) {
+        Schema::table('choices', function (Blueprint $table) {
             //
         });
     }

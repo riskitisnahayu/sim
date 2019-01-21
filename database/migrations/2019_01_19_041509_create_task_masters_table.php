@@ -17,6 +17,8 @@ class CreateTaskMastersTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('subjectscategories_id')->unsigned();
+            $table->enum('class',['7','8','9']);
+            $table->enum('semester',['I','II','Both']);
             $table->timestamps();
         });
     }

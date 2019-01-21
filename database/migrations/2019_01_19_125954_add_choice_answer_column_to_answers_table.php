@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddClassColumnToTaskMastersTable extends Migration
+class AddChoiceAnswerColumnToAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddClassColumnToTaskMastersTable extends Migration
      */
     public function up()
     {
-        Schema::table('task_masters', function (Blueprint $table) {
-            $table->enum('class',['7','8','9'])->nullable()->after('subjectscategories_id');
+        Schema::table('answers', function (Blueprint $table) {
+            $table->text('choice_answer')->after('choice');
         });
     }
 
@@ -25,7 +25,7 @@ class AddClassColumnToTaskMastersTable extends Migration
      */
     public function down()
     {
-        Schema::table('task_masters', function (Blueprint $table) {
+        Schema::table('answers', function (Blueprint $table) {
             //
         });
     }

@@ -18,7 +18,7 @@ class CreateEbooksTable extends Migration
             $table->string('image')->nullable();
             $table->string('title',190);
             $table->integer('subjectscategories_id')->unsigned();
-            $table->enum('class',['1','2','3'])->nullable();
+            $table->enum('class',['7','8','9'])->nullable();
             $table->enum('semester',['I','II','Both'])->nullable();
             $table->string('author',190);
             $table->string('publisher',190);

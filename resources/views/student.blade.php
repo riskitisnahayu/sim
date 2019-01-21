@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
+<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Aplikasi &mdash; Edukasi</title>
@@ -23,7 +23,7 @@
 	//////////////////////////////////////////////////////
 	 -->
 
-  	<!-- Facebook and Twitter integration -->
+	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
@@ -60,18 +60,19 @@
 
 	{{-- modal --}}
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script type="text/javascript" src="{!! asset('law/assets/js/pages/components_modals.js') !!}"></script>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+		<!-- FOR IE9 below -->
+		<!--[if lt IE 9]>
+		<script src="js/respond.min.js"></script>
+		<![endif]-->
 
 </head>
 <body>
@@ -108,6 +109,42 @@
 </div>
 <div class="fh5co-loader"></div>
 
+{{-- MODAL Daftar --}}
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog2" aria-labelledby="myModalLabel2">
+<div class="modal-dialog2" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal2" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<h4 class="modal-title" id="myModalLabel2">Daftar</h4>
+  </div>
+  <div class="modal-body">
+	  <div class="row">
+		  <div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
+			<a href="#"><img src="{!! asset('law/assets/images/mom.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+				<h3>Orang Tua</h3>
+			</a>
+		</div>
+		<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
+			<a href="#"><img src="{!! asset('law/assets/images/siswa.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+				<h3>Siswa</h3>
+			</a>
+		</div>
+	  </div>
+	  <div class="modal-footer">
+		  <button type="button" class="btn btn-link" data-dismiss="modal2">Close</button>
+		  <button type="button" class="btn btn-primary">Save changes</button>
+	  </div>
+  </div>
+
+  {{-- <div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	<button type="button" class="btn btn-primary">Save changes</button>
+  </div> --}}
+</div>
+</div>
+</div>
+<div class="fh5co-loader"></div>
+
 <div id="page">
 <nav class="fh5co-nav" role="navigation">
 	<div class="top-menu">
@@ -132,7 +169,7 @@
 						</li>
 						<li><a href="about.html">About</a></li>
 						<li><a href="contact.html">Contact</a></li> --}}
-						<li class="btn-cta"><a href="#"><span>Daftar</span></a></li>
+						<li class="btn-cta"><a href="#" data-toggle="modal2" data-target="#myModal2"><span>Daftar</span></a></li>
 						<li class="btn-cta1"><a href="#" data-toggle="modal" data-target="#myModal"><span>Login</span></a></li>
 					</ul>
 				</div>
@@ -141,6 +178,35 @@
 		</div>
 	</div>
 </nav>
+
+<!-- Primary modal -->
+{{-- <div id="modal_theme_primary" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-primary">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h6 class="modal-title">Daftar</h6>
+			</div>
+
+			<div class="modal-body">
+				<h6 class="text-semibold">Text in a modal</h6>
+				<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+
+				<hr>
+
+				<h6 class="text-semibold">Another paragraph</h6>
+				<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+				<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div> --}}
+<!-- /primary modal -->
 
 <aside id="fh5co-hero" class="js-fullheight">
 	<div class="flexslider js-fullheight">
@@ -199,8 +265,8 @@
 				<span class="fh5co-counter js-counter" data-from="0" data-to="27539" data-speed="5000" data-refresh-interval="50"></span>
 				<span class="fh5co-counter-label">Satisfied Clients</span>
 			</div>
-			<div class="col-md-3 text-center animate-box">
-				<span class="icon"><i class="icon-speech-bubble"></i></span>
+			{{-- <div class="col-md-3 text-center animate-box"> --}}
+				{{-- <span class="icon"><i class="icon-speech-bubble"></i></span>
 				<span class="fh5co-counter js-counter" data-from="0" data-to="23563" data-speed="5000" data-refresh-interval="50"></span>
 				<span class="fh5co-counter-label">Cases Won</span>
 			</div>

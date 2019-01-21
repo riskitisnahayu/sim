@@ -59,7 +59,7 @@ class TaskMasterController extends Controller
         $task_masters->save();
 
          // redirect menggunakan url lengkap sedangkan route menggunakan route name
-         return redirect()->route('admin.banksoal');
+         return redirect("soal/add/".$task_masters->id."?total=".$request->total);
     }
 
     /**

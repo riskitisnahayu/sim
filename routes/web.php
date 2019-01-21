@@ -105,6 +105,10 @@ Route::post('banksoal/update/{id}', 'TaskMasterController@update')->name('taskma
 
 Route::get('banksoal/delete/{id}', 'TaskMasterController@destroy')->name('taskmaster.delete');
 
+// soal
+Route::get('soal/add/{id}','TaskController@create')->name('task.add');
+Route::post('soal/store', 'TaskController@store')->name('task.store');
+
 // Untuk siswa
 
 // UI user

@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->integer('taskmaster_id')->unsigned();
             $table->text('description');
             $table->text('discussion')->nullable();
+            $table->enum('true_answer',['a','b','c','d']);
             $table->timestamps();
         });
     }

@@ -37,6 +37,7 @@
 
 
 	<script type="text/javascript" src="{!! asset('panel/assets/js/core/app.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('panel/assets/js/pages/form_checkboxes_radios.js') !!}"></script>
 	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/dashboard.js') !!}"></script> --}}
 	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/datatables_data_sources.js') !!}"></script> --}}
 
@@ -47,153 +48,151 @@
 
 <body>
 
-	<!-- Main navbar -->
-	<div class="navbar navbar-inverse">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="index.html"><img src="{!! asset('panel/assets/images/logo_light.png') !!}" alt=""></a>
+<!-- Main navbar -->
+<div class="navbar navbar-inverse">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html"><img src="{!! asset('panel/assets/images/logo_light.png') !!}" alt=""></a>
 
-			<ul class="nav navbar-nav visible-xs-block">
-				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-				<li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
-			</ul>
-		</div>
-
-		<div class="navbar-collapse collapse" id="navbar-mobile">
-			<p class="navbar-text"><span class="label bg-success">Online</span></p>
-
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown dropdown-user">
-					<a class="dropdown-toggle" data-toggle="dropdown">
-						<img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" alt="">
-						<span>{{ Auth::user()->name }}</span>
-						<i class="caret"></i>
-					</a>
-
-					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
-						<li>
-							<a href="{{ route('logout') }}"
-								onclick="event.preventDefault();
-										 document.getElementById('logout-form').submit();">
-								Logout
-							</a>
-
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-								{{ csrf_field() }}
-							</form>
-						</li>
-					</ul>
-				</li>
-
-			</ul>
-		</div>
+		<ul class="nav navbar-nav visible-xs-block">
+			<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+			<li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+		</ul>
 	</div>
-	<!-- /main navbar -->
+
+	<div class="navbar-collapse collapse" id="navbar-mobile">
+		<p class="navbar-text"><span class="label bg-success">Online</span></p>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown dropdown-user">
+				<a class="dropdown-toggle" data-toggle="dropdown">
+					<img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" alt="">
+					<span>{{ Auth::user()->name }}</span>
+					<i class="caret"></i>
+				</a>
+
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
+					<li>
+						<a href="{{ route('logout') }}"
+							onclick="event.preventDefault();
+									 document.getElementById('logout-form').submit();">
+							Logout
+						</a>
+
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+							{{ csrf_field() }}
+						</form>
+					</li>
+				</ul>
+			</li>
+
+		</ul>
+	</div>
+</div>
+<!-- /main navbar -->
 
 
-	<!-- Page container -->
-	<div class="page-container">
-
-		<!-- Page content -->
-		<div class="page-content">
-
-			<!-- Main sidebar -->
-			<div class="sidebar sidebar-main">
-				<div class="sidebar-content">
-
-					<!-- User menu -->
-					<div class="sidebar-user">
-						<div class="category-content">
-							<div class="media">
-								<a href="#" class="media-left"><img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" class="img-circle img-sm" alt=""></a>
-								<div class="media-body">
-									{{-- <span class="media-heading text-semibold">Riski Tisnahayu</span> --}}
-									<span class="media-heading text-semibold">{{ Auth::user()->name }}</span>
-									<div class="text-size-mini text-muted">
-                                        {{-- <p>Admin</p> --}}
-										<p>{{ Auth::user()->type }}</p>
-									</div>
+<!-- Page container -->
+<div class="page-container">
+	<!-- Page content -->
+	<div class="page-content">
+		<!-- Main sidebar -->
+		<div class="sidebar sidebar-main">
+			<div class="sidebar-content">
+				<!-- User menu -->
+				<div class="sidebar-user">
+					<div class="category-content">
+						<div class="media">
+							<a href="#" class="media-left"><img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" class="img-circle img-sm" alt=""></a>
+							<div class="media-body">
+								{{-- <span class="media-heading text-semibold">Riski Tisnahayu</span> --}}
+								<span class="media-heading text-semibold">{{ Auth::user()->name }}</span>
+								<div class="text-size-mini text-muted">
+                                    {{-- <p>Admin</p> --}}
+									<p>{{ Auth::user()->type }}</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- /user menu -->
-
-
-					<!-- Main navigation -->
-					<div class="sidebar-category sidebar-category-visible">
-						<div class="category-content no-padding">
-							<ul class="navigation navigation-main navigation-accordion">
-
-								<!-- Main -->
-								{{-- <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li> --}}
-								<li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}"><a href="{!! route('admin.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-								@if (Auth::user()->type=="Admin")
-									<li class="{{ request()->is('admin/daftar-pemain-game') ? 'active' : '' }}"><a href="{!! route('admin.user_dashboard') !!}"><i class="icon-user"></i> <span>Daftar Pengguna</span></a></li>
-									<li class="{{ request()->is('admin/kelola-kategori-game') ? 'active' : '' }}"><a href="{!! route('admin.gamecategory') !!}"><i class="icon-list2"></i> <span>Kelola Kategori Game</span></a></li>
-									<li class="{{ request()->is('admin/kelola-mata-pelajaran') ? 'active' : '' }}"><a href="{!! route('admin.subjectscategory') !!}"><i class="icon-book"></i> <span>Kelola Mata Pelajaran</span></a></li>
-									<li class="{{ request()->is('admin/mini-games') ? 'active' : '' }}"><a href="{!! route('admin.minigames') !!}"><i class="icon-puzzle2"></i> <span>Mini Games</span></a></li>
-									<li class="{{ request()->is('admin/e-book') ? 'active' : '' }}"><a href="{!! route('admin.ebook') !!}"><i class="icon-book"></i> <span>E-Book</span></a></li>
-									<li class="{{ request()->is('admin/bank-soal') ? 'active' : '' }}"><a href="{!! route('admin.banksoal') !!}"><i class="icon-folder2"></i> <span>Bank Soal</span></a></li>
-
-									@else
-										<li class="{{ request()->is('materi') ? 'active' : '' }}"><a href="index.html"><i class="icon-book"></i> <span>Materi</span></a></li>
-								@endif
-
-                                <!-- /main -->
-							</ul>
-						</div>
-					</div>
-					<!-- /main navigation -->
-
 				</div>
+				<!-- /user menu -->
+
+
+				<!-- Main navigation -->
+				<div class="sidebar-category sidebar-category-visible">
+					<div class="category-content no-padding">
+						<ul class="navigation navigation-main navigation-accordion">
+
+							<!-- Main -->
+							{{-- <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li> --}}
+							<li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}"><a href="{!! route('admin.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+							@if (Auth::user()->type=="Admin")
+								<li class="{{ request()->is('admin/daftar-pemain-game') ? 'active' : '' }}"><a href="{!! route('admin.user_dashboard') !!}"><i class="icon-user"></i> <span>Daftar Pengguna</span></a></li>
+								<li class="{{ request()->is('admin/kelola-kategori-game') ? 'active' : '' }}"><a href="{!! route('admin.gamecategory') !!}"><i class="icon-list2"></i> <span>Kelola Kategori Game</span></a></li>
+								<li class="{{ request()->is('admin/kelola-mata-pelajaran') ? 'active' : '' }}"><a href="{!! route('admin.subjectscategory') !!}"><i class="icon-book"></i> <span>Kelola Mata Pelajaran</span></a></li>
+								<li class="{{ request()->is('admin/mini-games') ? 'active' : '' }}"><a href="{!! route('admin.minigames') !!}"><i class="icon-puzzle2"></i> <span>Mini Games</span></a></li>
+								<li class="{{ request()->is('admin/e-book') ? 'active' : '' }}"><a href="{!! route('admin.ebook') !!}"><i class="icon-book"></i> <span>E-Book</span></a></li>
+								<li class="{{ request()->is('admin/bank-soal') ? 'active' : '' }}"><a href="{!! route('admin.banksoal') !!}"><i class="icon-folder2"></i> <span>Bank Soal</span></a></li>
+
+								@else
+									<li class="{{ request()->is('materi') ? 'active' : '' }}"><a href="index.html"><i class="icon-book"></i> <span>Materi</span></a></li>
+							@endif
+
+                            <!-- /main -->
+						</ul>
+					</div>
+				</div>
+				<!-- /main navigation -->
+
 			</div>
-			<!-- /main sidebar -->
+		</div>
+		<!-- /main sidebar -->
 
 
-			<!-- Main content -->
-			<div class="content-wrapper">
+		<!-- Main content -->
+		<div class="content-wrapper">
 
-				<!-- Page header -->
-				<div class="page-header page-header-default">
-					<div class="page-header-content">
-						<div class="page-title">
-							<h4><b>@yield('page_title')</b></h4>
-							<!-- <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Dashboard</h4> -->
-						</div>
-					</div>
-				</div>
-				<!-- /page header -->
+			<!-- Page header -->
+			<div class="page-header page-header-default">
 				<div class="page-header-content">
-					<div class="page-title" style="padding-top: 0">
-						@yield('content_section')
-
+					<div class="page-title">
+						<h4><b>@yield('page_title')</b></h4>
+						<!-- <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Dashboard</h4> -->
 					</div>
 				</div>
-
-				<!-- Content area -->
-				<div class="content">
-					{{-- @yield('content') --}}
-
-
-					<!-- Footer -->
-					 {{-- target="_blank" == untuk new page --}}
-					<div class="footer text-muted">
-						&copy; 2018. <a href="#">Aplikasi Dashboard Pembelajaran dan Buku Interaktif</a> by <a href="#">Riski Tisnahayu</a>
-					</div>
-					<!-- /footer -->
+			</div>
+			<!-- /page header -->
+			<div class="page-header-content">
+				<div class="page-title" style="padding-top: 0">
+					@yield('content_section')
 
 				</div>
-				<!-- /content area -->
+			</div>
+
+			<!-- Content area -->
+			<div class="content">
+				{{-- @yield('content') --}}
+
+
+				<!-- Footer -->
+				 {{-- target="_blank" == untuk new page --}}
+				<div class="footer text-muted">
+					&copy; 2018. <a href="#">Aplikasi Dashboard Pembelajaran dan Buku Interaktif</a> by <a href="#">Riski Tisnahayu</a>
+				</div>
+				<!-- /footer -->
 
 			</div>
-			<!-- /main content -->
+			<!-- /content area -->
 
 		</div>
-		<!-- /page content -->
+		<!-- /main content -->
 
 	</div>
-	<!-- /page container -->
-	@yield('script')
+	<!-- /page content -->
+
+</div>
+<!-- /page container -->
+@yield('script')
+@include('sweetalert::alert')
 </body>
 </html>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SubjectsCategory;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class SubjectsCategoryController extends Controller
 {
@@ -25,14 +27,23 @@ class SubjectsCategoryController extends Controller
        $this->validate($request, [
              'name'          => 'required',
              'description'   => 'required',
-       ]);
+       ],
+
+       [
+            'name.required'         => 'Nama harus diisi!',
+            'description.required'  => 'Deskripsi harus diisi!',
+        ]
+    );
 
        $subjectscategories = new SubjectsCategory();
        $subjectscategories->name=$request->name;
        $subjectscategories->description=$request->description;
        $subjectscategories->save();
+
+       Alert::success('Sukses', 'Kategori game berhasil ditambahkan!');
+
         // redirect menggunakan url lengkap sedangkan route menggunakan route name
-        return redirect()->route('admin.subjectscategory')->with('success','Kategori game berhasil ditambahkan!');
+        return redirect()->route('admin.subjectscategory');
     }
 
     public function show($id) // untuk menampilkan/ melihat data
@@ -53,20 +64,28 @@ class SubjectsCategoryController extends Controller
         $this->validate($request, [
               'name'          => 'required',
               'description'   => 'required',
-        ]);
+        ],
+
+        [
+             'name.required'         => 'Nama harus diisi!',
+             'description.required'  => 'Deskripsi harus diisi!',
+         ]
+     );
 
         $subjectscategories = SubjectsCategory::where('id',$id)->first();
         $subjectscategories->name  = $request->name;
         $subjectscategories->description = $request->description;
         $subjectscategories->save();
-        return redirect()->route('admin.subjectscategory')->with('alert-success','Kategori game berhasil diubah!');
+
+        Alert::success('Sukses', 'Kategori game berhasil diubah!');
+        return redirect()->route('admin.subjectscategory');
     }
 
     public function destroy($id) // delete
     {
          $subjectscategories = SubjectsCategory::where('id',$id)->first();
          $subjectscategories->delete();
-         return redirect()->route('admin.subjectscategory')->with('sukses', 'Kategori game berhasil dihapus!');
+         return redirect()->route('admin.subjectscategory');
     }
 
 

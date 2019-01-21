@@ -40,7 +40,7 @@
                         <a href="{!! route('subjectscategory.edit', ['id'=>$value->id]) !!}" class="btn btn-warning btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Edit">
                             <i class="fa fa-pencil" style="font-size:0.9em"></i>
                         </a>
-                        <a href="{!! route('subjectscategory.delete', ['id'=>$value->id]) !!}" class="btn btn-danger btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Delete">
+                        <a href="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{!! route('subjectscategory.delete', ['id'=>$value->id]) !!}'};" class="btn btn-danger btn-icon" class="btn btn-danger btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Delete">
                             <i class="fa fa-trash" style="font-size:0.9em"></i>
                         </a>
                     </td>

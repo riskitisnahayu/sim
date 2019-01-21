@@ -15,7 +15,7 @@ class CreateDistrictsTable extends Migration
     {
         Schema::create('districts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('regencies_id')->unsigned()->index();
+            $table->integer('regency_id')->unsigned()->index();
 			$table->string('name');
             $table->timestamps();
         });

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Game;
 use App\GameCategory;
 use App\ModelFile;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class GamesController extends Controller
 {
@@ -45,10 +47,19 @@ class GamesController extends Controller
        $this->validate($request, [
              'name'          => 'required',
              'gamecategories_id'      => 'required',
-             'image'         => 'required',
+             // 'image'         => 'required',
              'description'   => 'required',
              'url'           => 'required',
-       ]);
+       ],
+
+       [
+           'name.required'          => 'Nama harus diisi!',
+           'gamecategories_id.required'      => 'Kategori harus diisi!',
+           // 'image.required'         => 'required',
+           'description.required'   => 'Deskripsi harus diisi!',
+           'url.required'           => 'Url harus diisi!',
+       ]
+    );
 
 
        $games = new Game();
@@ -64,6 +75,7 @@ class GamesController extends Controller
        $games->image = $newName;
        $games->save();
 
+       Alert::success('Sukses', 'Mini games berhasil ditambahkan!');
         // redirect menggunakan url lengkap sedangkan route menggunakan route name
         return redirect()->route('admin.minigames');
     }
@@ -109,7 +121,16 @@ class GamesController extends Controller
               'gamecategories_id'      => 'required',
               'description'   => 'required',
               'url'           => 'required',
-        ]);
+        ],
+
+        [
+            'name.required'          => 'Nama harus diisi!',
+            'gamecategories_id.required'      => 'Kategori harus diisi!',
+            // 'image.required'         => 'required',
+            'description.required'   => 'Deskripsi harus diisi!',
+            'url.required'           => 'Url harus diisi!',
+        ]
+    );
 
         $games = Game::where('id',$id)->first();
         $games->name  = $request->name;
@@ -126,7 +147,10 @@ class GamesController extends Controller
             $games->image = $newName;
         }
         $games->save();
-        return redirect()->route('admin.minigames')->with('alert-success','Data berhasil diubah!');
+
+        Alert::success('Sukses', 'Mini games berhasil diubah!');
+
+        return redirect()->route('admin.minigames');
 
         // $games = Game::find($id);
         // Game::update([
@@ -151,7 +175,7 @@ class GamesController extends Controller
     {
          $games = Game::where('id',$id)->first();
          $games->delete();
-         return redirect()->route('admin.minigames')->with('sukses', 'Data Berhasil Dihapus!');
+         return redirect()->route('admin.minigames');
     }
 
     public function getGames() // fungsinya sama spt index untuk menampilkan semua data tp dalam bentuk json
