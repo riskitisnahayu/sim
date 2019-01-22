@@ -14,7 +14,8 @@
 	</div>
     <div class="row">
         <div class="col-sm-4 col-md-2">
-            <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="location.href='{{url('admin/games/add')}}'"><i class="fa fa-plus mg-r-10"></i> Tambah Mini Games</button>
+            {{-- <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="location.href='{{url('admin/games/add')}}'"><i class="fa fa-plus mg-r-10"></i> Tambah Mini Games</button> --}}
+            <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('admin/games/add')}}'"><i class="icon-plus2 position-left"></i> Tambah Mini Games</button>
         </div>
     </div>
 
@@ -46,7 +47,11 @@
                         <a href="{{ $value->url }}">{{ $value->url }}</a>
                     </td>
                     <td class="text-center">
-                        <a href="{{ url('admin/games/detail/'.$value->id) }}" class="btn btn-info btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Detail">
+                        <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('admin/games/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button>
+                        <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('admin/games/edit/'.$value->id) }}'" title="Edit"><i class="icon-pencil"></i></button>
+                        <button type="button" class="btn btn-danger btn-icon btn-rounded" onclick="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{{url('admin/games/delete/'.$value->id) }}'};" title="Delete"><i class="icon-trash"></i></button>
+
+                        {{-- <a href="{{ url('admin/games/detail/'.$value->id) }}" class="btn btn-info btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Detail">
                             <i class="fa fa-info" style="font-size:0.9em"></i>
                         </a>
                         <a href="{!! route('admin.games.edit', ['id'=>$value->id]) !!}" class="btn btn-warning btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Edit">
@@ -54,7 +59,7 @@
                         </a>
                         <a href="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{!! route('admin.games.delete', ['id'=>$value->id]) !!}'};" class="btn btn-danger btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Delete">
                             <i class="fa fa-trash" style="font-size:0.9em"></i>
-                        </a>
+                        </a> --}}
                     </td>
 
                     {{-- <td>

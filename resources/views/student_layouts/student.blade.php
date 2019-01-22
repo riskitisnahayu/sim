@@ -53,7 +53,7 @@
 	<link rel="stylesheet" href="{!! asset('law/assets/css/flexslider.css') !!}">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="{!! asset('law/assets/css/style.css') !!}">
+		<link rel="stylesheet" href="{!! asset('law/assets/css/style.css') !!}">
 
 	<!-- Modernizr JS -->
 	<script src="{!! asset('law/assets/js/modernizr-2.6.2.min.js') !!}"></script>
@@ -61,7 +61,6 @@
 	{{-- modal --}}
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<script type="text/javascript" src="{!! asset('law/assets/js/pages/components_modals.js') !!}"></script>
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -86,7 +85,7 @@
         <h4 class="modal-title" id="myModalLabel">Login Sebagai:</h4>
       </div>
       <div class="modal-body">
-		  <div class="row">
+		  <div class="row" id="row-login">
 			  <div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
   				<a href="#"><img src="{!! asset('law/assets/images/mom.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
   					<h3>Orang Tua</h3>
@@ -111,39 +110,53 @@
 
 {{-- MODAL Daftar --}}
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog2" aria-labelledby="myModalLabel2">
-<div class="modal-dialog2" role="document">
-<div class="modal-content">
-  <div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal2" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	<h4 class="modal-title" id="myModalLabel2">Daftar</h4>
-  </div>
-  <div class="modal-body">
-	  <div class="row">
-		  <div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-			<a href="#"><img src="{!! asset('law/assets/images/mom.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-				<h3>Orang Tua</h3>
-			</a>
-		</div>
-		<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-			<a href="#"><img src="{!! asset('law/assets/images/siswa.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-				<h3>Siswa</h3>
-			</a>
-		</div>
-	  </div>
-	  <div class="modal-footer">
-		  <button type="button" class="btn btn-link" data-dismiss="modal2">Close</button>
-		  <button type="button" class="btn btn-primary">Save changes</button>
-	  </div>
-  </div>
+	<div class="modal-dialog2" role="document">
+		<div class="modal-content op">
+		  <div class="modal-header" id="header-daftar">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel2" style="text-align: center">Daftar Sebagai Orang tua</h4>
+		  </div>
+		  <div class="modal-body">
+			  <div class="row">
+				<fieldset class="content-group">
+					<div class="form-group">
+				      	<label class="control-label col-lg-2">Nama Orang Tua</label>
+				      	<div class="col-lg-10">
+				      		<input type="text" id="form-control" class="form-control" name="name" >
+				      	</div>
+			      	</div>
 
-  {{-- <div class="modal-footer">
-	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	<button type="button" class="btn btn-primary">Save changes</button>
-  </div> --}}
+					<div class="form-group">
+						<label class="control-label col-lg-2">Email</label>
+						<div class="col-lg-10">
+							<input type="text" id="form-control" class="form-control" name="email" >
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-lg-2">Username</label>
+						<div class="col-lg-10">
+							<input type="text" id="form-control" class="form-control" name="username" >
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-lg-2">Password</label>
+						<div class="col-lg-10">
+							<input type="password" id="form-control" class="form-control" name="password" >
+						</div>
+					</div>
+				</fieldset>
+			  </div>
+			  <div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				  <button type="button" class="btn btn-primary">Daftar</button>
+			  </div>
+		  </div>
+	  </div>
+	</div>
 </div>
-</div>
-</div>
-<div class="fh5co-loader"></div>
+<div class="fh5co1-loader"></div>
 
 <div id="page">
 <nav class="fh5co-nav" role="navigation">
@@ -169,7 +182,8 @@
 						</li>
 						<li><a href="about.html">About</a></li>
 						<li><a href="contact.html">Contact</a></li> --}}
-						<li class="btn-cta"><a href="#" data-toggle="modal2" data-target="#myModal2"><span>Daftar</span></a></li>
+						{{-- <li class="btn-cta"><a href="#" data-toggle="modal2" data-target="#myModal2"><span>Daftar</span></a></li> --}}
+						<li class="btn-cta2"><a href="#" data-toggle="modal" data-target="#myModal2"><span>Daftar</span></a></li>
 						<li class="btn-cta1"><a href="#" data-toggle="modal" data-target="#myModal"><span>Login</span></a></li>
 					</ul>
 				</div>
@@ -219,7 +233,7 @@
 		   				<div class="slider-text-inner">
 		   					<h1>Aplikasi Dashboard Pembelajaran dan Buku Interaktif</h1>
 								{{-- <h2>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2> --}}
-								<p><a class="btn btn-primary btn-lg" href="#">Gabung Sekarang</a></p>
+								<p><a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">Gabung Sekarang</a></p>
 		   				</div>
 		   			</div>
 		   		</div>

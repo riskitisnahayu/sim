@@ -189,11 +189,11 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li.has-dropdown:hover a, .fh5co-nav ul li.has-dropdown:focus a {
   color: #000;
 }
-.fh5co-nav ul li.btn-cta a {
+.fh5co-nav ul li.btn-cta2 a {
   padding: 30px 0px !important;
   color: #fff;
 }
-.fh5co-nav ul li.btn-cta a span {
+.fh5co-nav ul li.btn-cta2 a span {
   background: #f03dc0;
   padding: 4px 10px;
   display: -moz-inline-stack;
@@ -208,7 +208,7 @@ h1, h2, h3, h4, h5, h6, figure {
   -ms-border-radius: 100px;
   border-radius: 100px;
 }
-.fh5co-nav ul li.btn-cta a:hover span {
+.fh5co-nav ul li.btn-cta2 a:hover span {
   -webkit-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
@@ -1522,8 +1522,45 @@ h1, h2, h3, h4, h5, h6, figure {
   background: url(../images/loader.gif) center no-repeat #fff;
 }
 
+.fh5co1-loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: auto;
+  height: 100%;
+  z-index: 9999;
+  background: url(../images/loader.gif) center no-repeat #fff;
+}
+
 .js .animate-box {
   opacity: 0;
 }
 
+#form-control {
+    display: block;
+    width: auto;
+    height: 100%;
+    padding: 10px 32px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #c4a2a2;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+#row-login {
+    margin-right: -300px;
+    margin-left: -15px;
+}
+
+.op-20 {
+    opacity: 20%;
+}
 /*# sourceMappingURL=style.css.map */

@@ -38,6 +38,8 @@
 
 	<script type="text/javascript" src="{!! asset('panel/assets/js/core/app.js') !!}"></script>
 	<script type="text/javascript" src="{!! asset('panel/assets/js/pages/form_checkboxes_radios.js') !!}"></script>
+
+	<script type="text/javascript" src="{!! asset('panel/assets/js/pages/components_buttons.js') !!}"></script>
 	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/dashboard.js') !!}"></script> --}}
 	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/datatables_data_sources.js') !!}"></script> --}}
 

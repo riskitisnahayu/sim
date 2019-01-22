@@ -112,8 +112,8 @@ Route::post('soal/store', 'TaskController@store')->name('task.store');
 // Untuk siswa
 
 // UI user
-Route::get('/student', function() {
-	return view('student');
+Route::get('student', function() {
+	return view('student_layouts.student');
 });
 
 Auth::routes();
