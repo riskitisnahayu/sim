@@ -87,12 +87,12 @@
       <div class="modal-body">
 		  <div class="row" id="row-login">
 			  <div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-  				<a href="#"><img src="{!! asset('law/assets/images/mom.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+  				<a href="{!! route('orangtua.login') !!}"><img src="{!! asset('law/assets/images/mom.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
   					<h3>Orang Tua</h3>
   				</a>
   	  		</div>
 			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-  				<a href="#"><img src="{!! asset('law/assets/images/siswa.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+  				<a href="{!! route('siswa.login') !!}"><img src="{!! asset('law/assets/images/siswa.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
   					<h3>Siswa</h3>
   				</a>
   	  		</div>
@@ -109,7 +109,7 @@
 <div class="fh5co-loader"></div>
 
 {{-- MODAL Daftar --}}
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog2" aria-labelledby="myModalLabel2">
+{{-- <div class="modal fade" id="myModal2" tabindex="-1" role="dialog2" aria-labelledby="myModalLabel2">
 	<div class="modal-dialog2" role="document">
 		<div class="modal-content op">
 		  <div class="modal-header" id="header-daftar">
@@ -156,7 +156,7 @@
 	  </div>
 	</div>
 </div>
-<div class="fh5co1-loader"></div>
+<div class="fh5co1-loader"></div> --}}
 
 <div id="page">
 <nav class="fh5co-nav" role="navigation">
@@ -183,7 +183,7 @@
 						<li><a href="about.html">About</a></li>
 						<li><a href="contact.html">Contact</a></li> --}}
 						{{-- <li class="btn-cta"><a href="#" data-toggle="modal2" data-target="#myModal2"><span>Daftar</span></a></li> --}}
-						<li class="btn-cta2"><a href="#" data-toggle="modal" data-target="#myModal2"><span>Daftar</span></a></li>
+						<li class="btn-cta2"><a href="{{ URL::to('register')}}"><span>Daftar</span></a></li>
 						<li class="btn-cta1"><a href="#" data-toggle="modal" data-target="#myModal"><span>Login</span></a></li>
 					</ul>
 				</div>
@@ -233,7 +233,7 @@
 		   				<div class="slider-text-inner">
 		   					<h1>Aplikasi Dashboard Pembelajaran dan Buku Interaktif</h1>
 								{{-- <h2>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2> --}}
-								<p><a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">Gabung Sekarang</a></p>
+								<p><a href="{{ URL::to('register')}}" class="btn btn-primary btn-lg">Gabung Sekarang</a></p>
 		   				</div>
 		   			</div>
 		   		</div>

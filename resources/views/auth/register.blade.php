@@ -1,77 +1,58 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+@section('form')
+	<!-- Tabbed form -->
+	<div class="tabbable panel login-form width-400">
+		<ul class="nav nav-tabs nav-justified">
+			{{-- <li class="active"><a href="#basic-tab1" data-toggle="tab"><h6>Daftar Orangtua</h6></a></li> --}}
+		</ul>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+		<div class="tab-content panel-body">
+			<div class="tab-pane fade in active" id="basic-tab1">
+				<form action="{!! route('register') !!}" method="POST">
+					{{ csrf_field() }}
+					{{-- @if ($errors)
+						{{ print_r($errors) }}
+					@endif --}}
+					<div class="text-center">
+						<div class="icon-object border-success text-success"><i class="icon-plus3"></i></div>
+						<h5 class="content-group">Buat akun baru <small class="display-block">Orangtua</small> </h5>
+					</div>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+					<div class="form-group has-feedback has-feedback-left">
+						<input type="text" name="name" class="form-control" placeholder="Nama">
+						<div class="form-control-feedback">
+							<i class="icon-user text-muted"></i>
+						</div>
+					</div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+					<div class="form-group has-feedback has-feedback-left">
+						<input type="text" name="username" class="form-control" placeholder="Username">
+						<div class="form-control-feedback">
+							<i class="icon-user-check text-muted"></i>
+						</div>
+					</div>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+					<div class="form-group has-feedback has-feedback-left">
+						<input type="email" name="email" class="form-control" placeholder="Email">
+						<div class="form-control-feedback">
+							<i class="icon-mention text-muted"></i>
+						</div>
+					</div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+					<div class="form-group has-feedback has-feedback-left">
+						<input type="password" name="password" class="form-control" placeholder="Password">
+						<div class="form-control-feedback">
+							<i class="icon-user-lock text-muted"></i>
+						</div>
+					</div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+					<button type="submit" class="btn bg-indigo-400 btn-block">Daftar <i class="icon-circle-right2 position-right"></i></button>
+				</form>
+			</div>
+		</div>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+	</div>
+	<!-- /tabbed form -->
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

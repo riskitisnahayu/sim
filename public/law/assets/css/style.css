@@ -1557,7 +1557,9 @@ h1, h2, h3, h4, h5, h6, figure {
 
 #row-login {
     margin-right: -300px;
-    margin-left: -15px;
+    /* margin-left: -15px; */
+    margin-left: -6px;
+    margin-bottom: -20px;
 }
 
 .op-20 {

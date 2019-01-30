@@ -25,7 +25,7 @@
             <tr>
                <th>No.</th>
                <th>Nama Mata Pelajaran</th>
-               <th style="width:790px">Deskripsi</th>
+               <th style="width:750px">Deskripsi</th>
                <th class="text-center" style="width:160px">Aksi</th>
             </tr>
         </thead>

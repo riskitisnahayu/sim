@@ -10,12 +10,36 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(); //route login admin
+
+// Route::get('/home', 'HomeController@index')->name('home');// ini baru benar
 
 Route::get('/', function () {
     // return view('dashboard');
     return view('auth.login');
+})->name('admin.login');
+
+Route::get('student-login', function() {
+	return view('auth.student_login');
+})->name('siswa.login');
+
+Route::get('orangtua-login', function() {
+	return view('auth.orangtua_login');
+})->name('orangtua.login');
+
+Route::get('orangtua/register', function() {
+	return view('auth.register');
 });
 
+// dashboard orangtua
+Route::get('orangtua/dashboard', 'OrangtuaController@index')->name('orangtua.dashboard');
+Route::get('orangtua/registrasi-anak', 'OrangtuaController@registration')->name('orangtua.registration');
+Route::get('orangtua/laporan', 'OrangtuaController@report')->name('orangtua.report');
+
+Route::post('orangtua/registrasi-anak/store', 'OrangtuaController@store')->name('orangtua.registration.store');
+Route::get('orangtua/registrasi-anak/detail/{id}', 'OrangtuaController@show')->name('orangtua.registration.detail');
+
+// untuk Siswa
 
 
 // Dashboard admin
@@ -42,13 +66,13 @@ Route::post('admin/games/update/{id}', 'GamesController@update')->name('admin.ga
 Route::get('admin/games/delete/{id}', 'GamesController@destroy')->name('admin.games.delete');
 
 // routing untuk list games & list user in dashboard
-Route::get('admin/games-dashboard', function () {
-    return view('admin.games_dashboard');
-});
-
-Route::get('admin/user-dashboard', function () {
-    return view('admin.user_dashboard');
-});
+// Route::get('admin/games-dashboard', function () {
+//     return view('admin.games_dashboard');
+// });
+//
+// Route::get('admin/user-dashboard', function () {
+//     return view('admin.user_dashboard');
+// });
 
 // managekategorigame
 // Route::get('gamecategory', 'GameCategoryController@index');
@@ -115,7 +139,3 @@ Route::post('soal/store', 'TaskController@store')->name('task.store');
 Route::get('student', function() {
 	return view('student_layouts.student');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');// ini baru benar

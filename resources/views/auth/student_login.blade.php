@@ -1,20 +1,23 @@
 @extends('layouts.login')
 
+{{-- @section('title')
+	Login Siswa
+@endsection --}}
+
 @section('form')
-    <form method="POST" action="{{ route('login') }}" class="form-validate">
-        {{ csrf_field() }}
+	<form method="POST" action="{{ route('login') }}" class="form-validate">
 		<div class="panel panel-body login-form">
 			<div class="text-center">
 				<div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
-				<h5 class="content-group">Login Admin </h5>
+				<h5 class="content-group">Login Siswa </h5>
 			</div>
 
 			<div class="form-group has-feedback has-feedback-left">
-				<input type="text" class="form-control" placeholder="Email/username" name="email" required="required">
+				<input type="text" class="form-control" placeholder="Email/username" name="username" required="required">
 				<div class="form-control-feedback">
-					<i class="icon-user-check text-muted"></i>
+					<i class="icon-user text-muted"></i>
 				</div>
-                @if ($errors->has('email'))
+				@if ($errors->has('email'))
                     <span>{{ $errors->first('email') }}</span>
                 @endif
 			</div>
@@ -24,7 +27,7 @@
 				<div class="form-control-feedback">
 					<i class="icon-lock2 text-muted"></i>
 				</div>
-                @if ($errors->has('password'))
+				@if ($errors->has('password'))
                     <span>{{ $errors->first('password') }}</span>
                 @endif
 			</div>

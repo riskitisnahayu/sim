@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyToStudentsTable extends Migration
+class AddSchoolColumnToStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,7 @@ class AddForeignKeyToStudentsTable extends Migration
     public function up()
     {
         Schema::table('students', function (Blueprint $table) {
-            // $table->foreign('user_id','fk_students_users')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('school_id','fk_students_schools')->references('id')->on('schools')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('orangtua_id','fk_students_orangtuas')->references('id')->on('orangtuas')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->string('school')->after('school_id');
 
         });
     }
@@ -29,7 +27,7 @@ class AddForeignKeyToStudentsTable extends Migration
     public function down()
     {
         Schema::table('students', function (Blueprint $table) {
-            //
+            $table->dropColumn('school');
         });
     }
 }

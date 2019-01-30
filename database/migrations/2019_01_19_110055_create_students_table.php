@@ -18,7 +18,8 @@ class CreateStudentsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->enum('jenis_kelamin',['laki-laki', 'perempuan']);
             $table->enum('class',['7','8','9']);
-            $table->integer('school_id')->unsigned();
+            $table->integer('school_id')->nullable();
+            $table->string('school_name');
             $table->integer('orangtua_id')->unsigned();
             $table->timestamps();
         });

@@ -9,7 +9,7 @@
 
 <div class="panel panel-flat content-group-lg">
 	<div class="panel-heading">
-
+        {{-- {{ print_r($gamecategories) }} --}}
 	</div>
     <div class="row">
         <div class="col-sm-4 col-md-2">
@@ -24,7 +24,7 @@
             <tr>
                <th>No.</th>
                <th>Nama Kategori</th>
-               <th style="width:820px">Deskripsi</th>
+               <th style="width:795px">Deskripsi</th>
                <th class="text-center" style="width:160px">Aksi</th>
             </tr>
         </thead>

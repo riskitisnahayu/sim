@@ -26,7 +26,7 @@
 	<!-- Theme JS files -->
 	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/visualization/d3/d3.min.js') !!}"></script>
 	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/visualization/d3/d3_tooltip.js') !!}"></script>
-	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/forms/styling/switchery.min.js') !!}"></script>
+	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/plugins/forms/styling/switchery.min.js') !!}"></script> --}}
 	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/forms/styling/uniform.min.js') !!}"></script>
 	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/forms/selects/bootstrap_multiselect.js') !!}"></script>
 	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/ui/moment/moment.min.js') !!}"></script>
@@ -37,9 +37,10 @@
 
 
 	<script type="text/javascript" src="{!! asset('panel/assets/js/core/app.js') !!}"></script>
-	<script type="text/javascript" src="{!! asset('panel/assets/js/pages/form_checkboxes_radios.js') !!}"></script>
+	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/form_checkboxes_radios.js') !!}"></script> --}}
 
-	<script type="text/javascript" src="{!! asset('panel/assets/js/pages/components_buttons.js') !!}"></script>
+	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/components_buttons.js') !!}"></script> --}}
+	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/login_validation.js') !!}"></script> --}}
 	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/dashboard.js') !!}"></script> --}}
 	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/pages/datatables_data_sources.js') !!}"></script> --}}
 
@@ -67,7 +68,7 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown dropdown-user">
 				<a class="dropdown-toggle" data-toggle="dropdown">
-					<img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" alt="">
+					{{-- <img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" alt=""> --}}
 					<span>{{ Auth::user()->name }}</span>
 					<i class="caret"></i>
 				</a>
@@ -105,7 +106,12 @@
 				<div class="sidebar-user">
 					<div class="category-content">
 						<div class="media">
-							<a href="#" class="media-left"><img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" class="img-circle img-sm" alt=""></a>
+							<div class="media-left">
+								<a href="#" class="btn bg-teal-400 btn-rounded btn-icon btn-xs">
+									<span class="letter-icon">{{ substr(Auth::user()->name, 0, 1) }}</span>
+								</a>
+							</div>
+							{{-- <a href="#" class="media-left"><img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" class="img-circle img-sm" alt=""></a> --}}
 							<div class="media-body">
 								{{-- <span class="media-heading text-semibold">Riski Tisnahayu</span> --}}
 								<span class="media-heading text-semibold">{{ Auth::user()->name }}</span>
@@ -127,8 +133,8 @@
 
 							<!-- Main -->
 							{{-- <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li> --}}
-							<li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}"><a href="{!! route('admin.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 							@if (Auth::user()->type=="Admin")
+								<li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}"><a href="{!! route('admin.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 								<li class="{{ request()->is('admin/daftar-pemain-game') ? 'active' : '' }}"><a href="{!! route('admin.user_dashboard') !!}"><i class="icon-user"></i> <span>Daftar Pengguna</span></a></li>
 								<li class="{{ request()->is('admin/kelola-kategori-game') ? 'active' : '' }}"><a href="{!! route('admin.gamecategory') !!}"><i class="icon-list2"></i> <span>Kelola Kategori Game</span></a></li>
 								<li class="{{ request()->is('admin/kelola-mata-pelajaran') ? 'active' : '' }}"><a href="{!! route('admin.subjectscategory') !!}"><i class="icon-book"></i> <span>Kelola Mata Pelajaran</span></a></li>
@@ -137,7 +143,10 @@
 								<li class="{{ request()->is('admin/bank-soal') ? 'active' : '' }}"><a href="{!! route('admin.banksoal') !!}"><i class="icon-folder2"></i> <span>Bank Soal</span></a></li>
 
 								@else
-									<li class="{{ request()->is('materi') ? 'active' : '' }}"><a href="index.html"><i class="icon-book"></i> <span>Materi</span></a></li>
+									<li class="{{ request()->is('orangtua/dashboard') ? 'active' : '' }}"><a href="{!! route('orangtua.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+									<li class="{{ request()->is('orangtua/registrasi-anak') ? 'active' : '' }}"><a href="{!! route('orangtua.registration') !!}"><i class="icon-user"></i> <span>Registrasi Anak</span></a></li>
+									<li class="{{ request()->is('orangtua/laporan') ? 'active' : '' }}"><a href="{!! route('orangtua.report') !!}"><i class="icon-clipboard3"></i> <span>Laporan</span></a></li>
+
 							@endif
 
                             <!-- /main -->

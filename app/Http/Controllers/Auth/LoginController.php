@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -18,15 +20,44 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers {
+        logout as performLogout;
+    }
 
+    public function logout(Request $request)
+    {
+        if (Auth::user()->type == "Orang tua") {
+            $this->performLogout($request);
+            return redirect()->route('orangtua.login');
+        } else if(Auth::user()->type == "Siswa") {
+            $this->performLogout($request);
+            return redirect()->route('siswa.login');
+        } else {
+            $this->performLogout($request);
+            return redirect()->route('admin.login');
+        }
+
+    }
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-     // habis login, dia akan masuk ke sini
-    protected $redirectTo = 'admin/dashboard';
+
+     // habis admin login, dia akan masuk ke sini
+    // protected $redirectTo = 'admin/dashboard';
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->type == 'Admin'){
+            return redirect()->route('admin.dashboard');
+        }
+        else if ($user->type == 'Orang tua'){
+            return redirect()->route('orangtua.dashboard');
+        }
+        else if ($user->type == 'Siswa'){
+            return redirect()->route('student.index');
+        }
+    }
 
     /**
      * Create a new controller instance.
