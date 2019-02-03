@@ -88,15 +88,7 @@
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
 						<li class="btn-cta2"><a href="#"><span>Profil</span></a></li>
-						<li class="btn-cta1"><a href="#">
-							<a href="{{ route('logout') }}"
-								onclick="event.preventDefault();
-										 document.getElementById('logout-form').submit();">
-
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-								{{ csrf_field() }}
-							</form>
-							<span>Logout</span></a></li>
+						<li class="btn-cta1"><a href="#"><span>Logout</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -151,7 +143,6 @@
 	  	</ul>
   	</div>
 </aside>
-
 		</div>
 	</div>
 </div>
@@ -168,7 +159,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-				<a href="{{ URL::to('games') }}"><img src="{!! asset('law/assets/images/minigames.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+				<a href="#"><img src="{!! asset('law/assets/images/minigames.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 					<h3 style="color: black">Mini Games</h3>
 				</a>
 			</div>
@@ -187,6 +178,7 @@
 		</div>
 	</div>
 </div>
+
 
 <footer id="fh5co-footer" role="contentinfo">
 	<div class="container">
@@ -249,38 +241,38 @@
 
 	</div>
 </footer>
-</div>
+	</div>
 
-<div class="gototop js-top">
-	<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-</div>
-<!-- Button trigger modal -->
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	<!-- Button trigger modal -->
 
 
 <!-- Modal -->
 
 
-<!-- jQuery -->
-<script src="{!! asset('law/assets/js/jquery.min.js') !!}"></script>
-<!-- jQuery Easing -->
-<script src="{!! asset('law/assets/js/jquery.easing.1.3.js') !!}"></script>
-<!-- Bootstrap -->
-<script src="{!! asset('law/assets/js/bootstrap.min.js') !!}"></script>
-<!-- Waypoints -->
-<script src="{!! asset('law/assets/js/jquery.waypoints.min.js') !!}"></script>
-<!-- Stellar Parallax -->
-<script src="{!! asset('law/assets/js/jquery.stellar.min.js') !!}"></script>
-<!-- Carousel -->
-<script src="{!! asset('law/assets/js/owl.carousel.min.js') !!}"></script>
-<!-- Flexslider -->
-<script src="{!! asset('law/assets/js/jquery.flexslider-min.js') !!}"></script>
-<!-- countTo -->
-<script src="{!! asset('law/assets/js/jquery.countTo.js') !!}"></script>
-<!-- Magnific Popup -->
-<script src="{!! asset('law/assets/js/jquery.magnific-popup.min.js') !!}"></script>
-<script src="{!! asset('law/assets/js/magnific-popup-options.js') !!}"></script>
-<!-- Main -->
-<script src="{!! asset('law/assets/js/main.js') !!}"></script>
+	<!-- jQuery -->
+	<script src="{!! asset('law/assets/js/jquery.min.js') !!}"></script>
+	<!-- jQuery Easing -->
+	<script src="{!! asset('law/assets/js/jquery.easing.1.3.js') !!}"></script>
+	<!-- Bootstrap -->
+	<script src="{!! asset('law/assets/js/bootstrap.min.js') !!}"></script>
+	<!-- Waypoints -->
+	<script src="{!! asset('law/assets/js/jquery.waypoints.min.js') !!}"></script>
+	<!-- Stellar Parallax -->
+	<script src="{!! asset('law/assets/js/jquery.stellar.min.js') !!}"></script>
+	<!-- Carousel -->
+	<script src="{!! asset('law/assets/js/owl.carousel.min.js') !!}"></script>
+	<!-- Flexslider -->
+	<script src="{!! asset('law/assets/js/jquery.flexslider-min.js') !!}"></script>
+	<!-- countTo -->
+	<script src="{!! asset('law/assets/js/jquery.countTo.js') !!}"></script>
+	<!-- Magnific Popup -->
+	<script src="{!! asset('law/assets/js/jquery.magnific-popup.min.js') !!}"></script>
+	<script src="{!! asset('law/assets/js/magnific-popup-options.js') !!}"></script>
+	<!-- Main -->
+	<script src="{!! asset('law/assets/js/main.js') !!}"></script>
 
-</body>
+	</body>
 </html>

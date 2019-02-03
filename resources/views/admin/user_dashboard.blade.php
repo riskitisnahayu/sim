@@ -20,30 +20,14 @@
            </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Tiger Nixon</td>
-                <td>SMP N 1 Ampel</td>
-                <td>8</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Tiger Nixon</td>
-                <td>SMP N 1 Ampel</td>
-                <td>8</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Tiger Nixon</td>
-                <td>SMP N 1 Ampel</td>
-                <td>8</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Tiger Nixon</td>
-                <td>SMP N 1 Ampel</td>
-                <td>8</td>
-            </tr>
+            @foreach ($siswa as $key => $value)
+                <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{ $value->user['name'] }}</td>
+                    <td>{{ $value->school_name }}</td>
+                    <td>{{ $value->class }} </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 

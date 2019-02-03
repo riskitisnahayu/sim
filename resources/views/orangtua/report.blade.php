@@ -22,38 +22,16 @@
            </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Tiger Nixon</td>
-                <td>8</td>
-                <td>Mini games</td>
-                <td>21 Januari 2019</td>
-                <td>7.50 am</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Tiger Nixon</td>
-                <td>8</td>
-                <td>Mini games</td>
-                <td>21 Januari 2019</td>
-                <td>7.50 am</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Tiger Nixon</td>
-                <td>8</td>
-                <td>Mini games</td>
-                <td>21 Januari 2019</td>
-                <td>7.50 am</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Tiger Nixon</td>
-                <td>8</td>
-                <td>Mini games</td>
-                <td>21 Januari 2019</td>
-                <td>7.50 am</td>
-            </tr>
+            @foreach ($siswa as $key => $value)
+                <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{ $value->user['name'] }}</td>
+                    <td>{{ $value->class }}</td>
+                    <td>{{ $value->id }}</td>
+                    <td>{{ $value->id }}</td>
+                    <td>{{ $value->id }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 

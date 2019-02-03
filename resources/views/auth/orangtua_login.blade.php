@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="form-group has-feedback has-feedback-left">
-				<input type="text" class="form-control" placeholder="Email/username" name="email" required="required">
+				<input type="text" class="form-control" placeholder="Email" name="email" required="required">
 				<div class="form-control-feedback">
 					<i class="icon-user text-muted"></i>
 				</div>
@@ -36,10 +36,10 @@
 			<div class="form-group login-options">
 				<div class="row">
 					<div class="col-sm-6">
-						<label class="checkbox-inline">
+						{{-- <label class="checkbox-inline">
 							<input type="checkbox" class="styled">
 							Ingat saya
-						</label>
+						</label> --}}
 					</div>
 
 					<div class="col-sm-6 text-right">

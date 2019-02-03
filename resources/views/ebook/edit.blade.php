@@ -55,11 +55,9 @@
     			<label class="control-label col-lg-2">Kelas</label>
     			<div class="col-lg-10">
                     <select class="form-control" name="class">
-
                            <option value="7" @if ($ebooks->class == '7') selected="selected" @endif>7</option>
                            <option value="8" @if ($ebooks->class == '8') selected="selected" @endif>8</option>
                            <option value="9" @if ($ebooks->class == '9') selected="selected" @endif>9</option>
-
                     </select>
     			</div>
     		</div>

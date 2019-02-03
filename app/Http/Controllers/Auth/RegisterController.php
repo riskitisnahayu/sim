@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Orangtua;
 
 class RegisterController extends Controller
 {
@@ -61,14 +62,18 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+     // register orangtua
+
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
             'type' => 'Orang tua',
             'password' => bcrypt($data['password']),
         ]);
+        $user->orangtua()->create([]);
+        return $user;
     }
 }

@@ -10,7 +10,7 @@
 			</div>
 
 			<div class="form-group has-feedback has-feedback-left">
-				<input type="text" class="form-control" placeholder="Email/username" name="email" required="required">
+				<input type="text" class="form-control" placeholder="Email" name="email" required="required">
 				<div class="form-control-feedback">
 					<i class="icon-user-check text-muted"></i>
 				</div>

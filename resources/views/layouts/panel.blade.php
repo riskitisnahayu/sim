@@ -144,7 +144,7 @@
 
 								@else
 									<li class="{{ request()->is('orangtua/dashboard') ? 'active' : '' }}"><a href="{!! route('orangtua.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-									<li class="{{ request()->is('orangtua/registrasi-anak') ? 'active' : '' }}"><a href="{!! route('orangtua.registration') !!}"><i class="icon-user"></i> <span>Registrasi Anak</span></a></li>
+									<li class="{{ request()->is('orangtua/registrasi-anak') ? 'active' : '' }}"><a href="{!! route('orangtua.registration.index2') !!}"><i class="icon-user"></i> <span>Registrasi Anak</span></a></li>
 									<li class="{{ request()->is('orangtua/laporan') ? 'active' : '' }}"><a href="{!! route('orangtua.report') !!}"><i class="icon-clipboard3"></i> <span>Laporan</span></a></li>
 
 							@endif

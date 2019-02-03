@@ -14,4 +14,11 @@ class Student extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
+
+    public function orangtua()
+    {
+        return $this->belongsTo('App\Orangtua', 'orangtua_id', 'id');
+    }
+
+
 }

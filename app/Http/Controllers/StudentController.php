@@ -3,19 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Student;
 
-class UserLevelController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+
+     public function games()
+     {
+         return view('student.games');
+     }
+
+    public function index()
     {
-        $siswa = Student::all();
-        return view('admin.user_dashboard', compact('siswa'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
+        return view('student.index');
     }
 
     /**

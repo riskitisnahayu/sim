@@ -15,13 +15,13 @@
 		<!-- Members online -->
 		<div class="panel bg-teal-400">
 			<div class="panel-body">
-				<div class="heading-elements">
+				{{-- <div class="heading-elements">
 					<span class="heading-text badge bg-teal-800">+53,6%</span>
-				</div>
+				</div> --}}
 
-				<h3 class="no-margin">3,450</h3>
+				<h3 class="no-margin">{{ $ortu }}</h3>
 				Orangtua
-				<div class="text-muted text-size-small">489 avg</div>
+				{{-- <div class="text-muted text-size-small">489 avg</div> --}}
 			</div>
 
 			<div class="container-fluid">
@@ -37,7 +37,7 @@
 		<!-- Current server load -->
 		<div class="panel bg-pink-400">
 			<div class="panel-body">
-				<div class="heading-elements">
+				{{-- <div class="heading-elements">
 					<ul class="icons-list">
                 		<li class="dropdown">
                 			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog3"></i> <span class="caret"></span></a>
@@ -49,11 +49,11 @@
 							</ul>
                 		</li>
                 	</ul>
-				</div>
+				</div> --}}
 
-				<h3 class="no-margin">49.4%</h3>
+				<h3 class="no-margin">{{ $siswa }}</h3>
 				Siswa
-				<div class="text-muted text-size-small">34.6% avg</div>
+				{{-- <div class="text-muted text-size-small">34.6% avg</div> --}}
 			</div>
 
 			<div id="server-load"></div>
@@ -67,15 +67,15 @@
 		<!-- Today's revenue -->
 		<div class="panel bg-blue-400">
 			<div class="panel-body">
-				<div class="heading-elements">
+				{{-- <div class="heading-elements">
 					<ul class="icons-list">
                 		<li><a data-action="reload"></a></li>
                 	</ul>
-            	</div>
+            	</div> --}}
 
-				<h3 class="no-margin">$18,390</h3>
-				Today's revenue
-				<div class="text-muted text-size-small">$37,578 avg</div>
+				<h3 class="no-margin">3</h3>
+				Fitur
+				{{-- <div class="text-muted text-size-small">$37,578 avg</div> --}}
 			</div>
 
 			<div id="today-revenue"></div>
@@ -102,42 +102,17 @@
            </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Rehan Nixon</td>
-                <td>Tiger Nixon</td>
-                <td>8</td>
-                <td>Mini games</td>
-                <td>21 Januari 2019</td>
-                <td>7.50 am</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Rehan Nixon</td>
-                <td>Tiger Nixon</td>
-                <td>8</td>
-                <td>Mini games</td>
-                <td>21 Januari 2019</td>
-                <td>7.50 am</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Rehan Nixon</td>
-                <td>Tiger Nixon</td>
-                <td>8</td>
-                <td>Mini games</td>
-                <td>21 Januari 2019</td>
-                <td>7.50 am</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Rehan Nixon</td>
-                <td>Tiger Nixon</td>
-                <td>8</td>
-                <td>Mini games</td>
-                <td>21 Januari 2019</td>
-                <td>7.50 am</td>
-            </tr>
+            @foreach ($siswaAll as $key => $value)
+                <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{ $value->orangtua->user['name'] }}</td>
+                    <td>{{ $value->user['name'] }}</td>
+                    <td>{{ $value->class }}</td>
+                    <td>{{ $value->id }}</td>
+                    <td>{{ $value->id }}</td>
+                    <td>{{ $value->id }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 

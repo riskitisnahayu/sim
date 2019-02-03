@@ -11,15 +11,18 @@
 |
 */
 Auth::routes(); //route login admin
-
+// UI user
+Route::get('/', function() {
+	return view('student_layouts.student');
+});
 // Route::get('/home', 'HomeController@index')->name('home');// ini baru benar
 
-Route::get('/', function () {
+Route::get('admin-login', function () {
     // return view('dashboard');
     return view('auth.login');
 })->name('admin.login');
 
-Route::get('student-login', function() {
+Route::get('siswa-login', function() {
 	return view('auth.student_login');
 })->name('siswa.login');
 
@@ -27,7 +30,7 @@ Route::get('orangtua-login', function() {
 	return view('auth.orangtua_login');
 })->name('orangtua.login');
 
-Route::get('orangtua/register', function() {
+Route::get('orangtua-register', function() {
 	return view('auth.register');
 });
 
@@ -35,21 +38,29 @@ Route::get('orangtua/register', function() {
 Route::get('orangtua/dashboard', 'OrangtuaController@index')->name('orangtua.dashboard');
 Route::get('orangtua/registrasi-anak', 'OrangtuaController@registration')->name('orangtua.registration');
 Route::get('orangtua/laporan', 'OrangtuaController@report')->name('orangtua.report');
-
+Route::get('orangtua/registrasi-anak', 'OrangtuaController@index2')->name('orangtua.registration.index2');
+Route::get('orangtua/registrasi-anak/add', 'OrangtuaController@create')->name('orangtua.registration.add');
 Route::post('orangtua/registrasi-anak/store', 'OrangtuaController@store')->name('orangtua.registration.store');
 Route::get('orangtua/registrasi-anak/detail/{id}', 'OrangtuaController@show')->name('orangtua.registration.detail');
+Route::get('orangtua/registrasi-anak/edit/{id}', 'OrangtuaController@edit')->name('orangtua.registration.edit');
+Route::post('orangtua/registrasi-anak/update/{id}', 'OrangtuaController@update')->name('orangtua.registration.update');
+Route::get('orangtua/registrasi-anak/delete/{id}', 'OrangtuaController@destroy')->name('orangtua.registration.delete');
 
 // untuk Siswa
+Route::get('siswa', 'StudentController@index')->name('student.index');
+Route::get('siswa/mini-games', 'StudentController@games')->name('student.games');
 
 
 // Dashboard admin
 Route::get('admin/dashboard', 'DashboardController@adminDashboard')->name('admin.dashboard');
+// Route::get('admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
 Route::get('admin/daftar-pemain-game', 'UserLevelController@index')->name('admin.user_dashboard');
 Route::get('admin/kelola-kategori-game', 'GameCategoryController@index')->name('admin.gamecategory');
 Route::get('admin/kelola-mata-pelajaran', 'SubjectsCategoryController@index')->name('admin.subjectscategory');
 Route::get('admin/mini-games', 'GamesController@index')->name('admin.minigames');
 Route::get('admin/e-book', 'EbookController@index')->name('admin.ebook');
 Route::get('admin/bank-soal', 'TaskMasterController@index')->name('admin.banksoal'); //controller diganti ya
+
 
 // mini games
 // Route::get('admin/admin-games', 'GamesController@index')->name('admin.');
@@ -134,8 +145,3 @@ Route::get('soal/add/{id}','TaskController@create')->name('task.add');
 Route::post('soal/store', 'TaskController@store')->name('task.store');
 
 // Untuk siswa
-
-// UI user
-Route::get('student', function() {
-	return view('student_layouts.student');
-});

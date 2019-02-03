@@ -21,51 +21,33 @@
 
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12">
 				<ul class="media-list content-group">
-					<li class="media stack-media-on-mobile">
-    					<div class="media-left">
-							<div class="thumb">
-								<a href="#">
-									<img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" class="img-responsive img-rounded media-preview" alt="">
-									<span class="zoom-image"><i class="icon-play3"></i></span>
-								</a>
-							</div>
-						</div>
+                    @foreach ($response['articles'] as $key => $article)
+                        <li class="media stack-media-on-mobile">
+        					<div class="media-left">
+    							<div class="thumb">
+    								<a href="{{ $article['url'] }}" target="_blank">
+    									<img src="{{ $article['urlToImage'] }}" class="img-responsive img-rounded media-preview" alt="">
+    									<span class="zoom-image"><i class="icon-play3"></i></span>
+    								</a>
+    							</div>
+    						</div>
 
-    					<div class="media-body">
-							<h6 class="media-heading"><a href="#">Up unpacked friendly</a></h6>
-                    		<ul class="list-inline list-inline-separate text-muted mb-5">
-                    			<li><i class="icon-book-play position-left"></i> Video tutorials</li>
-                    			<li>14 minutes ago</li>
-                    		</ul>
-							The him father parish looked has sooner. Attachment frequently gay terminated son...
-						</div>
-					</li>
-
-					<li class="media stack-media-on-mobile">
-    					<div class="media-left">
-							<div class="thumb">
-								<a href="#">
-									<img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" class="img-responsive img-rounded media-preview" alt="">
-									<span class="zoom-image"><i class="icon-play3"></i></span>
-								</a>
-							</div>
-						</div>
-
-    					<div class="media-body">
-							<h6 class="media-heading"><a href="#">It allowance prevailed</a></h6>
-                    		<ul class="list-inline list-inline-separate text-muted mb-5">
-                    			<li><i class="icon-book-play position-left"></i> Video tutorials</li>
-                    			<li>12 days ago</li>
-                    		</ul>
-							Alteration literature to or an sympathize mr imprudence. Of is ferrars subject as enjoyed...
-						</div>
-					</li>
+        					<div class="media-body">
+    							<h6 class="media-heading"><a href="{{ $article['url'] }}" target="_blank">{{ $article['title'] }}</a></h6>
+                        		<ul class="list-inline list-inline-separate text-muted mb-5">
+                        			<li><i class="icon-book-play position-left"></i> {{ $article['author'] }}</li>
+                        			<li>{{ Carbon\Carbon::parse($article['publishedAt'])->diffForHumans() }}</li>
+                        		</ul>
+    							{{ $article['description'] }}
+    						</div>
+    					</li>
+                    @endforeach
 				</ul>
 			</div>
 
-			<div class="col-lg-6">
+			{{-- <div class="col-lg-6">
 				<ul class="media-list content-group">
 					<li class="media stack-media-on-mobile">
     					<div class="media-left">
@@ -107,7 +89,7 @@
 						</div>
 					</li>
 				</ul>
-			</div>
+			</div> --}}
 		</div>
 	</div>
 </div>

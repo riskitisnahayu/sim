@@ -233,7 +233,7 @@
 		   				<div class="slider-text-inner">
 		   					<h1>Aplikasi Dashboard Pembelajaran dan Buku Interaktif</h1>
 								{{-- <h2>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2> --}}
-								<p><a href="{{ URL::to('register')}}" class="btn btn-primary btn-lg">Gabung Sekarang</a></p>
+								<p><a href="{{ URL::to('register') }}" class="btn btn-primary btn-lg">Gabung Sekarang</a></p>
 		   				</div>
 		   			</div>
 		   		</div>

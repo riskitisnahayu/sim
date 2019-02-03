@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('page_title')
-    Registrasi Anak
+    Tambah Akun Anak
 
 @endsection
 
