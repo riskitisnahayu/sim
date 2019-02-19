@@ -22,14 +22,14 @@
            </tr>
         </thead>
         <tbody>
-            @foreach ($siswa as $key => $value)
+            @foreach ($activities as $key => $activity)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $value->user['name'] }}</td>
-                    <td>{{ $value->class }}</td>
-                    <td>{{ $value->id }}</td>
-                    <td>{{ $value->id }}</td>
-                    <td>{{ $value->id }}</td>
+                    <td>{{ $activity->user->name }}</td>
+                    <td>{{ $activity->user->student->class }}</td>
+                    <td>{{ $activity->fitur }}</td>
+                    <td>{{ Carbon\Carbon::parse($activity->created_at)->toFormattedDateString() }}</td>
+                    <td>{{ Carbon\Carbon::parse($activity->created_at)->format('H:i:s') }}</td>
                 </tr>
             @endforeach
         </tbody>

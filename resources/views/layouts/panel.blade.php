@@ -74,7 +74,7 @@
 				</a>
 
 				<ul class="dropdown-menu dropdown-menu-right">
-					<li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
+					<li><a href="{{ route('orangtua.profil') }}"><i class="icon-user-plus"></i> My profile</a></li>
 					<li>
 						<a href="{{ route('logout') }}"
 							onclick="event.preventDefault();

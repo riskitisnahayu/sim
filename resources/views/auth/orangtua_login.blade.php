@@ -43,7 +43,7 @@
 					</div>
 
 					<div class="col-sm-6 text-right">
-						<a href="login_password_recover.html">Lupa password?</a>
+						<a href="#">Lupa password?</a>
 					</div>
 				</div>
 			</div>

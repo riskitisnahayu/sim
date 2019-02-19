@@ -15,8 +15,8 @@ class CreateLogActivitiesTable extends Migration
     {
         Schema::create('log_activities', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_user')->unsigned()->index('fk_log_activities_users');
-            $table->integer('id_game')->unsigned()->index('fk_log_activities_games')->nullable();
+            $table->integer('user_id')->unsigned()->index('fk_log_activities_users');
+            $table->integer('game_id')->unsigned()->index('fk_log_activities_games')->nullable();
             $table->string('action',190);
             $table->timestamps();
         });

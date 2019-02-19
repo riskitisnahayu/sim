@@ -67,7 +67,7 @@
                         <select class="form-control" name="provinces" id="provinces" onchange="checkform()">
                             @foreach($provinces as $item)
                                 <option value="{{$item->id}}" @if($item->id == $siswa->province_id) selected='selected' @endif>{{ $item->name }}</option>
-                                @endforeach
+                            @endforeach
                         </select>
 					</div>
 				</div>

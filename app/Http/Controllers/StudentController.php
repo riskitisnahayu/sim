@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Game;
+use App\GameCategory;
+use App\EBook;
+use App\SubjectsCategory;
+use App\LogActivity;
+use Auth;
 
 class StudentController extends Controller
 {
@@ -12,9 +18,42 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function games()
+     public function games(Request $request)
      {
-         return view('student.games');
+         LogActivity::create([
+             'user_id' => Auth::user()->id,
+             'fitur'   => 'Mini Games'
+         ]);
+         if ($request->gamecategories_id) {
+             $games = Game::where('gamecategories_id', $request->gamecategories_id)->get();
+         } else {
+             $games = Game::all();
+         }
+         // dd($games);
+         $gamecategories = GameCategory::all();
+         return view('student.games', compact('games','gamecategories'));
+     }
+
+     public function ebooks(Request $request){
+         LogActivity::create([
+             'user_id' => Auth::user()->id,
+             'fitur'   => 'E-Book'
+         ]);
+         if ($request->subjectscategories_id && $request->class) {
+             $ebooks = EBook::where([
+                 ['subjectscategories_id', $request->subjectscategories_id],
+                 ['class', $request->class],
+                 ])->get();
+
+         } else if($request->subjectscategories_id) {
+             $ebooks = EBook::where('subjectscategories_id', $request->subjectscategories_id)->get();
+         } else if ($request->class) {
+             $ebooks = EBook::where('class', $request->class)->get();
+         } else {
+             $ebooks = EBook::all();
+         }
+         $subjectscategories = SubjectsCategory::all();
+         return view('student.ebook', compact('ebooks','subjectscategories'));
      }
 
     public function index()

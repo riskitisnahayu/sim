@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Student', 'user_id', 'id');
     }
+
+    public function logActivity()
+    {
+        return $this->hasMany('App\LogActivity', 'user_id', 'id');
+    }
 }

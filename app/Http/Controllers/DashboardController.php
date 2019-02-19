@@ -8,6 +8,7 @@ use DB;
 use App\Student;
 use App\Orangtua;
 use App\User;
+use App\LogActivity;
 
 class DashboardController extends Controller
 {
@@ -25,10 +26,24 @@ class DashboardController extends Controller
         $ortu = DB::table('users')->where('type', '=', 'Orang tua')->count();
         $siswa = DB::table('users')->where('type', '=', 'Siswa')->count();
 
+        // $ortu2 = Orangtua::where('user_id', Auth::user()->id)->first();
+        // $siswa2 = $ortu2->student->pluck('user_id'); //Collection contains only user_id(koleksi hanya berisi id user)
+        // $activities = LogActivity::whereIn('user_id', $siswa2)->with('user.student')->get();
 
         // dd($users);
         return view('admin.admin_dashboard', compact('ortu','siswa','siswaAll'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
+
+    // public function adminReport(Request $request){
+        // $ortu = Orangtua::with(['student' => function($a){
+        //     $a->pluck('user_id');
+        // }])->where('user_id', Auth::user()->id)->first();
+    //     $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
+    //     $siswa = $ortu->student->pluck('user_id');
+    //     $activities = LogActivity::whereIn('user_id', $siswa)->with('user.student')->get();
+    //     return view('admin.admin_dashboard', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
+    //
+    // }
 
     public function adminGames()
     {

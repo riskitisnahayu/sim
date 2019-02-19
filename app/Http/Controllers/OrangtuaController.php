@@ -9,6 +9,7 @@ use App\District;
 use App\User;
 use App\Student;
 use App\Orangtua;
+use App\LogActivity;
 use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -33,8 +34,17 @@ class OrangtuaController extends Controller
     public function report(Request $request)
     {
         $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
-        $siswa = Student::where('orangtua_id', $ortu->id)->get();
-        return view('orangtua.report',compact('siswa'))->with('i', ($request->input('page', 1) - 1) * 10);
+        // $siswa = User::where('type', 'Siswa')->whereHas('student', function ($query) use($ortu) {
+        //     $query->where('orangtua_id', $ortu->id);
+        // })->with(['student' => function($query) use($ortu)
+        // {
+        //     $query->where('orangtua_id', $ortu->id);
+        // }])->with('logActivity')->get();
+        $siswa = $ortu->student->pluck('user_id');
+        $activities = LogActivity::whereIn('user_id', $siswa)->with('user.student')->get();
+        // dd($activity);
+
+        return view('orangtua.report',compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
     public function index2(Request $request)
@@ -45,6 +55,43 @@ class OrangtuaController extends Controller
         return view('orangtua.index',compact('siswa'))->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
+    public function profil(){
+        // $value = User::find($id);
+        $title = 'Data Orang Tua';
+       return view('orangtua.profil', compact('title'));
+       // return view('orangtua.profil', compact('ortu'));
+    }
+
+    public function updateProfil(Request $request){
+        $this->validate($request, [
+                 'name'          => 'required',
+                 'username'      => 'required',
+                 'email'         => 'required',
+                 'password'      => 'required',
+           ],
+
+           [
+                'name.required'          => 'Nama harus diisi!',
+                'username.required'      => 'Username harus diisi!',
+                'email.required'         => 'Email harus diisi!',
+                'password.required'      => 'Password harus diisi!',
+            ]
+
+       );
+
+       $ortu = Orangtua::where('id',$id)->first();
+       $ortu->name=$request->name;
+       $ortu->username=$request->username;
+       $ortu->email=$request->email;
+       $ortu->password=$request->password;
+       $ortu->save();
+
+       Alert::success('Sukses', 'Profil berhasil diubah!');
+
+       return redirect()->route('orangtua.dashboard');
+       // return view('orangtua.profil', compact('ortu'));
+    }
+
     public function index()
     {
         // api berita
@@ -52,7 +99,7 @@ class OrangtuaController extends Controller
         $curl = curl_init();
 
         $query = http_build_query([
-            'q'         => "siswa",
+            'q'         => "siswa berprestasi",
             'apiKey'    => "6a385e9bf2374b8692bb204204c394ee",
             'sortBy'    => "publishedAt"
         ]);
@@ -228,7 +275,7 @@ class OrangtuaController extends Controller
 
        $siswa = Student::find($id);
        $user = User::find($siswa->user_id);
-        $user->update([
+       $user->update([
             'name'          => $request->name,
             'username'      => $request->username,
             'email'         => $request->email,

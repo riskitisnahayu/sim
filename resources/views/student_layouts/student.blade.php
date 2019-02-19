@@ -687,10 +687,10 @@
 
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
-			<div class="row row-pb-md">
+			{{-- <div class="row row-pb-md">
 				<div class="col-md-3 fh5co-widget">
 					<h4>Aplikasi Dashboard Pembelajaran dan Buku Interaktif</h4>
-					<p>Untuk membantu siswa SMP belajar dengan bantuan teknologi.</p>
+					<p>Membantu siswa SMP belajar dengan bantuan teknologi.</p>
 				</div>
 				<div class="col-md-3 col-md-push-1">
 					<h4>Navigation</h4>
@@ -713,7 +713,7 @@
 						{{-- <li><a href="tel://1234567920">+ 1235 2355 98</a></li> --}}
 						{{-- <li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
 						<li><a href="http://gettemplates.co">gettemplates.co</a></li> --}}
-					</ul>
+					{{-- </ul>
 				</div>
 
 				<div class="col-md-3 col-md-push-1">
@@ -725,7 +725,7 @@
 					</ul>
 				</div>
 
-			</div>
+			</div> --}}
 
 			<div class="row copyright">
 				<div class="col-md-12 text-center">
@@ -736,9 +736,9 @@
 					<p>
 						<ul class="fh5co-social-icons">
 							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-instagram"></i></a></li>
 							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+							<li><a href="#"><i class="icon-email"></i></a></li>
 						</ul>
 					</p>
 				</div>

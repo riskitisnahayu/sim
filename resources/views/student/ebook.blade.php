@@ -87,16 +87,8 @@
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
-						{{-- <li class="btn-cta2"><a href="#"><span>Profil</span></a></li> --}}
-						<li class="btn-cta1"><a href="#">
-							<a href="{{ route('logout') }}"
-								onclick="event.preventDefault();
-										 document.getElementById('logout-form').submit();">
-
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-								{{ csrf_field() }}
-							</form>
-							<span>Logout</span></a></li>
+						<li class="btn-cta2"><a href="#"><span>Profil</span></a></li>
+						<li class="btn-cta1"><a href="#"><span>Logout</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -105,88 +97,84 @@
 	</div>
 </nav>
 
-<aside id="fh5co-hero" class="js-fullheight">
-	<div class="flexslider js-fullheight">
-		<ul class="slides">
-	   	<li style="background-image: url(law/assets/images/bg_1.jpg);">
-	   		<div class="overlay-gradient"></div>
-	   		<div class="container">
-	   			<div class="row">
-		   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<h1>Aplikasi Dashboard Pembelajaran dan Buku Interaktif</h1>
-		   				</div>
-		   			</div>
-		   		</div>
-	   		</div>
-	   	</li>
-	   	<li style="background-image: url(law/assets/images/bg_2.jpg);">
-	   		<div class="overlay-gradient"></div>
-	   		<div class="container">
-	   			<div class="row">
-		   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<h1>Media Belajar Berbasis Web</h1>
-								<h2>Membantu Siswa SMP untuk belajar lebih mudah, kapanpun, dan dimanapun!<a href="http://freehtml5.co/" target="_blank"></a></h2>
-								{{-- <p><a class="btn btn-primary btn-lg btn-learn" href="#">Make An Appointment</a></p> --}}
-		   				</div>
-		   			</div>
-		   		</div>
-	   		</div>
-	   	</li>
-	   	<li style="background-image: url(law/assets/images/bg_3.jpg);">
-	   		<div class="overlay-gradient"></div>
-	   		<div class="container">
-	   			<div class="row">
-		   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<h1>Fitur-fitur yang asyik untuk belajar!</h1>
-								<h2>Mini Games, E-Book, dan Bank Soal <a href="http://freehtml5.co/" target="_blank"></a></h2>
-								{{-- <p><a class="btn btn-primary btn-lg btn-learn" href="#">Make An Appointment</a></p> --}}
-		   				</div>
-		   			</div>
-		   		</div>
-	   		</div>
-	   	</li>
-	  	</ul>
-  	</div>
-</aside>
+<form class="form-horizontal" action="{!! route('student.ebook') !!}" enctype="multipart/form-data" method="get">
 
-		</div>
-	</div>
-</div>
-
-<div id="fh5co-project">
+<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 	<div class="container">
 		<div class="row animate-box">
 			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-				<h2>Fitur yang mendukung asyiknya belajar!</h2>
-				{{-- <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p> --}}
+				<h2>E-Book</h2>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-				<a href="{!! route('student.games') !!}"><img src="{!! asset('law/assets/images/minigames.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-					<h3 style="color: black">Mini Games</h3>
-				</a>
-			</div>
-			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-				<a href="{!! route('student.ebook') !!}"><img src="{!! asset('law/assets/images/ebook.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-					<h3 style="color: black">E-Book</h3>
-					{{-- <span>Atty. John Doe</span> --}}
-				</a>
-			</div>
-			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-				<a href="#"><img src="{!! asset('law/assets/images/banksoal.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-					<h3 style="color: black">Bank Soal</h3>
-					{{-- <span>Ptr. Jhon Doe</span> --}}
-				</a>
+			<div class="form-group">
+    			<label class="control-label col-lg-2">Mata Pelajaran</label>
+                <div class="col-lg-10">
+                    <select class="form-control" name="subjectscategories_id">
+                        <option  selected disabled>
+                            @if($errors->any())
+                                @if ($errors)
+
+                                @endif
+                                {{ old('subjectscategories_id') }}
+                            @else
+                                ---- Pilih Mata Pelajaran ---
+                            @endif
+                        </option>
+                            @foreach($subjectscategories as $value)
+                                <option value="{{$value->id}}" {{collect(old('subjectscategories'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
+                            @endforeach
+                    </select>
+                </div>
+    		</div>
+			<div class="form-group">
+    			<label class="control-label col-lg-2">Kelas</label>
+    			<div class="col-lg-10">
+                    <select name="class" class="form-control" >
+                        <option  selected disabled>
+                            @if($errors->any())
+                                @if ($errors)
+
+                                @endif
+                                {{ old('class') }}
+                            @else
+                                ---- Pilih Kelas ---
+                            @endif
+                        </option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+    			</div>
+    		</div>
+
+			<div class="row" style="margin-top: 15px; margin-bottom:20px">
+            	<div class="col-md-12" style="text-align: center;">
+                	<button type="submit" class="btn btn-success">Submit</button>
+              	</div>
+            </div>
+</form>
+			<div class="row">
+				@foreach ($ebooks as $key => $ebook)
+					<div class="col-md-3">
+						<div class="thumbnail">
+							<div class="thumb" style="text-align:center; padding-top:10px">
+								<img src="{!! asset('images') !!}/{{ $ebook->image }}" alt="">
+							</div>
+
+							<div class="caption">
+								<h4 class="no-margin-top" style="text-align:center"><a href="{{ $ebook->url }}" target="_blank">{{ $ebook->title }}</a></h4>
+							</div>
+						</div>
+					</div>
+				@endforeach
 			</div>
 		</div>
 	</div>
 </div>
+
 
 <footer id="fh5co-footer" role="contentinfo">
 	<div class="container">
@@ -216,19 +204,19 @@
 					{{-- <li><a href="tel://1234567920">+ 1235 2355 98</a></li> --}}
 					{{-- <li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
 					<li><a href="http://gettemplates.co">gettemplates.co</a></li> --}}
-				{{-- </ul>
+				{{-- </ul> --}}
 			</div>
 
-			<div class="col-md-3 col-md-push-1">
+			{{-- <div class="col-md-3 col-md-push-1">
 				<h4>Opening Hours</h4>
 				<ul class="fh5co-footer-links">
 					<li>Mon - Thu: 9:00 - 21 00</li>
 					<li>Fri 8:00 - 21 00</li>
 					<li>Sat 9:30 - 15: 00</li>
 				</ul>
-			</div>
+			</div> --}}
 
-		</div> --}}
+		</div>
 
 		<div class="row copyright">
 			<div class="col-md-12 text-center">
@@ -249,38 +237,38 @@
 
 	</div>
 </footer>
-</div>
+	</div>
 
-<div class="gototop js-top">
-	<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-</div>
-<!-- Button trigger modal -->
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	<!-- Button trigger modal -->
 
 
 <!-- Modal -->
 
 
-<!-- jQuery -->
-<script src="{!! asset('law/assets/js/jquery.min.js') !!}"></script>
-<!-- jQuery Easing -->
-<script src="{!! asset('law/assets/js/jquery.easing.1.3.js') !!}"></script>
-<!-- Bootstrap -->
-<script src="{!! asset('law/assets/js/bootstrap.min.js') !!}"></script>
-<!-- Waypoints -->
-<script src="{!! asset('law/assets/js/jquery.waypoints.min.js') !!}"></script>
-<!-- Stellar Parallax -->
-<script src="{!! asset('law/assets/js/jquery.stellar.min.js') !!}"></script>
-<!-- Carousel -->
-<script src="{!! asset('law/assets/js/owl.carousel.min.js') !!}"></script>
-<!-- Flexslider -->
-<script src="{!! asset('law/assets/js/jquery.flexslider-min.js') !!}"></script>
-<!-- countTo -->
-<script src="{!! asset('law/assets/js/jquery.countTo.js') !!}"></script>
-<!-- Magnific Popup -->
-<script src="{!! asset('law/assets/js/jquery.magnific-popup.min.js') !!}"></script>
-<script src="{!! asset('law/assets/js/magnific-popup-options.js') !!}"></script>
-<!-- Main -->
-<script src="{!! asset('law/assets/js/main.js') !!}"></script>
+	<!-- jQuery -->
+	<script src="{!! asset('law/assets/js/jquery.min.js') !!}"></script>
+	<!-- jQuery Easing -->
+	<script src="{!! asset('law/assets/js/jquery.easing.1.3.js') !!}"></script>
+	<!-- Bootstrap -->
+	<script src="{!! asset('law/assets/js/bootstrap.min.js') !!}"></script>
+	<!-- Waypoints -->
+	<script src="{!! asset('law/assets/js/jquery.waypoints.min.js') !!}"></script>
+	<!-- Stellar Parallax -->
+	<script src="{!! asset('law/assets/js/jquery.stellar.min.js') !!}"></script>
+	<!-- Carousel -->
+	<script src="{!! asset('law/assets/js/owl.carousel.min.js') !!}"></script>
+	<!-- Flexslider -->
+	<script src="{!! asset('law/assets/js/jquery.flexslider-min.js') !!}"></script>
+	<!-- countTo -->
+	<script src="{!! asset('law/assets/js/jquery.countTo.js') !!}"></script>
+	<!-- Magnific Popup -->
+	<script src="{!! asset('law/assets/js/jquery.magnific-popup.min.js') !!}"></script>
+	<script src="{!! asset('law/assets/js/magnific-popup-options.js') !!}"></script>
+	<!-- Main -->
+	<script src="{!! asset('law/assets/js/main.js') !!}"></script>
 
-</body>
+	</body>
 </html>
