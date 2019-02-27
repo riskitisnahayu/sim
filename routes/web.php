@@ -15,6 +15,12 @@ Auth::routes(); //route login admin
 Route::get('/', function() {
 	return view('student_layouts.student');
 });
+
+// Route::get('reset-password', function ()
+// {
+// 	return view('auth.passwords.email');
+// })->name('password.email');
+
 // Route::get('/home', 'HomeController@index')->name('home');// ini baru benar
 
 Route::get('admin-login', function () {
@@ -35,18 +41,21 @@ Route::get('orangtua-register', function() {
 });
 
 // Password Reset Routes...
-// Route::get('passwords/reset', 'ForgotPasswordController@showLinkRequestForm')->name('passwords.reset');
-// Route::post('passwords/email', 'ForgotPasswordController@sendResetLinkEmail')->name('passwords.email');
-// Route::get('passwords/reset/{token}', 'ResetPasswordController@showResetForm')->name('passwords.reset.token');
-// Route::post('passwords/reset', 'ResetPasswordController@reset');
+// Route::get('passwords/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('passwords.reset');
+// Route::post('passwords/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('passwords.email');
+// Route::get('passwords/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('passwords.reset.token');
+// Route::post('passwords/reset', 'Auth\ResetPasswordController@reset');
 
 // dashboard orangtua
 Route::get('orangtua/dashboard', 'OrangtuaController@index')->name('orangtua.dashboard');
 Route::get('orangtua/registrasi-anak', 'OrangtuaController@registration')->name('orangtua.registration');
 Route::get('orangtua/laporan', 'OrangtuaController@report')->name('orangtua.report');
-Route::get('orangtua/profil/edit/{id}', 'OrangtuaController@profil')->name('orangtua.profil');
-
-Route::get('orangtua/profil', 'OrangtuaController@profil')->name('orangtua.profil');
+Route::get('orangtua/registrasi-anak/edit/{id}', 'OrangtuaController@edit')->name('orangtua.registration.edit');
+Route::get('orangtua/profil-detail', 'OrangtuaController@detailProfil')->name('orangtua.profil.detail');
+Route::get('orangtua/profil-edit', 'OrangtuaController@editProfil')->name('orangtua.profil.edit');
+Route::post('orangtua/profil-edit', 'OrangtuaController@updateProfil')->name('orangtua.profil.update');
+Route::get('orangtua/profil-password-edit', 'OrangtuaController@editPassword')->name('orangtua.password.edit');
+Route::post('orangtua/profil-password-edit', 'OrangtuaController@updatePassword')->name('orangtua.password.update');
 
 Route::get('orangtua/registrasi-anak', 'OrangtuaController@index2')->name('orangtua.registration.index2');
 Route::get('orangtua/registrasi-anak/add', 'OrangtuaController@create')->name('orangtua.registration.add');
@@ -64,6 +73,12 @@ Route::get('siswa/e-books', 'StudentController@ebooks')->name('student.ebook');
 
 
 // Dashboard admin
+Route::get('admin/profil-detail', 'DashboardController@detailProfil')->name('admin.profil.detail');
+Route::get('admin/profil-edit', 'DashboardController@editProfil')->name('admin.profil.edit');
+Route::post('admin/profil-edit', 'DashboardController@updateProfil')->name('admin.profil.update');
+Route::get('admin/profil-password-edit', 'DashboardController@editPassword')->name('admin.password.edit');
+Route::post('admin/profil-password-edit', 'DashboardController@updatePassword')->name('admin.password.update');
+
 Route::get('admin/dashboard', 'DashboardController@adminDashboard')->name('admin.dashboard');
 // Route::get('admin/dashboard', 'DashboardController@adminReport')->name('admin.dashboard');
 // Route::get('admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
@@ -141,5 +156,7 @@ Route::get('banksoal/delete/{id}', 'TaskMasterController@destroy')->name('taskma
 // soal
 Route::get('soal/add/{id}','TaskController@create')->name('task.add');
 Route::post('soal/store', 'TaskController@store')->name('task.store');
-
+// Route::get('soal/detail/{id}','TaskController@create')->name('task.add');
+Route::get('soal/edit/{id}', 'TaskController@edit')->name('task.edit');
+Route::post('soal/update/{id}', 'TaskController@update')->name('task.update');
 // Untuk siswa

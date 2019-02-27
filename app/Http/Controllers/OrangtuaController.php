@@ -12,6 +12,8 @@ use App\Orangtua;
 use App\LogActivity;
 use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
+use Hash;
 
 class OrangtuaController extends Controller
 {
@@ -55,41 +57,96 @@ class OrangtuaController extends Controller
         return view('orangtua.index',compact('siswa'))->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
-    public function profil(){
-        // $value = User::find($id);
-        $title = 'Data Orang Tua';
-       return view('orangtua.profil', compact('title'));
-       // return view('orangtua.profil', compact('ortu'));
+    public function detailProfil()
+    {
+        $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
+           // dd($user);
+        return view('orangtua.profil_detail',compact('ortu'));
     }
+
+    public function editProfil()
+    {
+        $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
+        return view('orangtua.profil_edit',compact('ortu'));
+    }
+
+    // Kode cek username hanya boleh huruf a-z dan A-Z
+		// if(!preg_match("/^[a-zA-Z]*$/",$username)){
+		// 	$username_valid = false;
+		// 	$username_valid_msg = "Hanya huruf yang diijinkan, dan tidak boleh menggunakan spasi.<br>";
+		// }
 
     public function updateProfil(Request $request){
         $this->validate($request, [
                  'name'          => 'required',
                  'username'      => 'required',
-                 'email'         => 'required',
-                 'password'      => 'required',
+                 'email'         => 'required|email',
            ],
 
            [
                 'name.required'          => 'Nama harus diisi!',
                 'username.required'      => 'Username harus diisi!',
                 'email.required'         => 'Email harus diisi!',
-                'password.required'      => 'Password harus diisi!',
             ]
 
        );
 
-       $ortu = Orangtua::where('id',$id)->first();
+       $data = Orangtua::where('user_id', Auth::user()->id)->first();
+       $ortu = User::where('id',$data->user_id)->first();
        $ortu->name=$request->name;
        $ortu->username=$request->username;
        $ortu->email=$request->email;
-       $ortu->password=$request->password;
+       // $ortu->password=$request->password;
        $ortu->save();
 
-       Alert::success('Sukses', 'Profil berhasil diubah!');
+       Alert::success('Sukses', 'Data orangtua berhasil diubah!');
 
-       return redirect()->route('orangtua.dashboard');
-       // return view('orangtua.profil', compact('ortu'));
+       return redirect()->route('orangtua.profil.detail');
+    }
+
+    public function editPassword()
+    {
+        $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
+        return view('orangtua.profil_password',compact('ortu'));
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $data = User::where('id',Auth::user()->id)->first();
+        // dd($data);
+        if (Hash::check($request->oldPassword, $data->password))
+        {
+            $data->password = Hash::make($request->password);
+            $this->validate($request, [
+                     'oldPassword'           => 'required',
+                     'password'              => 'required|min:6|confirmed',
+                     'password_confirmation' => 'required',
+               ],
+               [
+                   'oldPassword.required'            => 'Password lama harus diisi!',
+                   'password.required'               => 'Password baru harus diisi!',
+                   'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
+                ]
+            );
+           $data->save();
+
+            Alert::success('Sukses', 'Password berhasil diubah!');
+            return redirect()->route('orangtua.profil.detail');
+
+        }else {
+            $this->validate($request, [
+                     'oldPassword'           => 'required',
+                     'password'              => 'required|min:6|different:password|confirmed',
+                     'password_confirmation' => 'required',
+               ],
+               [
+                   'oldPassword.required'           => 'Password lama harus diisi!',
+                   'password.required'           => 'Password baru harus diisi!',
+                   'password_confirmation.required' => 'Konfirmasi password baru harus diisi!',
+                ]
+            );
+            return redirect()->back()->with('error','Password tidak sesuai!');
+        }
     }
 
     public function index()

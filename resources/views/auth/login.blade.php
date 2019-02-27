@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('form')
-    <form method="POST" action="{{ route('login') }}" class="form-validate">
+    <form method="POST" action="{{ route('login') }}" class="form-validate" style="padding-top:50px">
         {{ csrf_field() }}
 		<div class="panel panel-body login-form">
 			<div class="text-center">

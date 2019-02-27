@@ -5,7 +5,7 @@
 @endsection --}}
 
 @section('form')
-	<form method="POST" action="{{ route('login') }}" class="form-validate">
+	<form method="POST" action="{{ route('login') }}" class="form-validate" style="padding-top:50px">
 		{{ csrf_field() }}
 		<div class="panel panel-body login-form">
 			<div class="text-center">
@@ -43,7 +43,7 @@
 					</div>
 
 					<div class="col-sm-6 text-right">
-						<a href="#">Lupa password?</a>
+						<a href="{!! route('password.request') !!}">Lupa password?</a>
 					</div>
 				</div>
 			</div>

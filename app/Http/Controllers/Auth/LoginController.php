@@ -20,9 +20,13 @@ class LoginController extends Controller
     |
     */
 
+
     use AuthenticatesUsers {
         logout as performLogout;
     }
+
+    protected $redirectTo = '/orangtua/dashboard';
+
 
     public function logout(Request $request)
     {

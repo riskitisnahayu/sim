@@ -21,6 +21,7 @@
     @endif
 
     <form class="form-horizontal" action="{!! route('taskmaster.update',['id'=>$task_masters->id]) !!}" enctype="multipart/form-data" method="post">
+        {{-- <input type="hidden" name="_method" value="PUT"> --}}
         {{ csrf_field() }}
     	<fieldset class="content-group">
     		<div class="form-group">
@@ -60,7 +61,26 @@
                     </select>
                 </div>
     		</div>
+            <div class="form-group">
+                <label class="control-label col-lg-2">Jumlah Soal</label>
+                <div class="col-lg-10">
+                <select name="total_task" class="form-control" >
+                    <option  selected disabled>
+                        @if($errors->any())
+                            @if ($errors)
 
+                            @endif
+                            {{ old('total_task') }}
+                        @else
+                            0
+                        @endif
+                    </option>
+                    <option value="2" @if ($task_masters->total_task == 2) selected="selected" @endif>2</option>
+                    <option value="5" @if ($task_masters->total_task == 5) selected="selected" @endif>5</option>
+                    <option value="10" @if ($task_masters->total_task == 10) selected="selected" @endif>10</option>
+                </select>
+                </div>
+            </div>
     	</fieldset>
         <div class="row" style="margin-top: 10px;">
           <div class="col-md-12" style="text-align: center;">

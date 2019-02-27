@@ -59,7 +59,12 @@
         				<input type="password" class="form-control" name="password">
         			</div>
         		</div>
-
+                <div class="form-group">
+                    <label class="control-label col-lg-2">Konfirmasi password baru</label>
+                    <div class="col-lg-10">
+                        <input type="password" class="form-control" name="password_confirmation">
+                    </div>
+                </div>
                 <fieldset class="content-group">
 				<legend class="text-bold">Sekolah</legend>
 

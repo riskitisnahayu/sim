@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     protected $table = 'answers';
-    protected $fillable = ['id', 'task_id', 'choice_answer', 'user_answer', 'is_answer'];
+    protected $fillable = ['id', 'task_id', 'choice', 'choice_answer', 'user_answer', 'is_answer'];
     public $timestamps = true;
 
     public function taskMaster()

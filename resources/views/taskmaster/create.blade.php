@@ -92,17 +92,18 @@
             <div class="form-group">
                 <label class="control-label col-lg-2">Jumlah Soal</label>
                 <div class="col-lg-10">
-                <select name="total" class="form-control" >
+                <select name="total_task" class="form-control" >
                     <option  selected disabled>
                         @if($errors->any())
                             @if ($errors)
 
                             @endif
-                            {{ old('total') }}
+                            {{ old('total_task') }}
                         @else
                             0
                         @endif
                     </option>
+                    <option value="2">2</option>
                     <option value="5">5</option>
                     <option value="10">10</option>
                 </select>

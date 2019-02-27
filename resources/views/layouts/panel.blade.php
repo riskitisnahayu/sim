@@ -74,7 +74,11 @@
 				</a>
 
 				<ul class="dropdown-menu dropdown-menu-right">
-					<li><a href="{{ route('orangtua.profil') }}"><i class="icon-user-plus"></i> My profile</a></li>
+					@if (Auth::user()->type == 'Orang tua')
+						<li><a href="{{ route('orangtua.profil.detail') }}"><i class="icon-user-plus"></i> My profile</a></li>
+					@elseif (Auth::user()->type == 'Admin')
+						<li><a href="{{ route('admin.profil.detail') }}"><i class="icon-user-plus"></i> My profile</a></li>
+					@endif
 					<li>
 						<a href="{{ route('logout') }}"
 							onclick="event.preventDefault();

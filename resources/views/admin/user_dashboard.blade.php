@@ -16,7 +16,8 @@
                <th>Nama anak</th>
                <th>Asal sekolah</th>
                <th>Kelas</th>
-
+               <th>Tanggal</th>
+               <th>Waktu</th>
            </tr>
         </thead>
         <tbody>
@@ -26,6 +27,8 @@
                     <td>{{ $value->user['name'] }}</td>
                     <td>{{ $value->school_name }}</td>
                     <td>{{ $value->class }} </td>
+                    <td>{{ Carbon\Carbon::parse($value->created_at)->toFormattedDateString() }}</td>
+                    <td>{{ Carbon\Carbon::parse($value->created_at)->format('H:i:s') }}</td>
                 </tr>
             @endforeach
         </tbody>

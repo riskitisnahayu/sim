@@ -17,32 +17,34 @@
                 </ul>
             </div>
         @endif
-        <form class="form-horizontal" action="{!! route('orangtua.profil') !!}" enctype="multipart/form-data" method="post">
+        @if (session('error'))
+            <div class="alert alert-danger">
+                <ul>
+                    <li>{{ session('error') }}</li>
+                </ul>
+            </div>
+        @endif
+
+        <form class="form-horizontal" action="{!! route('orangtua.password.edit') !!}" enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
         	<fieldset class="content-group">
-                <legend class="text-bold">{{$title}}</legend>
+                <legend class="text-bold">Password Orangtua</legend>
                 <div class="form-group">
-        			<label class="control-label col-lg-2">Nama </label>
+        			<label class="control-label col-lg-2">Password lama</label>
         			<div class="col-lg-10">
-        				<input type="text" class="form-control" name="name" value="">
+                        <input type="password" id="oldPassword" class="form-control" name="oldPassword" value="">
         			</div>
         		</div>
                 <div class="form-group">
-        			<label class="control-label col-lg-2">Username</label>
+        			<label class="control-label col-lg-2">Password baru</label>
         			<div class="col-lg-10">
-        				<input type="text" class="form-control" name="username" value="">
+                        <input id="password" placeholder="" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
         			</div>
         		</div>
                 <div class="form-group">
-        			<label class="control-label col-lg-2">Email</label>
+        			<label class="control-label col-lg-2">Konfirmasi password baru</label>
         			<div class="col-lg-10">
-        				<input type="email" class="form-control" name="email" value="">
-        			</div>
-        		</div>
-                <div class="form-group">
-        			<label class="control-label col-lg-2">Password</label>
-        			<div class="col-lg-10">
-        				<input type="password" class="form-control" name="password">
+                        <input id="password-confirm" type="password" placeholder="" class="form-control" name="password_confirmation">
         			</div>
         		</div>
         	</fieldset>
@@ -50,7 +52,7 @@
             <div class="row" style="margin-top: 10px;">
                 <div class="col-md-12" style="text-align: center;">
                     <button type="submit" class="btn btn-success">Simpan</button>
-                    <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registrasi-anak';">Batal</button>
+                    <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/profil-detail';">Batal</button>
                 </div>
             </div>
         </form>

@@ -16,8 +16,8 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('task_id')->unsigned();
-            $table->char('user_answer',['a','b','c','d'])->nullable();
-            $table->boolean('true_answer',['a','b','c','d']);
+            $table->string('user_answer')->nullable();
+            $table->boolean('true_answer');
             $table->timestamps();
         });
     }

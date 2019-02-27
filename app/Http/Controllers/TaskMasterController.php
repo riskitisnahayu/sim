@@ -48,6 +48,7 @@ class TaskMasterController extends Controller
               'class'          => 'required',
               'semester'       => 'required',
               'subjectscategories_id'      => 'required',
+              'total_task'     => 'required',
         ]);
 
 
@@ -56,10 +57,11 @@ class TaskMasterController extends Controller
         $task_masters->class=$request->class;
         $task_masters->semester=$request->semester;
         $task_masters->subjectscategories_id=$request->subjectscategories_id;
+        $task_masters->total_task=$request->total_task;
         $task_masters->save();
 
          // redirect menggunakan url lengkap sedangkan route menggunakan route name
-         return redirect("soal/add/".$task_masters->id."?total=".$request->total);
+         return redirect("soal/add/".$task_masters->id."?total_task=".$request->total_task);
     }
 
     /**
@@ -112,7 +114,7 @@ class TaskMasterController extends Controller
         $task_masters->subjectscategories_id=$request->subjectscategories_id;
 
         $task_masters->save();
-        return redirect()->route('admin.banksoal')->with('alert-success','Data berhasil diubah!');
+        return redirect("soal/edit/".$task_masters->id."?total_task=".$request->total_task)->with('alert-success','Data berhasil diubah!');
     }
 
     /**
