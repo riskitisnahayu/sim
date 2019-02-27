@@ -41,7 +41,7 @@
                     <td>{{ $value->subjectscategory['name'] }}</td>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('banksoal/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button>
+                        {{-- <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('banksoal/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button> --}}
                         <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('banksoal/edit/'.$value->id) }}'" title="Edit"><i class="icon-pencil"></i></button>
                         <button type="button" class="btn btn-danger btn-icon btn-rounded" onclick="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{{url('banksoal/delete/'.$value->id) }}'};" title="Delete"><i class="icon-trash"></i></button>
 
