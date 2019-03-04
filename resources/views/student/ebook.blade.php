@@ -1,8 +1,7 @@
 @extends('student_layouts.master')
 
 @section('student-content')
-	<form class="form-horizontal" action="{!! route('student.ebook') !!}" enctype="multipart/form-data" method="get">
-
+<form class="form-horizontal" action="{!! route('student.ebook') !!}" enctype="multipart/form-data" method="get">
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 		<div class="container">
 			<div class="row animate-box">
@@ -78,7 +77,7 @@
 	                	<button type="submit" class="btn btn-success">Submit</button>
 	              	</div>
 	            </div>
-	</form>
+</form>
 				<div class="row">
 					@foreach ($ebooks as $key => $ebook)
 						<div class="col-md-3">

@@ -1,8 +1,7 @@
 @extends('student_layouts.master')
 
 @section('student-content')
-	<form class="form-horizontal" action="{!! route('student.banksoal') !!}" enctype="multipart/form-data" method="get">
-
+<form class="form-horizontal" action="{!! route('student.banksoal') !!}" enctype="multipart/form-data" method="get">
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 		<div class="container">
 			<div class="row animate-box">
@@ -27,11 +26,10 @@
 				<div class="form-group">
 					<label class="control-label col-lg-2">Judul</label>
 					<div class="col-lg-10">
-						{{-- <input type="text" class="form-control" placeholder="provinsi"> --}}
-							<select class="form-control" id="title" name="title">
+							<select class="form-control" id="title" name="title" onchange="checkform()">
 								<option value="">--- Pilih Judul Bank Soal ---</option>
 								@foreach ($task_masters as $key => $value)
-									<option value="{{$value->id}}" {{collect(old('title'))->contains($value->id) ? 'selected':''}}>{{ $value->title }}</option>
+									<option class="{{$value->subjectscategories_id}} "value="{{$value->id}}" {{collect(old('title'))->contains($value->id) ? 'selected':''}}>{{ $value->title }}</option>
 								@endforeach
 							</select>
 					</div>
@@ -47,7 +45,7 @@
 	                                @endif
 	                                {{ old('class') }}
 	                            @else
-	                                ---- Pilih Kelas ---
+	                                --- Pilih Kelas ---
 	                            @endif
 	                        </option>
 	                        <option value="7">7</option>
@@ -67,7 +65,7 @@
 									@endif
 									{{ old('semester') }}
 								@else
-									---- Pilih Semester ---
+									--- Pilih Semester ---
 								@endif
 							</option>
 							<option value="I">I</option>
@@ -84,7 +82,7 @@
 			</div>
 		</div>
 	</div>
-	</form>
+</form>
 
 @endsection
 

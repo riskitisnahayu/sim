@@ -47,6 +47,21 @@ class StudentController extends Controller
                  ['semester', $request->semester],
                  ])->get();
 
+         }  else if($request->subjectscategories_id  && $request->class) {
+             $ebooks = EBook::where([
+                 ['subjectscategories_id', $request->subjectscategories_id],
+                 ['class', $request->class],
+             ])->get();
+         } else if($request->subjectscategories_id  && $request->semester) {
+             $ebooks = EBook::where([
+                 ['subjectscategories_id', $request->subjectscategories_id],
+                 ['semester', $request->semester],
+             ])->get();
+         } else if($request->class  && $request->semester) {
+             $ebooks = EBook::where([
+                 ['class', $request->class],
+                 ['semester', $request->semester],
+             ])->get();
          } else if($request->subjectscategories_id) {
              $ebooks = EBook::where('subjectscategories_id', $request->subjectscategories_id)->get();
          } else if ($request->class) {
@@ -66,7 +81,7 @@ class StudentController extends Controller
              'fitur'   => 'Bank Soal'
          ]);
 
-         if ($request->subjectscategories_id && $request->title && $request->class && $request->semester ) {
+         if ($request->subjectscategories_id && $request->title && $request->class && $request->semester) {
              $task_masters = TaskMaster::where([
                  ['subjectscategories_id', $request->subjectscategories_id],
                  ['title', $request->title],
@@ -74,8 +89,38 @@ class StudentController extends Controller
                  ['semester', $request->semester],
                  ])->get();
 
+         } elseif ($request->subjectscategories_id && $request->title) {
+             $task_masters = TaskMaster::where([
+                 ['subjectscategories_id', $request->subjectscategories_id],
+                 ['title', $request->title],
+                 ])->get();
+         } elseif ($request->subjectscategories_id && $request->class) {
+             $task_masters = TaskMaster::where([
+                 ['subjectscategories_id', $request->subjectscategories_id],
+                 ['class', $request->class],
+                 ])->get();
+         } elseif ($request->subjectscategories_id && $request->semester) {
+             $task_masters = TaskMaster::where([
+                 ['subjectscategories_id', $request->subjectscategories_id],
+                 ['semester', $request->semester],
+                 ])->get();
+         }  elseif ($request->title && $request->class) {
+            $task_masters = TaskMaster::where([
+                ['title', $request->title],
+                ['class', $request->class],
+                ])->get();
+         } elseif ($request->title && $request->semester) {
+           $task_masters = TaskMaster::where([
+                ['title', $request->title],
+                ['semester', $request->semester],
+                ])->get();
+         } elseif ($request->class && $request->semester) {
+            $task_masters = TaskMaster::where([
+                ['class', $request->class],
+                ['semester', $request->semester],
+                ])->get();
          } else if($request->subjectscategories_id) {
-             $task_masters = TaskMaster::where('subjectscategories_id', $request->subjectscategories_id)->get();
+            $task_masters = TaskMaster::where('subjectscategories_id', $request->subjectscategories_id)->get();
          } else if ($request->title) {
              $task_masters = TaskMaster::where('title', $request->title)->get();
          } else if ($request->class) {
@@ -88,6 +133,14 @@ class StudentController extends Controller
          $subjectscategories = SubjectsCategory::all();
          return view('student.banksoal', compact('task_masters','subjectscategories'));
      }
+
+     //chained tampilan judul di bank soal siswa
+    public function title()
+    {
+        $subjectscategories = Input::get('id');
+        $task_masters = TaskMaster::where('subjectscategories_id','=', $subjectscategories)->get();
+        return response()->json($task_masters);
+    }
 
     public function index()
     {
