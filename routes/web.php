@@ -40,12 +40,6 @@ Route::get('orangtua-register', function() {
 	return view('auth.register');
 });
 
-// Password Reset Routes...
-// Route::get('passwords/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('passwords.reset');
-// Route::post('passwords/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('passwords.email');
-// Route::get('passwords/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('passwords.reset.token');
-// Route::post('passwords/reset', 'Auth\ResetPasswordController@reset');
-
 // dashboard orangtua
 Route::get('orangtua/dashboard', 'OrangtuaController@index')->name('orangtua.dashboard');
 Route::get('orangtua/registrasi-anak', 'OrangtuaController@registration')->name('orangtua.registration');
@@ -160,4 +154,5 @@ Route::post('soal/store', 'TaskController@store')->name('task.store');
 // Route::get('soal/detail/{id}','TaskController@create')->name('task.add');
 Route::get('soal/edit/{id}', 'TaskController@edit')->name('task.edit');
 Route::post('soal/update/{id}', 'TaskController@update')->name('task.update');
+
 // Untuk siswa

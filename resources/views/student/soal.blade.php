@@ -87,7 +87,7 @@
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
-						<li class="btn-cta2"><a href="#"><span>Profil</span></a></li>
+						{{-- <li class="btn-cta2"><a href="#"><span>Profil</span></a></li> --}}
 						<li class="btn-cta1"><a href="#"><span>Logout</span></a></li>
 					</ul>
 				</div>
