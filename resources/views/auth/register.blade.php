@@ -24,6 +24,9 @@
 						<div class="form-control-feedback">
 							<i class="icon-user text-muted"></i>
 						</div>
+						@if ($errors->has('name'))
+		                    <span>{{ $errors->first('name') }}</span>
+		                @endif
 					</div>
 
 					<div class="form-group has-feedback has-feedback-left">
@@ -31,6 +34,9 @@
 						<div class="form-control-feedback">
 							<i class="icon-user-check text-muted"></i>
 						</div>
+						@if ($errors->has('username'))
+		                    <span>{{ $errors->first('username') }}</span>
+		                @endif
 					</div>
 
 					<div class="form-group has-feedback has-feedback-left">
@@ -38,6 +44,9 @@
 						<div class="form-control-feedback">
 							<i class="icon-mention text-muted"></i>
 						</div>
+						@if ($errors->has('email'))
+		                    <span>{{ $errors->first('email') }}</span>
+		                @endif
 					</div>
 
 					<div class="form-group has-feedback has-feedback-left">
@@ -45,6 +54,9 @@
 						<div class="form-control-feedback">
 							<i class="icon-user-lock text-muted"></i>
 						</div>
+						@if ($errors->has('password'))
+		                    <span>{{ $errors->first('password') }}</span>
+		                @endif
 					</div>
 
 					<button type="submit" class="btn bg-indigo-400 btn-block">Daftar <i class="icon-circle-right2 position-right"></i></button>

@@ -11,9 +11,17 @@
 				</div>
 			</div>
 		</div>
+
+		<hr>
+
 		<div class="container">
 			<div class="row">
-
+				<div class="form-group">
+					<label class="control-label col-lg-2">Latihan Soal</label>
+					<div class="col-lg-10">
+							
+					</div>
+				</div>
 				<div class="row" style="margin-top: 15px; margin-bottom:20px">
 	            	<div class="col-md-12" style="text-align: center;">
 	                	<button type="submit" class="btn btn-success">Submit</button>
