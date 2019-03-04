@@ -8,6 +8,7 @@ use App\GameCategory;
 use App\EBook;
 use App\SubjectsCategory;
 use App\LogActivity;
+use App\TaskMaster;
 use Auth;
 
 class StudentController extends Controller
@@ -39,21 +40,53 @@ class StudentController extends Controller
              'user_id' => Auth::user()->id,
              'fitur'   => 'E-Book'
          ]);
-         if ($request->subjectscategories_id && $request->class) {
+         if ($request->subjectscategories_id && $request->class && $request->semester) {
              $ebooks = EBook::where([
                  ['subjectscategories_id', $request->subjectscategories_id],
                  ['class', $request->class],
+                 ['semester', $request->semester],
                  ])->get();
 
          } else if($request->subjectscategories_id) {
              $ebooks = EBook::where('subjectscategories_id', $request->subjectscategories_id)->get();
          } else if ($request->class) {
              $ebooks = EBook::where('class', $request->class)->get();
+         } else if ($request->semester) {
+             $ebooks = EBook::where('semester', $request->semester)->get();
          } else {
              $ebooks = EBook::all();
          }
          $subjectscategories = SubjectsCategory::all();
          return view('student.ebook', compact('ebooks','subjectscategories'));
+     }
+
+     public function bankSoal(Request $request){
+         LogActivity::create([
+             'user_id' => Auth::user()->id,
+             'fitur'   => 'Bank Soal'
+         ]);
+
+         if ($request->subjectscategories_id && $request->title && $request->class && $request->semester ) {
+             $task_masters = TaskMaster::where([
+                 ['subjectscategories_id', $request->subjectscategories_id],
+                 ['title', $request->title],
+                 ['class', $request->class],
+                 ['semester', $request->semester],
+                 ])->get();
+
+         } else if($request->subjectscategories_id) {
+             $task_masters = TaskMaster::where('subjectscategories_id', $request->subjectscategories_id)->get();
+         } else if ($request->title) {
+             $task_masters = TaskMaster::where('title', $request->title)->get();
+         } else if ($request->class) {
+             $task_masters = TaskMaster::where('class', $request->class)->get();
+         } else if ($request->semester) {
+             $task_masters = TaskMaster::where('semester', $request->semester)->get();
+         }else {
+             $task_masters = TaskMaster::all();
+         }
+         $subjectscategories = SubjectsCategory::all();
+         return view('student.banksoal', compact('task_masters','subjectscategories'));
      }
 
     public function index()

@@ -20,7 +20,7 @@
             </div>
         @endif
 
-        <form class="form-horizontal" action="{!! route('orangtua.registration.store') !!}" enctype="multipart/form-data" method="post">
+        <form class="form-horizontal" action="{!! route('orangtua.registeration.store') !!}" enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="orangtua_id" value="{{ $ortu->orangtua->id }}">
         	<fieldset class="content-group">
@@ -146,7 +146,7 @@
             <div class="row" style="margin-top: 10px;">
               <div class="col-md-12" style="text-align: center;">
                 <button type="submit" class="btn btn-success">Registrasi</button>
-                {{-- <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registrasi-anak';">Batal</button> --}}
+                <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registerasi-anak';">Batal</button>
               </div>
             </div>
         </form>

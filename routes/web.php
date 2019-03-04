@@ -50,25 +50,26 @@ Route::get('orangtua-register', function() {
 Route::get('orangtua/dashboard', 'OrangtuaController@index')->name('orangtua.dashboard');
 Route::get('orangtua/registrasi-anak', 'OrangtuaController@registration')->name('orangtua.registration');
 Route::get('orangtua/laporan', 'OrangtuaController@report')->name('orangtua.report');
-Route::get('orangtua/registrasi-anak/edit/{id}', 'OrangtuaController@edit')->name('orangtua.registration.edit');
+Route::get('orangtua/registerasi-anak/edit/{id}', 'OrangtuaController@edit')->name('orangtua.registeration.edit');
 Route::get('orangtua/profil-detail', 'OrangtuaController@detailProfil')->name('orangtua.profil.detail');
 Route::get('orangtua/profil-edit', 'OrangtuaController@editProfil')->name('orangtua.profil.edit');
 Route::post('orangtua/profil-edit', 'OrangtuaController@updateProfil')->name('orangtua.profil.update');
 Route::get('orangtua/profil-password-edit', 'OrangtuaController@editPassword')->name('orangtua.password.edit');
 Route::post('orangtua/profil-password-edit', 'OrangtuaController@updatePassword')->name('orangtua.password.update');
 
-Route::get('orangtua/registrasi-anak', 'OrangtuaController@index2')->name('orangtua.registration.index2');
-Route::get('orangtua/registrasi-anak/add', 'OrangtuaController@create')->name('orangtua.registration.add');
-Route::post('orangtua/registrasi-anak/store', 'OrangtuaController@store')->name('orangtua.registration.store');
-Route::get('orangtua/registrasi-anak/detail/{id}', 'OrangtuaController@show')->name('orangtua.registration.detail');
-Route::get('orangtua/registrasi-anak/edit/{id}', 'OrangtuaController@edit')->name('orangtua.registration.edit');
-Route::post('orangtua/registrasi-anak/update/{id}', 'OrangtuaController@update')->name('orangtua.registration.update');
-Route::get('orangtua/registrasi-anak/delete/{id}', 'OrangtuaController@destroy')->name('orangtua.registration.delete');
+Route::get('orangtua/registerasi-anak', 'OrangtuaController@index2')->name('orangtua.registeration.index2');
+Route::get('orangtua/registerasi-anak/add', 'OrangtuaController@create')->name('orangtua.registeration.add');
+Route::post('orangtua/registerasi-anak/store', 'OrangtuaController@store')->name('orangtua.registeration.store');
+Route::get('orangtua/registerasi-anak/detail/{id}', 'OrangtuaController@show')->name('orangtua.registeration.detail');
+Route::get('orangtua/registerasi-anak/edit/{id}', 'OrangtuaController@edit')->name('orangtua.registeration.edit');
+Route::post('orangtua/registerasi-anak/update/{id}', 'OrangtuaController@update')->name('orangtua.registeration.update');
+Route::get('orangtua/registerasi-anak/delete/{id}', 'OrangtuaController@destroy')->name('orangtua.registeration.delete');
 
 // untuk Siswa
 Route::get('siswa', 'StudentController@index')->name('student.index');
 Route::get('siswa/mini-games', 'StudentController@games')->name('student.games');
 Route::get('siswa/e-books', 'StudentController@ebooks')->name('student.ebook');
+Route::get('siswa/bank-soal', 'StudentController@banksoal')->name('student.banksoal');
 
 
 

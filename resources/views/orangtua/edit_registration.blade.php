@@ -20,7 +20,7 @@
             </div>
         @endif
 
-        <form class="form-horizontal" action="{!! route('orangtua.registration.update',['id'=>$siswa->id]) !!}" enctype="multipart/form-data" method="post">
+        <form class="form-horizontal" action="{!! route('orangtua.registeration.update',['id'=>$siswa->id]) !!}" enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
             {{-- <input type="hidden" name="orangtua_id" value="{{ $ortu->orangtua->id }}"> --}}
         	<fieldset class="content-group">
@@ -54,15 +54,21 @@
         			</div>
         		</div>
                 <div class="form-group">
-        			<label class="control-label col-lg-2">Password</label>
+        			<label class="control-label col-lg-2">Password lama</label>
         			<div class="col-lg-10">
-        				<input type="password" class="form-control" name="password">
+                        <input type="password" id="oldPassword" class="form-control" name="oldPassword" value="">
+        			</div>
+        		</div>
+                <div class="form-group">
+        			<label class="control-label col-lg-2">Password baru</label>
+        			<div class="col-lg-10">
+        				<input id="password" type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
         			</div>
         		</div>
                 <div class="form-group">
                     <label class="control-label col-lg-2">Konfirmasi password baru</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" name="password_confirmation">
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                     </div>
                 </div>
                 <fieldset class="content-group">
@@ -131,7 +137,7 @@
             <div class="row" style="margin-top: 10px;">
               <div class="col-md-12" style="text-align: center;">
                 <button type="submit" class="btn btn-success">Simpan</button>
-                <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registrasi-anak';">Batal</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registerasi-anak';">Batal</button>
               </div>
             </div>
         </form>

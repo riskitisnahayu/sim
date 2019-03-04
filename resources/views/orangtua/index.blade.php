@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-sm-4 col-md-2">
             {{-- <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="location.href='{{url('admin/games/add')}}'"><i class="fa fa-plus mg-r-10"></i> Tambah Mini Games</button> --}}
-            <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('orangtua/registrasi-anak/add')}}'"><i class="icon-plus2 position-left"></i> Tambah Akun Anak</button>
+            <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('orangtua/registerasi-anak/add')}}'"><i class="icon-plus2 position-left"></i> Tambah Akun Anak</button>
         </div>
     </div>
 
@@ -40,9 +40,9 @@
                     <td>{{ $value->school_name }}</td>
                     <td>{{ $value->class }}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('orangtua/registrasi-anak/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button>
-                        <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('orangtua/registrasi-anak/edit/'.$value->id) }}'" title="Edit"><i class="icon-pencil"></i></button>
-                        <button type="button" class="btn btn-danger btn-icon btn-rounded" onclick="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{{url('orangtua/registrasi-anak/delete/'.$value->id) }}'};" title="Delete"><i class="icon-trash"></i></button>
+                        <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('orangtua/registerasi-anak/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button>
+                        <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('orangtua/registerasi-anak/edit/'.$value->id) }}'" title="Edit"><i class="icon-pencil"></i></button>
+                        <button type="button" class="btn btn-danger btn-icon btn-rounded" onclick="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{{url('orangtua/registerasi-anak/delete/'.$value->id) }}'};" title="Delete"><i class="icon-trash"></i></button>
                     </td>
                 </tr>
             @endforeach

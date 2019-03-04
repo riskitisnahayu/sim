@@ -113,7 +113,7 @@
 
             <div class="row" style="margin-top: 10px;">
               <div class="col-md-12" style="text-align: center;">
-                <button type="button" class="btn btn-success" onclick="location.href='/orangtua/registrasi-anak';">Kembali</button>
+                <button type="button" class="btn btn-success" onclick="location.href='/orangtua/registerasi-anak';">Kembali</button>
                 {{-- <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registrasi-anak';">Batal</button> --}}
               </div>
             </div>

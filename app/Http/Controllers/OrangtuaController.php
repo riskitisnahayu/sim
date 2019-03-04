@@ -30,7 +30,7 @@ class OrangtuaController extends Controller
         $districts = District::all()->sortBy('name');
         $ortu = User::where('id', Auth::user()->id)->with('orangtua')->first();
         // dd($ortu);
-        return view('orangtua.registration', compact('provinces','regencies','districts', 'ortu'));
+        return view('orangtua.registeration', compact('provinces','regencies','districts', 'ortu'));
     }
 
     public function report(Request $request)
@@ -136,7 +136,7 @@ class OrangtuaController extends Controller
         }else {
             $this->validate($request, [
                      'oldPassword'           => 'required',
-                     'password'              => 'required|min:6|different:password|confirmed',
+                     'password'              => 'required|min:6|confirmed',
                      'password_confirmation' => 'required',
                ],
                [
@@ -251,7 +251,7 @@ class OrangtuaController extends Controller
 
         Alert::success('Sukses', 'Akun anak berhasil ditambahkan!');
 
-        return redirect()->route('orangtua.registration.index2');
+        return redirect()->route('orangtua.registeration.index2');
         // return redirect()->route('orangtua.registration.detail',['id'=>$user->id]);
     }
 
@@ -305,7 +305,7 @@ class OrangtuaController extends Controller
                  'jenis_kelamin' => 'required',
                  'username'      => 'required',
                  'email'         => 'required',
-                 'password'      => 'required',
+                 // 'password'      => 'required',
                  // 'orangtua_id'   => 'required',
                  'province_id'   => 'required',
                  'regency_id'    => 'required',
@@ -319,7 +319,7 @@ class OrangtuaController extends Controller
                 'jenis_kelamin.required' => 'Jenis kelamin harus diisi!',
                 'username.required'      => 'Username harus diisi!',
                 'email.required'         => 'Email harus diisi!',
-                'password.required'      => 'Password harus diisi!',
+                // 'password.required'      => 'Password harus diisi!',
                 'orangtua_id.required'   => 'Id orangtua harus diisi!',
                 'province_id.required'   => 'Provinsi harus diisi!',
                 'regency_id.required'    => 'Kota/kabupaten harus diisi!',
@@ -329,6 +329,38 @@ class OrangtuaController extends Controller
             ]
 
        );
+       $siswa = Student::where('id',$id)->first();
+       $data = User::where('id',$siswa->user_id)->first();
+       // dd($data);
+       if (Hash::check($request->oldPassword, $data->password))
+       {
+           $data->password = Hash::make($request->password);
+           $this->validate($request, [
+                    'oldPassword'           => 'required',
+                    'password'              => 'required|min:6|confirmed',
+                    'password_confirmation' => 'required',
+              ],
+              [
+                  'oldPassword.required'            => 'Password lama harus diisi!',
+                  'password.required'               => 'Password baru harus diisi!',
+                  'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
+               ]
+           );
+          $data->save();
+       }else {
+           $this->validate($request, [
+                    'oldPassword'           => 'required',
+                    'password'              => 'required|min:6|confirmed',
+                    'password_confirmation' => 'required',
+              ],
+              [
+                  'oldPassword.required'            => 'Password lama harus diisi!',
+                  'password.required'               => 'Password baru harus diisi!',
+                  'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
+               ]
+           );
+           return redirect()->back()->with('error','Password tidak sesuai!');
+       }
 
        $siswa = Student::find($id);
        $user = User::find($siswa->user_id);
@@ -353,7 +385,7 @@ class OrangtuaController extends Controller
 
         Alert::success('Sukses', 'Akun anak berhasil diubah!');
 
-        return redirect()->route('orangtua.registration.index2');
+        return redirect()->route('orangtua.registeration.index2');
     }
 
     /**
@@ -366,6 +398,6 @@ class OrangtuaController extends Controller
     {
         $siswa = Student::where('id',$id)->first();
         $siswa->user->delete();
-        return redirect()->route('orangtua.registration.index2');
+        return redirect()->route('orangtua.registeration.index2');
     }
 }
