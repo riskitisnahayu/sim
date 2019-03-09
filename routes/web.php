@@ -24,7 +24,6 @@ Route::get('/', function() {
 // Route::get('/home', 'HomeController@index')->name('home');// ini baru benar
 
 Route::get('admin-login', function () {
-    // return view('dashboard');
     return view('auth.login');
 })->name('admin.login');
 
@@ -50,7 +49,7 @@ Route::get('orangtua/profil-edit', 'OrangtuaController@editProfil')->name('orang
 Route::post('orangtua/profil-edit', 'OrangtuaController@updateProfil')->name('orangtua.profil.update');
 Route::get('orangtua/profil-password-edit', 'OrangtuaController@editPassword')->name('orangtua.password.edit');
 Route::post('orangtua/profil-password-edit', 'OrangtuaController@updatePassword')->name('orangtua.password.update');
-
+// registrasi anak oleh orangtua
 Route::get('orangtua/registerasi-anak', 'OrangtuaController@index2')->name('orangtua.registeration.index2');
 Route::get('orangtua/registerasi-anak/add', 'OrangtuaController@create')->name('orangtua.registeration.add');
 Route::post('orangtua/registerasi-anak/store', 'OrangtuaController@store')->name('orangtua.registeration.store');
@@ -66,8 +65,6 @@ Route::get('siswa/e-books', 'StudentController@ebooks')->name('student.ebook');
 Route::get('siswa/bank-soal', 'StudentController@banksoal')->name('student.banksoal');
 Route::get('siswa/soal/{id}', 'StudentController@soal')->name('student.soal');
 
-
-
 // Dashboard admin
 Route::get('admin/profil-detail', 'DashboardController@detailProfil')->name('admin.profil.detail');
 Route::get('admin/profil-edit', 'DashboardController@editProfil')->name('admin.profil.edit');
@@ -76,8 +73,6 @@ Route::get('admin/profil-password-edit', 'DashboardController@editPassword')->na
 Route::post('admin/profil-password-edit', 'DashboardController@updatePassword')->name('admin.password.update');
 
 Route::get('admin/dashboard', 'DashboardController@adminDashboard')->name('admin.dashboard');
-// Route::get('admin/dashboard', 'DashboardController@adminReport')->name('admin.dashboard');
-// Route::get('admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
 Route::get('admin/daftar-pemain-game', 'UserLevelController@index')->name('admin.user_dashboard');
 Route::get('admin/kelola-kategori-game', 'GameCategoryController@index')->name('admin.gamecategory');
 Route::get('admin/kelola-mata-pelajaran', 'SubjectsCategoryController@index')->name('admin.subjectscategory');
@@ -87,28 +82,14 @@ Route::get('admin/bank-soal', 'TaskMasterController@index')->name('admin.banksoa
 
 
 // mini games
-// Route::get('admin/admin-games', 'GamesController@index')->name('admin.');
-
 Route::get('admin/games/add', 'GamesController@create')->name('admin.games.add');
 Route::post('admin/games/store', 'GamesController@store')->name('admin.games.store');
 Route::get('admin/games/detail/{id}', 'GamesController@show')->name('admin.games.detail');
-// Route::post('admin/games/detail/{id}', 'GamesController@show')->name('admin/games/detail');
 Route::get('admin/games/edit/{id}', 'GamesController@edit')->name('admin.games.edit');
 Route::post('admin/games/update/{id}', 'GamesController@update')->name('admin.games.update');
 Route::get('admin/games/delete/{id}', 'GamesController@destroy')->name('admin.games.delete');
 
-// routing untuk list games & list user in dashboard
-// Route::get('admin/games-dashboard', function () {
-//     return view('admin.games_dashboard');
-// });
-//
-// Route::get('admin/user-dashboard', function () {
-//     return view('admin.user_dashboard');
-// });
-
-// managekategorigame
-// Route::get('gamecategory', 'GameCategoryController@index');
-
+// manage kategori game
 Route::get('gamecategory/add','GameCategoryController@create')->name('gamecategory.add');
 Route::post('gamecategory/store', 'GameCategoryController@store')->name('gamecategory.store');
 Route::get('gamecategory/detail/{id}', 'GameCategoryController@show')->name('gamecategory.detail');
@@ -132,14 +113,6 @@ Route::get('ebook/detail/{id}', 'EbookController@show')->name('ebook.detail');
 Route::get('ebook/edit/{id}', 'EbookController@edit')->name('ebook.edit');
 Route::post('ebook/update/{id}', 'EbookController@update')->name('ebook.update');
 Route::get('ebook/delete/{id}', 'EbookController@destroy')->name('ebook.delete');
-// Route::get('admin/games_edit', function () {
-//     return view('admin.games_edit');
-// });
-// Route::post('admin/games_add', 'DashboardController@store');
-
-// Route::get('/admin_materi', function () {
-//     return view('admin.admin_materi'); // salah
-// });
 
 // bank soal
 Route::get('banksoal/add','TaskMasterController@create')->name('taskmaster.add');
@@ -152,8 +125,5 @@ Route::get('banksoal/delete/{id}', 'TaskMasterController@destroy')->name('taskma
 // soal
 Route::get('soal/add/{id}','TaskController@create')->name('task.add');
 Route::post('soal/store', 'TaskController@store')->name('task.store');
-// Route::get('soal/detail/{id}','TaskController@create')->name('task.add');
 Route::get('soal/edit/{id}', 'TaskController@edit')->name('task.edit');
 Route::post('soal/update/{id}', 'TaskController@update')->name('task.update');
-
-// Untuk siswa
