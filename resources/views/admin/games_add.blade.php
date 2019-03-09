@@ -8,12 +8,6 @@
 @section('content_section')
 <div class="panel panel-flat">
     <div class="panel-body">
-            {{-- <div class="panel-heading">
-                <h5>Tambah Mini Games</h5>
-
-            </div>
-            <br> --}}
-            {{-- enctype=untuk upload file --}}
 
 
     {{-- Validasi  --}}
@@ -30,8 +24,6 @@
     <form class="form-horizontal" action="{!! route('admin.games.store') !!}" enctype="multipart/form-data" method="post">
         {{ csrf_field() }}
     	<fieldset class="content-group">
-    		{{-- <legend class="text-bold">Basic inputs</legend> --}}
-
     		<div class="form-group">
     			<label class="control-label col-lg-2">Nama</label>
     			<div class="col-lg-10">
@@ -57,31 +49,6 @@
 	                            <option value="{{$value->id}}" {{collect(old('gamecategories'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
 	                        @endforeach
                     </select>
-                    {{-- <select name="category" class="form-control" >
-                        <option  selected disabled>
-                            @if($errors->any())
-                                @if ($errors)
-
-                                @endif
-                                {{ old('category') }}
-                            @else
-                                ---- Pilih Kategori ---
-                            @endif
-                        </option>
-                        <option value="Arcade">Arcade</option>
-                        <option value="Classic">Classic</option>
-                        <option value="Platform">Platform</option>
-                        <option value="Puzzle">Puzzle</option>
-                        <option value="Racing">Racing</option>
-                        <option value="Shooter">Shooter</option>
-
-                        {{-- <option value="1" @if ($games->category == 1)"selected" @endif>Arcade</option>
-                        <option value="2" @if ($games->category == 2)"selected" @endif>Classic</option>
-                        <option value="3" @if ($games->category == 3)"selected" @endif>Platform</option>
-                        <option value="4" @if ($games->category == 4)"selected" @endif>Puzzle</option>
-                        <option value="5" @if ($games->category == 5)"selected" @endif>Racing</option>
-                        <option value="6" @if ($games->category == 6)"selected" @endif>Shooter</option> --}}
-                    {{-- </select> --}}
                 </div>
             </div>
 

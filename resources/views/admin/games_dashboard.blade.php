@@ -6,12 +6,6 @@
 @endsection
 
 @section('content_section')
-    <!-- Basic thumbnails -->
-{{-- <h6 class="content-group text-semibold">
-	Basic thumbnails
-	<small class="display-block">Basic examples with options</small>
-</h6> --}}
-
 <div class="row">
     <div class="col-md-4">
 		<div class="thumbnail">

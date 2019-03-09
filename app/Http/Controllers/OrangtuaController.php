@@ -208,7 +208,7 @@ class OrangtuaController extends Controller
                  'jenis_kelamin' => 'required',
                  'username'      => 'required',
                  'email'         => 'required',
-                 'password'      => 'required',
+                 'password'      => 'required|min:6',
                  'orangtua_id'   => 'required',
                  'province_id'   => 'required',
                  'regency_id'    => 'required',

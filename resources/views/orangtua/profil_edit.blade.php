@@ -39,12 +39,6 @@
         				<input type="email" class="form-control" name="email" value="{{ $ortu->user['email'] }}">
         			</div>
         		</div>
-                {{-- <div class="form-group">
-        			<label class="control-label col-lg-2">Password</label>
-        			<div class="col-lg-10">
-        				<input type="password" class="form-control" name="password">
-        			</div>
-        		</div> --}}
         	</fieldset>
 
             <div class="row" style="margin-top: 10px;">

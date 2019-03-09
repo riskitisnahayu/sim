@@ -22,7 +22,6 @@
 
         <form class="form-horizontal" enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
-            {{-- <input type="hidden" name="orangtua_id" value="{{ $ortu->orangtua->id }}"> --}}
         	<fieldset class="content-group">
                 <legend class="text-bold">Data diri anak</legend>
 
@@ -51,12 +50,6 @@
                         <input type="text" class="form-control" name="email" placeholder="{{ $siswa->user['email'] }}" readonly="">
         			</div>
         		</div>
-                {{-- <div class="form-group">
-        			<label class="control-label col-lg-2">Password</label>
-        			<div class="col-lg-10">
-                        <input type="text" class="form-control" name="password" placeholder="{{ $siswa->user['password'] }}" readonly="">
-        			</div>
-        		</div> --}}
 
                 <fieldset class="content-group">
 				<legend class="text-bold">Sekolah</legend>
@@ -114,7 +107,6 @@
             <div class="row" style="margin-top: 10px;">
               <div class="col-md-12" style="text-align: center;">
                 <button type="button" class="btn btn-success" onclick="location.href='/orangtua/registerasi-anak';">Kembali</button>
-                {{-- <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registrasi-anak';">Batal</button> --}}
               </div>
             </div>
         </form>

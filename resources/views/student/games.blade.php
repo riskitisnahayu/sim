@@ -37,7 +37,6 @@
 			<div class="row" style="margin-top: 15px; margin-bottom:20px">
           		<div class="col-md-12" style="text-align: center;">
                 	<button type="submit" class="btn btn-success">Submit</button>
-                	{{-- <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registrasi-anak';">Batal</button> --}}
               	</div>
             </div>
 </form>

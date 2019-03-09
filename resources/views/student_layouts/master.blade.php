@@ -118,14 +118,14 @@
 					<small class="block">&copy; 2019 Aplikasi Dashboard Pembelajaran dan Buku Interaktif</small>
 					{{-- <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small> --}}
 				</p>
-				<p>
+				{{-- <p>
 					<ul class="fh5co-social-icons">
 						<li><a href="#"><i class="icon-twitter"></i></a></li>
 						<li><a href="#"><i class="icon-instagram"></i></a></li>
 						<li><a href="#"><i class="icon-facebook"></i></a></li>
 						<li><a href="#"><i class="icon-email"></i></a></li>
 					</ul>
-				</p>
+				</p> --}}
 			</div>
 		</div>
 

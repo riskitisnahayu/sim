@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="form-group has-feedback has-feedback-left">
-				<input type="text" class="form-control" placeholder="Email" name="email" required="required">
+				<input type="text" class="form-control" placeholder="Email" name="email">
 				<div class="form-control-feedback">
 					<i class="icon-user text-muted"></i>
 				</div>
@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="form-group has-feedback has-feedback-left">
-				<input type="password" class="form-control" placeholder="Password" name="password" required="required">
+				<input type="password" class="form-control" placeholder="Password" name="password">
 				<div class="form-control-feedback">
 					<i class="icon-lock2 text-muted"></i>
 				</div>
@@ -35,12 +35,7 @@
 
 			<div class="form-group login-options">
 				<div class="row">
-					<div class="col-sm-6">
-						{{-- <label class="checkbox-inline">
-							<input type="checkbox" class="styled">
-							Ingat saya
-						</label> --}}
-					</div>
+					<div class="col-sm-6"></div>
 
 					<div class="col-sm-6 text-right">
 						<a href="{!! route('password.request') !!}">Lupa password?</a>

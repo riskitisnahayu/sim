@@ -48,21 +48,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-    //     $this->validate($request, [
-    //           'name'         => 'required',
-    //           'username'     => 'required',
-    //           'email'        => 'required',
-    //           'password'     => 'required',
-    //     ],
-    //
-    //     [
-    //          'name.required'     => 'Gambar harus diisi!',
-    //          'username.required' => 'Judul harus diisi!',
-    //          'email.required'    => 'Mata pelajaran harus diisi!',
-    //          'password.required' => 'Kelas harus diisi!',
-    //      ]
-    //
-    // );
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
@@ -89,10 +74,10 @@ class RegisterController extends Controller
             ],
 
             [
-                 'name.required'     => 'Gambar harus diisi!',
-                 'username.required' => 'Judul harus diisi!',
-                 'email.required'    => 'Mata pelajaran harus diisi!',
-                 'password.required' => 'Kelas harus diisi!',
+                 'name.required'     => 'Nama harus diisi!',
+                 'username.required' => 'Username harus diisi!',
+                 'email.required'    => 'Email harus diisi!',
+                 'password.required' => 'Password harus diisi!',
              ]
 
         );

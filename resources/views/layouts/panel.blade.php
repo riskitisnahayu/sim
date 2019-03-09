@@ -115,9 +115,7 @@
 									<span class="letter-icon">{{ substr(Auth::user()->name, 0, 1) }}</span>
 								</a>
 							</div>
-							{{-- <a href="#" class="media-left"><img src="{!! asset('panel/assets/images/placeholder.jpg') !!}" class="img-circle img-sm" alt=""></a> --}}
 							<div class="media-body">
-								{{-- <span class="media-heading text-semibold">Riski Tisnahayu</span> --}}
 								<span class="media-heading text-semibold">{{ Auth::user()->name }}</span>
 								<div class="text-size-mini text-muted">
                                     {{-- <p>Admin</p> --}}
@@ -136,7 +134,6 @@
 						<ul class="navigation navigation-main navigation-accordion">
 
 							<!-- Main -->
-							{{-- <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li> --}}
 							@if (Auth::user()->type=="Admin")
 								<li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}"><a href="{!! route('admin.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 								<li class="{{ request()->is('admin/daftar-pemain-game') ? 'active' : '' }}"><a href="{!! route('admin.user_dashboard') !!}"><i class="icon-user"></i> <span>Daftar Pengguna</span></a></li>
@@ -172,7 +169,6 @@
 				<div class="page-header-content">
 					<div class="page-title">
 						<h4><b>@yield('page_title')</b></h4>
-						<!-- <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Dashboard</h4> -->
 					</div>
 				</div>
 			</div>

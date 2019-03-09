@@ -8,12 +8,9 @@
 @section('content_section')
 
 <div class="panel panel-flat content-group-lg">
-	<div class="panel-heading">
-        {{-- {{ print_r($gamecategories) }} --}}
-	</div>
+	<div class="panel-heading"></div>
     <div class="row">
         <div class="col-sm-4 col-md-2">
-            {{-- <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="location.href='{{url('gamecategory/add')}}'"><i class="fa fa-plus mg-r-10"></i> Tambah Kategori Game</button> --}}
             <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('gamecategory/add')}}'"><i class="icon-plus2 position-left"></i> Tambah Kategori Game</button>
         </div>
     </div>
@@ -35,19 +32,9 @@
                     <td>{{ $value->name }}</td>
                     <td>{{ $value->description }}</td>
                     <td class="text-center">
-                        {{-- <a href="{{ url('gamecategory/detail/'.$value->id) }}" class="btn btn-info btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Detail">
-                            <i class="fa fa-info" style="font-size:0.9em"></i>
-                        </a> --}}
                         <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('gamecategory/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button>
                         <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('gamecategory/edit/'.$value->id) }}'" title="Edit"><i class="icon-pencil"></i></button>
                         <button type="button" class="btn btn-danger btn-icon btn-rounded" onclick="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{{url('gamecategory/delete/'.$value->id) }}'};" title="Delete"><i class="icon-trash"></i></button>
-
-                        {{-- <a href="{!! route('gamecategory.edit', ['id'=>$value->id]) !!}" class="btn btn-warning btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Edit">
-                            <i class="fa fa-pencil" style="font-size:0.9em"></i>
-                        </a> --}}
-                        {{-- <a href="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{!! route('gamecategory.delete', ['id'=>$value->id]) !!}'};" class="btn btn-danger btn-icon rounded-circle mg-r-5 mg-b-10" class="btn btn-danger btn-icon" style="border-radius: 50%; width: 33px" title="Delete">
-                            <i class="fa fa-trash" style="font-size:0.9em"></i>
-                        </a> --}}
                     </td>
                 </tr>
             @endforeach

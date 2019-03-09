@@ -134,6 +134,22 @@ class StudentController extends Controller
          return view('student.banksoal', compact('task_masters','subjectscategories'));
      }
 
+     public function soal($id)
+     {
+         $task_master = TaskMaster::find($id);
+         $tasks = TaskMaster::where('id', $id)->first()->tasks()->get();
+         $answers = [];
+         foreach ($tasks as $key => $curr_task) {
+             $answers[$key] = $curr_task->answers()->orderBy('choice', 'asc')->get();
+         }
+         // dd($tasks);
+         // dd($answers);
+         $choices = ['a', 'b', 'c', 'd'];
+         $taskmaster_id = $id;
+
+         return view('student.soal', compact('task_master','tasks','answers','choices','taskmaster_id'));
+     }
+
      //chained tampilan judul di bank soal siswa
     public function title()
     {

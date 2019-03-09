@@ -8,13 +8,9 @@
 @section('content_section')
 
 <div class="panel panel-flat content-group-lg">
-	<div class="panel-heading">
-		{{-- <h5>Tambah Mini Games</h5> --}}
-
-	</div>
+	<div class="panel-heading"></div>
     <div class="row">
         <div class="col-sm-4 col-md-2">
-            {{-- <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="location.href='{{url('admin/games/add')}}'"><i class="fa fa-plus mg-r-10"></i> Tambah Mini Games</button> --}}
             <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('admin/games/add')}}'"><i class="icon-plus2 position-left"></i> Tambah Mini Games</button>
         </div>
     </div>
@@ -50,60 +46,11 @@
                         <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('admin/games/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button>
                         <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('admin/games/edit/'.$value->id) }}'" title="Edit"><i class="icon-pencil"></i></button>
                         <button type="button" class="btn btn-danger btn-icon btn-rounded" onclick="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{{url('admin/games/delete/'.$value->id) }}'};" title="Delete"><i class="icon-trash"></i></button>
-
-                        {{-- <a href="{{ url('admin/games/detail/'.$value->id) }}" class="btn btn-info btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Detail">
-                            <i class="fa fa-info" style="font-size:0.9em"></i>
-                        </a>
-                        <a href="{!! route('admin.games.edit', ['id'=>$value->id]) !!}" class="btn btn-warning btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Edit">
-                            <i class="fa fa-pencil" style="font-size:0.9em"></i>
-                        </a>
-                        <a href="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{!! route('admin.games.delete', ['id'=>$value->id]) !!}'};" class="btn btn-danger btn-icon rounded-circle mg-r-5 mg-b-10" style="border-radius: 50%; width: 33px" title="Delete">
-                            <i class="fa fa-trash" style="font-size:0.9em"></i>
-                        </a> --}}
                     </td>
-
-                    {{-- <td>
-                        <td>
-                            <a href="{{ url('admin/games/detail/'.$value->id) }}" class="btn btn-info" title="Detail">Detail</a>
-                        </td>
-
-                        <td>
-                            <a href="{!! route('admin.games.edit', ['id'=>$value->id]) !!}" class="btn btn-warning" title="Edit">Edit</a>
-                        </td>
-                        <td>
-                            <form action="{!! url('admin/games/delete/'.$value->id) !!}" method="post">
-                                @csrf
-                                <input name="_method" type="hidden" value="DELETE">
-                                <button class="btn btn-danger" type="submit">Delete</button>
-                            </form>
-                        </td>
-                    </td> --}}
                 </tr>
             @endforeach
         </tbody>
     </table>
-
-
-	{{-- <div class="table-responsive" > --}}
-        <!-- style="min-height: 44vh" -->
-        {{-- <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th class="text-center">#</th>
-                    <th class="text-center">Nama Game</th>
-                    <th class="text-center">Level</th>
-                    <th class="text-center">Gambar</th>
-                    <th class="text-center">Deskripsi</th>
-                    <th class="text-center">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table> --}}
-		<!-- <p>Primary color palette includes 6 colors: 1 main color without suffix and 5 accent colors with 300, 400, 600, 700 and 800 suffixes. Majority of components and layout parts are coded with maximum flexibility and support of different color options that can be changed on-the-fly just by adding or replacing proper color class. Also works perfectly in combination with other helpers, that makes Limitless very flexible and configurable.</p> -->
-		<!-- <strong>Please note:</strong> default Bootstrap contextual classes - primary, danger, success, warning, info - still available and correspond to main colors, so you can use both <code>.bg-danger</code> and <code>.btn-danger</code> as main colors, but if you want to use accent colors, use only <code>.bg-*-*</code>, BS accent classes have been dropped to avoid unnecessary dublicating. -->
-	{{-- </div> --}}
 </div>
 
 @endsection

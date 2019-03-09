@@ -8,13 +8,9 @@
 @section('content_section')
 
 <div class="panel panel-flat content-group-lg">
-	<div class="panel-heading">
-		{{-- <h5>Tambah Mini Games</h5> --}}
-
-	</div>
+	<div class="panel-heading"></div>
     <div class="row">
         <div class="col-sm-4 col-md-2">
-            {{-- <button class="btn btn-primary btn-block mg-b-10"  style="margin-left:20px; padding:5px" onclick="location.href='{{url('admin/games/add')}}'"><i class="fa fa-plus mg-r-10"></i> Tambah Mini Games</button> --}}
             <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('orangtua/registerasi-anak/add')}}'"><i class="icon-plus2 position-left"></i> Tambah Akun Anak</button>
         </div>
     </div>

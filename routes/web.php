@@ -64,6 +64,7 @@ Route::get('siswa', 'StudentController@index')->name('student.index');
 Route::get('siswa/mini-games', 'StudentController@games')->name('student.games');
 Route::get('siswa/e-books', 'StudentController@ebooks')->name('student.ebook');
 Route::get('siswa/bank-soal', 'StudentController@banksoal')->name('student.banksoal');
+Route::get('siswa/soal/{id}', 'StudentController@soal')->name('student.soal');
 
 
 

@@ -22,7 +22,6 @@
 
         <form class="form-horizontal" action="{!! route('orangtua.registeration.update',['id'=>$siswa->id]) !!}" enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
-            {{-- <input type="hidden" name="orangtua_id" value="{{ $ortu->orangtua->id }}"> --}}
         	<fieldset class="content-group">
                 <legend class="text-bold">Data diri anak</legend>
                 <div class="form-group">
@@ -77,7 +76,6 @@
 				<div class="form-group">
 					<label class="control-label col-lg-2">Provinsi</label>
 					<div class="col-lg-10">
-						{{-- <input type="text" class="form-control" placeholder="provinsi"> --}}
                             <select class="form-control" name="province_id" id="provinces" onchange="checkform()">
                                 <option value="">Pilih Provinsi</option>
                                 @foreach($provinces as $value)
@@ -90,7 +88,6 @@
                 <div class="form-group">
 					<label class="control-label col-lg-2">Kota/kabupaten</label>
 					<div class="col-lg-10">
-						{{-- <input type="text" class="form-control" placeholder="kota/kabupaten"> --}}
                         <select class="form-control" name="regency_id" id="regencies" onchange="checkform()">
                             <option value="">Pilih Kota/kabupaten</option>
                             @foreach($regencies as $value)
@@ -103,7 +100,6 @@
                 <div class="form-group">
 					<label class="control-label col-lg-2">Kecamatan</label>
 					<div class="col-lg-10">
-						{{-- <input type="text" class="form-control" placeholder="kecamatan"> --}}
                         <select class="form-control" name="district_id" id="districts" onchange="checkform()">
                             <option value="" class="">Pilih Kecamatan</option>
                             @foreach ($districts as $value)

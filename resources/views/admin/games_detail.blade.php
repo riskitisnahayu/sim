@@ -8,17 +8,9 @@
 @section('content_section')
 <div class="panel panel-flat">
     <div class="panel-body">
-            {{-- <div class="panel-heading">
-                <h5>Tambah Mini Games</h5>
-
-            </div>
-            <br> --}}
-            {{-- enctype=untuk upload file --}}
     <form class="form-horizontal"  enctype="multipart/form-data" method="post">
         {{ csrf_field() }}
     	<fieldset class="content-group">
-    		{{-- <legend class="text-bold">Basic inputs</legend> --}}
-
     		<div class="form-group">
     			<label class="control-label col-lg-2">Nama</label>
     			<div class="col-lg-10">

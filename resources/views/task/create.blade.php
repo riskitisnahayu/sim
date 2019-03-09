@@ -35,7 +35,6 @@
                     <div class="form-group">
             			<label class="control-label col-lg-1">{{ $choices[$j] . "."}}</label>
             			<div class="col-lg-10">
-            				{{-- <input type="text" class="form-control" name="answer[{{ $i }}][]" required> --}}
                             <textarea name="answer[{{ $i }}][]" rows="3" style="width: 100%" required></textarea>
             			</div>
             		</div>
@@ -65,7 +64,6 @@
                 <div class="form-group">
                     <label class="control-label col-lg-1">Pembahasan</label>
                     <div class="col-lg-10">
-                        {{-- <input type="text" class="form-control" name="answer[{{ $i }}][]" required> --}}
                         <textarea name="task[discussion][{{ $i }}]" rows="3" style="width: 100%"></textarea>
                     </div>
                 </div>
