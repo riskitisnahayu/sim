@@ -24,11 +24,9 @@
 			</div>
 		</div>
 		<!-- /members online -->
-
 	</div>
 
 	<div class="col-lg-4">
-
 		<!-- Current server load -->
 		<div class="panel bg-pink-400">
 			<div class="panel-body">
@@ -40,11 +38,9 @@
 			<div id="server-load"></div>
 		</div>
 		<!-- /current server load -->
-
 	</div>
 
 	<div class="col-lg-4">
-
 		<!-- Today's revenue -->
 		<div class="panel bg-blue-400">
 			<div class="panel-body">
@@ -56,7 +52,6 @@
 			<div id="today-revenue"></div>
 		</div>
 		<!-- /today's revenue -->
-
 	</div>
 </div>
 <!-- /quick stats boxes -->
@@ -73,7 +68,6 @@
                <th>Fitur</th>
                <th>Tanggal</th>
                <th>Waktu</th>
-
            </tr>
         </thead>
         <tbody>
