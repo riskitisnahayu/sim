@@ -227,7 +227,7 @@ class OrangtuaController extends Controller
                 'province_id.required'   => 'Provinsi harus diisi!',
                 'regency_id.required'    => 'Kota/kabupaten harus diisi!',
                 'district_id.required'   => 'Kecamatan harus diisi!',
-                'school_name.required'   => 'Sekolah harus diisi!',
+                'school_name.required'   => 'Nama sekolah harus diisi!',
                 'class.required'         => 'Kelas harus diisi!',
             ]
 
@@ -324,7 +324,7 @@ class OrangtuaController extends Controller
                 'province_id.required'   => 'Provinsi harus diisi!',
                 'regency_id.required'    => 'Kota/kabupaten harus diisi!',
                 'district_id.required'   => 'Kecamatan harus diisi!',
-                'school_name.required'   => 'Sekolah harus diisi!',
+                'school_name.required'   => 'Nama sekolah harus diisi!',
                 'class.required'         => 'Kelas harus diisi!',
             ]
 

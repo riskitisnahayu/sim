@@ -49,7 +49,16 @@ class TaskMasterController extends Controller
               'semester'       => 'required',
               'subjectscategories_id'      => 'required',
               'total_task'     => 'required',
-        ]);
+        ],
+        [
+             'title.required'     => 'Judul harus diisi!',
+             'class.required'     => 'Kelas harus diisi!',
+             'semester.required'  => 'Semester harus diisi!',
+             'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
+             'total_task.required'     => 'Jumlah soal harus diisi!',
+
+         ]
+    );
 
 
         $task_masters = new TaskMaster();
@@ -101,11 +110,21 @@ class TaskMasterController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title'          => 'required',
-            'class'          => 'required',
-            'semester'       => 'required',
-            'subjectscategories_id'      => 'required',
-        ]);
+              'title'          => 'required',
+              'class'          => 'required',
+              'semester'       => 'required',
+              'subjectscategories_id'      => 'required',
+              'total_task'     => 'required',
+        ],
+        [
+             'title.required'     => 'Judul harus diisi!',
+             'class.required'     => 'Kelas harus diisi!',
+             'semester.required'  => 'Semester harus diisi!',
+             'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
+             'total_task.required'     => 'Jumlah soal harus diisi!',
+
+         ]
+    );
 
         $task_masters = TaskMaster::where('id',$id)->first();
         $task_masters->title=$request->title;
