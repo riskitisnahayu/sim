@@ -1,7 +1,7 @@
 @extends('student_layouts.master')
 
 @section('student-content')
-<form class="form-horizontal" action="{!! route('student.soal',['id'=>$taskmaster_id]) !!}" enctype="multipart/form-data" method="get">
+<form class="form-horizontal" action="{!! route('student.hasil') !!}" enctype="multipart/form-data" method="get">
 	{{ csrf_field() }}
 	<input type="hidden" name="taskmaster_id" value="{{ $taskmaster_id }}">
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
@@ -29,49 +29,52 @@
 							<table style="text-align:left">
 								<thead>
 									<tr>
-										<td>Mata Pelajaran</td>
+										<td>Jumlah Soal</td>
 										<td style="padding-left:50px">:</td>
-										<td style="padding-left:50px">{{ $task_master->title }}</td>
+										<td style="padding-left:50px"></td>
 									</tr>
 									<tr>
-										<td>Kelas</td>
+										<td>Jawaban Benar</td>
 										<td style="padding-left:50px">:</td>
-										<td style="padding-left:50px">{{ $task_master->class }}</td>
+										<td style="padding-left:50px"></td>
 									</tr>
 									<tr>
-										<td>Tanggal</td>
+										<td>Jawaban Salah</td>
 										<td style="padding-left:50px">:</td>
-										<td style="padding-left:50px">{{ Carbon\Carbon::parse($task_master->created_at)->toFormattedDateString() }} {{ Carbon\Carbon::parse($task_master->created_at)->format('H:i:s') }}</td>
+										<td style="padding-left:50px"></td>
 									</tr>
-
+									<tr>
+										<td>Nilai</td>
+										<td style="padding-left:50px">:</td>
+										<td style="padding-left:50px"></td>
+									</tr>
 								</thead>
 							</table>
 							<hr>
 							<table>
 								<tbody>
-									@foreach ($tasks as $key => $task)
 										<tr>
-											<td colspan="4" style="text-align:left;width:800px">{{ $key+1 .". ".$task->description }}</td>
+											<td>Pertanyaan</td>
+											<td>:</td>
 										</tr>
 										<tr>
-											@foreach ($answers[$key] as $key => $answer)
-												<td style="text-align: left; padding-left:15px">
-													<label class="radio-inline">
-														<input type="radio" value="1" name="" class="styled">
-														{{ $choices[$key].". ".$answer->choice_answer }}
-													</label>
-													<br>
-													<br>
-													<br>
-												</td>
-											@endforeach
+											<td>Jawaban</td>
+											<td>:</td>
 										</tr>
-									@endforeach
+										<tr>
+											<td>Kunci</td>
+											<td>:</td>
+										</tr>
+										<tr>
+											<td>Pembahasan</td>
+											<td>:</td>
+										</tr>
 								</tbody>
 							</table>
 							<div class="row" style="margin-top: 15px; margin-bottom:20px">
 								<div class="col-md-12 " style="text-align: center;">
-									<button type="button" class="btn btn-success" onclick="location.href='{{url('siswa/hasil/') }}'">Selesai</button>
+									{{-- <button type="submit" class="btn btn-success">Selesai</button> --}}
+									<button type="button" class="btn btn-success" onclick="location.href='/siswa/soal';">OKE</button>
 								</div>
 							</div>
 						</div>

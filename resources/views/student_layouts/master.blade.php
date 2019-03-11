@@ -116,7 +116,6 @@
 			<div class="col-md-12 text-center">
 				<p>
 					<small class="block">&copy; 2019 Aplikasi Dashboard Pembelajaran dan Buku Interaktif</small>
-					{{-- <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small> --}}
 				</p>
 				{{-- <p>
 					<ul class="fh5co-social-icons">

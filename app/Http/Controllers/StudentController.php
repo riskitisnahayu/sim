@@ -158,6 +158,11 @@ class StudentController extends Controller
         return response()->json($task_masters);
     }
 
+    public function soalResult()
+    {
+        return view('student.soal_result');
+    }
+
     public function index()
     {
         return view('student.index');

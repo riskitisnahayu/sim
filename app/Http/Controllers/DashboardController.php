@@ -122,19 +122,6 @@ class DashboardController extends Controller
         }
     }
 
-
-
-    // public function adminReport(Request $request){
-        // $ortu = Orangtua::with(['student' => function($a){
-        //     $a->pluck('user_id');
-        // }])->where('user_id', Auth::user()->id)->first();
-    //     $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
-    //     $siswa = $ortu->student->pluck('user_id');
-    //     $activities = LogActivity::whereIn('user_id', $siswa)->with('user.student')->get();
-    //     return view('admin.admin_dashboard', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
-    //
-    // }
-
     public function adminGames()
     {
         return view('admin.admin_games');
@@ -142,9 +129,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // $siswa = Student::all();
-        // $ortu  = Orangtua::all();
-        // return view('admin.user_dashboard', compact('siswa','ortu'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
+
     }
 
 }

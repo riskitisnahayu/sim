@@ -15,6 +15,7 @@ class CreateSubjectscategoriesTable extends Migration
     {
         Schema::create('subjectscategories', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('image')->nullable();
             $table->string('name',191);
             $table->string('description',191);
             $table->timestamps();

@@ -2,6 +2,7 @@
 
 @section('student-content')
 <form class="form-horizontal" action="{!! route('student.banksoal') !!}" enctype="multipart/form-data" method="get">
+	{{ csrf_field() }}
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 		<div class="container">
 			<div class="row animate-box" style="background-color: white">
@@ -74,13 +75,13 @@
 							<div class="form-group">
 				    			<label class="control-label col-lg-2">Tipe Soal</label>
 				    			<div class="col-lg-10">
-				                    <select name="task" class="form-control" >
+				                    <select name="tipe" class="form-control" >
 				                        <option  selected disabled>
 				                            @if($errors->any())
 				                                @if ($errors)
 
 				                                @endif
-				                                {{ old('task') }}
+				                                {{ old('tipe') }}
 				                            @else
 				                                --- Pilih Tipe Soal ---
 				                            @endif
@@ -134,9 +135,7 @@
 
 							<div class="row" style="margin-top: 15px; margin-bottom:20px">
 				            	<div class="col-md-12" style="text-align: center;">
-				                	{{-- <button type="submit" class="btn btn-success">Submit</button> --}}
-									<button type="button" class="btn btn-success" onclick="location.href='/siswa/soal';">Submit</button>
-
+									<button type="button" class="btn btn-success" onclick="location.href='{{url('siswa/soal/'.$value->id) }}'">Submit</button>
 				              	</div>
 				            </div>
 						</div>
