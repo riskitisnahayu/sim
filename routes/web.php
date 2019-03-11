@@ -64,7 +64,7 @@ Route::get('siswa/mini-games', 'StudentController@games')->name('student.games')
 Route::get('siswa/e-books', 'StudentController@ebooks')->name('student.ebook');
 Route::get('siswa/bank-soal', 'StudentController@banksoal')->name('student.banksoal');
 Route::get('siswa/soal/{id}', 'StudentController@soal')->name('student.soal');
-Route::get('siswa/hasil/{id}', 'StudentController@soalResult')->name('student.hasil');
+Route::post('siswa/hasil/{id}', 'StudentController@soalResult')->name('student.hasil');
 
 // Dashboard admin
 Route::get('admin/profil-detail', 'DashboardController@detailProfil')->name('admin.profil.detail');

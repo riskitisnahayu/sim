@@ -1,7 +1,7 @@
 @extends('student_layouts.master')
 
 @section('student-content')
-<form class="form-horizontal" action="{!! route('student.soal',['id'=>$taskmaster_id]) !!}" enctype="multipart/form-data" method="get">
+<form class="form-horizontal" action="{!! route('student.hasil',['id'=>$taskmaster_id]) !!}" enctype="multipart/form-data" method="POST">
 	{{ csrf_field() }}
 	<input type="hidden" name="taskmaster_id" value="{{ $taskmaster_id }}">
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
@@ -57,7 +57,7 @@
 											@foreach ($answers[$key] as $key => $answer)
 												<td style="text-align: left; padding-left:15px">
 													<label class="radio-inline">
-														<input type="radio" value="1" name="" class="styled">
+														<input type="radio" value="{{$choices[$key]}}" name="answer{{$loop->parent->index+1}}" class="styled"  id="rd{{$key+1}}">
 														{{ $choices[$key].". ".$answer->choice_answer }}
 													</label>
 													<br>
@@ -71,7 +71,8 @@
 							</table>
 							<div class="row" style="margin-top: 15px; margin-bottom:20px">
 								<div class="col-md-12 " style="text-align: center;">
-									<button type="button" class="btn btn-success" onclick="location.href='{{url('siswa/hasil/') }}'">Selesai</button>
+									<button type="submit" class="btn btn-success">Selesai</button>
+									{{-- <input type="submit" class="btn btn-success" value="Selesai"> --}}
 								</div>
 							</div>
 						</div>
