@@ -17,7 +17,7 @@ class CreateGamesTable extends Migration
             $table->increments('id');
             $table->string('name',190);
             // $table->enum('category',['Arcade', 'Classic', 'Platform', 'Puzzle', 'Racing','Shooter']); //enum == pilihan di dropdown
-            $table->integer('gamecategories_id');
+            $table->integer('gamecategories_id')->unsigned();
             $table->enum('for',['7','8','9'])->nullable();
             $table->string('image')->nullable();
             $table->string('description',190);
