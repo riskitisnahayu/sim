@@ -42,7 +42,8 @@ Route::get('orangtua-register', function() {
 // dashboard orangtua
 Route::get('orangtua/dashboard', 'OrangtuaController@index')->name('orangtua.dashboard');
 Route::get('orangtua/registrasi-anak', 'OrangtuaController@registration')->name('orangtua.registration');
-Route::get('orangtua/laporan', 'OrangtuaController@report')->name('orangtua.report');
+Route::get('orangtua/aktivitas-anak', 'OrangtuaController@studentActivity')->name('orangtua.studentactivity');
+Route::get('orangtua/hasil-test-anak', 'OrangtuaController@studentResult')->name('orangtua.studentresult');
 Route::get('orangtua/registerasi-anak/edit/{id}', 'OrangtuaController@edit')->name('orangtua.registeration.edit');
 Route::get('orangtua/profil-detail', 'OrangtuaController@detailProfil')->name('orangtua.profil.detail');
 Route::get('orangtua/profil-edit', 'OrangtuaController@editProfil')->name('orangtua.profil.edit');

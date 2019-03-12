@@ -33,7 +33,7 @@ class OrangtuaController extends Controller
         return view('orangtua.registeration', compact('provinces','regencies','districts', 'ortu'));
     }
 
-    public function report(Request $request)
+    public function studentActivity(Request $request)
     {
         $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
         // $siswa = User::where('type', 'Siswa')->whereHas('student', function ($query) use($ortu) {
@@ -46,7 +46,13 @@ class OrangtuaController extends Controller
         $activities = LogActivity::whereIn('user_id', $siswa)->with('user.student')->get();
         // dd($activity);
 
-        return view('orangtua.report',compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10);
+        return view('orangtua.student_activity',compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10);
+    }
+
+    public function studentResult(Request $request)
+    {
+        $activities = LogActivity::with('user.student.orangtua.user')->get();
+        return view('orangtua.student_result', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 
     public function index2(Request $request)

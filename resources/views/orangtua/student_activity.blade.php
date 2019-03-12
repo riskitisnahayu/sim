@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('page_title')
-    Laporan
+    Laporan Aktivitas Siswa
 
 @endsection
 

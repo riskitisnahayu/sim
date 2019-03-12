@@ -152,8 +152,14 @@
 								@else
 									<li class="{{ request()->is('orangtua/dashboard') ? 'active' : '' }}"><a href="{!! route('orangtua.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 									<li class="{{ request()->is('orangtua/registerasi-anak') ? 'active' : '' }}"><a href="{!! route('orangtua.registeration.index2') !!}"><i class="icon-user"></i> <span>Registerasi Anak</span></a></li>
-									<li class="{{ request()->is('orangtua/laporan') ? 'active' : '' }}"><a href="{!! route('orangtua.report') !!}"><i class="icon-clipboard3"></i> <span>Laporan</span></a></li>
-
+									{{-- <li class="{{ request()->is('orangtua/laporan') ? 'active' : '' }}"><a href="{!! route('orangtua.report') !!}"><i class="icon-clipboard3"></i> <span>Laporan</span></a></li> --}}
+									<li>
+										<a href="#"><i class="icon-clipboard3"></i> <span>Laporan</span></a>
+										<ul>
+											<li class="{{ request()->is('orangtua/aktivitas-anak') ? 'active' : '' }}"><a href="{!! route('orangtua.studentactivity') !!}">Aktivitas Anak</a></li>
+											<li class="{{ request()->is('orangtua/hasil-tes-anak') ? 'active' : '' }}"><a href="{!! route('orangtua.studentresult') !!}">Hasil Tes Anak</a></li>
+										</ul>
+									</li>
 							@endif
 
                             <!-- /main -->
