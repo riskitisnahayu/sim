@@ -3,7 +3,7 @@
 
 @section('content')
 @section('page_title')
-    Dashboard
+    Laporan Hasil Tes Pengguna
 
 @endsection
 

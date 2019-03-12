@@ -142,7 +142,7 @@
 								<li class="{{ request()->is('admin/mini-games') ? 'active' : '' }}"><a href="{!! route('admin.minigames') !!}"><i class="icon-puzzle2"></i> <span>Mini Games</span></a></li>
 								<li class="{{ request()->is('admin/e-book') ? 'active' : '' }}"><a href="{!! route('admin.ebook') !!}"><i class="icon-book"></i> <span>E-Book</span></a></li>
 								<li class="{{ request()->is('admin/bank-soal') ? 'active' : '' }}"><a href="{!! route('admin.banksoal') !!}"><i class="icon-folder2"></i> <span>Bank Soal</span></a></li>
-								<li>
+								<li {{ request()->is('admin/laporan') ? 'active' : '' }}>
 									<a href="#"><i class="icon-clipboard3"></i> <span>Laporan</span></a>
 									<ul>
 										<li class="{{ request()->is('admin/aktivitas-pengguna') ? 'active' : '' }}"><a href="{!! route('admin.studentactivity') !!}">Aktivitas Pengguna</a></li>

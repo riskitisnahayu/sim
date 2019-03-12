@@ -1,7 +1,6 @@
 @extends('student_layouts.master')
 
 @section('student-content')
-<form class="form-horizontal" action="{!! route('student.games') !!}" enctype="multipart/form-data" method="get">
 
 <div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 	<div class="container">
@@ -13,6 +12,7 @@
 	</div>
 	<div class="container">
 		<div class="row">
+			<form class="form-horizontal" action="{!! route('student.games') !!}" enctype="multipart/form-data" method="get">
 			<div class="form-group">
 				<label class="control-label col-lg-2">Kategori</label>
 				<div class="col-lg-10">
@@ -39,18 +39,18 @@
                 	<button type="submit" class="btn btn-success">Submit</button>
               	</div>
             </div>
-</form>
+			</form>
 
-			<div class="row">
+			<div style="display: flex;flex-basis: 100%;flex-wrap: wrap;">
 				@foreach ($games as $key => $game)
-					<div class="col-md-4">
+					<div style="width:30%">
 						<div class="thumbnail">
 							<div class="thumb" style="text-align:center; padding-top:10px">
 								<img src="{!! asset('images') !!}/{{ $game->image }}" alt="">
 							</div>
 
 							<div class="caption">
-								<h4 class="no-margin-top" style="text-align:center"><a href="{{ $game->url }}" target="_blank">{{ $game->name }}</a></h4>
+								<h4 class="no-margin-top text-center"><a href="{{ $game->url }}" target="_blank">{{ $game->name }}</a></h4>
 							</div>
 						</div>
 					</div>
@@ -59,5 +59,22 @@
 		</div>
 	</div>
 </div>
+{{-- <div class="container"> --}}
+	{{-- <div style=" display: flex;flex-basis: 100%;flex-wrap: wrap;">
+		@foreach ($games as $key => $game)
+			<div style="width:30%">
+				<div class="thumbnail">
+					<div class="thumb">
+						<img src="{!! asset('images') !!}/{{ $game->image }}" alt="">
+					</div>
+
+					<div class="caption">
+						<h4 class="no-margin-top text-center"><a href="{{ $game->url }}" target="_blank">{{ $game->name }}</a></h4>
+					</div>
+				</div>
+			</div>
+		@endforeach
+	</div> --}}
+{{-- </div> --}}
 
 @endsection

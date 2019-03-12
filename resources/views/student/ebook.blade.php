@@ -78,16 +78,16 @@
 	              	</div>
 	            </div>
 </form>
-				<div class="row">
+				<div style="display: flex;flex-basis: 100%;flex-wrap: wrap;">
 					@foreach ($ebooks as $key => $ebook)
-						<div class="col-md-3">
+						<div style="width:30%">
 							<div class="thumbnail">
 								<div class="thumb" style="text-align:center; padding-top:10px">
 									<img src="{!! asset('images') !!}/{{ $ebook->image }}" alt="">
 								</div>
 
 								<div class="caption">
-									<h4 class="no-margin-top" style="text-align:center"><a href="{{ $ebook->url }}" target="_blank">{{ $ebook->title }}</a></h4>
+									<h4 class="no-margin-top text-center"><a href="{{ $ebook->url }}" target="_blank">{{ $ebook->title }}</a></h4>
 								</div>
 							</div>
 						</div>
