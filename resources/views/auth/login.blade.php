@@ -29,6 +29,16 @@
                 @endif
 			</div>
 
+            <div class="form-group login-options">
+				<div class="row">
+					<div class="col-sm-6"></div>
+
+					<div class="col-sm-6 text-right">
+						<a href="{!! route('password.request') !!}">Lupa password?</a>
+					</div>
+				</div>
+			</div>
+
 			<div class="form-group">
 				<button type="submit" class="btn bg-blue btn-block">Login <i class="icon-arrow-right14 position-right"></i></button>
 			</div>

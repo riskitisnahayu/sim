@@ -74,12 +74,14 @@ Route::get('admin/profil-password-edit', 'DashboardController@editPassword')->na
 Route::post('admin/profil-password-edit', 'DashboardController@updatePassword')->name('admin.password.update');
 
 Route::get('admin/dashboard', 'DashboardController@adminDashboard')->name('admin.dashboard');
-Route::get('admin/daftar-pemain-game', 'UserLevelController@index')->name('admin.user_dashboard');
+Route::get('admin/daftar-pengguna', 'DashboardController@studentList')->name('admin.studentlist');
 Route::get('admin/kelola-kategori-game', 'GameCategoryController@index')->name('admin.gamecategory');
 Route::get('admin/kelola-mata-pelajaran', 'SubjectsCategoryController@index')->name('admin.subjectscategory');
 Route::get('admin/mini-games', 'GamesController@index')->name('admin.minigames');
 Route::get('admin/e-book', 'EbookController@index')->name('admin.ebook');
 Route::get('admin/bank-soal', 'TaskMasterController@index')->name('admin.banksoal'); //controller diganti ya
+Route::get('admin/aktivitas-pengguna', 'DashboardController@studentActivity')->name('admin.studentactivity'); //controller diganti ya
+Route::get('admin/hasil-tes-pengguna', 'DashboardController@studentResult')->name('admin.studentresult'); //controller diganti ya
 
 
 // mini games

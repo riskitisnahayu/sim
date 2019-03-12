@@ -115,6 +115,7 @@
           <div class="col-md-12" style="text-align: center;">
             <button type="submit" class="btn btn-success">Simpan</button>
             <button type="button" class="btn btn-danger" onclick="location.href='/admin/bank-soal';">Batal</button>
+            <button type="button" class="btn btn-info" onclick="location.href='/admin/soal';">Lihat Soal</button>
           </div>
         </div>
     </form>

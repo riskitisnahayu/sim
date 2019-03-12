@@ -146,6 +146,7 @@ class StudentController extends Controller
          // dd($answers);
          $choices = ['a', 'b', 'c', 'd'];
          $taskmaster_id = $id;
+         // dd($taskmaster_id);
 
          return view('student.soal', compact('task_master','tasks','answers','choices','taskmaster_id'));
      }

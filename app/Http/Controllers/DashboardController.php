@@ -27,7 +27,7 @@ class DashboardController extends Controller
         // $siswaAll = Student::all();
         $ortu = DB::table('users')->where('type', '=', 'Orang tua')->count();
         $siswa = DB::table('users')->where('type', '=', 'Siswa')->count();
-        $activities = LogActivity::with('user.student.orangtua.user')->get();
+        $activities = LogActivity::with('user.student.orangtua.user')->limit(5)->orderBy('user_id', 'desc')->get();
 
         // $ortu2 = Orangtua::where('user_id', Auth::user()->id)->first();
         // $siswa2 = $ortu2->student->pluck('user_id'); //Collection contains only user_id(koleksi hanya berisi id user)
@@ -35,6 +35,24 @@ class DashboardController extends Controller
 
         // dd($activities);
         return view('admin.admin_dashboard', compact('activities', 'ortu','siswa'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
+    }
+
+    public function studentList(Request $request)
+    {
+            $siswa = Student::all()->sortByDesc('user_id');
+            return view('admin.student_list', compact('siswa'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
+    }
+
+    public function studentActivity(Request $request)
+    {
+        $activities = LogActivity::with('user.student.orangtua.user')->limit(5)->orderBy('user_id', 'desc')->get();
+        return view('admin.student_activity', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
+    }
+
+    public function studentResult(Request $request)
+    {
+        $activities = LogActivity::with('user.student.orangtua.user')->get();
+        return view('admin.student_result', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 
     public function detailProfil()
