@@ -134,10 +134,13 @@ class StudentController extends Controller
          return view('student.banksoal', compact('task_masters','subjectscategories'));
      }
 
-     public function soal($id)
+     public function soal(Request $request)
      {
-         $task_master = TaskMaster::find($id);
-         $tasks = TaskMaster::where('id', $id)->first()->tasks()->get();
+         // $task_master = TaskMaster::find($id);
+         // $tasks = TaskMaster::where('id', $id)->first()->tasks()->get();
+         $task_master_id = $request->title;
+         $task_master = TaskMaster::find($task_master_id);
+         $tasks = TaskMaster::where('id', $task_master_id)->first()->tasks()->get();
          $answers = [];
          foreach ($tasks as $key => $curr_task) {
              $answers[$key] = $curr_task->answers()->orderBy('choice', 'asc')->get();
@@ -145,7 +148,8 @@ class StudentController extends Controller
          // dd($tasks);
          // dd($answers);
          $choices = ['a', 'b', 'c', 'd'];
-         $taskmaster_id = $id;
+         // $taskmaster_id = $id;
+        $taskmaster_id = $task_master_id;
          // dd($taskmaster_id);
 
          return view('student.soal', compact('task_master','tasks','answers','choices','taskmaster_id'));

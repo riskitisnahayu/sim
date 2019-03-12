@@ -1,7 +1,7 @@
 @extends('student_layouts.master')
 
 @section('student-content')
-<form class="form-horizontal" action="{!! route('student.banksoal') !!}" enctype="multipart/form-data" method="get">
+<form class="form-horizontal" action="{{ url('siswa/soal') }}"  method="POST">
 	{{ csrf_field() }}
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 		<div class="container">
@@ -26,7 +26,7 @@
 								<div class="col-lg-10">
 										<select class="form-control" id="title" name="title" onchange="checkform()">
 											<option value="">--- Pilih Judul Bank Soal ---</option>
-											@foreach ($task_masters as $key => $value)
+											@foreach ($task_masters as $value)
 												<option class="{{$value->subjectscategories_id}} "value="{{$value->id}}" {{collect(old('title'))->contains($value->id) ? 'selected':''}}>{{ $value->title }}</option>
 											@endforeach
 										</select>
@@ -75,7 +75,8 @@
 							<div class="form-group">
 				    			<label class="control-label col-lg-2">Tipe Soal</label>
 				    			<div class="col-lg-10">
-				                    <select name="tipe" class="form-control" >
+									<input type="text" class="form-control" name="tipe" placeholder="Pilihan Ganda" readonly>
+				                    {{-- <select name="tipe" class="form-control" >
 				                        <option  selected disabled>
 				                            @if($errors->any())
 				                                @if ($errors)
@@ -87,13 +88,14 @@
 				                            @endif
 				                        </option>
 				                        <option value="Pilihan ganda">Pilihan Ganda</option>
-				                    </select>
+				                    </select> --}}
 				    			</div>
 				    		</div>
 							<div class="form-group">
 				    			<label class="control-label col-lg-2">Jenis Soal</label>
 				    			<div class="col-lg-10">
-				                    <select name="jenis" class="form-control" >
+									<input type="text" class="form-control" name="jenis" placeholder="Latihan" readonly>
+				                    {{-- <select name="jenis" class="form-control" >
 				                        <option  selected disabled>
 				                            @if($errors->any())
 				                                @if ($errors)
@@ -106,36 +108,34 @@
 				                        </option>
 				                        <option value="Latihan">Latihan</option>
 										<option value="Ulangan harian">Ulangan harian</option>
-				                    </select>
+				                    </select> --}}
 				    			</div>
 				    		</div>
 							<div class="form-group">
-				    			<label class="control-label col-lg-2">Jumlah Soal</label>
-							</div>
-								<div class="form-group">
-									<label class="control-label col-lg-2">Pilihan ganda</label>
-									<div class="col-lg-10">
-										<select name="total" class="form-control" >
-											<option  selected disabled>
-												@if($errors->any())
-													@if ($errors)
+								<label class="control-label col-lg-2">Jumlah Soal</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" name="total" placeholder="10" readonly>
+									{{-- <select name="total" class="form-control" >
+										<option  selected disabled>
+											@if($errors->any())
+												@if ($errors)
 
-													@endif
-													{{ old('total') }}
-												@else
-													--- 0 ---
 												@endif
-											</option>
-											<option value="2">2</option>
-											<option value="5">5</option>
-											<option value="10">10</option>
-										</select>
-									</div>
+												{{ old('total') }}
+											@else
+												--- 0 ---
+											@endif
+										</option>
+										<option value="2">2</option>
+										<option value="5">5</option>
+										<option value="10">10</option>
+									</select> --}}
 								</div>
+							</div>
 
 							<div class="row" style="margin-top: 15px; margin-bottom:20px">
 				            	<div class="col-md-12" style="text-align: center;">
-									<button type="button" class="btn btn-success" onclick="location.href='{{url('siswa/soal/'.$value->id) }}'">Submit</button>
+									<input type="submit" class="btn btn-success" value="Buka soal">
 				              	</div>
 				            </div>
 						</div>
