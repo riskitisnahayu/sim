@@ -1,8 +1,7 @@
 @extends('student_layouts.master')
 
 @section('student-content')
-<form class="form-horizontal" action="{{ url('siswa/soal') }}"  method="POST">
-	{{ csrf_field() }}
+<form class="form-horizontal" action="{{ url('siswa/soal') }}"  method="get">
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 		<div class="container">
 			<div class="row animate-box" style="background-color: white">
