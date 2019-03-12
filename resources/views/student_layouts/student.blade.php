@@ -427,17 +427,17 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-				<a href="#"><img src="{!! asset('law/assets/images/minigames.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+				<a href="{!! route('siswa.login') !!}"><img src="{!! asset('law/assets/images/minigames.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 					<h3 style="color: black">Mini Games</h3>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-				<a href="#"><img src="{!! asset('law/assets/images/ebook.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+				<a href="{!! route('siswa.login') !!}"><img src="{!! asset('law/assets/images/ebook.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 					<h3 style="color: black">E-Book</h3>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-				<a href="#"><img src="{!! asset('law/assets/images/banksoal.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+				<a href="{!! route('siswa.login') !!}"><img src="{!! asset('law/assets/images/banksoal.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 					<h3 style="color: black">Bank Soal</h3>
 				</a>
 			</div>

@@ -142,7 +142,7 @@
 								<li class="{{ request()->is('admin/mini-games') ? 'active' : '' }}"><a href="{!! route('admin.minigames') !!}"><i class="icon-puzzle2"></i> <span>Mini Games</span></a></li>
 								<li class="{{ request()->is('admin/e-book') ? 'active' : '' }}"><a href="{!! route('admin.ebook') !!}"><i class="icon-book"></i> <span>E-Book</span></a></li>
 								<li class="{{ request()->is('admin/bank-soal') ? 'active' : '' }}"><a href="{!! route('admin.banksoal') !!}"><i class="icon-folder2"></i> <span>Bank Soal</span></a></li>
-								<li {{ request()->is('admin/laporan') ? 'active' : '' }}>
+								<li>
 									<a href="#"><i class="icon-clipboard3"></i> <span>Laporan</span></a>
 									<ul>
 										<li class="{{ request()->is('admin/aktivitas-pengguna') ? 'active' : '' }}"><a href="{!! route('admin.studentactivity') !!}">Aktivitas Pengguna</a></li>
@@ -152,7 +152,6 @@
 								@else
 									<li class="{{ request()->is('orangtua/dashboard') ? 'active' : '' }}"><a href="{!! route('orangtua.dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 									<li class="{{ request()->is('orangtua/registerasi-anak') ? 'active' : '' }}"><a href="{!! route('orangtua.registeration.index2') !!}"><i class="icon-user"></i> <span>Registerasi Anak</span></a></li>
-									{{-- <li class="{{ request()->is('orangtua/laporan') ? 'active' : '' }}"><a href="{!! route('orangtua.report') !!}"><i class="icon-clipboard3"></i> <span>Laporan</span></a></li> --}}
 									<li>
 										<a href="#"><i class="icon-clipboard3"></i> <span>Laporan</span></a>
 										<ul>
