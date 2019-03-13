@@ -88,7 +88,6 @@ class StudentController extends Controller
                  ['class', $request->class],
                  ['semester', $request->semester],
                  ])->get();
-
          } elseif ($request->subjectscategories_id && $request->title) {
              $task_masters = TaskMaster::where([
                  ['subjectscategories_id', $request->subjectscategories_id],
@@ -131,6 +130,7 @@ class StudentController extends Controller
              $task_masters = TaskMaster::all();
          }
          $subjectscategories = SubjectsCategory::all();
+         dd($task_masters);
          return view('student.banksoal', compact('task_masters','subjectscategories'));
      }
 

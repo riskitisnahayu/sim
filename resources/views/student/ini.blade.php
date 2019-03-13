@@ -10,36 +10,14 @@
 					<div class="container">
 						<div class="row" style="padding-right:50px">
 							<div class="form-group">
-								<label class="control-label col-lg-2">Mata Pelajaran</label>
-								<div class="col-lg-10">
-									<select class="form-control" name="subjectscategories" id="subjectscategories" onchange="checkform()">
-										<option value="">--- Pilih mata pelajaran ---</option>
-										@foreach ($subjectscategories as $key => $value)
-											<option value="{{$value->id}}" {{collect(old('subjectscategories'))->contains($value->id) ? 'selected':''}}>{{ $value->name }}</option>
-										@endforeach
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-lg-2">Judul</label>
-								<div class="col-lg-10">
-									<select class="form-control" id="title" name="title" onchange="checkform()">
-										<option value="">--- Pilih judul soal ---</option>
-										@foreach ($task_masters as $value)
-											<option class="{{$value->subjectscategories_id}}" value="{{$value->id}}" {{collect(old('title'))->contains($value->id) ? 'selected':''}}>{{ $value->title }}</option>
-										@endforeach
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
 				    			<label class="control-label col-lg-2">Kelas</label>
 				    			<div class="col-lg-10">
 				                    <select class="form-control" name="class" id="class" onchange="checkform()">
-										<option value="">--- Pilih kelas ---</option>
+										{{-- <option value="">--- Pilih kelas ---</option>
 										@foreach ($task_masters as $value)
 											<option class="{{$value->subjectscategories_id}}" value="{{$value->id}}" {{collect(old('class'))->contains($value->id) ? 'selected':''}}>{{ $value->class }}</option>
-										@endforeach
-				                        {{-- <option  selected disabled>
+										@endforeach --}}
+				                        <option  selected disabled>
 				                            @if($errors->any())
 				                                @if ($errors)
 
@@ -51,7 +29,7 @@
 				                        </option>
 				                        <option value="7">7</option>
 				                        <option value="8">8</option>
-				                        <option value="9">9</option> --}}
+				                        <option value="9">9</option>
 				                    </select>
 				    			</div>
 				    		</div>
@@ -66,12 +44,49 @@
 												@endif
 												{{ old('semester') }}
 											@else
-												--- Pilih semester ---
+												--- Pilih Semester ---
 											@endif
 										</option>
 										<option value="I">I</option>
 										<option value="II">II</option>
 										<option value="Both">Both</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-lg-2">Mata Pelajaran</label>
+								<div class="col-lg-10">
+									<select class="form-control" name="subjectscategories" id="subjectscategories" onchange="checkform()">
+										<option value="">--- Pilih Mata Pelajaran ---</option>
+										@foreach ($subjectscategories as $key => $value)
+											<option value="{{$value->id}}" {{collect(old('subjectscategories'))->contains($value->id) ? 'selected':''}}>{{ $value->name }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-lg-2">Judul</label>
+								<div class="col-lg-10">
+									{{-- <select class="form-control" id="title" name="title" onchange="checkform()">
+										<option value="">--- Pilih judul soal ---</option>
+										@foreach ($task_masters as $value)
+											<option class="{{$value->subjectscategories_id}}" value="{{$value->id}}" {{collect(old('title'))->contains($value->id) ? 'selected':''}}>{{ $value->title }}</option>
+										@endforeach
+									</select> --}}
+									<select class="form-control" name="title">
+										<option  selected disabled>
+											@if($errors->any())
+												@if ($errors)
+
+												@endif
+												{{ old('title') }}
+											@else
+												---- Pilih Judul ---
+											@endif
+										</option>
+											@foreach($task_masters as $value)
+												<option value="{{$value->id}}" {{collect(old('title'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
+											@endforeach
 									</select>
 								</div>
 							</div>
@@ -155,8 +170,8 @@
 @section('script')
 <script src="{{ asset('law/assets/js/jquery.chained.min.js') }}"></script>
 	<script>
-	$("#title").chained("#subjectscategories");
-	$("#class").chained("#title");
+	// $("#title").chained("#subjectscategories");
+	// $("#class").chained("#title");
 
 	</script>
 @endsection
