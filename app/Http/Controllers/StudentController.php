@@ -130,7 +130,7 @@ class StudentController extends Controller
              $task_masters = TaskMaster::all();
          }
          $subjectscategories = SubjectsCategory::all();
-         dd($task_masters);
+         // dd($task_masters);
          return view('student.banksoal', compact('task_masters','subjectscategories'));
      }
 
