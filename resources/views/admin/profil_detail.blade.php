@@ -18,7 +18,6 @@
             </div>
         @endif
         <form class="form-horizontal" enctype="multipart/form-data" method="post">
-            {{ csrf_field() }}
         	<fieldset class="content-group">
                 <legend class="text-bold">Data Admin</legend>
                 <div class="form-group">

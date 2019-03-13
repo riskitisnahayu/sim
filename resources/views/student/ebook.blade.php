@@ -1,20 +1,23 @@
 @extends('student_layouts.master')
 
 @section('student-content')
-<form class="form-horizontal" action="{!! route('student.ebook') !!}" enctype="multipart/form-data" method="get">
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
-		<div class="container">
-			<div class="row animate-box">
+		{{-- <div class="container">
+			<div class="row animate-box" style="background-color: white">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>E-Book</h2>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 		<div class="container">
-			<div class="row">
+			<div class="row animate-box"style="background-color: white">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>E-Book</h2>
+				</div>
+			<form class="form-horizontal" action="{!! route('student.ebook') !!}" enctype="multipart/form-data" method="get">
 				<div class="form-group">
-	    			<label class="control-label col-lg-2">Mata Pelajaran</label>
-	                <div class="col-lg-10">
+	    			<label class="control-label col-sm-3">Mata Pelajaran</label>
+	                <div class="col-lg-8">
 	                    <select class="form-control" name="subjectscategories_id">
 	                        <option  selected disabled>
 	                            @if($errors->any())
@@ -33,8 +36,8 @@
 	                </div>
 	    		</div>
 				<div class="form-group">
-	    			<label class="control-label col-lg-2">Kelas</label>
-	    			<div class="col-lg-10">
+	    			<label class="control-label col-lg-3">Kelas</label>
+	    			<div class="col-lg-8">
 	                    <select name="class" class="form-control" >
 	                        <option  selected disabled>
 	                            @if($errors->any())
@@ -53,8 +56,8 @@
 	    			</div>
 	    		</div>
 				<div class="form-group">
-					<label class="control-label col-lg-2">Semester</label>
-					<div class="col-lg-10">
+					<label class="control-label col-lg-3">Semester</label>
+					<div class="col-lg-8">
 						<select name="semester" class="form-control" >
 							<option  selected disabled>
 								@if($errors->any())
@@ -72,17 +75,18 @@
 						</select>
 					</div>
 				</div>
-				<div class="row" style="margin-top: 15px; margin-bottom:20px">
-	            	<div class="col-md-12" style="text-align: center;">
+				<div class="row" style="margin-top: 30px; margin-bottom:20px">
+	            	<div class="col-md-12 text-center">
 	                	<button type="submit" class="btn btn-success">Submit</button>
 	              	</div>
 	            </div>
 </form>
-				<div style="display: flex;flex-basis: 100%;flex-wrap: wrap;">
+				<div class="col-sm-12" style="display: flex;flex-basis: 100%;flex-wrap: wrap; margin-top:50px">
 					@foreach ($ebooks as $key => $ebook)
-						<div style="width:30%">
+						{{-- <div style="width:30%"> --}}
+						<div class="col-sm-4">
 							<div class="thumbnail">
-								<div class="thumb" style="text-align:center; padding-top:10px">
+								<div class="thumb text-center" style="padding-top:10px">
 									<img src="{!! asset('images') !!}/{{ $ebook->image }}" alt="">
 								</div>
 
