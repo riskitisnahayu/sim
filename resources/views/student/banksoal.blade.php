@@ -12,7 +12,7 @@
 			<label class="control-label col-lg-3">Mata Pelajaran</label>
 				<div class="col-lg-8">
 					<select class="form-control" name="subjectscategories" id="subjectscategories" onchange="checkform()">
-						<option value="">--- Pilih mata pelajaran ---</option>
+						<option value="">--- Pilih Mata Pelajaran ---</option>
 						@foreach ($subjectscategories as $key => $value)
 							<option value="{{$value->id}}" {{collect(old('subjectscategories'))->contains($value->id) ? 'selected':''}}>{{ $value->name }}</option>
 						@endforeach
@@ -23,7 +23,7 @@
 			<label class="control-label col-lg-3">Judul</label>
 				<div class="col-lg-8">
 					<select class="form-control" id="title" name="title" onchange="checkform()">
-						<option value="">--- Pilih judul soal ---</option>
+						<option value="">--- Pilih Judul Soal ---</option>
 						@foreach ($task_masters as $value)
 							<option class="{{$value->subjectscategories_id}}" value="{{$value->id}}" {{collect(old('title'))->contains($value->id) ? 'selected':''}}>{{ $value->title }}</option>
 						@endforeach
@@ -34,7 +34,7 @@
 			<label class="control-label col-lg-3">Kelas</label>
     			<div class="col-lg-8">
                     <select class="form-control" name="class" id="class" onchange="checkform()">
-						<option value="">--- Pilih kelas ---</option>
+						<option value="">--- Pilih Kelas ---</option>
 						@foreach ($task_masters as $value)
 							<option class="{{$value->subjectscategories_id}}" value="{{$value->id}}" {{collect(old('class'))->contains($value->id) ? 'selected':''}}>{{ $value->class }}</option>
 						@endforeach
@@ -65,7 +65,7 @@
 								@endif
 								{{ old('semester') }}
 							@else
-								--- Pilih semester ---
+								--- Pilih Semester ---
 							@endif
 						</option>
 						<option value="I">I</option>
@@ -77,7 +77,7 @@
 			<div class="form-group">
 			<label class="control-label col-lg-3">Tipe Soal</label>
     			<div class="col-lg-8">
-					<input type="text" class="form-control" name="tipe" placeholder="Pilihan ganda" readonly>
+					<input type="text" class="form-control" name="tipe" placeholder="Pilihan Ganda" readonly>
                     {{-- <select name="tipe" class="form-control" >
                         <option  selected disabled>
                             @if($errors->any())
