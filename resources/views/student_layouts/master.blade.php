@@ -88,7 +88,7 @@
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
-						{{-- <li class="btn-cta2"><a href="#"><span>Profil</span></a></li> --}}
+						<li class="btn-cta2"><a href="{{ route('student.profil') }}"><span>Profil</span></a></li>
 						<li class="btn-cta1"><a href="#">
 							<a href="{{ route('logout') }}"
 								onclick="event.preventDefault();

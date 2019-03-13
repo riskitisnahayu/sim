@@ -9,6 +9,7 @@ use App\EBook;
 use App\SubjectsCategory;
 use App\LogActivity;
 use App\TaskMaster;
+use App\Student;
 use Auth;
 
 class StudentController extends Controller
@@ -18,6 +19,12 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function profil()
+     {
+         $siswa = Student::where('user_id', Auth::user()->id)->first();
+         return view('student.profil_detail', compact('siswa'));
+     }
 
      public function games(Request $request)
      {

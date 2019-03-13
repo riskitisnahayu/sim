@@ -61,6 +61,7 @@ Route::get('orangtua/registerasi-anak/delete/{id}', 'OrangtuaController@destroy'
 
 // untuk Siswa
 Route::get('siswa', 'StudentController@index')->name('student.index');
+Route::get('siswa/profil', 'StudentController@profil')->name('student.profil');
 Route::get('siswa/mini-games', 'StudentController@games')->name('student.games');
 Route::get('siswa/e-books', 'StudentController@ebooks')->name('student.ebook');
 Route::get('siswa/bank-soal', 'StudentController@banksoal')->name('student.banksoal');
