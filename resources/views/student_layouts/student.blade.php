@@ -43,6 +43,10 @@
 	<!-- Bootstrap  -->
 	{{-- <link rel="stylesheet" href="{!! asset('law/assets/css/bootstrap.css') !!}"> --}}
 
+	{{-- toastr --}}
+	<link rel="stylesheet" href="{!! asset('law/assets/css/toastr.css') !!}">
+	<link rel="stylesheet" href="{!! asset('law/assets/css/toastr.min.css') !!}">
+
 	<!-- Magnific Popup -->
 	<link rel="stylesheet" href="{!! asset('law/assets/css/magnific-popup.css') !!}">
 
@@ -53,7 +57,7 @@
 	<link rel="stylesheet" href="{!! asset('law/assets/css/flexslider.css') !!}">
 
 	<!-- Theme style  -->
-		<link rel="stylesheet" href="{!! asset('law/assets/css/style.css') !!}">
+	<link rel="stylesheet" href="{!! asset('law/assets/css/style.css') !!}">
 
 	<!-- Modernizr JS -->
 	<script src="{!! asset('law/assets/js/modernizr-2.6.2.min.js') !!}"></script>
@@ -75,16 +79,6 @@
 
 </head>
 <body>
-	{{-- Validasi  --}}
-	{{-- @if ($errors->any())
-		<div class="alert alert-danger">
-			<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif --}}
 	{{-- MODAL LOGIN --}}
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -181,7 +175,6 @@
 		</div>
 	</div>
 </div>
-
 <div id="fh5co-project">
 	<div class="container">
 		<div class="row animate-box">
@@ -193,17 +186,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-				<a href="#"><img src="{!! asset('law/assets/images/minigames.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+				{{-- <a href="" onclick="javascript:if(confirm('Maaf, Anda belum login! Silahkan login dulu. Jika belum memiliki akun, Silahkan hubungi orangtua Anda untuk melakukan registerasi!')){window.location.href='{{url('siswa-login') }}'};"><img src="{!! asset('law/assets/images/minigames.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive"> --}}
+				<a href="#" class="fitur" onclick="fitur()"><img src="{!! asset('law/assets/images/minigames.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 					<h3 style="color: black">Mini Games</h3>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-				<a href="#"><img src="{!! asset('law/assets/images/ebook.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+				<a href="#" class="fitur" onclick="fitur()"><img src="{!! asset('law/assets/images/ebook.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 					<h3 style="color: black">E-Book</h3>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-				<a href="#"><img src="{!! asset('law/assets/images/banksoal.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+				<a href="#" class="fitur" onclick="fitur()"><img src="{!! asset('law/assets/images/banksoal.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 					<h3 style="color: black">Bank Soal</h3>
 				</a>
 			</div>
@@ -232,6 +226,29 @@
 
 <!-- Modal -->
 
+	<script type="text/javascript">
+	function fitur(){
+
+		toastr.options = {
+		  "closeButton": false,
+		  "debug": false,
+		  "newestOnTop": false,
+		  "progressBar": false,
+		  "positionClass": "toast-top-full-width",
+		  "preventDuplicates": false,
+		  "onclick": null,
+		  "showDuration": "1000",
+		  "hideDuration": "1000",
+		  "timeOut": "5000",
+		  "extendedTimeOut": "1000",
+		  "showEasing": "swing",
+		  "hideEasing": "linear",
+		  "showMethod": "fadeIn",
+		  "hideMethod": "fadeOut"
+		}
+		toastr.error('Oopss! Login dulu! Belum punya akun? Ooppss! Registerasi dulu!','')
+	}
+	</script>
 
 	<!-- jQuery -->
 	<script src="{!! asset('law/assets/js/jquery.min.js') !!}"></script>
@@ -254,6 +271,11 @@
 	<script src="{!! asset('law/assets/js/magnific-popup-options.js') !!}"></script>
 	<!-- Main -->
 	<script src="{!! asset('law/assets/js/main.js') !!}"></script>
+
+	{{-- toastr --}}
+	<script src="{!! asset('law/assets/js/toastr.min.js') !!}">
+
+	</script>
 
 	</body>
 </html>
