@@ -12,11 +12,10 @@
             </div>
 
             <div class="form-group has-feedback{{ $errors->has('email') ? ' has-error' : '' }}">
-                <input  id="email" name="email" type="email" class="form-control" placeholder="Email" required>
+                <input  id="email" name="email" type="email" class="form-control" placeholder="Email">
                 <div class="form-control-feedback">
                     <i class="icon-mail5 text-muted"></i>
                 </div>
-
                 @if ($errors->has('email'))
                     <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
@@ -25,7 +24,7 @@
             </div>
 
             <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                <input id="password" type="password" class="form-control"  name="password" placeholder="Password baru" required>
+                <input id="password" type="password" class="form-control"  name="password" placeholder="Password baru">
                 <div class="form-control-feedback">
                     <i class="icon-lock2 text-muted"></i>
                 </div>
@@ -37,7 +36,7 @@
             </div>
 
             <div class="form-group has-feedback{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Konfirmasi password" required>
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Konfirmasi password">
                 <div class="form-control-feedback">
                     <i class="icon-lock2 text-muted"></i>
                 </div>

@@ -18,10 +18,13 @@
             </div>
 
             <div class="form-group has-feedback">
-                <input type="email" name="email" class="form-control" placeholder="Your email" required>
+                <input type="email" name="email" class="form-control" placeholder="Your email">
                 <div class="form-control-feedback">
                     <i class="icon-mail5 text-muted"></i>
                 </div>
+                @if ($errors->has('email'))
+                    <span>{{ $errors->first('email') }}</span>
+                @endif
             </div>
 
             <button type="submit" class="btn bg-blue btn-block">Reset password <i class="icon-arrow-right14 position-right"></i></button>

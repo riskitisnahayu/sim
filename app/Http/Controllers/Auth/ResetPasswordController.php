@@ -27,8 +27,17 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/orangtua/dashboard';
-
+    // protected $redirectTo = '/orangtua/dashboard';
+    public function redirectTo()
+    {
+        if (Auth::user()->type == "Admin") {
+            return 'admin/dashboard';
+        } else if(Auth::user()->type == "Orang tua") {
+            return 'orangtua/dashboard';
+        } else {
+             return '/siswa';
+        }
+    }
     /**
      * Create a new controller instance.
      *
