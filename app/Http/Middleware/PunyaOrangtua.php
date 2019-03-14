@@ -17,9 +17,8 @@ class PunyaOrangtua
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check() && Auth::user()->type=='Orang tua') {
-
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/orangtua-login');
     }
 }
