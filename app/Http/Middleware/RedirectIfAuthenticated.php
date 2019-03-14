@@ -17,10 +17,16 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/home');
-        }
 
+        if (Auth::guard($guard)->check()) {
+            if(auth()->user()->type=='Admin'){
+                return redirect('/admin/dashboard');
+            }elseif (auth()->user()->type=='Orang tua') {
+                return redirect('/orangtua/dashboard');
+            }elseif (auth()->user()->type=='Siswa'){
+                return redirect('/siswa');
+            }
+        }
         return $next($request);
     }
 }
