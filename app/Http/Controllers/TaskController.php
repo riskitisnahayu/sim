@@ -199,7 +199,7 @@ class TaskController extends Controller
 
         Alert::success('Sukses', 'Soal berhasil diubah!');
 
-        //  // redirect menggunakan url lengkap sedangkan route menggunakan route name
+        //redirect menggunakan url lengkap sedangkan route menggunakan route name
         return redirect()->route('admin.banksoal');
 
     }

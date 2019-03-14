@@ -33,7 +33,6 @@ Route::group(['middleware' => 'guest'], function ()
 
 Route::group(['middleware' => 'admin'], function ()
 {
-
 	// Dashboard admin
 	Route::get('admin/profil-detail', 'DashboardController@detailProfil')->name('admin.profil.detail');
 	Route::get('admin/profil-edit', 'DashboardController@editProfil')->name('admin.profil.edit');
@@ -98,8 +97,6 @@ Route::group(['middleware' => 'admin'], function ()
 	Route::post('soal/update/{id}', 'TaskController@update')->name('task.update');
 });
 
-
-
 Route::group(['middleware' => 'orangtua'], function ()
 {
 	Route::get('orangtua-register', function() {
@@ -127,8 +124,6 @@ Route::group(['middleware' => 'orangtua'], function ()
 	Route::get('orangtua/registerasi-anak/delete/{id}', 'OrangtuaController@destroy')->name('orangtua.registeration.delete');
 
 });
-
-
 
 Route::group(['middleware' => 'siswa'], function ()
 {

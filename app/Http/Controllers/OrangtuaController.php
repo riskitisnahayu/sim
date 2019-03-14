@@ -258,7 +258,6 @@ class OrangtuaController extends Controller
         Alert::success('Sukses', 'Akun anak berhasil ditambahkan!');
 
         return redirect()->route('orangtua.registeration.index2');
-        // return redirect()->route('orangtua.registration.detail',['id'=>$user->id]);
     }
 
     /**
