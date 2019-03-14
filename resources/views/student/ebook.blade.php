@@ -75,27 +75,35 @@
 						</select>
 					</div>
 				</div>
-				<div class="row" style="margin-top: 30px; margin-bottom:20px">
+				<div class="row" style="margin-top: 30px">
 	            	<div class="col-md-12 text-center">
 	                	<button type="submit" class="btn btn-success">Submit</button>
 	              	</div>
 	            </div>
 </form>
 				<div class="col-sm-12" style="display: flex;flex-basis: 100%;flex-wrap: wrap; margin-top:50px">
-					@foreach ($ebooks as $key => $ebook)
-						{{-- <div style="width:30%"> --}}
-						<div class="col-sm-4">
-							<div class="thumbnail">
-								<div class="thumb text-center" style="padding-top:10px">
-									<img src="{!! asset('images') !!}/{{ $ebook->image }}" alt="">
-								</div>
-
-								<div class="caption">
-									<h4 class="no-margin-top text-center"><a href="{{ $ebook->url }}" target="_blank">{{ $ebook->title }}</a></h4>
+					{{-- dikasih isNotEmpty karena collection. klo variabel biasa bisa langsung if(nama variabel) --}}
+					@if ($ebooks->isNotEmpty())
+						@foreach ($ebooks as $key => $ebook)
+							{{-- <div style="width:30%"> --}}
+							<div class="col-sm-4">
+								<div class="thumbnail">
+									<div class="thumb text-center" style="padding-top:10px">
+										<img src="{!! asset('images') !!}/{{ $ebook->image }}" alt="">
+									</div>
+									<div class="caption">
+										<h4 class="no-margin-top text-center"><a href="{{ $ebook->url }}" target="_blank">{{ $ebook->title }}</a></h4>
+									</div>
 								</div>
 							</div>
-						</div>
-					@endforeach
+						@endforeach
+						@else
+							<div class="container" style="margin-bottom:20px">
+				            	<div class="col-md-12 text-center">
+									<h4>Maaf, Buku tidak tersedia.</h4>
+				              	</div>
+				            </div>
+					@endif
 				</div>
 			</div>
 		</div>

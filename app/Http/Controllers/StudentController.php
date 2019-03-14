@@ -78,6 +78,7 @@ class StudentController extends Controller
          } else {
              $ebooks = EBook::all();
          }
+         // dd($ebooks);
          $subjectscategories = SubjectsCategory::all();
          return view('student.ebook', compact('ebooks','subjectscategories'));
      }
