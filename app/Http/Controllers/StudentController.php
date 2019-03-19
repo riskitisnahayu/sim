@@ -151,26 +151,23 @@ class StudentController extends Controller
 
      public function soal(Request $request)
      {
-         // 
-         //  $this->validate($request, [
-         //           'subjectscategories_id'          => 'required',
-         //           'title'      => 'required',
-         //           'class'      => 'required',
-         //           'semester'   => 'required',
-         //     ],
-         //
-         //     [
-         //          'subjectscategories_id.required'          => 'Mata pelajaran harus diisi!',
-         //          'title.required'      => 'Judul harus diisi!',
-         //          'class.required'      => 'Kelas harus diisi!',
-         //          'semester.required'   => 'Semester harus diisi!',
-         //      ]
-         // );
+         // dd($request);
          // $task_master = TaskMaster::find($id);
          // $tasks = TaskMaster::where('id', $id)->first()->tasks()->get();
          $task_master_id = $request->title;
          $task_master = TaskMaster::find($task_master_id);
-         $tasks = TaskMaster::where('id', $task_master_id)->first()->tasks()->get();
+         $tasks = TaskMaster::where('id', $task_master_id)
+                                ->where('class', $request->class)
+                                ->where('semester', $request->semester)
+                                ->first();
+         if($tasks){
+             $tasks = TaskMaster::where('id', $task_master_id)
+                                    ->where('class', $request->class)
+                                    ->where('semester', $request->semester)
+                                    ->first()->tasks()->get();
+         } else{
+             return redirect()->back()->with('error','Maaf, Soal tidak tersedia.');
+         }
          $answers = [];
          foreach ($tasks as $key => $curr_task) {
              $answers[$key] = $curr_task->answers()->orderBy('choice', 'asc')->get();
@@ -184,22 +181,6 @@ class StudentController extends Controller
 
          return view('student.soal', compact('task_master','tasks','answers','choices','taskmaster_id'));
      }
-
-     //chained tampilan judul di bank soal siswa
-    // public function title()
-    // {
-    //     $subjectscategories = Input::get('id');
-    //     $task_masters = TaskMaster::where('subjectscategories_id','=', $subjectscategories)->get();
-    //     return response()->json($task_masters);
-    // }
-
-    // public function class()
-    // {
-        // $task_masters = Input::get('taskmaster_id');
-        // $task_masters = TaskMaster::where('class','=','$task_masters')->get();
-    //     $class = DB::table("task_masters")->where("taskmaster_id",$id)->pluck("class","id");
-    //     return response()->json($class);
-    // }
 
     public function soalResult(Request $request,$id)
     {

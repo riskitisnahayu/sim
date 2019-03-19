@@ -33,12 +33,8 @@
 			<div class="form-group">
 			<label class="control-label col-lg-3">Kelas</label>
     			<div class="col-lg-8">
-                    <select class="form-control" name="class" id="class" onchange="checkform()">
-						<option value="">--- Pilih Kelas ---</option>
-						@foreach ($task_masters as $value)
-							<option class="{{$value->subjectscategories_id}}" value="{{$value->id}}" {{collect(old('class'))->contains($value->id) ? 'selected':''}}>{{ $value->class }}</option>
-						@endforeach
-                        {{-- <option  selected disabled>
+                    <select class="form-control" name="class" id="class">
+                        <option  selected disabled>
                             @if($errors->any())
                                 @if ($errors)
 
@@ -50,7 +46,7 @@
                         </option>
                         <option value="7">7</option>
                         <option value="8">8</option>
-                        <option value="9">9</option> --}}
+                        <option value="9">9</option>
                     </select>
     			</div>
     		</div>
@@ -78,60 +74,18 @@
 			<label class="control-label col-lg-3">Tipe Soal</label>
     			<div class="col-lg-8">
 					<input type="text" class="form-control" name="tipe" placeholder="Pilihan Ganda" readonly>
-                    {{-- <select name="tipe" class="form-control" >
-                        <option  selected disabled>
-                            @if($errors->any())
-                                @if ($errors)
-
-                                @endif
-                                {{ old('tipe') }}
-                            @else
-                                --- Pilih Tipe Soal ---
-                            @endif
-                        </option>
-                        <option value="Pilihan ganda">Pilihan Ganda</option>
-                    </select> --}}
     			</div>
     		</div>
 			<div class="form-group">
 			<label class="control-label col-lg-3">Jenis Soal</label>
     			<div class="col-lg-8">
 					<input type="text" class="form-control" name="jenis" placeholder="Latihan" readonly>
-                    {{-- <select name="jenis" class="form-control" >
-                        <option  selected disabled>
-                            @if($errors->any())
-                                @if ($errors)
-
-                                @endif
-                                {{ old('jenis') }}
-                            @else
-                                --- Pilih Jenis Soal ---
-                            @endif
-                        </option>
-                        <option value="Latihan">Latihan</option>
-						<option value="Ulangan harian">Ulangan harian</option>
-                    </select> --}}
     				</div>
     			</div>
 				<div class="form-group">
 				<label class="control-label col-lg-3">Jumlah Soal</label>
 					<div class="col-lg-8">
 						<input type="text" class="form-control" name="total" placeholder="10" readonly>
-						{{-- <select name="total" class="form-control" >
-							<option  selected disabled>
-								@if($errors->any())
-									@if ($errors)
-
-									@endif
-									{{ old('total') }}
-								@else
-									--- 0 ---
-								@endif
-							</option>
-							<option value="2">2</option>
-							<option value="5">5</option>
-							<option value="10">10</option>
-						</select> --}}
 					</div>
 				</div>
 				<div class="row" style="margin-top: 30px; margin-bottom:20px">
@@ -139,18 +93,23 @@
 						<input type="submit" class="btn btn-success" value="Buka soal">
 	              	</div>
 	            </div>
+				@if (session('error'))
+					<div class="container" style="margin-bottom:20px">
+						<div class="col-md-12 text-center">
+							<h4>{{ session('error') }}</h4>
+						</div>
+					</div>
+				@endif
 			</div>
 		</div>
 	</div>
 </form>
-
 @endsection
 
 @section('script')
 <script src="{{ asset('law/assets/js/jquery.chained.min.js') }}"></script>
 	<script>
 	$("#title").chained("#subjectscategories");
-	$("#class").chained("#title");
 
 	</script>
 @endsection

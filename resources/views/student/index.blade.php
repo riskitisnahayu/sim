@@ -6,7 +6,7 @@
 		<aside id="fh5co-hero" class="js-fullheight">
 			<div class="flexslider js-fullheight">
 				<ul class="slides">
-					<li style="background-image: url(law/assets/images/bg_1.jpg);">
+					<li><img src="{!! asset('law/assets/images/bg_1.jpg') !!}">
 						<div class="overlay-gradient"></div>
 							<div class="container">
 								<div class="row">
@@ -18,7 +18,7 @@
 								</div>
 							</div>
 					</li>
-					<li style="background-image: url(law/assets/images/bg_2.jpg);">
+					<li><img src="{!! asset('law/assets/images/bg_2.jpg') !!}">
 						<div class="overlay-gradient"></div>
 							<div class="container">
 								<div class="row">
@@ -31,7 +31,7 @@
 								</div>
 							</div>
 					</li>
-					<li style="background-image: url(law/assets/images/bg_3.jpg);">
+					<li><img src="{!! asset('law/assets/images/bg_3.jpg') !!}">
 						<div class="overlay-gradient"></div>
 						<div class="container">
 							<div class="row">
