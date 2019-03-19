@@ -17,6 +17,7 @@ class AddForeignKeyToStudentsTable extends Migration
             // $table->foreign('user_id','fk_students_users')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
             // $table->foreign('school_id','fk_students_schools')->references('id')->on('schools')->onUpdate('CASCADE')->onDelete('CASCADE');
             // $table->foreign('orangtua_id','fk_students_orangtuas')->references('id')->on('orangtuas')->onUpdate('CASCADE')->onDelete('CASCADE');
+
             $table->foreign('province_id','fk_students_provinces')->references('id')->on('provinces')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('regency_id','fk_students_regencies')->references('id')->on('regencies')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('district_id','fk_students_districts')->references('id')->on('districts')->onUpdate('CASCADE')->onDelete('CASCADE');

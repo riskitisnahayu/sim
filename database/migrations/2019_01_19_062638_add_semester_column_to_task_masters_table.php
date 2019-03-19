@@ -14,7 +14,7 @@ class AddSemesterColumnToTaskMastersTable extends Migration
     public function up()
     {
         Schema::table('task_masters', function (Blueprint $table) {
-            $table->enum('semester',['I','II','Both'])->nullable()->after('class');
+            // $table->enum('semester',['I','II','Both'])->nullable()->after('class');
         });
     }
 

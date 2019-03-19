@@ -14,7 +14,7 @@ class AddClassColumnToTaskMastersTable extends Migration
     public function up()
     {
         Schema::table('task_masters', function (Blueprint $table) {
-            $table->enum('class',['7','8','9'])->nullable()->after('subjectscategories_id');
+            // $table->enum('class',['7','8','9'])->nullable()->after('subjectscategories_id');
         });
     }
 

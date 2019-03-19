@@ -212,6 +212,7 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $tasks = TaskMaster::where('id', $id)->first();
+        // $tasks->delete();
     }
 }

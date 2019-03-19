@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDistrictIdColumnToStudentsTable extends Migration
+class AddForeignKeyToTaskMastersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddDistrictIdColumnToStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->integer('district_id')->after('regency_id')->unsigned();
+        Schema::table('task_masters', function (Blueprint $table) {
+            $table->foreign('subjectscategories_id','fk_task_masters_subjectscategories')->references('id')->on('subjectscategories')->onUpdate('CASCADE')->onDelete('CASCADE');
 
         });
     }
@@ -26,7 +26,7 @@ class AddDistrictIdColumnToStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('students', function (Blueprint $table) {
+        Schema::table('task_masters', function (Blueprint $table) {
             //
         });
     }

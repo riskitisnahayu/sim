@@ -89,54 +89,61 @@ class StudentController extends Controller
              'fitur'   => 'Bank Soal'
          ]);
 
-         if ($request->subjectscategories_id && $request->title && $request->class && $request->semester) {
-             $task_masters = TaskMaster::where([
-                 ['subjectscategories_id', $request->subjectscategories_id],
-                 ['title', $request->title],
-                 ['class', $request->class],
-                 ['semester', $request->semester],
-                 ])->get();
-         } elseif ($request->subjectscategories_id && $request->title) {
-             $task_masters = TaskMaster::where([
-                 ['subjectscategories_id', $request->subjectscategories_id],
-                 ['title', $request->title],
-                 ])->get();
-         } elseif ($request->subjectscategories_id && $request->class) {
-             $task_masters = TaskMaster::where([
-                 ['subjectscategories_id', $request->subjectscategories_id],
-                 ['class', $request->class],
-                 ])->get();
-         } elseif ($request->subjectscategories_id && $request->semester) {
-             $task_masters = TaskMaster::where([
-                 ['subjectscategories_id', $request->subjectscategories_id],
-                 ['semester', $request->semester],
-                 ])->get();
-         }  elseif ($request->title && $request->class) {
-            $task_masters = TaskMaster::where([
-                ['title', $request->title],
-                ['class', $request->class],
-                ])->get();
-         } elseif ($request->title && $request->semester) {
-           $task_masters = TaskMaster::where([
-                ['title', $request->title],
-                ['semester', $request->semester],
-                ])->get();
-         } elseif ($request->class && $request->semester) {
-            $task_masters = TaskMaster::where([
-                ['class', $request->class],
-                ['semester', $request->semester],
-                ])->get();
-         } else if($request->subjectscategories_id) {
-            $task_masters = TaskMaster::where('subjectscategories_id', $request->subjectscategories_id)->get();
-         } else if ($request->title) {
-             $task_masters = TaskMaster::where('title', $request->title)->get();
-         } else if ($request->class) {
-             $task_masters = TaskMaster::where('class', $request->class)->get();
-         } else if ($request->semester) {
-             $task_masters = TaskMaster::where('semester', $request->semester)->get();
-         }else {
+         // if ($request->subjectscategories_id && $request->title && $request->class && $request->semester) {
+         //     $task_masters = TaskMaster::where([
+         //         ['subjectscategories_id', $request->subjectscategories_id],
+         //         ['title', $request->title],
+         //         ['class', $request->class],
+         //         ['semester', $request->semester],
+         //         ])->get();
+         // } elseif ($request->subjectscategories_id && $request->title) {
+         //     $task_masters = TaskMaster::where([
+         //         ['subjectscategories_id', $request->subjectscategories_id],
+         //         ['title', $request->title],
+         //         ])->get();
+         // } elseif ($request->subjectscategories_id && $request->class) {
+         //     $task_masters = TaskMaster::where([
+         //         ['subjectscategories_id', $request->subjectscategories_id],
+         //         ['class', $request->class],
+         //         ])->get();
+         // } elseif ($request->subjectscategories_id && $request->semester) {
+         //     $task_masters = TaskMaster::where([
+         //         ['subjectscategories_id', $request->subjectscategories_id],
+         //         ['semester', $request->semester],
+         //         ])->get();
+         // }  elseif ($request->title && $request->class) {
+         //    $task_masters = TaskMaster::where([
+         //        ['title', $request->title],
+         //        ['class', $request->class],
+         //        ])->get();
+         // } elseif ($request->title && $request->semester) {
+         //   $task_masters = TaskMaster::where([
+         //        ['title', $request->title],
+         //        ['semester', $request->semester],
+         //        ])->get();
+         // } elseif ($request->class && $request->semester) {
+         //    $task_masters = TaskMaster::where([
+         //        ['class', $request->class],
+         //        ['semester', $request->semester],
+         //        ])->get();
+         // } else if($request->subjectscategories_id) {
+         //    $task_masters = TaskMaster::where('subjectscategories_id', $request->subjectscategories_id)->get();
+         // } else if ($request->title) {
+         //     $task_masters = TaskMaster::where('title', $request->title)->get();
+         // } else if ($request->class) {
+         //     $task_masters = TaskMaster::where('class', $request->class)->get();
+         // } else if ($request->semester) {
+         //     $task_masters = TaskMaster::where('semester', $request->semester)->get();
+         // }else {
+         //     $task_masters = TaskMaster::all();
+         // }
+
+         if ($request->subjectscategories_id) {
+             $task_masters = TaskMaster::where('subjectscategories_id', $request->subjectscategories_id)->get();
+         } else {
              $task_masters = TaskMaster::all();
          }
+
          $subjectscategories = SubjectsCategory::all();
          // dd($task_masters);
          return view('student.banksoal', compact('task_masters','subjectscategories'));
@@ -144,6 +151,21 @@ class StudentController extends Controller
 
      public function soal(Request $request)
      {
+         // 
+         //  $this->validate($request, [
+         //           'subjectscategories_id'          => 'required',
+         //           'title'      => 'required',
+         //           'class'      => 'required',
+         //           'semester'   => 'required',
+         //     ],
+         //
+         //     [
+         //          'subjectscategories_id.required'          => 'Mata pelajaran harus diisi!',
+         //          'title.required'      => 'Judul harus diisi!',
+         //          'class.required'      => 'Kelas harus diisi!',
+         //          'semester.required'   => 'Semester harus diisi!',
+         //      ]
+         // );
          // $task_master = TaskMaster::find($id);
          // $tasks = TaskMaster::where('id', $id)->first()->tasks()->get();
          $task_master_id = $request->title;
@@ -164,12 +186,20 @@ class StudentController extends Controller
      }
 
      //chained tampilan judul di bank soal siswa
-    public function title()
-    {
-        $subjectscategories = Input::get('id');
-        $task_masters = TaskMaster::where('subjectscategories_id','=', $subjectscategories)->get();
-        return response()->json($task_masters);
-    }
+    // public function title()
+    // {
+    //     $subjectscategories = Input::get('id');
+    //     $task_masters = TaskMaster::where('subjectscategories_id','=', $subjectscategories)->get();
+    //     return response()->json($task_masters);
+    // }
+
+    // public function class()
+    // {
+        // $task_masters = Input::get('taskmaster_id');
+        // $task_masters = TaskMaster::where('class','=','$task_masters')->get();
+    //     $class = DB::table("task_masters")->where("taskmaster_id",$id)->pluck("class","id");
+    //     return response()->json($class);
+    // }
 
     public function soalResult(Request $request,$id)
     {

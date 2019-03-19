@@ -14,7 +14,7 @@ class AddRegencyIdColumnToStudentsTable extends Migration
     public function up()
     {
         Schema::table('students', function (Blueprint $table) {
-            $table->integer('regency_id')->after('province_id');
+            $table->integer('regency_id')->after('province_id')->unsigned();
 
         });
     }

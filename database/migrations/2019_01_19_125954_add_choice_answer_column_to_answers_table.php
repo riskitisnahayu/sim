@@ -14,7 +14,7 @@ class AddChoiceAnswerColumnToAnswersTable extends Migration
     public function up()
     {
         Schema::table('answers', function (Blueprint $table) {
-            $table->text('choice_answer')->after('choice');
+            // $table->text('choice_answer')->after('choice');
         });
     }
 

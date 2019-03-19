@@ -133,7 +133,7 @@ class TaskMasterController extends Controller
         $task_masters->subjectscategories_id=$request->subjectscategories_id;
 
         $task_masters->save();
-        return redirect("soal/edit/".$task_masters->id."?total_task=".$request->total_task)->with('alert-success','Data berhasil diubah!');
+        return redirect("soal/edit/".$task_masters->id."?total_task=".$request->total_task);
     }
 
     /**
@@ -146,6 +146,6 @@ class TaskMasterController extends Controller
     {
         $task_masters = TaskMaster::where('id',$id)->first();
         $task_masters->delete();
-        return redirect()->route('admin.banksoal')->with('sukses', 'Data Berhasil Dihapus!');
+        return redirect()->route('admin.banksoal');
     }
 }

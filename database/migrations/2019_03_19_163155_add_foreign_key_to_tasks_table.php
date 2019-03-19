@@ -14,7 +14,7 @@ class AddForeignKeyToTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->foreign('taskmaster_id','fk_tasks_task_masters')->references('id')->on('task_masters')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('taskmaster_id')->references('id')->on('task_masters');
         });
     }
 

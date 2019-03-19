@@ -14,7 +14,7 @@ class AddEbookIdTaskmasterIdFiturToLogActivitiesTable extends Migration
     public function up()
     {
         Schema::table('log_activities', function (Blueprint $table) {
-            $table->integer('ebook_id')->unsigned()->nullable()->after('id_game');
+            $table->integer('ebook_id')->unsigned()->nullable()->after('game_id');
             $table->integer('taskmaster_id')->unsigned()->nullable()->after('ebook_id');
             $table->string('fitur')->nullable()->after('taskmaster_id');
             $table->dropColumn('action');

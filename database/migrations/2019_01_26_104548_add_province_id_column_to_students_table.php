@@ -14,7 +14,7 @@ class AddProvinceIdColumnToStudentsTable extends Migration
     public function up()
     {
         Schema::table('students', function (Blueprint $table) {
-            $table->integer('province_id')->after('orangtua_id');
+            $table->integer('province_id')->after('orangtua_id')->unsigned();
 
         });
     }
