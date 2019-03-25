@@ -92,6 +92,7 @@
             <div class="form-group">
                 <label class="control-label col-lg-2">Jumlah Soal</label>
                 <div class="col-lg-10">
+    				{{-- <input type="text" class="form-control" name="name" placeholder="10" readonly="" type="text"> --}}
                 <select name="total_task" class="form-control" >
                     <option  selected disabled>
                         @if($errors->any())
@@ -103,19 +104,26 @@
                             0
                         @endif
                     </option>
-                    <option value="2">2</option>
-                    <option value="5">5</option>
+                    {{-- <option value="2">2</option>
+                    <option value="5">5</option> --}}
                     <option value="10">10</option>
                 </select>
                 </div>
             </div>
+            <div class="form-group">
+				<label class="control-label col-lg-2">Set waktu</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="icon-watch2"></i></span>
+					<input type="text" class="form-control" name="timeout" placeholder="Tuliskan waktu..">
+                    <span class="input-group-addon">menit</span>
+				</div>
+			</div>
     	</fieldset>
 
         <div class="row" style="margin-top: 10px;">
           <div class="col-md-12" style="text-align: center;">
-            <button type="submit" class="btn btn-success">Simpan</button>
+            <button type="submit" class="btn btn-success">Buat Soal</button>
             <button type="button" class="btn btn-danger" onclick="location.href='/admin/bank-soal';">Batal</button>
-            <button type="button" class="btn btn-info" onclick="location.href='/admin/soal';">Buat Soal</button>
           </div>
         </div>
     </form>

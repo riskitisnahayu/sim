@@ -91,6 +91,7 @@ Route::group(['middleware' => 'admin'], function ()
 	Route::get('banksoal/delete/{id}', 'TaskMasterController@destroy')->name('taskmaster.delete');
 
 	// soal
+	Route::get('soal/detail/{id}', 'TaskController@show')->name('task.detail');
 	Route::get('soal/add/{id}','TaskController@create')->name('task.add');
 	Route::post('soal/store', 'TaskController@store')->name('task.store');
 	Route::get('soal/edit/{id}', 'TaskController@edit')->name('task.edit');

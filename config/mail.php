@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'm.hafidzpratama01@gmail.com'),
-        'name'    => env('MAIL_FROM_NAME', 'm.hafidzpratama01'),
+        'address' => env('MAIL_FROM_ADDRESS', 'aplikasiedukasi2019@gmail.com'),
+        'name'    => env('MAIL_FROM_NAME', 'aplikasiedukasi2019'),
     ],
 
     /*
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME','m.hafidzpratama01@gmail.com'),
+    'username' => env('MAIL_USERNAME','aplikasiedukasi2019@gmail.com'),
 
-    'password' => env('MAIL_PASSWORD','hafidz123'),
+    'password' => env('MAIL_PASSWORD','aplikasi123'),
 
     /*
     |--------------------------------------------------------------------------

@@ -75,18 +75,25 @@
                             0
                         @endif
                     </option>
-                    <option value="2" @if ($task_masters->total_task == 2) selected="selected" @endif>2</option>
-                    <option value="5" @if ($task_masters->total_task == 5) selected="selected" @endif>5</option>
+                    {{-- <option value="2" @if ($task_masters->total_task == 2) selected="selected" @endif>2</option>
+                    <option value="5" @if ($task_masters->total_task == 5) selected="selected" @endif>5</option> --}}
                     <option value="10" @if ($task_masters->total_task == 10) selected="selected" @endif>10</option>
                 </select>
                 </div>
             </div>
+            <div class="form-group">
+				<label class="control-label col-lg-2">Set waktu</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="icon-watch2"></i></span>
+					<input type="text" class="form-control" name="timeout" value="{{$task_masters->timeout}}">
+                    <span class="input-group-addon">menit</span>
+				</div>
+			</div>
     	</fieldset>
         <div class="row" style="margin-top: 10px;">
           <div class="col-md-12" style="text-align: center;">
-            <button type="submit" class="btn btn-success">Simpan</button>
+            <button type="submit" class="btn btn-success">Lihat Soal</button>
             <button type="button" class="btn btn-danger" onclick="location.href='/admin/bank-soal';">Batal</button>
-            <button type="button" class="btn btn-info" onclick="location.href='/admin/soal';">Lihat Soal</button>
           </div>
         </div>
     </form>

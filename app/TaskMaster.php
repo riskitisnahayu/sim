@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TaskMaster extends Model
 {
     protected $table = 'task_masters';
-    protected $fillable = ['id', 'title', 'class', 'semester', 'subjectscategories_id'];
+    protected $fillable = ['id', 'title', 'class', 'semester', 'subjectscategories_id','total_task' ,'timeout'];
     public $timestamps = true;
 
     public function subjectscategory()

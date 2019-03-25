@@ -49,14 +49,16 @@ class TaskMasterController extends Controller
               'semester'       => 'required',
               'subjectscategories_id'      => 'required',
               'total_task'     => 'required',
+              'timeout'     => 'required',
+
         ],
         [
              'title.required'     => 'Judul harus diisi!',
              'class.required'     => 'Kelas harus diisi!',
              'semester.required'  => 'Semester harus diisi!',
              'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
-             'total_task.required'     => 'Jumlah soal harus diisi!',
-
+             'timeout.required'    => 'Durasi waktu harus diisi!',
+             'total_task.required' => 'Jumlah soal harus diisi!',
          ]
     );
 
@@ -67,10 +69,13 @@ class TaskMasterController extends Controller
         $task_masters->semester=$request->semester;
         $task_masters->subjectscategories_id=$request->subjectscategories_id;
         $task_masters->total_task=$request->total_task;
+        $task_masters->timeout=$request->timeout;
         $task_masters->save();
 
          // redirect menggunakan url lengkap sedangkan route menggunakan route name
-         return redirect("soal/add/".$task_masters->id."?total_task=".$request->total_task);
+         return redirect("soal/add/".$task_masters->id);
+         // return redirect("soal/add/".$task_masters->id."?total_task=".$request->total_task);
+
     }
 
     /**
@@ -81,10 +86,10 @@ class TaskMasterController extends Controller
      */
     public function show($id)
     {
-        $task_masters = TaskMaster::find($id);
-           // dd($ebooks);
-        $subjectscategories = SubjectsCategory::all();
-        return view('taskmaster.detail', compact('task_masters','subjectscategories'));
+        // $task_masters = TaskMaster::find($id);
+        //    // dd($ebooks);
+        // $subjectscategories = SubjectsCategory::all();
+        // return view('taskmaster.detail', compact('task_masters','subjectscategories'));
     }
 
     /**
@@ -133,7 +138,9 @@ class TaskMasterController extends Controller
         $task_masters->subjectscategories_id=$request->subjectscategories_id;
 
         $task_masters->save();
-        return redirect("soal/edit/".$task_masters->id."?total_task=".$request->total_task);
+        // return redirect("soal/edit/".$task_masters->id."?total_task=".$request->total_task);
+        return redirect("soal/detail/".$task_masters->id);
+
     }
 
     /**
