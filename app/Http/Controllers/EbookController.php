@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\EBook;
 use App\SubjectsCategory;
+use App\LogActivity;
+use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -152,5 +154,44 @@ class EbookController extends Controller
              $ebooks = EBook::where('id',$id)->first();
              $ebooks->delete();
              return redirect()->route('admin.ebook');
+        }
+
+        // API
+        public function api_getEbook() // fungsinya sama spt index untuk menampilkan semua data tp dalam bentuk json
+        {
+            LogActivity::create([
+                'user_id' => Auth::user()->id,
+                'fitur'   => 'E-Book'
+            ]);
+
+            $ebooks = EBook::all(); // untuk mengambil semua data games
+            return response()->json([
+                'error' => false,
+                'status' => 'success',
+                'result' => $ebooks
+            ]);
+        }
+
+        public function api_getEbookClass(Request $request)
+        {
+            $ebooks = EBook::where('subjectscategories_id', $request->subjectscategories)
+                            ->where('class', $request->class)
+                            ->get();
+                            // dd($ebooks);
+            return response()->json([
+                'error' => false,
+                'status' => 'success',
+                'result' => $ebooks
+            ]);
+        }
+
+        public function api_show($id)
+        {
+            $ebooks = EBook::find($id);
+            return response()->json([  //biar keluarannya berupa json
+                'error' => false,
+                'status' => 'success',
+                'result' => $ebooks
+            ]);
         }
 }

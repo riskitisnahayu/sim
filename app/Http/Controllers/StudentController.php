@@ -11,6 +11,7 @@ use App\LogActivity;
 use App\TaskMaster;
 use App\Student;
 use Auth;
+use App\User;
 
 class StudentController extends Controller
 {
@@ -182,7 +183,7 @@ class StudentController extends Controller
          return view('student.soal', compact('task_master','tasks','answers','choices','taskmaster_id'));
      }
 
-    public function soalResult(Request $request,$id)
+    public function soalResult()
     {
         // dd($request);
         return view('student.soal_result');
@@ -257,5 +258,71 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // API
+    public function api_getSiswa(Request $request) // fungsinya sama spt index untuk menampilkan semua data tp dalam bentuk json
+    {
+        $user = User::where('id',$request->id)
+               ->with('student')
+               ->first(); // untuk mengambil semua data games
+
+        return response()->json([
+            // 'user_id' => Auth::user()->id,
+            'error' => false,
+            'status' => 'success',
+            'result' => $user
+        ]);
+    }
+
+    public function api_soal(Request $request)
+    {
+        // dd($request);
+        // $task_master = TaskMaster::find($id);
+        // $tasks = TaskMaster::where('id', $id)->first()->tasks()->get();
+        $task_master_id = $request->id;
+        $task_master = TaskMaster::find($task_master_id);
+        $tasks = TaskMaster::where('id', $task_master_id)
+                               ->where('class', $request->class)
+                               ->where('semester', $request->semester)
+                               ->first();
+        if($tasks){
+            $tasks = TaskMaster::where('id', $task_master_id)
+                                   ->where('class', $request->class)
+                                   ->where('semester', $request->semester)
+                                   ->first()->taskanswers()->get(); //answers karena di function model diberi nama answers
+        }
+        // else{
+        //     return redirect()->back()->with('error','Maaf, Soal tidak tersedia.');
+        // }
+        $answers = [];
+        // dd($tasks);
+        foreach ($tasks as $key => $curr_task) {
+            $answers[$key] = $curr_task->answers()->orderBy('choice', 'asc')->get();
+        }
+        // dd($answers);
+        $choices = ['a', 'b', 'c', 'd'];
+        // $taskmaster_id = $id;
+       $taskmaster_id = $task_master_id;
+        // dd($taskmaster_id);
+
+        return response()->json([
+            'error'  => false,
+            'status' => 'success',
+            'result' => $task_master,
+            'soal'   => $tasks
+        ]);
+    }
+
+    public function api_detailProfil(Request $request)
+    {
+        $user = User::where('id',$request->id) //user dimana id nya = request-nya (request id-nya)
+        ->with('student') // fungsi students yang ada di model User
+        ->first();
+        return response()->json([
+            'error'  => false,
+            'status' => 'success',
+            'result' => $user
+        ]);
     }
 }

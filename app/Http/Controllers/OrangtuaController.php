@@ -405,4 +405,184 @@ class OrangtuaController extends Controller
         $siswa->user->delete();
         return redirect()->route('orangtua.registeration.index2');
     }
+
+    // API
+    public function api_getOrangtua(Request $request)
+    {
+
+        $user = User::where('id',$request->id) //user dimana id nya = request-nya (request id-nya)
+        ->with('orangtua') // fungsi orangtua yang ada di model User
+        ->first(); // untuk mengambil satu data ortu
+
+        $siswa = Student::leftJoin('orangtuas','students.orangtua_id','orangtuas.id') // yang dipanggil orangtua id karena di dua tabel yang menghubungkan adalah orang tua id-nya.
+                           ->leftJoin('users','students.user_id','users.id') // di tabel users yang mengubungakan dengan tabel students adalah user_id
+                           ->where('orangtuas.user_id', $request->id) // dimana tabel orang tua berdasarkan user_id diambil berdasarkan id yang di request
+                           ->get(); // sehingga ini mengambil satu data dari orang tua
+        // $siswa = Orangtua::where('user_id', $request->id)->get();
+        // dd($siswa);
+
+        return response()->json([
+            // 'user_id' => Auth::user()->id,
+            'error' => false,
+            'status' => 'success',
+            'result' => $user,
+            'anak' => $siswa
+
+        ]);
+    }
+
+    public function api_getNews()
+    {
+        $curl = curl_init();
+
+        $query = http_build_query([
+            'q'         => "siswa berprestasi",
+            'apiKey'    => "6a385e9bf2374b8692bb204204c394ee",
+            'sortBy'    => "publishedAt"
+        ]);
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://newsapi.org/v2/everything?".$query,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "GET",
+          CURLOPT_HTTPHEADER => array(
+            "cache-control: no-cache"
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+        $response = json_decode($response, true); //because of true, it's in an array
+        // dd($response);
+        // return view('orangtua.dashboard', compact('response'));
+        return response()->json([
+            'error' => false,
+            'status' => 'success',
+            'result' => $response
+        ]);
+    }
+
+    public function api_detailProfil(Request $request)
+    {
+        $user = User::where('id',$request->id) //user dimana id nya = request-nya (request id-nya)
+        ->with('orangtua') // fungsi orangtua yang ada di model User
+        ->first(); // untuk mengambil satu data ortu
+        return response()->json([
+            'error' => false,
+            'status' => 'success',
+            'result' => $user
+        ]);
+    }
+
+    public function api_updateProfil(Request $request, $id){
+        $this->validate($request, [
+                 'name'          => 'required',
+                 'username'      => 'required',
+                 'email'         => 'required|email',
+           ],
+
+           [
+                'name.required'          => 'Nama harus diisi!',
+                'username.required'      => 'Username harus diisi!',
+                'email.required'         => 'Email harus diisi!',
+            ]
+       );
+       // dd($id);
+       $data = Orangtua::where('user_id', $id)->first(); //dimana user_id itu nama kolom di tabel ortu, dan diambil id dari tabel ortu
+       $ortu = User::where('id',$data->user_id)->first();
+       // dd($ortu);
+       $ortu->name=$request->name;
+       $ortu->username=$request->username;
+       $ortu->email=$request->email;
+       $ortu->save();
+       return response()->json([
+           'error' => false,
+           'status' => 'success',
+           'result' => $ortu
+       ]);
+    }
+
+    public function api_updatePasswOrtu(Request $request,$id)
+    {
+        $data = Orangtua::where('user_id',$id)->first();
+        $ortu = User::where('id',$data->user_id)->first();
+        // dd($ortu);
+        if (Hash::check($request->oldPassword, $ortu->password))
+        {
+            $this->validate($request, [
+                     'oldPassword'           => 'required',
+                     'password'              => 'required|min:6|confirmed',
+                     'password_confirmation' => 'required',
+               ],
+               [
+                   'oldPassword.required'            => 'Password lama harus diisi!',
+                   'password.required'               => 'Password baru harus diisi!',
+                   'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
+                ]
+            );
+            $ortu->password = Hash::make($request->password);
+            $ortu->save();
+        }
+        else {
+            $this->validate($request, [
+                     'oldPassword'           => 'required',
+                     'password'              => 'required|min:6|confirmed',
+                     'password_confirmation' => 'required',
+               ],
+               [
+                   'oldPassword.required'           => 'Password lama harus diisi!',
+                   'password.required'           => 'Password baru harus diisi!',
+                   'password_confirmation.required' => 'Konfirmasi password baru harus diisi!',
+                ]
+            );
+        }
+        return response()->json([
+            'error' => false,
+            'status' => 'success',
+            'result' => $ortu
+        ]);
+    }
+
+    public function api_updatePasswSiswa(Request $request, $id)
+    {
+        $data = Student::where('user_id',$id)->first();
+        $siswa = User::where('id',$data->user_id)->first();
+        // dd($data);
+        if (Hash::check($request->oldPassword, $siswa->password))
+        {
+            $this->validate($request, [
+                     'oldPassword'           => 'required',
+                     'password'              => 'required|min:6|confirmed',
+                     'password_confirmation' => 'required',
+               ],
+               [
+                   'oldPassword.required'            => 'Password lama harus diisi!',
+                   'password.required'               => 'Password baru harus diisi!',
+                   'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
+                ]
+            );
+            $siswa->password = Hash::make($request->password);
+            $siswa->save();
+        }else {
+            $this->validate($request, [
+                     'oldPassword'           => 'required',
+                     'password'              => 'required|min:6|confirmed',
+                     'password_confirmation' => 'required',
+               ],
+               [
+                   'oldPassword.required'            => 'Password lama harus diisi!',
+                   'password.required'               => 'Password baru harus diisi!',
+                   'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
+                ]
+            );
+        }
+        return response()->json([
+            'error' => false,
+            'status' => 'success',
+            'result' => $siswa
+        ]);
+    }
 }

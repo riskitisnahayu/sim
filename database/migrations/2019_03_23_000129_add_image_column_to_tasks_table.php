@@ -14,8 +14,8 @@ class AddImageColumnToTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->string('image')->nullable();
-            
+            // $table->string('image')->nullable();
+
         });
     }
 

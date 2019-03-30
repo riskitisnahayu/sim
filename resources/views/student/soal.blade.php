@@ -41,9 +41,14 @@
 									<tr>
 										<td>Tanggal</td>
 										<td style="padding-left:50px">:</td>
-										<td style="padding-left:50px">{{ Carbon\Carbon::parse($task_master->created_at)->toFormattedDateString() }} {{ Carbon\Carbon::parse($task_master->created_at)->format('H:i:s') }}</td>
+										<td style="padding-left:50px">{{ Carbon\Carbon::now()->toFormattedDateString() }} {{ Carbon\Carbon::now()->format('H:i:s') }}</td>
 									</tr>
-
+									<tr>
+										<td>Durasi waktu</td>
+										<td style="padding-left:50px">:</td>
+										{{-- <td style="padding-left:50px">{{ $task_master->timeout }}</td> --}}
+										<td><span class="clock" data-countdown="{{ $task_master->startdate}}"></span></td>
+									</tr>
 								</thead>
 							</table>
 							<hr>
@@ -81,5 +86,14 @@
 		</div>
 	</div>
 </form>
-
+@endsection
+@section('script')
+<script type="text/javascript">
+	$('[data-countdown]').each(function() {
+		var $this = $(this), finalDate = $(this).data('countdown');
+		$this.countdown(finalDate, function(event) {
+		 $this.html(event.strftime('%D days %H:%M:%S'));
+		});
+	});
+</script>
 @endsection

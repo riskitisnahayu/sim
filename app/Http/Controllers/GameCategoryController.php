@@ -92,4 +92,26 @@ class GameCategoryController extends Controller
          return redirect()->route('admin.gamecategory');
     }
 
+    // API
+    public function api_getGameCategory() // fungsinya sama spt index untuk menampilkan semua data tp dalam bentuk json
+    {
+        $gamecategories = GameCategory::all(); // untuk mengambil semua data SubjectsCategory
+        return response()->json([
+            'error' => false,
+            'status' => 'success',
+            'result' => $gamecategories
+        ]);
+    }
+
+    public function api_show($id)
+    {
+        $gamecategories = GameCategory::find($id);
+
+        return response()->json([
+            'error' => false,
+            'status' => 'success',
+            'result' => $gamecategories
+        ]);
+    }
+
 }

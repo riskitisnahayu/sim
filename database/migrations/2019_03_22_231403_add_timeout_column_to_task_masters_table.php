@@ -14,7 +14,7 @@ class AddTimeoutColumnToTaskMastersTable extends Migration
     public function up()
     {
         Schema::table('task_masters', function (Blueprint $table) {
-            $table->string('timeout')->after('total_task');
+            // $table->string('timeout')->after('total_task');
 
         });
     }

@@ -59,7 +59,7 @@
                 <div class="col-md-12">
                     <label class="control-label col-lg-1">{{ $choices[$j] . "."}}</label>
                     <div class="col-lg-10">
-                        <textarea name="answer[{{ $j }}][]" rows="3" style="width: 100%" required>{{ $answers[0][$j]->choice_answer }}</textarea>
+                        <textarea name="answer[{{ $j }}]" rows="3" style="width: 100%" required>{{ $answers[0][$j]->choice_answer }}</textarea>
                     </div>
                 </div>
             </div>
@@ -70,22 +70,22 @@
             <div class="col-md-12">
                 <label class="display-block text-semibold">Jawaban yang benar</label>
     			<label class="radio-inline">
-                        <input type="radio" value="1" name="true_answer[0]" @if ($answers[0][0]->is_answer == 1) checked @endif class="styled">
+                        <input type="radio" value="1" name="true_answer[]" @if ($answers[0][0]->is_answer == 1) checked @endif class="styled">
                         a.
     			</label>
 
     			<label class="radio-inline">
-                        <input type="radio" value="2" name="true_answer[0]" @if ($answers[0][1]->is_answer == 1) checked @endif class="styled">
+                        <input type="radio" value="2" name="true_answer[]" @if ($answers[0][1]->is_answer == 1) checked @endif class="styled">
     					b.
     			</label>
 
                 <label class="radio-inline">
-                        <input type="radio" value="3" name="true_answer[0]" @if ($answers[0][2]->is_answer == 1) checked @endif class="styled">
+                        <input type="radio" value="3" name="true_answer[]" @if ($answers[0][2]->is_answer == 1) checked @endif class="styled">
     					c.
     			</label>
 
                 <label class="radio-inline">
-                        <input type="radio" value="4" name="true_answer[0]" @if ($answers[0][3]->is_answer == 1) checked @endif class="styled">
+                        <input type="radio" value="4" name="true_answer[]" @if ($answers[0][3]->is_answer == 1) checked @endif class="styled">
     					d.
     			</label>
             </div>

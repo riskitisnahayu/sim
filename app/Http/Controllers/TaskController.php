@@ -92,7 +92,7 @@ class TaskController extends Controller
                     'choice'        => $choices[$j],
                     'choice_answer' => $request->answer[$i][$j],
                     'user_answer'   => null,
-                    'is_answer'     => $request->true_answer[$i] == $j ? 1 : 0,
+                    'is_answer'     => $request->true_answer[$i] == $j+1 ? 1 : 0, //$j itu dari 0 dari for diatasnya.. dan harus ditambah 1 karena di blade nya dimulai dari 1, bukan dari 0
                     'created_at'    => Carbon::now(),
                     'updated_at'    => Carbon::now()
                 ];
@@ -177,28 +177,15 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $this->validate($request, [
-        //       'description'    => 'required',
-        //       'choice_answer'  => 'required',
-        //       'is_answer'      => 'required',
-        // ],
-        //
-        // [
-        //      'description.required'     => 'Deskripsi soal harus diisi!',
-        //      'choice_answer.required'     => 'Deskripsi pilihan harus diisi!',
-        //      'is_answer.required'      => 'Jawaban benar harus diisi!',
-        //  ]
-        //
-        // );
-
         DB::beginTransaction();
         // dd($request);
         $existing_task = Task::where('id', $id)->first();
         // dd($existing_task);
-        $existing_answer = Answer::where('task_id', $existing_task->id)->get();
+        $existing_answer = Answer::where('task_id', $existing_task->id)->delete();
         if (!$existing_answer) {
             DB::rollback();
         }
+        // $existing_answer->delete();
 
         if ($request->file('image'))
         {
@@ -212,38 +199,22 @@ class TaskController extends Controller
         $existing_task->description = $request->description;
         $existing_task->discussion = $request->discussion;
         $existing_task->save();
-
-        // for ($i=0; $i < @count($request->task["description"]); $i++) {
-        //     $tasks[$i] = [
-        //         'taskmaster_id' => $request->taskmaster_id,
-        //         'description'   => $request->task["description"][$i],
-        //         'discussion'    => $request->task["discussion"][$i],
-        //         'created_at'    => Carbon::now(),
-        //         'updated_at'    => Carbon::now(),
-        //         'image'         => $newName
-        //     ];
-        // }
-        // dd($request);
-
         $answers = [];
         $choices = ['a', 'b', 'c', 'd'];
         for ($i=0; $i < @count($request->answer); $i++) {
-            for ($j=0; $j < @count($request->answer[$i]); $j++) {
-                $answers[$i][$j] = [
-                    'choice'        => $choices[$j],
-                    'choice_answer' => $request->answer[$i][$j],
+            // for ($j=0; $j < @count($request->answer[$i]); $j++) {
+                $answers[$i] = [
+                    'choice'        => $choices[$i],
+                    'choice_answer' => $request->answer[$i],
                     'user_answer'   => null,
-                    'is_answer'     => $request->true_answer[0] == $j+1 ? 1 : 0,
+                    'is_answer'     => $request->true_answer[0] == $i+1 ? 1 : 0,
                     'created_at'    => Carbon::now(),
                     'updated_at'    => Carbon::now()
                 ];
-            }
+            // }
         }
-
-
-        for ($j=0; $j < 4; $j++) {
-            $existing_task->answers()->createMany($answers[$j]);
-        }
+        // dd($answers);
+        $existing_task->answers()->createMany($answers);
         // dd($answers);
 
         DB::commit();

@@ -88,5 +88,25 @@ class SubjectsCategoryController extends Controller
          return redirect()->route('admin.subjectscategory');
     }
 
+    // API
+    public function api_getSubjectsCategory() // fungsinya sama spt index untuk menampilkan semua data tp dalam bentuk json
+    {
+        $subjectscategories = SubjectsCategory::all(); // untuk mengambil semua data SubjectsCategory
+        return response()->json([
+            'error' => false,
+            'status' => 'success',
+            'result' => $subjectscategories
+        ]);
+    }
 
+    public function api_show($id)
+    {
+        $subjectscategories = SubjectsCategory::find($id);
+
+        return response()->json([  //biar keluarannya berupa json
+            'error' => false,
+            'status' => 'success',
+            'result' => $subjectscategories
+        ]);
+    }
 }

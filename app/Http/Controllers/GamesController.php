@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Game;
 use App\GameCategory;
 use App\ModelFile;
+use App\LogActivity;
 use RealRashid\SweetAlert\Facades\Alert;
+use Auth;
 
 
 class GamesController extends Controller
@@ -178,10 +180,27 @@ class GamesController extends Controller
          return redirect()->route('admin.minigames');
     }
 
-    public function getGames() // fungsinya sama spt index untuk menampilkan semua data tp dalam bentuk json
+    public function api_getGames() // fungsinya sama spt index untuk menampilkan semua data tp dalam bentuk json
     {
+        LogActivity::create([
+            'user_id' => Auth::user()->id,
+            'fitur'   => 'Mini Games'
+        ]);
+
         $games = Game::all(); // untuk mengambil semua data games
+        // dd($games);
         return response()->json([
+            'error' => false,
+            'status' => 'success',
+            'result' => $games
+        ]);
+    }
+
+    public function api_show($id)
+    {
+        $games = Game::find($id);
+        return response()->json([  //biar keluarannya berupa json
+            'error' => false,
             'status' => 'success',
             'result' => $games
         ]);

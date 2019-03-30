@@ -14,7 +14,7 @@ class AddTotalTaskColumnToTaskMastersTable extends Migration
     public function up()
     {
         Schema::table('task_masters', function (Blueprint $table) {
-            $table->integer('total_task')->after('semester');
+            // $table->integer('total_task')->after('semester');
         });
     }
 

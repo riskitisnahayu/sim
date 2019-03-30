@@ -120,6 +120,7 @@ class TaskMasterController extends Controller
               'semester'       => 'required',
               'subjectscategories_id'      => 'required',
               'total_task'     => 'required',
+              'timeout'        => 'required',
         ],
         [
              'title.required'     => 'Judul harus diisi!',
@@ -127,7 +128,7 @@ class TaskMasterController extends Controller
              'semester.required'  => 'Semester harus diisi!',
              'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
              'total_task.required'     => 'Jumlah soal harus diisi!',
-
+             'timeout.required'   => ' Set waktu harus diisi!',
          ]
     );
 
@@ -136,7 +137,7 @@ class TaskMasterController extends Controller
         $task_masters->class=$request->class;
         $task_masters->semester=$request->semester;
         $task_masters->subjectscategories_id=$request->subjectscategories_id;
-
+        $task_masters->timeout=$request->timeout;
         $task_masters->save();
         // return redirect("soal/edit/".$task_masters->id."?total_task=".$request->total_task);
         return redirect("soal/detail/".$task_masters->id);

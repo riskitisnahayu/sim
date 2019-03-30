@@ -26,7 +26,7 @@
     		<div class="form-group">
     			<label class="control-label col-lg-2">Judul</label>
     			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="title" >
+    				<input type="text" class="form-control" name="title" placeholder="Tulis judul latihan soal">
     			</div>
     		</div>
             <div class="form-group">
@@ -118,6 +118,14 @@
                     <span class="input-group-addon">menit</span>
 				</div>
 			</div>
+            {{-- <div class="">
+                <div class="content-group-lg">
+                    <label class="control-label col-lg-2" style="padding-left:0px">Set waktu</label><div class="input-group">
+                        <span class="input-group-addon"><i class="icon-watch2"></i></span>
+                        <input type="text" class="form-control" id="anytime-time" value="">
+                    </div>
+                </div>
+            </div> --}}
     	</fieldset>
 
         <div class="row" style="margin-top: 10px;">
@@ -132,4 +140,19 @@
 
 
 </div>
+@endsection
+@section('script')
+    <!-- Theme JS files -->
+	{{-- <script type="text/javascript" src="{!! asset('panel/assets/js/plugins/notifications/jgrowl.min.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/ui/moment/moment.min.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/pickers/daterangepicker.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/pickers/anytime.min.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/pickers/pickadate/picker.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/pickers/pickadate/picker.date.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/pickers/pickadate/picker.time.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('panel/assets/js/plugins/pickers/pickadate/legacy.js') !!}"></script>
+
+	<script type="text/javascript" src="{!! asset('panel/assets/js/core/app.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('panel/assets/js/pages/picker_date.js') !!}"></script> --}}
+	<!-- /theme JS files -->
 @endsection
