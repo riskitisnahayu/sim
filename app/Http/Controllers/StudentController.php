@@ -180,12 +180,18 @@ class StudentController extends Controller
         $taskmaster_id = $task_master_id;
          // dd($taskmaster_id);
 
-         return view('student.soal', compact('task_master','tasks','answers','choices','taskmaster_id'));
+        //  timeout harus dalam menit
+         $nowTime = date("Y-m-d H:i:s"); //waktu sekarang
+         $addMinute = date("Y-m-d H:i:s", strtotime('+ 0 hours + '. $task_master->timeout .'minutes',strtotime($nowTime))); //waktu sekarang + waktu database
+         $date = date_create($addMinute); //addminute di date create biar bisa diformat sesuai format yang ntar di javascriptnya
+         $endTime = date_format($date,'M, d, Y h:i:s A');
+
+         return view('student.soal', compact('endTime','task_master','tasks','answers','choices','taskmaster_id'));
      }
 
-    public function soalResult()
+    public function soalResult(Request $request)
     {
-        // dd($request);
+        return $request;
         return view('student.soal_result');
     }
 
