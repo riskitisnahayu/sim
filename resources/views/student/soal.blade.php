@@ -5,7 +5,7 @@
 <div class="row">
 <h3 id="demo" class=""></h3>
 </div>
-<form class="form-horizontal" action="{{ route('student.hasil',$taskmaster_id) }}" enctype="multipart/form-data" method="POST">
+<form class="form-horizontal" name="soal" id="soal" action="{{ route('student.hasil',$taskmaster_id) }}" enctype="multipart/form-data" method="POST">
 	{{ csrf_field() }}
 	<input type="hidden" name="taskmaster_id" value="{{ $taskmaster_id }}">
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
@@ -107,9 +107,14 @@ document.addEventListener("DOMContentLoaded", function(){
 		if (t < 0) {
 			clearInterval(x);
 			document.getElementById("demo").innerHTML = "EXPIRED";
+			submitForm();
 		}
 	}, 1000);
 });
+
+function submitForm(){
+	document.forms["soal"].submit();
+}
 
 </script>
 @endsection
