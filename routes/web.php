@@ -135,5 +135,5 @@ Route::group(['middleware' => 'siswa'], function ()
 	Route::get('siswa/e-books', 'StudentController@ebooks')->name('student.ebook');
 	Route::get('siswa/bank-soal', 'StudentController@banksoal')->name('student.banksoal');
 	Route::get('siswa/soal', 'StudentController@soal')->name('student.soal');
-	Route::post('siswa/hasil/{id}', 'StudentController@soalResult')->name('student.hasil');
+	Route::post('siswa/hasil', 'StudentController@soalResult')->name('student.hasil');
 });

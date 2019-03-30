@@ -191,7 +191,7 @@ class StudentController extends Controller
 
     public function soalResult(Request $request)
     {
-        return $request;
+        // return $request;
         return view('student.soal_result');
     }
 
