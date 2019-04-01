@@ -5,7 +5,6 @@
 <form class="form-horizontal" name="soal" id="soal" action="{{ route('student.hasil') }}" enctype="multipart/form-data" method="POST">
 	{{ csrf_field() }}
 	<input type="hidden" name="taskmaster_id" value="{{ $taskmaster_id }}">
-	<input type="hidden" name="task_id" value="{{ $task_id }}">
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 	<div class="container">
 		<div class="row animate-box" style="background-color: white">
