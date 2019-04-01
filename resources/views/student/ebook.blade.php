@@ -16,7 +16,7 @@
 			</div>
 		<form class="form-horizontal" action="{!! route('student.ebook') !!}" enctype="multipart/form-data" method="get">
 			<div class="form-group">
-    			<label class="control-label col-sm-3">Mata Pelajaran</label>
+    			<label class="control-label col-lg-3">Mata Pelajaran</label>
                 <div class="col-lg-8">
                     <select class="form-control" name="subjectscategories_id">
                         <option  selected disabled>

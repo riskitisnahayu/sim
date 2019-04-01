@@ -48,7 +48,7 @@
 					<div class="col-sm-4">
 						<div class="thumbnail">
 							<div class="thumb text-center" style="padding-top:10px">
-								<img src="{!! asset('images') !!}/{{ $game->image }}" alt="">
+								<img class="img-thumbnail" src="{!! asset('images') !!}/{{ $game->image }}" alt="">
 							</div>
 
 							<div class="caption">
