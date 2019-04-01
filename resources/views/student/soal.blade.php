@@ -36,7 +36,7 @@
 									<td style="padding-left:50px">:</td>
 									<td>
 										<!-- Todo : Ditengahke ben jos -->
-										<div class="row">
+										<div class="row" style="padding-left: 66px">
 											<h4 id="demo" class=""></h4>
 										</div>
 									</td>

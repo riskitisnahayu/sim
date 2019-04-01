@@ -18,7 +18,7 @@ class CreateStudentAnswersTable extends Migration
             $table->integer('student_id')->unsigned();
             $table->integer('taskmaster_id')->unsigned();
             $table->integer('task_id')->unsigned();
-            $table->char('answer');
+            $table->char('answer')->nullable();
             $table->boolean('is_true');
             $table->timestamps();
         });
