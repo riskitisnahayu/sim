@@ -11,7 +11,7 @@
 					<h2>Soal</h2>
 						<div class="row" style="background-color: white; padding:25px">
 							<div class="form-group text-center"  style="padding:15px">
-								<label class="col-lg-12">Latihan Soal</label>
+								<label class="col-lg-12" style="font-size: 20px">Latihan Soal</label>
 							</div>
 							{{-- <div class="form-group" style="text-align:left">
 								<label class="control-label col-lg-2">Mata pelajaran :</label>
@@ -55,26 +55,26 @@
 								<tbody>
 										<tr>
 											<td>Pertanyaan</td>
-											<td>:</td>
+											<td style="padding-left:50px">:</td>
 										</tr>
 										<tr>
 											<td>Jawaban</td>
-											<td>:</td>
+											<td style="padding-left:50px">:</td>
 										</tr>
 										<tr>
 											<td>Kunci</td>
-											<td>:</td>
+											<td style="padding-left:50px">:</td>
 										</tr>
 										<tr>
 											<td>Pembahasan</td>
-											<td>:</td>
+											<td style="padding-left:50px">:</td>
 										</tr>
 								</tbody>
 							</table>
 							<div class="row" style="margin-top: 15px; margin-bottom:20px">
 								<div class="col-md-12 " style="text-align: center;">
 									{{-- <button type="submit" class="btn btn-success">Selesai</button> --}}
-									<button type="button" class="btn btn-success" onclick="location.href='/siswa/soal';">OKE</button>
+									<button type="button" class="btn btn-success" onclick="location.href='/siswa';">OKE</button>
 								</div>
 							</div>
 						</div>
