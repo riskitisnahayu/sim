@@ -12,7 +12,7 @@
 				<h2>Soal</h2>
 					<div class="row" style="background-color: white; padding:25px">
 						<div class="form-group text-center"  style="padding:15px">
-							<label class="col-lg-12">Latihan Soal</label>
+							<label class="col-lg-12" style="font-size: 20px">Latihan Soal</label>
 						</div>
 						<table style="text-align:left">
 							<thead>
