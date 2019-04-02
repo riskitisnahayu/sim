@@ -150,6 +150,14 @@ class StudentController extends Controller
          return view('student.banksoal', compact('task_masters','subjectscategories'));
      }
 
+     // public function saveAnswer()
+     // {
+     //     $task_masters = TaskMaster::find($request->taskmaster_id);
+     //     $tasks = $task_masters->tasks();
+     //     $answers = $tasks->answers();
+     //     dd($answers);
+     // }
+
      public function soal(Request $request)
      {
          // dd($request);
@@ -191,7 +199,42 @@ class StudentController extends Controller
 
     public function soalResult(Request $request)
     {
-        // return $request;
+        $x = $request->all(); //ini untuk request form dr bank soal, misal mata pelajaran, title, kelas, dan semester
+
+        $student_id = 'App\Student'::where('user_id',Auth::user()->id)->get()->first();
+        $taskmaster_id = $request->taskmaster_id;
+        $task_id = 'App\Task'::where('taskmaster_id',$taskmaster_id)->get();
+
+        // $arraychoice = [];
+        $is_true = 0; //didefinissin sbg nol. jadi klo siswa ga ngisi, berati nol
+        $size = sizeof($x)-2; //ini untuk mengurangi tokrn s, user id. dan yang dicari hny jml jwbn aja. knp jml jwbn? krna baklan ngeload sejumlah jwbn. dan harus nge-loop sebanyak jml jwban
+
+        //buat cek jwbn
+        for($i = 1; $i<=10; $i++) //ini untuk soal
+        {
+             // $jumlah = $i - 1; //
+             $iterasi = $task_id->get($i-1)->id; //di iterasi isinya task id sesuai dengan variaabel task id yang diatas buat nunjuk yang pertama bgt sampai yang terakhir berdasarkan index berdasarkan $i.
+             //$i - 1 karena menyesuaikan dengan index yang ada di blade, karena dimulai dengan index 0. jadi karena terlanjur menginputkan for = 1, maka harus dikurangi 1, biar dimulai dr 0
+
+             //memperisapkan tempat buat nyimpen
+             $aanswer = [ //sblm dimasukin ke db, disimpen dl ke objek dalam bntuk array, kenapa? biar nanti bs diubah, diubahnya dibawah nanti, yaitu di is_true
+                  'student_id'      => $student_id->id,
+                  'taskmaster_id'   => $request->taskmaster_id,
+                  'task_id'         => $iterasi,
+                  'answer'          => $request['answer'.$i],
+                  'is_true'          => $is_true
+              ];
+
+            // ini kerja is true
+             $answerr = 'App\Answer'::where('task_id',$iterasi)->where('is_answer',1)->get()->first()->is_answer; //task id nya sesuai dengan nomor soal yang kita cek && no. soal, liat dr FOR-nya
+             $choice = 'App\Answer'::where('task_id',$iterasi)->where('is_answer',1)->get()->first()->choice; // ini buat ngambil jawaban yang benar dr task id (dr soal yang kita cek)
+
+             //ini buat cek benar atau salah. klo benar is_true dr tempat nyimpen jadi 1. atau answer.
+             if($request['answer'.$i] == $choice){$aanswer['is_true'] = 1;} //untuk ngerubah is_true nya yang di $aanswer
+
+             'App\StudentAnswer'::create($aanswer); //setelah tau jwbn bnr/salah, baru tempat yang uda disiapin, di push ke db
+        }
+
         return view('student.soal_result');
     }
 
