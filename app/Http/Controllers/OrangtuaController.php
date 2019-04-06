@@ -44,7 +44,7 @@ class OrangtuaController extends Controller
         //     $query->where('orangtua_id', $ortu->id);
         // }])->with('logActivity')->get();
         $siswa = $ortu->student->pluck('user_id');
-        $activities = LogActivity::whereIn('user_id', $siswa)->with('user.student')->get();
+        $activities = LogActivity::whereIn('user_id', $siswa)->with('user.student')->orderBy('user_id', 'desc')->get();
         // dd($activity);
 
         return view('orangtua.student_activity',compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10);
@@ -53,11 +53,15 @@ class OrangtuaController extends Controller
     public function studentResult(Request $request)
     {
         $ortu = Auth::user()->orangtua->id;
-        $studenttask = StudentTask::whereHas('student', function($siswa) use($ortu){
-            $siswa->where('orangtua_id',$ortu)->get();
-        })->with('student_tasks.taskmaster_id','taskmaster.id')->get();
-        dd($studenttask);
-        return view('orangtua.student_result', compact('studenttask'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
+        // $studenttask = StudentTask::whereHas('student', function($siswa) use($ortu){
+        //     $siswa->where('orangtua_id',$ortu)->get();
+        // })->with('student_tasks.taskmaster_id','taskmaster.id')->get();
+        //$siswa = Student::where('orangtua_id',$ortu)->get();
+        $ortu = Orangtua::find($ortu);
+        $siswa = Student::where('orangtua_id',$ortu->id)->get();
+        $studenttask = $ortu->studenttask()->get();
+
+        return view('orangtua.student_result',compact('studenttask'))->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
     public function index2(Request $request)
@@ -80,12 +84,6 @@ class OrangtuaController extends Controller
         $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
         return view('orangtua.profil_edit',compact('ortu'));
     }
-
-    // Kode cek username hanya boleh huruf a-z dan A-Z
-		// if(!preg_match("/^[a-zA-Z]*$/",$username)){
-		// 	$username_valid = false;
-		// 	$username_valid_msg = "Hanya huruf yang diijinkan, dan tidak boleh menggunakan spasi.<br>";
-		// }
 
     public function updateProfil(Request $request){
         $this->validate($request, [

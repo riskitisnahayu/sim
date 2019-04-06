@@ -18,4 +18,9 @@ class Orangtua extends Model
     {
         return $this->hasMany('App\Student', 'orangtua_id', 'id');
     }
+
+    public function studenttask()
+    {
+        return $this->hasManyThrough('App\StudentTask','App\Student','orangtua_id','student_id');
+    }
 }

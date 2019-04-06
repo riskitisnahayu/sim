@@ -16,6 +16,7 @@ use App\User;
 use App\Task;
 use App\Answer;
 use Auth;
+use Illuminate\Support\Carbon;
 
 class StudentController extends Controller
 {
@@ -94,55 +95,6 @@ class StudentController extends Controller
              'fitur'   => 'Bank Soal'
          ]);
 
-         // if ($request->subjectscategories_id && $request->title && $request->class && $request->semester) {
-         //     $task_masters = TaskMaster::where([
-         //         ['subjectscategories_id', $request->subjectscategories_id],
-         //         ['title', $request->title],
-         //         ['class', $request->class],
-         //         ['semester', $request->semester],
-         //         ])->get();
-         // } elseif ($request->subjectscategories_id && $request->title) {
-         //     $task_masters = TaskMaster::where([
-         //         ['subjectscategories_id', $request->subjectscategories_id],
-         //         ['title', $request->title],
-         //         ])->get();
-         // } elseif ($request->subjectscategories_id && $request->class) {
-         //     $task_masters = TaskMaster::where([
-         //         ['subjectscategories_id', $request->subjectscategories_id],
-         //         ['class', $request->class],
-         //         ])->get();
-         // } elseif ($request->subjectscategories_id && $request->semester) {
-         //     $task_masters = TaskMaster::where([
-         //         ['subjectscategories_id', $request->subjectscategories_id],
-         //         ['semester', $request->semester],
-         //         ])->get();
-         // }  elseif ($request->title && $request->class) {
-         //    $task_masters = TaskMaster::where([
-         //        ['title', $request->title],
-         //        ['class', $request->class],
-         //        ])->get();
-         // } elseif ($request->title && $request->semester) {
-         //   $task_masters = TaskMaster::where([
-         //        ['title', $request->title],
-         //        ['semester', $request->semester],
-         //        ])->get();
-         // } elseif ($request->class && $request->semester) {
-         //    $task_masters = TaskMaster::where([
-         //        ['class', $request->class],
-         //        ['semester', $request->semester],
-         //        ])->get();
-         // } else if($request->subjectscategories_id) {
-         //    $task_masters = TaskMaster::where('subjectscategories_id', $request->subjectscategories_id)->get();
-         // } else if ($request->title) {
-         //     $task_masters = TaskMaster::where('title', $request->title)->get();
-         // } else if ($request->class) {
-         //     $task_masters = TaskMaster::where('class', $request->class)->get();
-         // } else if ($request->semester) {
-         //     $task_masters = TaskMaster::where('semester', $request->semester)->get();
-         // }else {
-         //     $task_masters = TaskMaster::all();
-         // }
-
          if ($request->subjectscategories_id) {
              $task_masters = TaskMaster::where('subjectscategories_id', $request->subjectscategories_id)->get();
          } else {
@@ -154,19 +106,8 @@ class StudentController extends Controller
          return view('student.banksoal', compact('task_masters','subjectscategories'));
      }
 
-     // public function saveAnswer()
-     // {
-     //     $task_masters = TaskMaster::find($request->taskmaster_id);
-     //     $tasks = $task_masters->tasks();
-     //     $answers = $tasks->answers();
-     //     dd($answers);
-     // }
-
      public function soal(Request $request)
      {
-         // dd($request);
-         // $task_master = TaskMaster::find($id);
-         // $tasks = TaskMaster::where('id', $id)->first()->tasks()->get();
          $task_master_id = $request->title;
          $task_master = TaskMaster::find($task_master_id);
          $tasks = TaskMaster::where('id', $task_master_id)
@@ -224,7 +165,8 @@ class StudentController extends Controller
             'score' => 0,
             'true_answer' =>  0,
             'wrong_answer' =>  0,
-            'duration' => 0
+            'duration' => 0,
+
         ]);
         $delete = StudentAnswer::where('taskmaster_id', $request->taskmaster_id)->where('student_id', $student_id->id)->delete();
         //buat cek jwbn

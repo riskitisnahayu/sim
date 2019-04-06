@@ -9,6 +9,7 @@ use App\Student;
 use App\Orangtua;
 use App\User;
 use App\LogActivity;
+use App\StudentTask;
 use RealRashid\SweetAlert\Facades\Alert;
 use Hash;
 
@@ -27,7 +28,7 @@ class DashboardController extends Controller
         // $siswaAll = Student::all();
         $ortu = DB::table('users')->where('type', '=', 'Orang tua')->count();
         $siswa = DB::table('users')->where('type', '=', 'Siswa')->count();
-        $activities = LogActivity::with('user.student.orangtua.user')->limit(5)->orderBy('user_id', 'desc')->get();
+        $activities = LogActivity::with('user.student.orangtua.user')->limit(5)->orderBy('created_at', 'desc')->get();
 
         // $ortu2 = Orangtua::where('user_id', Auth::user()->id)->first();
         // $siswa2 = $ortu2->student->pluck('user_id'); //Collection contains only user_id(koleksi hanya berisi id user)
@@ -45,15 +46,14 @@ class DashboardController extends Controller
 
     public function studentActivity(Request $request)
     {
-        $activities = LogActivity::with('user.student.orangtua.user')->orderBy('user_id', 'desc')->get();
+        $activities = LogActivity::with('user.student.orangtua.user')->orderBy('created_at', 'desc')->get();
         return view('admin.student_activity', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 
     public function studentResult(Request $request)
     {
-        $activities = LogActivity::with('user.student')->orderBy('user_id', 'desc')->get();
-        // $studenttask = StudentTask::with('');
-        return view('admin.student_result', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
+        $studenttask = StudentTask::with('student')->orderBy('created_at', 'desc')->get();
+        return view('admin.student_result', compact('studenttask'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 
     public function detailProfil()
