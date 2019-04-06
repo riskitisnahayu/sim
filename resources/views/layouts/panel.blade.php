@@ -54,7 +54,7 @@
 <!-- Main navbar -->
 <div class="navbar navbar-inverse">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html"><img src="{!! asset('panel/assets/images/logo_light.png') !!}" alt=""></a>
+		<a class="navbar-brand" href=""><img src="{!! asset('panel/assets/images/logo_light.png') !!}" alt=""></a>
 
 		<ul class="nav navbar-nav visible-xs-block">
 			<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -75,9 +75,9 @@
 
 				<ul class="dropdown-menu dropdown-menu-right">
 					@if (Auth::user()->type == 'Orang tua')
-						<li><a href="{{ route('orangtua.profil.detail') }}"><i class="icon-user-plus"></i> My profile</a></li>
+						<li><a href="{{ route('orangtua.profil.detail') }}"><i class="icon-user-plus"></i> Profil</a></li>
 					@elseif (Auth::user()->type == 'Admin')
-						<li><a href="{{ route('admin.profil.detail') }}"><i class="icon-user-plus"></i> My profile</a></li>
+						<li><a href="{{ route('admin.profil.detail') }}"><i class="icon-user-plus"></i> Profil</a></li>
 					@endif
 					<li>
 						<a href="{{ route('logout') }}"
@@ -145,8 +145,8 @@
 								<li>
 									<a href="#"><i class="icon-clipboard3"></i> <span>Laporan</span></a>
 									<ul>
-										<li class="{{ request()->is('admin/aktivitas-pengguna') ? 'active' : '' }}"><a href="{!! route('admin.studentactivity') !!}">Aktivitas Pengguna</a></li>
-										<li class="{{ request()->is('admin/hasil-tes-pengguna') ? 'active' : '' }}"><a href="{!! route('admin.studentresult') !!}">Hasil Tes Pengguna</a></li>
+										<li class="{{ request()->is('admin/laporan/aktivitas-siswa') ? 'active' : '' }}"><a href="{!! route('admin.studentactivity') !!}">Aktivitas Siswa</a></li>
+										<li class="{{ request()->is('admin/laporan/hasil-tes-siswa') ? 'active' : '' }}"><a href="{!! route('admin.studentresult') !!}">Hasil Tes Siswa</a></li>
 									</ul>
 								</li>
 								@else
@@ -199,7 +199,7 @@
 				<!-- Footer -->
 				 {{-- target="_blank" == untuk new page --}}
 				<div class="footer text-muted">
-					&copy; 2018. <a href="#">Aplikasi Dashboard Pembelajaran dan Buku Interaktif</a> by <a href="#">Riski Tisnahayu</a>
+					&copy; 2018. <a href="#">Aplikasi Dashboard Pembelajaran dan Buku Interaktif</a>
 				</div>
 				<!-- /footer -->
 

@@ -45,20 +45,20 @@ class DashboardController extends Controller
 
     public function studentActivity(Request $request)
     {
-        $activities = LogActivity::with('user.student.orangtua.user')->limit(5)->orderBy('user_id', 'desc')->get();
+        $activities = LogActivity::with('user.student.orangtua.user')->orderBy('user_id', 'desc')->get();
         return view('admin.student_activity', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 
     public function studentResult(Request $request)
     {
-        $activities = LogActivity::with('user.student.orangtua.user')->get();
+        $activities = LogActivity::with('user.student')->orderBy('user_id', 'desc')->get();
+        // $studenttask = StudentTask::with('');
         return view('admin.student_result', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 
     public function detailProfil()
     {
         $user = User::where('id', Auth::user()->id)->first();
-           // dd($user);
         return view('admin.profil_detail',compact('user'));
     }
 

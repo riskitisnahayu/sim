@@ -24,4 +24,9 @@ class Student extends Model
     {
         return $this->belongsTo('App\Orangtua', 'orangtua_id', 'id');
     }
+
+    public function studenttask()
+    {
+        return $this->hasMany('App\StudentTask', 'student_id', 'id');
+    }
 }

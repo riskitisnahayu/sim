@@ -13,7 +13,7 @@
 	</div>
     <div class="row">
         <div class="col-sm-4 col-md-2">
-            <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('ebook/add')}}'"><i class="icon-plus2 position-left"></i> Tambah E-Book</button>
+            <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('admin/e-book/tambah')}}'"><i class="icon-plus2 position-left"></i> Tambah E-Book</button>
         </div>
     </div>
 
@@ -52,9 +52,9 @@
                         <a href="{{ $value->url }}">{{ $value->url }}</a>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('ebook/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button>
-                        <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('ebook/edit/'.$value->id) }}'" title="Edit"><i class="icon-pencil"></i></button>
-                        <button type="button" class="btn btn-danger btn-icon btn-rounded" onclick="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{{url('ebook/delete/'.$value->id) }}'};" title="Delete"><i class="icon-trash"></i></button>
+                        <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('admin/e-book/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button>
+                        <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('admin/e-book/edit/'.$value->id) }}'" title="Edit"><i class="icon-pencil"></i></button>
+                        <button type="button" class="btn btn-danger btn-icon btn-rounded" onclick="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{{url('admin/e-book/delete/'.$value->id) }}'};" title="Delete"><i class="icon-trash"></i></button>
                     </td>
                 </tr>
             @endforeach

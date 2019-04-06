@@ -13,7 +13,7 @@
 	</div>
     <div class="row">
         <div class="col-sm-4 col-md-2">
-            <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('subjectscategory/add')}}'"><i class="icon-plus2 position-left"></i> Tambah Mata Pelajaran</button>
+            <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('admin/mata-pelajaran/tambah')}}'"><i class="icon-plus2 position-left"></i> Tambah Mata Pelajaran</button>
 
         </div>
     </div>
@@ -35,9 +35,9 @@
                     <td>{{ $value->name }}</td>
                     <td>{{ $value->description }}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('subjectscategory/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button>
-                        <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('subjectscategory/edit/'.$value->id) }}'" title="Edit"><i class="icon-pencil"></i></button>
-                        <button type="button" class="btn btn-danger btn-icon btn-rounded" onclick="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{{url('subjectscategory/delete/'.$value->id) }}'};" title="Delete"><i class="icon-trash"></i></button>
+                        <button type="button" class="btn btn-primary btn-icon btn-rounded" onclick="location.href='{{url('admin/mata-pelajaran/detail/'.$value->id) }}'" title="Detail"><i class="icon-info3"></i></button>
+                        <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('admin/mata-pelajaran/edit/'.$value->id) }}'" title="Edit"><i class="icon-pencil"></i></button>
+                        <button type="button" class="btn btn-danger btn-icon btn-rounded" onclick="javascript:if(confirm('Yakin ingin hapus data?')){window.location.href='{{url('admin/mata-pelajaran/delete/'.$value->id) }}'};" title="Delete"><i class="icon-trash"></i></button>
                     </td>
                 </tr>
             @endforeach

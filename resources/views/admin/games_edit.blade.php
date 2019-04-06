@@ -56,7 +56,7 @@
             <div class="form-group">
     			<label class="control-label col-lg-2">Deskripsi</label>
     			<div class="col-lg-10">
-    				<textarea rows="5"  name="description" cols="5" class="form-control" placeholder="Tulis deskripsi.." value="">{{ $games->description }}</textarea>
+    				<textarea rows="5"  name="description" cols="5" class="form-control" placeholder="Tulis deskripsi..">{{ $games->description }}</textarea>
     			</div>
     		</div>
 

@@ -46,18 +46,20 @@ class GamesController extends Controller
      */
     public function store(Request $request) // untuk menghandel form tambah data
     {
-       $this->validate($request, [
-             'name'          => 'required',
-             'gamecategories_id'      => 'required',
-             // 'image'         => 'required',
-             'description'   => 'required',
-             'url'           => 'required',
+
+        $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+        $this->validate($request, [
+            'name'          => 'required',
+            'gamecategories_id'      => 'required',
+            'image'         => 'required',
+            'description'   => 'required',
+            'url'           => 'required|regex:' . $regex,
        ],
 
        [
            'name.required'          => 'Nama harus diisi!',
            'gamecategories_id.required'      => 'Kategori harus diisi!',
-           // 'image.required'         => 'required',
+           'image.required'         => 'Gambar harus diisi!',
            'description.required'   => 'Deskripsi harus diisi!',
            'url.required'           => 'Url harus diisi!',
        ]
@@ -118,17 +120,17 @@ class GamesController extends Controller
      */
     public function update(Request $request, $id) // untuk menghandel form edit data
     {
+        $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
         $this->validate($request, [
               'name'          => 'required',
               'gamecategories_id'      => 'required',
               'description'   => 'required',
-              'url'           => 'required',
+              'url'           => 'required|regex:'. $regex,
         ],
 
         [
             'name.required'          => 'Nama harus diisi!',
             'gamecategories_id.required'      => 'Kategori harus diisi!',
-            // 'image.required'         => 'required',
             'description.required'   => 'Deskripsi harus diisi!',
             'url.required'           => 'Url harus diisi!',
         ]

@@ -18,14 +18,14 @@ Route::get('/', function() {
 
 Route::group(['middleware' => 'guest'], function ()
 {
-	Route::get('admin-login', function () {
+	Route::get('login', function () {
 		return view('auth.login');
-	})->name('admin.login');
+	})->name('login');
 
-	Route::get('orangtua-login', function() {
-		return view('auth.orangtua_login');
-	})->name('orangtua.login');
-
+	// Route::get('orangtua-login', function() {
+	// 	return view('auth.orangtua_login');
+	// })->name('orangtua.login');
+	//
 	Route::get('siswa-login', function() {
 		return view('auth.student_login');
 	})->name('siswa.login');
@@ -47,19 +47,19 @@ Route::group(['middleware' => 'admin'], function ()
 	Route::get('admin/mini-games', 'GamesController@index')->name('admin.minigames');
 	Route::get('admin/e-book', 'EbookController@index')->name('admin.ebook');
 	Route::get('admin/bank-soal', 'TaskMasterController@index')->name('admin.banksoal'); //controller diganti ya
-	Route::get('admin/aktivitas-pengguna', 'DashboardController@studentActivity')->name('admin.studentactivity'); //controller diganti ya
-	Route::get('admin/hasil-tes-pengguna', 'DashboardController@studentResult')->name('admin.studentresult'); //controller diganti ya
+	Route::get('admin/laporan/aktivitas-siswa', 'DashboardController@studentActivity')->name('admin.studentactivity'); //controller diganti ya
+	Route::get('admin/laporan/hasil-tes-siswa', 'DashboardController@studentResult')->name('admin.studentresult'); //controller diganti ya
 
 	// manage kategori game
-	Route::get('gamecategory/add','GameCategoryController@create')->name('gamecategory.add');
-	Route::post('gamecategory/store', 'GameCategoryController@store')->name('gamecategory.store');
-	Route::get('gamecategory/detail/{id}', 'GameCategoryController@show')->name('gamecategory.detail');
-	Route::get('gamecategory/edit/{id}', 'GameCategoryController@edit')->name('gamecategory.edit');
-	Route::post('gamecategory/update/{id}', 'GameCategoryController@update')->name('gamecategory.update');
-	Route::get('gamecategory/delete/{id}', 'GameCategoryController@destroy')->name('gamecategory.delete');
+	Route::get('admin/kategori-game/tambah','GameCategoryController@create')->name('gamecategory.add');
+	Route::post('admin/kategori-game/store', 'GameCategoryController@store')->name('gamecategory.store');
+	Route::get('admin/kategori-game/detail/{id}', 'GameCategoryController@show')->name('gamecategory.detail');
+	Route::get('admin/kategori-game/edit/{id}', 'GameCategoryController@edit')->name('gamecategory.edit');
+	Route::post('admin/kategori-game/update/{id}', 'GameCategoryController@update')->name('gamecategory.update');
+	Route::get('admin/kategori-game/delete/{id}', 'GameCategoryController@destroy')->name('gamecategory.delete');
 
 	// mini games
-	Route::get('admin/games/add', 'GamesController@create')->name('admin.games.add');
+	Route::get('admin/games/tambah', 'GamesController@create')->name('admin.games.add');
 	Route::post('admin/games/store', 'GamesController@store')->name('admin.games.store');
 	Route::get('admin/games/detail/{id}', 'GamesController@show')->name('admin.games.detail');
 	Route::get('admin/games/edit/{id}', 'GamesController@edit')->name('admin.games.edit');
@@ -67,35 +67,35 @@ Route::group(['middleware' => 'admin'], function ()
 	Route::get('admin/games/delete/{id}', 'GamesController@destroy')->name('admin.games.delete');
 
 	// manage mata pelajaran
-	Route::get('subjectscategory/add','SubjectsCategoryController@create')->name('subjectscategory.add');
-	Route::post('subjectscategory/store', 'SubjectsCategoryController@store')->name('subjectscategory.store');
-	Route::get('subjectscategory/detail/{id}', 'SubjectsCategoryController@show')->name('subjectscategory.detail');
-	Route::get('subjectscategory/edit/{id}', 'SubjectsCategoryController@edit')->name('subjectscategory.edit');
-	Route::post('subjectscategory/update/{id}', 'SubjectsCategoryController@update')->name('subjectscategory.update');
-	Route::get('subjectscategory/delete/{id}', 'SubjectsCategoryController@destroy')->name('subjectscategory.delete');
+	Route::get('admin/mata-pelajaran/tambah','SubjectsCategoryController@create')->name('subjectscategory.add');
+	Route::post('admin/mata-pelajaran/store', 'SubjectsCategoryController@store')->name('subjectscategory.store');
+	Route::get('admin/mata-pelajaran/detail/{id}', 'SubjectsCategoryController@show')->name('subjectscategory.detail');
+	Route::get('admin/mata-pelajaran/edit/{id}', 'SubjectsCategoryController@edit')->name('subjectscategory.edit');
+	Route::post('admin/mata-pelajaran/update/{id}', 'SubjectsCategoryController@update')->name('subjectscategory.update');
+	Route::get('admin/mata-pelajaran/delete/{id}', 'SubjectsCategoryController@destroy')->name('subjectscategory.delete');
 
 	// ebook
-	Route::get('ebook/add','EbookController@create')->name('ebook.add');
-	Route::post('ebook/store', 'EbookController@store')->name('ebook.store');
-	Route::get('ebook/detail/{id}', 'EbookController@show')->name('ebook.detail');
-	Route::get('ebook/edit/{id}', 'EbookController@edit')->name('ebook.edit');
-	Route::post('ebook/update/{id}', 'EbookController@update')->name('ebook.update');
-	Route::get('ebook/delete/{id}', 'EbookController@destroy')->name('ebook.delete');
+	Route::get('admin/e-book/tambah','EbookController@create')->name('ebook.add');
+	Route::post('admin/e-book/store', 'EbookController@store')->name('ebook.store');
+	Route::get('admin/e-book/detail/{id}', 'EbookController@show')->name('ebook.detail');
+	Route::get('admin/e-book/edit/{id}', 'EbookController@edit')->name('ebook.edit');
+	Route::post('admin/e-book/update/{id}', 'EbookController@update')->name('ebook.update');
+	Route::get('admin/e-book/delete/{id}', 'EbookController@destroy')->name('ebook.delete');
 
 	// bank soal
-	Route::get('banksoal/add','TaskMasterController@create')->name('taskmaster.add');
-	Route::post('banksoal/store', 'TaskMasterController@store')->name('taskmaster.store');
-	Route::get('banksoal/detail/{id}', 'TaskMasterController@show')->name('taskmaster.detail');
-	Route::get('banksoal/edit/{id}', 'TaskMasterController@edit')->name('taskmaster.edit');
-	Route::post('banksoal/update/{id}', 'TaskMasterController@update')->name('taskmaster.update');
-	Route::get('banksoal/delete/{id}', 'TaskMasterController@destroy')->name('taskmaster.delete');
+	Route::get('admin/bank-soal/tambah','TaskMasterController@create')->name('taskmaster.add');
+	Route::post('admin/bank-soal/store', 'TaskMasterController@store')->name('taskmaster.store');
+	Route::get('admin/bank-soal/detail/{id}', 'TaskMasterController@show')->name('taskmaster.detail');
+	Route::get('admin/bank-soal/edit/{id}', 'TaskMasterController@edit')->name('taskmaster.edit');
+	Route::post('admin/bank-soal/update/{id}', 'TaskMasterController@update')->name('taskmaster.update');
+	Route::get('admin/bank-soal/delete/{id}', 'TaskMasterController@destroy')->name('taskmaster.delete');
 
 	// soal
-	Route::get('soal/detail/{id}', 'TaskController@show')->name('task.detail');
-	Route::get('soal/add/{id}','TaskController@create')->name('task.add');
-	Route::post('soal/store', 'TaskController@store')->name('task.store');
-	Route::get('soal/edit/{id}', 'TaskController@edit')->name('task.edit');
-	Route::post('soal/update/{id}', 'TaskController@update')->name('task.update');
+	Route::get('admin/soal/detail/{id}', 'TaskController@show')->name('task.detail');
+	Route::get('admin/soal/tambah/{id}','TaskController@create')->name('task.add');
+	Route::post('admin/soal/store', 'TaskController@store')->name('task.store');
+	Route::get('admin/soal/edit/{id}', 'TaskController@edit')->name('task.edit');
+	Route::post('admin/soal/update/{id}', 'TaskController@update')->name('task.update');
 });
 
 Route::group(['middleware' => 'orangtua'], function ()
@@ -136,4 +136,5 @@ Route::group(['middleware' => 'siswa'], function ()
 	Route::get('siswa/bank-soal', 'StudentController@banksoal')->name('student.banksoal');
 	Route::get('siswa/soal', 'StudentController@soal')->name('student.soal');
 	Route::post('siswa/hasil', 'StudentController@soalResult')->name('student.hasil');
+	Route::get('hasil/{id}', 'StudentController@result')->name('hasil');
 });

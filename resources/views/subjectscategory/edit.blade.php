@@ -22,7 +22,7 @@
         {{ csrf_field() }}
     	<fieldset class="content-group">
     		<div class="form-group">
-    			<label class="control-label col-lg-2">Nama</label>
+    			<label class="control-label col-lg-2">Nama mata pelajaran</label>
     			<div class="col-lg-10">
     				<input type="text" class="form-control" name="name" value="{{ $subjectscategories->name }}">
     			</div>

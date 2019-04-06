@@ -1,9 +1,8 @@
 @extends('layouts.panel')
 
-
 @section('content')
 @section('page_title')
-    Laporan Hasil Tes Siswa
+    Laporan Hasil Tes Anak
 
 @endsection
 
@@ -16,22 +15,22 @@
                <th>No</th>
                <th>Nama anak</th>
                <th>Kelas</th>
+               <th>Mata pelajaran</th>
                <th>Judul</th>
-               <th>Jawaban Siswa</th>
                <th>Nilai</th>
                <th>Tanggal</th>
                <th>Waktu</th>
            </tr>
         </thead>
         <tbody>
-            @foreach ($activities as $key => $activity)
+            @foreach ($user->studenttask as $key => $value)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $activity->user->student->user->name }}</td>
-                    <td>{{ $activity->user->student->class }}</td>
-                    <td>{{ $activity->title }}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $user->user->name }}</td>
+                    <td>{{ $user->class }}</td>
+                    <td>{{ $value->taskMaster->subjectscategory->name}}</td>
+                    <td>{{ $value->taskMaster->title }}</td>
+                    <td>{{ $value->score}}</td>
                     <td>{{ Carbon\Carbon::parse($activity->created_at)->toFormattedDateString() }}</td>
                     <td>{{ Carbon\Carbon::parse($activity->created_at)->format('H:i:s') }}</td>
                 </tr>

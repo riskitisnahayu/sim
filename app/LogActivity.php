@@ -14,4 +14,9 @@ class LogActivity extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
+
+    public function taskmaster()
+    {
+        return $this->belongsTo('App\TaskMaster','taskmaster_id','id');
+    }
 }

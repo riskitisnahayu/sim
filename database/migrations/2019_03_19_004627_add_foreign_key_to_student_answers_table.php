@@ -17,6 +17,8 @@ class AddForeignKeyToStudentAnswersTable extends Migration
             $table->foreign('student_id','fk_student_answers_students')->references('id')->on('students')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('taskmaster_id','fk_student_answers_task_masters')->references('id')->on('task_masters')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('task_id','fk_student_answers_tasks')->references('id')->on('tasks')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('studenttask_id','fk_student_answers_student_tasks')->references('id')->on('student_tasks');
+
 
         });
     }

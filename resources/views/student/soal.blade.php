@@ -48,11 +48,22 @@
 							<tbody>
 								@foreach ($tasks as $key => $task)
 									<tr>
-										<td colspan="4" style="text-align:left;width:800px">{{ $key+1 .". ".$task->description }}</td>
+										<td style="text-align:left;width:10px">{{ $key+1 }}.</td>
+										@if (!($task->image))
+											<td colspan="4" style="text-align:left">{{ $task->description }}</td>
+										@endif
+										<td colspan="4" style="text-align:left"><img src="{{ url('images/'.$task->image)}}" style="width:100px" alt=""></td>
 									</tr>
+									@if ($task->image)
+									<tr>
+										<td></td>
+										<td colspan="4" style="text-align:left">{{ $task->description }}</td>
+									</tr>
+									@endif
 									<tr>
 										@foreach ($answers[$key] as $key => $answer)
-											<td style="text-align: left; padding-left:15px">
+											<td></td>
+											<td style="text-align: left; padding-left:15px;width:200px">
 												<label class="radio-inline">
 													<input type="radio" value="{{$choices[$key]}}" name="answer{{$loop->parent->index+1}}" class="styled"  id="rd{{$key+1}}">
 													{{ $choices[$key].". ".$answer->choice_answer }}
@@ -94,7 +105,7 @@
 			// 	hours + "h " + minutes + "m " + seconds + "s ";
 			if (t < 0) {
 				clearInterval(x);
-				document.getElementById("demo").innerHTML = "EXPIRED";
+				document.getElementById("demo").innerHTML = "WAKTU HABIS!";
 				submitForm();
 			}
 		}, 1000);

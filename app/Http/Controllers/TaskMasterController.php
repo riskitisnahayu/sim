@@ -73,7 +73,7 @@ class TaskMasterController extends Controller
         $task_masters->save();
 
          // redirect menggunakan url lengkap sedangkan route menggunakan route name
-         return redirect("soal/add/".$task_masters->id);
+         return redirect("admin/soal/tambah/".$task_masters->id);
          // return redirect("soal/add/".$task_masters->id."?total_task=".$request->total_task);
 
     }
@@ -140,7 +140,7 @@ class TaskMasterController extends Controller
         $task_masters->timeout=$request->timeout;
         $task_masters->save();
         // return redirect("soal/edit/".$task_masters->id."?total_task=".$request->total_task);
-        return redirect("soal/detail/".$task_masters->id);
+        return redirect("admin/soal/detail/".$task_masters->id);
 
     }
 

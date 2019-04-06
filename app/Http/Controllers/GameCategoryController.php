@@ -34,8 +34,6 @@ class GameCategoryController extends Controller
             'description.required'  => 'Deskripsi harus diisi!',
         ]
     );
-
-
        $gamecategories = new GameCategory();
        $gamecategories->name=$request->name;
        $gamecategories->description=$request->description;
@@ -72,9 +70,7 @@ class GameCategoryController extends Controller
              'description.required'  => 'Deskripsi harus diisi!',
          ]
      );
-
-
-
+     
         $gamecategories = GameCategory::where('id',$id)->first();
         $gamecategories->name  = $request->name;
         $gamecategories->description = $request->description;

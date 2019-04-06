@@ -7,6 +7,7 @@
 @section('form')
 	<form method="POST" action="{{ route('login') }}" class="form-validate" style="padding-top:50px">
 		{{ csrf_field() }}
+		<input type="hidden" name="role" value="siswa">
 		<div class="panel panel-body login-form">
 			<div class="text-center">
 				<div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
@@ -19,7 +20,7 @@
 					<i class="icon-user text-muted"></i>
 				</div>
 				@if ($errors->has('email'))
-                    <span>{{ $errors->first('email') }}</span>
+                    <span style="color:red">{{ $errors->first('email') }}</span>
                 @endif
 			</div>
 
@@ -29,8 +30,16 @@
 					<i class="icon-lock2 text-muted"></i>
 				</div>
 				@if ($errors->has('password'))
-                    <span>{{ $errors->first('password') }}</span>
+                    <span style="color:red">{{ $errors->first('password') }}</span>
                 @endif
+			</div>
+
+			<div class="form-group login-options">
+				<div class="row">
+                    <div class="col-sm-6 text-left">
+                        <a href="{!! route('login') !!}">Login orang tua?</a>
+                    </div>
+				</div>
 			</div>
 
 			<div class="form-group">

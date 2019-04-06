@@ -3,7 +3,7 @@
 
 @section('content')
 @section('page_title')
-    Laporan Aktivitas Pengguna
+    Laporan Aktivitas Siswa
 
 @endsection
 

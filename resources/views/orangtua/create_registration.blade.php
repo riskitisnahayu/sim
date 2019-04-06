@@ -28,11 +28,11 @@
                 <div class="form-group">
         			<label class="control-label col-lg-2">Nama anak</label>
         			<div class="col-lg-10">
-        				<input type="text" class="form-control" name="name" placeholder="nama anak">
+        				<input type="text" class="form-control" name="name" placeholder="nama anak" value="{{ old('name') }}">
         			</div>
         		</div>
                 <div class="form-group">
-                    <label class="control-label col-lg-2">Jenis Kelamin</label>
+                    <label class="control-label col-lg-2">Jenis kelamin</label>
                     <div class="col-lg-10">
                     <select name="jenis_kelamin" class="form-control" >
                         <option  selected disabled>
@@ -53,14 +53,14 @@
                 <div class="form-group">
         			<label class="control-label col-lg-2">Username</label>
         			<div class="col-lg-10">
-        				<input type="text" class="form-control" name="username" placeholder="username">
+        				<input type="text" class="form-control" name="username" placeholder="username" value="{{ old('username') }}">
         			</div>
         		</div>
 
                 <div class="form-group">
         			<label class="control-label col-lg-2">Email</label>
         			<div class="col-lg-10">
-        				<input type="email" class="form-control" name="email" placeholder="email">
+        				<input type="email" class="form-control" name="email" placeholder="email" value="{{ old('email') }}">
         			</div>
         		</div>
                 <div class="form-group">
@@ -115,7 +115,7 @@
                 <div class="form-group">
 					<label class="control-label col-lg-2">Nama sekolah</label>
 					<div class="col-lg-10">
-						<input type="text" name="school_name" class="form-control" placeholder="nama sekolah">
+						<input type="text" name="school_name" class="form-control" placeholder="nama sekolah" value="{{ old('school_name') }}">
 					</div>
 				</div>
 

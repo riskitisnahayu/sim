@@ -26,14 +26,14 @@
     		<div class="form-group">
     			<label class="control-label col-lg-2">Nama</label>
     			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="name" >
+    				<input type="text" class="form-control" name="name" placeholder="Nama kategori game" value="{{ old('name') }}">
     			</div>
     		</div>
 
             <div class="form-group">
     			<label class="control-label col-lg-2">Deskripsi</label>
     			<div class="col-lg-10">
-    				<textarea rows="5"  name="description" cols="5" class="form-control" placeholder="Tulis deskripsi.." ></textarea>
+    				<textarea rows="5"  name="description" cols="5" class="form-control" placeholder="Tulis deskripsi..">{{old('description') }}</textarea>
     			</div>
     		</div>
     	</fieldset>

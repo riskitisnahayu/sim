@@ -40,13 +40,13 @@ class LoginController extends Controller
     {
         if (Auth::user()->type == "Orang tua") {
             $this->performLogout($request);
-            return redirect()->route('orangtua.login');
+            return redirect()->route('login');
         } else if(Auth::user()->type == "Siswa") {
             $this->performLogout($request);
             return redirect()->route('siswa.login');
         } else {
             $this->performLogout($request);
-            return redirect()->route('admin.login');
+            return redirect()->route('login');
         }
 
     }
@@ -60,14 +60,20 @@ class LoginController extends Controller
     // protected $redirectTo = 'admin/dashboard';
     protected function authenticated(Request $request, $user)
     {
-        if ($user->type == 'Admin'){
+        if ($user->type == 'Admin' && $request->role == 'other'){
             return redirect()->route('admin.dashboard');
         }
-        else if ($user->type == 'Orang tua'){
+        else if ($user->type == 'Orang tua' && $request->role == 'other'){
             return redirect()->route('orangtua.dashboard');
         }
-        else if ($user->type == 'Siswa'){
+        else if ($user->type == 'Siswa' && $request->role == 'siswa'){
             return redirect()->route('student.index');
+        } else if ($user->type == 'Siswa'){
+            Auth::logout();
+            return redirect()->route('siswa.login');
+        } else if ($user->type == 'Admin' || $user->type == 'Orang tua'){
+            Auth::logout();
+            return redirect()->route('login');
         }
     }
 

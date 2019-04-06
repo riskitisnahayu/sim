@@ -11,7 +11,7 @@
 	<div class="panel-heading"></div>
     <div class="row">
         <div class="col-sm-4 col-md-2">
-            <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('admin/games/add')}}'"><i class="icon-plus2 position-left"></i> Tambah Mini Games</button>
+            <button type="button" class="btn btn-primary" style="margin-left:20px" onclick="location.href='{{url('admin/games/tambah')}}'"><i class="icon-plus2 position-left"></i> Tambah Mini Games</button>
         </div>
     </div>
 

@@ -26,14 +26,14 @@
     		<div class="form-group">
     			<label class="control-label col-lg-2">Judul</label>
     			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="title" placeholder="Tulis judul latihan soal">
+    				<input type="text" class="form-control" name="title" placeholder="Tulis judul latihan soal" value="{{ old('title') }}">
     			</div>
     		</div>
             <div class="form-group">
     			<label class="control-label col-lg-2">Kelas</label>
     			<div class="col-lg-10">
                     <select name="class" class="form-control" >
-                        <option  selected disabled>
+                        <option selected disabled>
                             @if($errors->any())
                                 @if ($errors)
 
@@ -53,7 +53,7 @@
                 <label class="control-label col-lg-2">Semester</label>
                 <div class="col-lg-10">
                 <select name="semester" class="form-control" >
-                    <option  selected disabled>
+                    <option selected disabled>
                         @if($errors->any())
                             @if ($errors)
 
@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="form-group">
-    			<label class="control-label col-lg-2">Mata Pelajaran</label>
+    			<label class="control-label col-lg-2">Mata pelajaran</label>
                 <div class="col-lg-10">
                     <select class="form-control" name="subjectscategories_id">
                         <option  selected disabled>
@@ -78,19 +78,19 @@
                                 @if ($errors)
 
                                 @endif
-                                {{ old('subjectscategories_id') }}
+                                {{ old('subjectscategories') }}
                             @else
                                 ---- Pilih Mata Pelajaran ---
                             @endif
                         </option>
                             @foreach($subjectscategories as $value)
-                                <option value="{{$value->id}}" {{collect(old('subjectscategories'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
+                                <option value="{{$value->id}}" {{collect(old('subjectscategories_id'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
                             @endforeach
                     </select>
                 </div>
     		</div>
             <div class="form-group">
-                <label class="control-label col-lg-2">Jumlah Soal</label>
+                <label class="control-label col-lg-2">Jumlah soal</label>
                 <div class="col-lg-10">
     				{{-- <input type="text" class="form-control" name="name" placeholder="10" readonly="" type="text"> --}}
                 <select name="total_task" class="form-control" >
@@ -114,7 +114,7 @@
 				<label class="control-label col-lg-2">Set waktu</label>
 				<div class="input-group">
 					<span class="input-group-addon"><i class="icon-watch2"></i></span>
-					<input type="text" class="form-control" name="timeout" placeholder="Tuliskan waktu..">
+					<input type="number" class="form-control" name="timeout" placeholder="Tuliskan waktu dengan angka">
                     <span class="input-group-addon">menit</span>
 				</div>
 			</div>

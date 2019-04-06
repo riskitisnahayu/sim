@@ -27,60 +27,60 @@
     		<div class="form-group">
     			<label class="control-label col-lg-2">Nama</label>
     			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="name" >
+    				<input type="text" class="form-control" name="name" value="{{ old('name')}}" placeholder="Nama mata pelajaran">
     			</div>
     		</div>
 
             <div class="form-group">
-            	<label class="control-label col-lg-2">Kategori</label>
-            	<div class="col-lg-10">
-                    <select class="form-control" name="gamecategories_id">
-                        <option  selected disabled>
+        	<label class="control-label col-lg-2">Kategori</label>
+        	   <div class="col-lg-10">
+                   <select class="form-control" name="gamecategories_id">
+                        <option selected disabled>
                             @if($errors->any())
                                 @if ($errors)
 
                                 @endif
-                                {{ old('gamecategories_id') }}
+                                {{ old('gamecategories') }}
                             @else
                                 ---- Pilih Kategori ---
                             @endif
                         </option>
-	                        @foreach($gamecategories as $value)
-	                            <option value="{{$value->id}}" {{collect(old('gamecategories'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
-	                        @endforeach
+                        @foreach($gamecategories as $value)
+                            <option value="{{$value->id}}" {{collect(old('gamecategories_id'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
 
             <div class="form-group">
-    			<label class="control-label col-lg-2">Foto</label>
+			<label class="control-label col-lg-2">Gambar</label>
     			<div class="col-lg-10">
     				<input type="file" class="form-control" name="image">
     			</div>
     		</div>
 
             <div class="form-group">
-    			<label class="control-label col-lg-2">Deskripsi</label>
+			<label class="control-label col-lg-2">Deskripsi</label>
     			<div class="col-lg-10">
-    				<textarea rows="5"  name="description" cols="5" class="form-control" placeholder="Tulis deskripsi.." ></textarea>
+    				<textarea rows="5"  name="description" cols="5" class="form-control" placeholder="Tulis deskripsi..">{{ old('description')}}</textarea>
     			</div>
     		</div>
 
     		<div class="form-group">
-    			<label class="control-label col-lg-2">Url</label>
+			<label class="control-label col-lg-2">Url</label>
     			<div class="col-lg-10">
-    				<input type="text" name="url" class="form-control" value="">
+    				<input type="text" name="url" class="form-control" value="{{ old('url') }}" placeholder="Alamat url">
     			</div>
     		</div>
     	</fieldset>
+
         <div class="row" style="margin-top: 10px;">
-          <div class="col-md-12" style="text-align: center;">
-            <button type="submit" class="btn btn-success">Simpan</button>
-            <button type="button" class="btn btn-danger" onclick="location.href='/admin/mini-games';">Batal</button>
-          </div>
+            <div class="col-md-12" style="text-align: center;">
+                <button type="submit" class="btn btn-success">Simpan</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='/admin/mini-games';">Batal</button>
+            </div>
         </div>
     </form>
-
     </div>
 </div>
 @endsection

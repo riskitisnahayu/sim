@@ -10,6 +10,7 @@ use App\User;
 use App\Student;
 use App\Orangtua;
 use App\LogActivity;
+use App\StudentTask;
 use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -51,8 +52,12 @@ class OrangtuaController extends Controller
 
     public function studentResult(Request $request)
     {
-        $activities = LogActivity::with('user.student.orangtua.user')->get();
-        return view('orangtua.student_result', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
+        $ortu = Auth::user()->orangtua->id;
+        $studenttask = StudentTask::whereHas('student', function($siswa) use($ortu){
+            $siswa->where('orangtua_id',$ortu)->get();
+        })->with('student_tasks.taskmaster_id','taskmaster.id')->get();
+        dd($studenttask);
+        return view('orangtua.student_result', compact('studenttask'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 
     public function index2(Request $request)

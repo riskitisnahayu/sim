@@ -25,10 +25,15 @@ class TaskMaster extends Model
     public function taskanswers()
     {
         return $this->hasMany('App\Task', 'taskmaster_id', 'id')->with('answers');
-        //kenapa di taskmaster master fungsi ini? karenadia find task master yang di api.
+        //kenapa di taskmaster master fungsi ini? karena dia find task master yang di api.
         //lalu, dia hasMany(dan ambil dari model Task, dari fungsi taskmaster diambil id-nya, jadi tasjmaster_id
         //&& id-tu dari id model TASK......lalu with anwers,
         //maksudnya sekalian ngambil fungsi answers yang ada di model task)
         //hasmany, id di app\task
+    }
+
+    public function studenttasks()
+    {
+        return $this->hasMany('App\StudentTask', 'studenttask_id', 'id');
     }
 }

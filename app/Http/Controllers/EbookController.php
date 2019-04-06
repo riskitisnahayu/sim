@@ -29,32 +29,32 @@ class EbookController extends Controller
 
         public function store(Request $request) // untuk menghandel form tambah data
         {
-           $this->validate($request, [
-                 'image'         => 'required',
-                 'title'          => 'required',
-                 'subjectscategories_id'      => 'required',
-                 'class'         => 'required',
-                 'semester'         => 'required',
-                 'author'        => 'required',
-                 'publisher'     => 'required',
-                 'year'          => 'required',
-                 'url'           => 'required',
-           ],
+               $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
-           [
-                'image.required'     => 'Gambar harus diisi!',
-                'title.required'     => 'Judul harus diisi!',
-                'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
-                'class.required'      => 'Kelas harus diisi!',
-                'semester.required'  => 'Semester harus diisi!',
-                'author.required'    => 'Penulis harus diisi!',
-                'publisher.required' => 'Penerbit harus diisi!',
-                'year.required'      => 'Tahun harus diisi!',
-                'url.required'       => 'Url harus diisi!',
+               $this->validate($request, [
+                     'image'         => 'required',
+                     'title'          => 'required',
+                     'subjectscategories_id'      => 'required',
+                     'class'         => 'required',
+                     'semester'         => 'required',
+                     'author'        => 'required',
+                     'publisher'     => 'required',
+                     'year'          => 'required',
+                     'url'           => 'required|regex:' . $regex,
+                ],
 
-            ]
-
-       );
+                [
+                    'image.required'     => 'Gambar harus diisi!',
+                    'title.required'     => 'Judul harus diisi!',
+                    'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
+                    'class.required'      => 'Kelas harus diisi!',
+                    'semester.required'  => 'Semester harus diisi!',
+                    'author.required'    => 'Penulis harus diisi!',
+                    'publisher.required' => 'Penerbit harus diisi!',
+                    'year.required'      => 'Tahun harus diisi!',
+                    'url.required'       => 'Url harus diisi!',
+                ]
+            );
 
 
            $ebooks = new EBook();
@@ -97,6 +97,8 @@ class EbookController extends Controller
 
         public function update(Request $request, $id) // untuk menghandel form edit data
         {
+            $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+
             $this->validate($request, [
                 'title'          => 'required',
                 'subjectscategories_id'      => 'required',
@@ -105,11 +107,10 @@ class EbookController extends Controller
                 'author'        => 'required',
                 'publisher'     => 'required',
                 'year'          => 'required',
-                'url'           => 'required',
+                'url'           => 'required|regex:' . $regex,
         ],
 
         [
-             // 'image.required'     => 'Gambar harus diisi!',
              'title.required'     => 'Judul harus diisi!',
              'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
              'class.required'      => 'Kelas harus diisi!',

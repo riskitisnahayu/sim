@@ -88,7 +88,7 @@
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
-						<li class="btn-cta2"><a href="{{ route('student.profil') }}"><span>Profil</span></a></li>
+						<li class="btn-cta2"><a href="{{ route('student.profil') }}"><span style="width:80px;height: 40px;text-align:center;padding:10px">Profil</span></a></li>
 						<li class="btn-cta1"><a href="#">
 							<a href="{{ route('logout') }}"
 								onclick="event.preventDefault();
@@ -97,7 +97,7 @@
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 								{{ csrf_field() }}
 							</form>
-							<span>Logout</span></a></li>
+							<span style="width:80px;height: 40px;text-align:center;padding:10px">Logout</span></a></li>
 					</ul>
 				</div>
 			</div>

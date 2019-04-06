@@ -3,7 +3,7 @@
 
 @section('content')
 @section('page_title')
-    Laporan Hasil Tes Pengguna
+    Laporan Hasil Tes Siswa
 
 @endsection
 
@@ -16,8 +16,8 @@
                <th>No</th>
                <th>Nama anak</th>
                <th>Kelas</th>
+               <th>Mata pelajaran</th>
                <th>Judul</th>
-               <th>Jawaban Siswa</th>
                <th>Nilai</th>
                <th>Tanggal</th>
                <th>Waktu</th>
@@ -30,8 +30,8 @@
                     <td>{{ $activity->user->student->user->name }}</td>
                     <td>{{ $activity->user->student->class }}</td>
                     <td>{{ $activity->title }}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $activity->title }}</td>
+                    <td>{{ $activity->title }}</td>
                     <td>{{ Carbon\Carbon::parse($activity->created_at)->toFormattedDateString() }}</td>
                     <td>{{ Carbon\Carbon::parse($activity->created_at)->format('H:i:s') }}</td>
                 </tr>

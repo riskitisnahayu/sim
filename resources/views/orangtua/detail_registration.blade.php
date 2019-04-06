@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('page_title')
-    Registrasi Anak
+    Detail Akun Anak
 
 @endsection
 
@@ -32,7 +32,7 @@
         			</div>
         		</div>
                 <div class="form-group">
-                    <label class="control-label col-lg-2">Jenis Kelamin</label>
+                    <label class="control-label col-lg-2">Jenis kelamin</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control" name="jenis_kelamin" placeholder="{{ $siswa->jenis_kelamin }}" readonly="" type="text">
                     </div>
@@ -57,7 +57,7 @@
 				<div class="form-group">
 					<label class="control-label col-lg-2">Provinsi</label>
 					<div class="col-lg-10">
-                        <select class="form-control" name="provinces" id="provinces" onchange="checkform()">
+                        <select class="form-control" name="provinces" id="provinces" onchange="checkform()" disabled>
                             @foreach($provinces as $item)
                                 <option value="{{$item->id}}" @if($item->id == $siswa->province_id) selected='selected' @endif>{{ $item->name }}</option>
                             @endforeach
@@ -68,7 +68,7 @@
                 <div class="form-group">
 					<label class="control-label col-lg-2">Kota/kabupaten</label>
 					<div class="col-lg-10">
-                        <select class="form-control" name="regencies" id="regencies" onchange="checkform()">
+                        <select class="form-control" name="regencies" id="regencies" onchange="checkform()" disabled>
                             @foreach($regencies as $item)
                                 <option value="{{$item->id}}" class="{{$item->province_id}}" @if($item->id == $siswa->regency_id) selected='selected' @endif >{{ $item->name }} </option>
                             @endforeach
@@ -79,7 +79,7 @@
                 <div class="form-group">
 					<label class="control-label col-lg-2">Kecamatan</label>
                     <div class="col-lg-10">
-                        <select class="form-control" name="districts" id="districts" onchange="checkform()">
+                        <select class="form-control" name="districts" id="districts" disabled>
                             @foreach ($districts as $item)
                                 <option value="{{$item->id}}" class="{{$item->regency_id}}" @if($item->id == $siswa->district_id) selected='selected' @endif>{{ $item->name }}</option>
                             @endforeach
@@ -115,10 +115,4 @@
 
 
     </div>
-@endsection
-@section('script')
-    <script src="{{asset('assets/js/jquery.chained.min.js')}}"></script>
-    <script>$("#regencies").chained("#provinces");</script>
-    <script>$("#districts").chained("#regencies");</script>
-
 @endsection

@@ -32,25 +32,25 @@
     		<div class="form-group">
     			<label class="control-label col-lg-2">Judul</label>
     			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="title" >
+    				<input type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Judul buku">
     			</div>
     		</div>
             <div class="form-group">
-    			<label class="control-label col-lg-2">Mata Pelajaran</label>
+    			<label class="control-label col-lg-2">Mata pelajaran</label>
                 <div class="col-lg-10">
                     <select class="form-control" name="subjectscategories_id">
-                        <option  selected disabled>
+                        <option selected disabled>
                             @if($errors->any())
                                 @if ($errors)
 
                                 @endif
-                                {{ old('subjectscategories_id') }}
+                                {{ old('subjectscategories') }}
                             @else
                                 ---- Pilih Mata Pelajaran ---
                             @endif
                         </option>
                             @foreach($subjectscategories as $value)
-                                <option value="{{$value->id}}" {{collect(old('subjectscategories'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
+                                <option value="{{$value->id}}" {{collect(old('subjectscategories_id'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
                             @endforeach
                     </select>
                 </div>
@@ -59,7 +59,7 @@
     			<label class="control-label col-lg-2">Kelas</label>
     			<div class="col-lg-10">
                     <select name="class" class="form-control" >
-                        <option  selected disabled>
+                        <option selected disabled>
                             @if($errors->any())
                                 @if ($errors)
 
@@ -78,8 +78,8 @@
             <div class="form-group">
                 <label class="control-label col-lg-2">Semester</label>
                 <div class="col-lg-10">
-                <select name="semester" class="form-control" >
-                    <option  selected disabled>
+                <select name="semester" class="form-control">
+                    <option selected disabled>
                         @if($errors->any())
                             @if ($errors)
 
@@ -96,27 +96,27 @@
                 </div>
             </div>
             <div class="form-group">
-    			<label class="control-label col-lg-2">Pengarang</label>
+    			<label class="control-label col-lg-2">Penulis</label>
     			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="author" >
+    				<input type="text" class="form-control" name="author" value="{{ old('author') }}" placeholder="Nama penulis buku">
     			</div>
     		</div>
             <div class="form-group">
     			<label class="control-label col-lg-2">Penerbit</label>
     			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="publisher" >
+    				<input type="text" class="form-control" name="publisher" value="{{ old('publisher') }}" placeholder="Nama penerbit buku">
     			</div>
     		</div>
             <div class="form-group">
     			<label class="control-label col-lg-2">Tahun</label>
     			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="year" >
+    				<input type="number" class="form-control" name="year" placeholder="Tuliskan tahun dengan angka" value="{{ old('year') }}">
     			</div>
     		</div>
             <div class="form-group">
     			<label class="control-label col-lg-2">Url</label>
     			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="url" >
+    				<input type="text" class="form-control" name="url" value="{{ old('url') }}" placeholder="Alamat url">
     			</div>
     		</div>
     	</fieldset>

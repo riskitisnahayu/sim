@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="form-group">
-    			<label class="control-label col-lg-2">Pengarang</label>
+    			<label class="control-label col-lg-2">Penulis</label>
     			<div class="col-lg-10">
     				<input type="text" class="form-control" name="author" placeholder="{{ $ebooks->author }}" readonly="">
     			</div>

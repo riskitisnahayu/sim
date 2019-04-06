@@ -25,7 +25,7 @@
                         <td>{{ ++$i }}</td>
                         <td>{{ $task->description }}</td>
                         <td class="text-center" style="width:100px">
-                            <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('soal/edit/'.$task->id)}}'" title="Edit"><i class="icon-pencil"></i></button>
+                            <button type="button" class="btn btn-warning btn-icon btn-rounded" onclick="location.href='{{url('admin/soal/edit/'.$task->id)}}'" title="Edit"><i class="icon-pencil"></i></button>
                         </td>
                     </tr>
                 @endforeach

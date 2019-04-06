@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('page_title')
-    Profil Orang tua
+    Password Orang tua
 @endsection
 
 @section('content_section')

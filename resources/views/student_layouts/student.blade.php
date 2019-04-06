@@ -90,7 +90,7 @@
       <div class="modal-body">
 		  <div class="row" id="row-login">
 			  <div class="col-md-4 col-sm-6 text-center fh5co-project animate-box" data-animate-effect="fadeIn">
-  				<a href="{!! route('orangtua.login') !!}"><img src="{!! asset('law/assets/images/mom.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+  				<a href="{!! route('login') !!}"><img src="{!! asset('law/assets/images/mom.jpg') !!}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
   					<h3>Orang Tua</h3>
   				</a>
   	  		</div>
@@ -115,8 +115,8 @@
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
-						<li class="btn-cta2"><a href="{{ URL::to('register')}}"><span>Daftar</span></a></li>
-						<li class="btn-cta1"><a href="#" data-toggle="modal" data-target="#myModal"><span>Login</span></a></li>
+						<li class="btn-cta2"><a href="{{ URL::to('register')}}"><span style="width:80px;height: 40px;text-align:center;padding:10px">Daftar</span></a></li>
+						<li class="btn-cta1"><a href="#" data-toggle="modal" data-target="#myModal"><span style="width:80px;height: 40px;text-align:center;padding:10px">Login</span></a></li>
 					</ul>
 				</div>
 			</div>

@@ -30,7 +30,8 @@ return [
         'array'   => 'The :attribute must have between :min and :max items.',
     ],
     'boolean'              => 'The :attribute field must be true or false.',
-    'confirmed'            => 'The :attribute confirmation does not match.',
+    // 'confirmed'            => 'The :attribute confirmation does not match.',
+    'confirmed'            => 'Konfirmasi :attribute tidak cocok.',
     'date'                 => 'The :attribute is not a valid date.',
     'date_format'          => 'The :attribute does not match the format :format.',
     'different'            => 'The :attribute and :other must be different.',
@@ -67,8 +68,9 @@ return [
     'not_in'               => 'The selected :attribute is invalid.',
     'numeric'              => 'The :attribute must be a number.',
     'present'              => 'The :attribute field must be present.',
-    'regex'                => 'The :attribute format is invalid.',
-    'required'             => 'The :attribute field is required.',
+    // 'regex'                => 'The :attribute format is invalid.',
+    'regex'                => 'format :attribute tidak valid.',
+    'required'             => ':attribute tidak boleh kosong.',
     'required_if'          => 'The :attribute field is required when :other is :value.',
     'required_unless'      => 'The :attribute field is required unless :other is in :values.',
     'required_with'        => 'The :attribute field is required when :values is present.',
@@ -86,7 +88,9 @@ return [
     'timezone'             => 'The :attribute must be a valid zone.',
     'unique'               => 'The :attribute has already been taken.',
     'uploaded'             => 'The :attribute failed to upload.',
-    'url'                  => 'The :attribute format is invalid.',
+    // 'url'                  => 'The :attribute format is invalid.',
+    'url'                  => 'format :attribute tidak valid.',
+
 
     /*
     |--------------------------------------------------------------------------

@@ -11,14 +11,12 @@
 <!-- Quick stats boxes -->
 <div class="row">
 	<div class="col-lg-4">
-
 		<!-- Members online -->
 		<div class="panel bg-teal-400">
 			<div class="panel-body">
-				<h3 class="no-margin">{{ $ortu }}</h3>
+				<h1 class="no-margin">{{ $ortu }}</h1>
 				Orangtua
 			</div>
-
 			<div class="container-fluid">
 				<div id="members-online"></div>
 			</div>
@@ -30,11 +28,9 @@
 		<!-- Current server load -->
 		<div class="panel bg-pink-400">
 			<div class="panel-body">
-
-				<h3 class="no-margin">{{ $siswa }}</h3>
+				<h1 class="no-margin">{{ $siswa }}</h1>
 				Siswa
 			</div>
-
 			<div id="server-load"></div>
 		</div>
 		<!-- /current server load -->
@@ -44,11 +40,9 @@
 		<!-- Today's revenue -->
 		<div class="panel bg-blue-400">
 			<div class="panel-body">
-
-				<h3 class="no-margin">3</h3>
+				<h1 class="no-margin">3</h1>
 				Fitur
 			</div>
-
 			<div id="today-revenue"></div>
 		</div>
 		<!-- /today's revenue -->
@@ -57,6 +51,9 @@
 <!-- /quick stats boxes -->
 
 <div class="panel panel-flat content-group-lg">
+    <div class="panel-heading">
+        <h6 class="panel-title">Laporan aktivitas siswa</h6>
+    </div>
 <div class="row"></div>
     <table class="table datatable-html">
         <thead>
@@ -84,7 +81,6 @@
             @endforeach
         </tbody>
     </table>
-
 </div>
 
 @endsection

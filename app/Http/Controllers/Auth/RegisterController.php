@@ -66,21 +66,6 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        $this->validate($request, [
-                  'name'         => 'required',
-                  'username'     => 'required',
-                  'email'        => 'required',
-                  'password'     => 'required',
-            ],
-
-            [
-                 'name.required'     => 'Nama harus diisi!',
-                 'username.required' => 'Username harus diisi!',
-                 'email.required'    => 'Email harus diisi!',
-                 'password.required' => 'Password harus diisi!',
-             ]
-
-        );
         $user = User::create([
             'name' => $data['name'],
             'username' => $data['username'],

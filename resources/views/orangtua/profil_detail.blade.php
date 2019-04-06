@@ -20,7 +20,7 @@
         <form class="form-horizontal" enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
         	<fieldset class="content-group">
-                <legend class="text-bold">Data Orangtua</legend>
+                <legend class="text-bold">Data Orang tua</legend>
                 <div class="form-group">
         			<label class="control-label col-lg-2">Nama </label>
         			<div class="col-lg-10">
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <fieldset class="content-group">
-                <legend class="text-bold">Password Orangtua</legend>
+                <legend class="text-bold">Password Orang tua</legend>
                 <div class="form-group">
         			<label class="control-label col-lg-2">Password</label>
         			<div class="col-lg-10">

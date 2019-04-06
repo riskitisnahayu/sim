@@ -16,6 +16,7 @@ class CreateStudentAnswersTable extends Migration
         Schema::create('student_answers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('student_id')->unsigned();
+            $table->integer('studenttask_id')->unsigned();
             $table->integer('taskmaster_id')->unsigned();
             $table->integer('task_id')->unsigned();
             $table->char('answer')->nullable();

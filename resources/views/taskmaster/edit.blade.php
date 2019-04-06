@@ -85,7 +85,7 @@
 				<label class="control-label col-lg-2">Set waktu</label>
 				<div class="input-group">
 					<span class="input-group-addon"><i class="icon-watch2"></i></span>
-					<input type="text" class="form-control" name="timeout" value="{{$task_masters->timeout}}">
+					<input type="number" class="form-control" name="timeout" value="{{$task_masters->timeout}}">
                     <span class="input-group-addon">menit</span>
 				</div>
 			</div>
