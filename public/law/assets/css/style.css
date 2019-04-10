@@ -195,7 +195,7 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #fff;
 }
 .fh5co-nav ul li.btn-cta3 a span {
-  background: #00BFFF;
+  background: #FF0000;
   padding: 4px 10px;
   display: -moz-inline-stack;
   display: inline-block;
@@ -214,6 +214,7 @@ h1, h2, h3, h4, h5, h6, figure {
   -moz-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
 }
+
 
 .fh5co-nav ul li.btn-cta2 a {
   padding: 30px 0px !important;
