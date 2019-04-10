@@ -53,7 +53,20 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-        ]);
+        ],
+        [
+            'name.required'     => 'Nama harus diisi!',
+            'name.max'          => 'Nama terlalu panjang!',
+            'username.required' => 'Username harus diisi!',
+            'username.unique'   => 'Username sudah terpakai!',
+            'email.required'    => 'Email harus diisi!',
+            'email.email'       => 'Format email tidak sesuai!',
+            'email.max'         => 'Email terlalu panjang!',
+            'email.unique'      => 'Email sudah terpakai!',
+            'password.required' => 'Password harus diisi!',
+            'password.min'      => 'Password minimal 6 karakter!',
+        ]
+    );
     }
 
     /**

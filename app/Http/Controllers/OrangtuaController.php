@@ -76,30 +76,84 @@ class OrangtuaController extends Controller
     }
 
     public function updateProfil(Request $request){
-        $this->validate($request, [
-                 'name'          => 'required|max:191',
-                 'username'      => 'required|max:191',
-                 'email'         => 'required|email|max:191',
-           ],
+        $data = Orangtua::where('user_id', Auth::user()->id)->first();
+        $ortu = User::where('id',$data->user_id)->first();
 
-           [
-                'name.required'         => 'Nama harus diisi!',
-                'name.max'              => 'Nama terlalu panjang!',
-                'username.required'     => 'Username harus diisi!',
-                'username.max'          => 'Username terlalu panjang!',
-                'email.required'        => 'Email harus diisi!',
-                'email.email'           => 'Format email tidak valid!',
-                'email.max'             => 'Email terlali panjang!',
+        if ($request->username == $ortu->username && $request->email == $ortu->email) {
+            $this->validate($request, [
+                'name'          => 'required|max:191',
+                'username'      => 'required|max:191',
+                'email'         => 'required|email',
+            ],
+
+            [
+                'name.required'     => 'Nama harus diisi!',
+                'name.max'          => 'Nama terlalu panjang!',
+                'username.required' => 'Username harus diisi!',
+                'username.max'      => 'Username terlalu panjang!',
+                'email.required'    => 'Email harus diisi!',
+                'email.email'       => 'Format email tidak sesuai!',
             ]
 
-       );
+            );
+        }elseif ($request->username != $ortu->username && $request->email == $ortu->email) {
+            $this->validate($request, [
+                'name'          => 'required|max:191',
+                'username'      => 'required|unique:users|max:191',
+                'email'         => 'required|email',
+            ],
 
-       $data = Orangtua::where('user_id', Auth::user()->id)->first();
-       $ortu = User::where('id',$data->user_id)->first();
+            [
+                'name.required'     => 'Nama harus diisi!',
+                'name.max'          => 'Nama terlalu panjang!',
+                'username.required' => 'Username harus diisi!',
+                'username.unique'   => 'Username sudah terpakai!',
+                'username.max'      => 'Username terlalu panjang!',
+                'email.required'    => 'Email harus diisi!',
+                'email.email'       => 'Format email tidak sesuai!',
+            ]
+
+            );
+        }elseif ($request->username == $ortu->username && $request->email != $ortu->email) {
+            $this->validate($request, [
+                'name'          => 'required|max:191',
+                'username'      => 'required|max:191',
+                'email'         => 'required|unique:users|email',
+            ],
+
+            [
+                'name.required'     => 'Nama harus diisi!',
+                'name.max'          => 'Nama terlalu panjang!',
+                'username.required' => 'Username harus diisi!',
+                'username.max'      => 'Username terlalu panjang!',
+                'email.required'    => 'Email harus diisi!',
+                'email.unique'      => 'Email sudah terpakai!',
+                'email.email'       => 'Format email tidak sesuai!',
+            ]
+            );
+        }elseif ($request->username != $ortu->username && $request->email != $ortu->email) {
+            $this->validate($request, [
+                'name'          => 'required|max:191',
+                'username'      => 'required|unique:users|max:191',
+                'email'         => 'required|unique:users|email',
+            ],
+
+            [
+                'name.required'     => 'Nama harus diisi!',
+                'name.max'          => 'Nama terlalu panjang!',
+                'username.required' => 'Username harus diisi!',
+                'username.unique'   => 'Username sudah terpakai!',
+                'username.max'      => 'Username terlalu panjang!',
+                'email.required'    => 'Email harus diisi!',
+                'email.unique'      => 'Email sudah terpakai!',
+                'email.email'       => 'Format email tidak sesuai!',
+            ]
+            );
+        }
+
        $ortu->name=$request->name;
        $ortu->username=$request->username;
        $ortu->email=$request->email;
-       // $ortu->password=$request->password;
        $ortu->save();
 
        Alert::success('Sukses', 'Data orang tua berhasil diubah!');
@@ -129,7 +183,7 @@ class OrangtuaController extends Controller
                    'oldPassword.required'            => 'Password lama harus diisi!',
                    'password.required'               => 'Password baru harus diisi!',
                    'password.min'                    => 'Password minimal 6 karakter!',
-                   'password.confirmed'             => 'Konfirmasi password tidak sesuai!',
+                   'password.confirmed'              => 'Konfirmasi password tidak sesuai!',
                    'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
                 ]
             );
@@ -314,45 +368,159 @@ class OrangtuaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-                 'name'          => 'required|max:191',
-                 'jenis_kelamin' => 'required',
-                 'username'      => 'required|max:191',
-                 'email'         => 'required|email|max:191',
-                 // 'password'      => 'required',
-                 // 'orangtua_id'   => 'required',
-                 'province_id'   => 'required',
-                 'regency_id'    => 'required',
-                 'district_id'   => 'required',
-                 'school_name'   => 'required|max:255',
-                 'class'         => 'required',
-           ],
+        $siswa = Student::where('id',$id)->first();
+        $data = User::where('id',$siswa->user_id)->first();
+        if ($request->username == $data->username && $request->email == $data->email) {
+            $this->validate($request, [
+                     'name'          => 'required|max:191',
+                     'jenis_kelamin' => 'required',
+                     'username'      => 'required|max:191',
+                     'email'         => 'required|email|max:191',
+                     // 'password'      => 'required',
+                     // 'orangtua_id'   => 'required',
+                     'province_id'   => 'required',
+                     'regency_id'    => 'required',
+                     'district_id'   => 'required',
+                     'school_name'   => 'required|max:255',
+                     'class'         => 'required',
+               ],
 
-           [
-                'name.required'          => 'Nama harus diisi!',
-                'name.max'               => 'Nama terlalu panjang!',
-                'jenis_kelamin.required' => 'Jenis kelamin harus diisi!',
-                'username.required'      => 'Username harus diisi!',
-                // 'username.unique'        => 'Username sudah terpakai!',
-                'username.max'           => 'Username terlalu panjang!',
-                'email.required'         => 'Email harus diisi!',
-                // 'email.unique'           => 'Email sudah terpakai!',
-                'email.email'            => 'Format email tidak valid!',
-                'email.max'              => 'Email terlalu panjang!',
-                // 'password.required'      => 'Password harus diisi!',
+               [
+                    'name.required'          => 'Nama harus diisi!',
+                    'name.max'               => 'Nama terlalu panjang!',
+                    'jenis_kelamin.required' => 'Jenis kelamin harus diisi!',
+                    'username.required'      => 'Username harus diisi!',
+                    'username.max'           => 'Username terlalu panjang!',
+                    'email.required'         => 'Email harus diisi!',
+                    'email.email'            => 'Format email tidak valid!',
+                    'email.max'              => 'Email terlalu panjang!',
+                    // 'password.required'      => 'Password harus diisi!',
 
-                'orangtua_id.required'   => 'Id orangtua harus diisi!',
-                'province_id.required'   => 'Provinsi harus diisi!',
-                'regency_id.required'    => 'Kota/kabupaten harus diisi!',
-                'district_id.required'   => 'Kecamatan harus diisi!',
-                'school_name.required'   => 'Nama sekolah harus diisi!',
-                'school_name.max'        => 'Nama sekolah terlalu panjang!',
-                'class.required'         => 'Kelas harus diisi!',
-            ]
+                    'orangtua_id.required'   => 'Id orangtua harus diisi!',
+                    'province_id.required'   => 'Provinsi harus diisi!',
+                    'regency_id.required'    => 'Kota/kabupaten harus diisi!',
+                    'district_id.required'   => 'Kecamatan harus diisi!',
+                    'school_name.required'   => 'Nama sekolah harus diisi!',
+                    'school_name.max'        => 'Nama sekolah terlalu panjang!',
+                    'class.required'         => 'Kelas harus diisi!',
+                ]
 
-       );
-       $siswa = Student::where('id',$id)->first();
-       $data = User::where('id',$siswa->user_id)->first();
+           );
+        }elseif ($request->username != $data->username && $request->email == $data->email) {
+            $this->validate($request, [
+                     'name'          => 'required|max:191',
+                     'jenis_kelamin' => 'required',
+                     'username'      => 'required|unique:users|max:191',
+                     'email'         => 'required|email|max:191',
+                     // 'password'      => 'required',
+                     // 'orangtua_id'   => 'required',
+                     'province_id'   => 'required',
+                     'regency_id'    => 'required',
+                     'district_id'   => 'required',
+                     'school_name'   => 'required|max:255',
+                     'class'         => 'required',
+               ],
+
+               [
+                    'name.required'          => 'Nama harus diisi!',
+                    'name.max'               => 'Nama terlalu panjang!',
+                    'jenis_kelamin.required' => 'Jenis kelamin harus diisi!',
+                    'username.required'      => 'Username harus diisi!',
+                    'username.unique'        => 'Username sudah terpakai!',
+                    'username.max'           => 'Username terlalu panjang!',
+                    'email.required'         => 'Email harus diisi!',
+                    // 'email.unique'           => 'Email sudah terpakai!',
+                    'email.email'            => 'Format email tidak valid!',
+                    'email.max'              => 'Email terlalu panjang!',
+                    // 'password.required'      => 'Password harus diisi!',
+
+                    'orangtua_id.required'   => 'Id orangtua harus diisi!',
+                    'province_id.required'   => 'Provinsi harus diisi!',
+                    'regency_id.required'    => 'Kota/kabupaten harus diisi!',
+                    'district_id.required'   => 'Kecamatan harus diisi!',
+                    'school_name.required'   => 'Nama sekolah harus diisi!',
+                    'school_name.max'        => 'Nama sekolah terlalu panjang!',
+                    'class.required'         => 'Kelas harus diisi!',
+                ]
+
+           );
+        }elseif ($request->username == $data->username && $request->email != $data->email) {
+            $this->validate($request, [
+                     'name'          => 'required|max:191',
+                     'jenis_kelamin' => 'required',
+                     'username'      => 'required|max:191',
+                     'email'         => 'required|unique:users|email|max:191',
+                     // 'password'      => 'required',
+                     // 'orangtua_id'   => 'required',
+                     'province_id'   => 'required',
+                     'regency_id'    => 'required',
+                     'district_id'   => 'required',
+                     'school_name'   => 'required|max:255',
+                     'class'         => 'required',
+               ],
+
+               [
+                    'name.required'          => 'Nama harus diisi!',
+                    'name.max'               => 'Nama terlalu panjang!',
+                    'jenis_kelamin.required' => 'Jenis kelamin harus diisi!',
+                    'username.required'      => 'Username harus diisi!',
+                    'username.max'           => 'Username terlalu panjang!',
+                    'email.required'         => 'Email harus diisi!',
+                    'email.unique'           => 'Email sudah terpakai!',
+                    'email.email'            => 'Format email tidak valid!',
+                    'email.max'              => 'Email terlalu panjang!',
+                    // 'password.required'      => 'Password harus diisi!',
+
+                    'orangtua_id.required'   => 'Id orangtua harus diisi!',
+                    'province_id.required'   => 'Provinsi harus diisi!',
+                    'regency_id.required'    => 'Kota/kabupaten harus diisi!',
+                    'district_id.required'   => 'Kecamatan harus diisi!',
+                    'school_name.required'   => 'Nama sekolah harus diisi!',
+                    'school_name.max'        => 'Nama sekolah terlalu panjang!',
+                    'class.required'         => 'Kelas harus diisi!',
+                ]
+
+           );
+        }elseif ($request->username != $data->username && $request->email != $data->email) {
+            $this->validate($request, [
+                     'name'          => 'required|max:191',
+                     'jenis_kelamin' => 'required',
+                     'username'      => 'required|unique:users|max:191',
+                     'email'         => 'required|unique:users|email|max:191',
+                     // 'password'      => 'required',
+                     // 'orangtua_id'   => 'required',
+                     'province_id'   => 'required',
+                     'regency_id'    => 'required',
+                     'district_id'   => 'required',
+                     'school_name'   => 'required|max:255',
+                     'class'         => 'required',
+               ],
+
+               [
+                    'name.required'          => 'Nama harus diisi!',
+                    'name.max'               => 'Nama terlalu panjang!',
+                    'jenis_kelamin.required' => 'Jenis kelamin harus diisi!',
+                    'username.required'      => 'Username harus diisi!',
+                    'username.unique'        => 'Username sudah terpakai!',
+                    'username.max'           => 'Username terlalu panjang!',
+                    'email.required'         => 'Email harus diisi!',
+                    'email.unique'           => 'Email sudah terpakai!',
+                    'email.email'            => 'Format email tidak valid!',
+                    'email.max'              => 'Email terlalu panjang!',
+                    // 'password.required'      => 'Password harus diisi!',
+
+                    'orangtua_id.required'   => 'Id orangtua harus diisi!',
+                    'province_id.required'   => 'Provinsi harus diisi!',
+                    'regency_id.required'    => 'Kota/kabupaten harus diisi!',
+                    'district_id.required'   => 'Kecamatan harus diisi!',
+                    'school_name.required'   => 'Nama sekolah harus diisi!',
+                    'school_name.max'        => 'Nama sekolah terlalu panjang!',
+                    'class.required'         => 'Kelas harus diisi!',
+                ]
+
+           );
+        }
+
        // dd($data);
        if (Hash::check($request->oldPassword, $data->password))
        {

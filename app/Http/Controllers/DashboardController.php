@@ -69,24 +69,80 @@ class DashboardController extends Controller
     }
 
     public function updateProfil(Request $request){
-        $this->validate($request, [
-                 'name'          => 'required|max:191',
-                 'username'      => 'required|max:191',
-                 'email'         => 'required|email',
-           ],
+        $data = User::where('id', Auth::user()->id)->first();
+        $user = User::where('id',$data->id)->first();
+        if ($request->username == $user->username && $request->email == $user->email) {
+            $this->validate($request, [
+                'name'          => 'required|max:191',
+                'username'      => 'required|max:191',
+                'email'         => 'required|email',
+            ],
 
-           [
+            [
                 'name.required'     => 'Nama harus diisi!',
                 'name.max'          => 'Nama terlalu panjang!',
                 'username.required' => 'Username harus diisi!',
                 'username.max'      => 'Username terlalu panjang!',
                 'email.required'    => 'Email harus diisi!',
+                'email.email'       => 'Format email tidak sesuai!',
             ]
 
-       );
+            );
+        }elseif ($request->username != $user->username && $request->email == $user->email) {
+            $this->validate($request, [
+                'name'          => 'required|max:191',
+                'username'      => 'required|unique:users|max:191',
+                'email'         => 'required|email',
+            ],
 
-       $data = User::where('id', Auth::user()->id)->first();
-       $user = User::where('id',$data->id)->first();
+            [
+                'name.required'     => 'Nama harus diisi!',
+                'name.max'          => 'Nama terlalu panjang!',
+                'username.required' => 'Username harus diisi!',
+                'username.unique'   => 'Username sudah terpakai!',
+                'username.max'      => 'Username terlalu panjang!',
+                'email.required'    => 'Email harus diisi!',
+                'email.email'       => 'Format email tidak sesuai!',
+            ]
+
+            );
+        }elseif ($request->username == $user->username && $request->email != $user->email) {
+            $this->validate($request, [
+                'name'          => 'required|max:191',
+                'username'      => 'required|max:191',
+                'email'         => 'required|unique:users|email',
+            ],
+
+            [
+                'name.required'     => 'Nama harus diisi!',
+                'name.max'          => 'Nama terlalu panjang!',
+                'username.required' => 'Username harus diisi!',
+                'username.max'      => 'Username terlalu panjang!',
+                'email.required'    => 'Email harus diisi!',
+                'email.unique'      => 'Email sudah terpakai!',
+                'email.email'       => 'Format email tidak sesuai!',
+            ]
+            );
+        }elseif ($request->username != $user->username && $request->email != $user->email) {
+            $this->validate($request, [
+                'name'          => 'required|max:191',
+                'username'      => 'required|unique:users|max:191',
+                'email'         => 'required|unique:users|email',
+            ],
+
+            [
+                'name.required'     => 'Nama harus diisi!',
+                'name.max'          => 'Nama terlalu panjang!',
+                'username.required' => 'Username harus diisi!',
+                'username.unique'   => 'Username sudah terpakai!',
+                'username.max'      => 'Username terlalu panjang!',
+                'email.required'    => 'Email harus diisi!',
+                'email.unique'      => 'Email sudah terpakai!',
+                'email.email'       => 'Format email tidak sesuai!',
+            ]
+            );
+        }
+
        $user->name=$request->name;
        $user->username=$request->username;
        $user->email=$request->email;
@@ -118,6 +174,8 @@ class DashboardController extends Controller
                [
                    'oldPassword.required'            => 'Password lama harus diisi!',
                    'password.required'               => 'Password baru harus diisi!',
+                   'password.min'                   => 'Password minimal 6 karakter!',
+                   'password.confirmed'             => 'Konfirmasi password tidak sesuai!',
                    'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
                 ]
             );
@@ -135,6 +193,8 @@ class DashboardController extends Controller
                [
                    'oldPassword.required'           => 'Password lama harus diisi!',
                    'password.required'              => 'Password baru harus diisi!',
+                   'password.min'                   => 'Password minimal 6 karakter!',
+                   'password.confirmed'             => 'Konfirmasi password tidak sesuai!',
                    'password_confirmation.required' => 'Konfirmasi password baru harus diisi!',
                 ]
             );

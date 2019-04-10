@@ -36,7 +36,7 @@
                 <div class="form-group">
         			<label class="control-label col-lg-2">Email</label>
         			<div class="col-lg-10">
-        				<input type="email" class="form-control" name="email" value="{{ $user->email }}">
+        				<input type="text" class="form-control" name="email" value="{{ $user->email }}">
         			</div>
         		</div>
         	</fieldset>
