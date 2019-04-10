@@ -25,7 +25,7 @@
 							<i class="icon-user text-muted"></i>
 						</div>
 						@if ($errors->has('name'))
-		                    <span>{{ $errors->first('name') }}</span>
+		                    <span  style="color:red">{{ $errors->first('name') }}</span>
 		                @endif
 					</div>
 
@@ -35,7 +35,7 @@
 							<i class="icon-user-check text-muted"></i>
 						</div>
 						@if ($errors->has('username'))
-		                    <span>{{ $errors->first('username') }}</span>
+		                    <span  style="color:red">{{ $errors->first('username') }}</span>
 		                @endif
 					</div>
 
@@ -45,7 +45,7 @@
 							<i class="icon-mention text-muted"></i>
 						</div>
 						@if ($errors->has('email'))
-		                    <span>{{ $errors->first('email') }}</span>
+		                    <span  style="color:red">{{ $errors->first('email') }}</span>
 		                @endif
 					</div>
 
@@ -55,11 +55,11 @@
 							<i class="icon-user-lock text-muted"></i>
 						</div>
 						@if ($errors->has('password'))
-		                    <span>{{ $errors->first('password') }}</span>
+		                    <span  style="color:red">{{ $errors->first('password') }}</span>
 		                @endif
 					</div>
 
-					<button type="submit" class="btn bg-indigo-400 btn-block">Daftar <i class="icon-circle-right2 position-right"></i></button>
+					<button type="submit" class="btn bg-indigo-400 btn-block">Registerasi <i class="icon-circle-right2 position-right"></i></button>
 				</form>
 			</div>
 		</div>

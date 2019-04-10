@@ -36,15 +36,15 @@
                 <div class="form-group">
         			<label class="control-label col-lg-2">Email</label>
         			<div class="col-lg-10">
-        				<input type="email" class="form-control" name="email" value="{{ $ortu->user['email'] }}">
+        				<input type="text" class="form-control" name="email" value="{{ $ortu->user['email'] }}">
         			</div>
         		</div>
         	</fieldset>
 
             <div class="row" style="margin-top: 10px;">
                 <div class="col-md-12" style="text-align: center;">
-                    <button type="submit" class="btn btn-success">Simpan</button>
                     <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/profil-detail';">Batal</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </div>
         </form>

@@ -22,7 +22,6 @@ class GamesController extends Controller
     {
         $games = Game::all();
         $gamecategories = GameCategory::all();
-        // dd($games);
         return view('admin.admin_games', compact('games','gamecategories'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 
@@ -49,19 +48,23 @@ class GamesController extends Controller
 
         $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
         $this->validate($request, [
-            'name'          => 'required',
+            'name'          => 'required|max:190',
             'gamecategories_id'      => 'required',
             'image'         => 'required',
-            'description'   => 'required',
+            'description'   => 'required|max:190',
             'url'           => 'required|regex:' . $regex,
        ],
 
        [
-           'name.required'          => 'Nama harus diisi!',
-           'gamecategories_id.required'      => 'Kategori harus diisi!',
+           'name.required'     => 'Nama harus diisi!',
+           'name.max'          => 'Nama terlalu panjang!',
+           'gamecategories_id.required'   => 'Kategori harus diisi!',
            'image.required'         => 'Gambar harus diisi!',
            'description.required'   => 'Deskripsi harus diisi!',
-           'url.required'           => 'Url harus diisi!',
+           'description.max'   => 'Deskripsi terlalu panjang!',
+           'url.required'      => 'Url harus diisi!',
+           'url.regex'         => 'Format url tidak valid!',
+
        ]
     );
 
@@ -93,7 +96,6 @@ class GamesController extends Controller
     public function show($id) // untuk menampilkan/ melihat data
     {
         $games = Game::find($id);
-           // dd($games);
         $gamecategories = GameCategory::all();
         return view('admin.games_detail', compact('games','gamecategories'));
     }
@@ -122,17 +124,20 @@ class GamesController extends Controller
     {
         $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
         $this->validate($request, [
-              'name'          => 'required',
-              'gamecategories_id'      => 'required',
-              'description'   => 'required',
-              'url'           => 'required|regex:'. $regex,
+            'name'          => 'required|max:190',
+            'gamecategories_id'      => 'required',
+            'description'   => 'required|max:190',
+            'url'           => 'required|regex:' . $regex,
         ],
 
         [
-            'name.required'          => 'Nama harus diisi!',
-            'gamecategories_id.required'      => 'Kategori harus diisi!',
-            'description.required'   => 'Deskripsi harus diisi!',
-            'url.required'           => 'Url harus diisi!',
+            'name.required'     => 'Nama harus diisi!',
+            'name.max'          => 'Nama terlalu panjang!',
+            'gamecategories_id.required'    => 'Kategori harus diisi!',
+            'description.required'          => 'Deskripsi harus diisi!',
+            'description.max'   => 'Deskripsi terlalu panjang!',
+            'url.required'      => 'Url harus diisi!',
+            'url.regex'         => 'Format url tidak valid!',
         ]
     );
 
@@ -155,18 +160,6 @@ class GamesController extends Controller
         Alert::success('Sukses', 'Mini games berhasil diubah!');
 
         return redirect()->route('admin.minigames');
-
-        // $games = Game::find($id);
-        // Game::update([
-        //     'name'        => $request->name,
-        //     'level'       => $request->level,
-        //     'image'       => $request->image,
-        //     'description' => $request->description,
-        //     'url'         => $request->url
-        // ]);
-        //
-        // // redirect menggunakan url lengkap sedangkan route menggunakan route name
-        // return redirect()->route('admin.minigames');
     }
 
     /**
@@ -190,7 +183,6 @@ class GamesController extends Controller
         ]);
 
         $games = Game::all(); // untuk mengambil semua data games
-        // dd($games);
         return response()->json([
             'error' => false,
             'status' => 'success',

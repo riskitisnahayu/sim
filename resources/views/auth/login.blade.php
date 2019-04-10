@@ -42,7 +42,8 @@
 			</div>
 
 			<div class="form-group">
-				<button type="submit" class="btn bg-blue btn-block">Login <i class="icon-arrow-right14 position-right"></i></button>
+                <button type="submit" class="btn bg-blue btn-block">Login <i class="icon-arrow-right14 position-right"></i></button>
+				<button type="button" class="btn bg-indigo-400 btn-block" onclick="location.href='/register'">Registerasi Orang tua<i class="icon-circle-right2 position-right"></i></button>
 			</div>
 	</form>
 @endsection

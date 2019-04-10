@@ -7,12 +7,12 @@ use App\Province;
 
 class ProvinceController extends Controller
 {
-    public function api_getProvince(Request $request) // fungsinya sama spt index untuk menampilkan semua data tp dalam bentuk json
+    public function api_getProvince(Request $request)
     {
         if ($request->id) {
-            $provinces = Province::where('id', $request->id)->get(); // untuk mengambil semua data games
+            $provinces = Province::where('id', $request->id)->get();
         } else {
-            $provinces = Province::all(); // untuk mengambil semua data games
+            $provinces = Province::all();
         }
 
         return response()->json([

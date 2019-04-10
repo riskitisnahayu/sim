@@ -69,9 +69,9 @@
                                 ---- Pilih Kelas ---
                             @endif
                         </option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                        <option value="7" {{collect(old('class'))->contains('7') ? 'selected':''}}>7</option>
+                        <option value="8" {{collect(old('class'))->contains('8') ? 'selected':''}}>8</option>
+                        <option value="9" {{collect(old('class'))->contains('9') ? 'selected':''}}>9</option>
                     </select>
     			</div>
     		</div>
@@ -89,9 +89,9 @@
                             ---- Pilih Semester ---
                         @endif
                     </option>
-                    <option value="I">I</option>
-                    <option value="II">II</option>
-                    <option value="Both">Both</option>
+                    <option value="I" {{collect(old('semester'))->contains('I') ? 'selected':''}}>I</option>
+                    <option value="II" {{collect(old('semester'))->contains('II') ? 'selected':''}}>II</option>
+                    <option value="Both" {{collect(old('semester'))->contains('Both') ? 'selected':''}}>Both</option>
                 </select>
                 </div>
             </div>
@@ -122,10 +122,10 @@
     	</fieldset>
 
         <div class="row" style="margin-top: 10px;">
-          <div class="col-md-12" style="text-align: center;">
-            <button type="submit" class="btn btn-success">Simpan</button>
-            <button type="button" class="btn btn-danger" onclick="location.href='/admin/e-book';">Batal</button>
-          </div>
+            <div class="col-md-12" style="text-align: center;">
+                <button type="button" class="btn btn-danger" onclick="location.href='/admin/e-book';">Batal</button>
+                <button type="submit" class="btn btn-success">Simpan</button>
+            </div>
         </div>
     </form>
 

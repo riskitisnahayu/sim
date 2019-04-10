@@ -43,9 +43,9 @@
                                 ---- Pilih Kelas ---
                             @endif
                         </option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                        <option value="7" {{collect(old('class'))->contains('7') ? 'selected':''}}>7</option>
+                        <option value="8"{{collect(old('class'))->contains('8') ? 'selected':''}}>8</option>
+                        <option value="9" {{collect(old('class'))->contains('9') ? 'selected':''}}>9</option>
                     </select>
     			</div>
     		</div>
@@ -63,9 +63,9 @@
                             ---- Pilih Semester ---
                         @endif
                     </option>
-                    <option value="I">I</option>
-                    <option value="II">II</option>
-                    <option value="Both">Both</option>
+                    <option value="I" {{collect(old('semester'))->contains('I') ? 'selected':''}}>I</option>
+                    <option value="II" {{collect(old('semester'))->contains('II') ? 'selected':''}}>II</option>
+                    <option value="Both" {{collect(old('semester'))->contains('Both') ? 'selected':''}}>Both</option>
                 </select>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                     </option>
                     {{-- <option value="2">2</option>
                     <option value="5">5</option> --}}
-                    <option value="10">10</option>
+                    <option value="10" {{collect(old('total_task'))->contains('10') ? 'selected':''}}>10</option>
                 </select>
                 </div>
             </div>
@@ -118,21 +118,13 @@
                     <span class="input-group-addon">menit</span>
 				</div>
 			</div>
-            {{-- <div class="">
-                <div class="content-group-lg">
-                    <label class="control-label col-lg-2" style="padding-left:0px">Set waktu</label><div class="input-group">
-                        <span class="input-group-addon"><i class="icon-watch2"></i></span>
-                        <input type="text" class="form-control" id="anytime-time" value="">
-                    </div>
-                </div>
-            </div> --}}
     	</fieldset>
 
         <div class="row" style="margin-top: 10px;">
-          <div class="col-md-12" style="text-align: center;">
-            <button type="submit" class="btn btn-success">Buat Soal</button>
-            <button type="button" class="btn btn-danger" onclick="location.href='/admin/bank-soal';">Batal</button>
-          </div>
+            <div class="col-md-12" style="text-align: center;">
+                <button type="button" class="btn btn-danger" onclick="location.href='/admin/bank-soal';">Batal</button>
+                <button type="submit" class="btn btn-success">Buat Soal</button>
+            </div>
         </div>
     </form>
 

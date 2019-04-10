@@ -76,9 +76,13 @@
 				</div>
 			</div>
 			<div class="row" style="margin-top: 30px">
-            	<div class="col-md-12 text-center">
+            	{{-- <div class="col-md-12 text-center">
                 	<button type="submit" class="btn btn-success">Submit</button>
-              	</div>
+              	</div> --}}
+				<div class="col-md-12 text-center animate-box">
+					<button type="button" class="btn btn-default" onclick="location.href='/siswa'">Kembali</button>
+					<button type="submit" class="btn btn-success">Submit</button>
+				</div>
             </div>
 		</form>
 			<div class="col-sm-12" style="display: flex;flex-basis: 100%;flex-wrap: wrap; margin-top:50px">

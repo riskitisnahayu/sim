@@ -12,7 +12,6 @@ class GameCategoryController extends Controller
     public function index(Request $request) // untuk dashboard/halaman2 awal &&&& return view ditaruh di index aja
     {
         $gamecategories = GameCategory::all();
-         // dd($gamecategories);
         return view('gamecategory.index', compact('gamecategories'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
 
     }
@@ -25,13 +24,15 @@ class GameCategoryController extends Controller
     public function store(Request $request) // untuk menghandel form tambah data
     {
        $this->validate($request, [
-             'name'          => 'required',
-             'description'   => 'required',
+             'name'          => 'required|max:191',
+             'description'   => 'required|max:191',
        ],
 
        [
-            'name.required'         => 'Nama harus diisi!',
+            'name.required'    => 'Nama harus diisi!',
+            'name.max'         => 'Nama terlalu panjang!',
             'description.required'  => 'Deskripsi harus diisi!',
+            'description.max'    => 'Deskripsi terlalu panjang!',
         ]
     );
        $gamecategories = new GameCategory();
@@ -48,7 +49,6 @@ class GameCategoryController extends Controller
     public function show($id) // untuk menampilkan/ melihat data
     {
         $gamecategories = GameCategory::find($id);
-           // dd($gamecategories);
         return view('gamecategory.detail', compact('gamecategories'));
     }
 
@@ -61,16 +61,18 @@ class GameCategoryController extends Controller
     public function update(Request $request, $id) // untuk menghandel form edit data
     {
         $this->validate($request, [
-              'name'          => 'required',
-              'description'   => 'required',
+              'name'          => 'required|max:191',
+              'description'   => 'required|max:191',
         ],
 
         [
-             'name.required'         => 'Nama harus diisi!',
-             'description.required'  => 'Deskripsi harus diisi!',
+            'name.required'    => 'Nama harus diisi!',
+            'name.max'         => 'Nama terlalu panjang!',
+            'description.required'  => 'Deskripsi harus diisi!',
+            'description.max'    => 'Deskripsi terlalu panjang!',
          ]
      );
-     
+
         $gamecategories = GameCategory::where('id',$id)->first();
         $gamecategories->name  = $request->name;
         $gamecategories->description = $request->description;

@@ -111,9 +111,18 @@
 					<div class="category-content">
 						<div class="media">
 							<div class="media-left">
-								<a href="#" class="btn bg-teal-400 btn-rounded btn-icon btn-xs">
+								@if (Auth::user()->type == 'Orang tua')
+									<a href="{{ route('orangtua.profil.detail') }}" class="btn bg-teal-400 btn-rounded btn-icon btn-xs">
+										<span class="letter-icon">{{ substr(Auth::user()->name, 0, 1) }}</span>
+									</a>
+								@elseif (Auth::user()->type == 'Admin')
+									<a href="{{ route('admin.profil.detail') }}" class="btn bg-teal-400 btn-rounded btn-icon btn-xs">
+										<span class="letter-icon">{{ substr(Auth::user()->name, 0, 1) }}</span>
+									</a>
+								@endif
+								{{-- <a href="#" class="btn bg-teal-400 btn-rounded btn-icon btn-xs">
 									<span class="letter-icon">{{ substr(Auth::user()->name, 0, 1) }}</span>
-								</a>
+								</a> --}}
 							</div>
 							<div class="media-body">
 								<span class="media-heading text-semibold">{{ Auth::user()->name }}</span>

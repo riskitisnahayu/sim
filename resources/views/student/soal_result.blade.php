@@ -41,10 +41,19 @@
 							<table>
 								<tbody>
 									@foreach ($tasks as $key => $task)
-										<tr style="text-align:left">
+										<tr style="text-align:left" valign="top">
 											<td>Pertanyaan</td>
 											<td style="padding-left:50px">:</td>
-											<td style="padding-left:20px">{{ $task->description }}</td>
+										@if (!($task->image))
+											<td colspan="4" style="text-align:left;padding-left:20px">{{ $task->description }}</td>
+										@else
+											<td colspan="4" style="text-align:left;padding-left:20px"><img src="{{ url('images/'.$task->image)}}" style="width:100px" alt=""></td>
+										<tr>
+											<td></td>
+											<td></td>
+											<td colspan="4" style="text-align:left;padding-left:20px">{{ $task->description }}</td>
+										</tr>
+										@endif
 										</tr>
 										<tr style="text-align:left">
 											<td>Jawaban</td>
@@ -57,7 +66,7 @@
 											<td style="padding-left:20px;color:red">{{ $task->choice }}</td>
 											<td></td>
 										</tr>
-										<tr style="text-align:left">
+										<tr style="text-align:left" valign="top">
 											<td>Pembahasan</td>
 											<td style="padding-left:50px">:</td>
 											<td style="padding-left:20px">{{ $task->discussion }}</td>

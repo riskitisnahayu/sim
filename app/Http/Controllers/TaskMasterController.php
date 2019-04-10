@@ -17,7 +17,6 @@ class TaskMasterController extends Controller
     {
         $task_masters = TaskMaster::all();
         $subjectscategories = SubjectsCategory::all();
-         // dd($gamecategories);
         return view('taskmaster.index', compact('task_masters', 'subjectscategories'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
 
     }
@@ -44,18 +43,19 @@ class TaskMasterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-              'title'          => 'required',
+              'title'          => 'required|max:191',
               'class'          => 'required',
               'semester'       => 'required',
               'subjectscategories_id'      => 'required',
               'total_task'     => 'required',
-              'timeout'     => 'required',
+              'timeout'        => 'required',
 
         ],
         [
-             'title.required'     => 'Judul harus diisi!',
-             'class.required'     => 'Kelas harus diisi!',
-             'semester.required'  => 'Semester harus diisi!',
+             'title.required'       => 'Judul harus diisi!',
+             'title.max'            => 'Judul terlalu panjang!',
+             'class.required'       => 'Kelas harus diisi!',
+             'semester.required'    => 'Semester harus diisi!',
              'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
              'timeout.required'    => 'Durasi waktu harus diisi!',
              'total_task.required' => 'Jumlah soal harus diisi!',
@@ -74,8 +74,6 @@ class TaskMasterController extends Controller
 
          // redirect menggunakan url lengkap sedangkan route menggunakan route name
          return redirect("admin/soal/tambah/".$task_masters->id);
-         // return redirect("soal/add/".$task_masters->id."?total_task=".$request->total_task);
-
     }
 
     /**
@@ -115,7 +113,7 @@ class TaskMasterController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-              'title'          => 'required',
+              'title'          => 'required|max:191',
               'class'          => 'required',
               'semester'       => 'required',
               'subjectscategories_id'      => 'required',
@@ -124,10 +122,11 @@ class TaskMasterController extends Controller
         ],
         [
              'title.required'     => 'Judul harus diisi!',
+             'title.max'          => 'Judul terlalu panjang!',
              'class.required'     => 'Kelas harus diisi!',
              'semester.required'  => 'Semester harus diisi!',
              'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
-             'total_task.required'     => 'Jumlah soal harus diisi!',
+             'total_task.required'=> 'Jumlah soal harus diisi!',
              'timeout.required'   => ' Set waktu harus diisi!',
          ]
     );
@@ -139,7 +138,6 @@ class TaskMasterController extends Controller
         $task_masters->subjectscategories_id=$request->subjectscategories_id;
         $task_masters->timeout=$request->timeout;
         $task_masters->save();
-        // return redirect("soal/edit/".$task_masters->id."?total_task=".$request->total_task);
         return redirect("admin/soal/detail/".$task_masters->id);
 
     }

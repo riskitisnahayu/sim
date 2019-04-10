@@ -189,6 +189,32 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li.has-dropdown:hover a, .fh5co-nav ul li.has-dropdown:focus a {
   color: #000;
 }
+
+.fh5co-nav ul li.btn-cta3 a {
+  padding: 30px 0px !important;
+  color: #fff;
+}
+.fh5co-nav ul li.btn-cta3 a span {
+  background: #00BFFF;
+  padding: 4px 10px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  border-radius: 100px;
+}
+.fh5co-nav ul li.btn-cta3 a:hover span {
+  -webkit-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
+}
+
 .fh5co-nav ul li.btn-cta2 a {
   padding: 30px 0px !important;
   color: #fff;
@@ -1349,7 +1375,9 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 8px 20px !important;
 }
 .btn.btn-lg {
-  padding: 18px 36px !important;
+  padding: 5px 5px !important;
+  /* padding: 18px 36px !important;  */
+
 }
 .btn:hover, .btn:active, .btn:focus {
   box-shadow: none !important;

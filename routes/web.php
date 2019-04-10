@@ -46,9 +46,9 @@ Route::group(['middleware' => 'admin'], function ()
 	Route::get('admin/kelola-mata-pelajaran', 'SubjectsCategoryController@index')->name('admin.subjectscategory');
 	Route::get('admin/mini-games', 'GamesController@index')->name('admin.minigames');
 	Route::get('admin/e-book', 'EbookController@index')->name('admin.ebook');
-	Route::get('admin/bank-soal', 'TaskMasterController@index')->name('admin.banksoal'); //controller diganti ya
-	Route::get('admin/laporan/aktivitas-siswa', 'DashboardController@studentActivity')->name('admin.studentactivity'); //controller diganti ya
-	Route::get('admin/laporan/hasil-tes-siswa', 'DashboardController@studentResult')->name('admin.studentresult'); //controller diganti ya
+	Route::get('admin/bank-soal', 'TaskMasterController@index')->name('admin.banksoal');
+	Route::get('admin/laporan/aktivitas-siswa', 'DashboardController@studentActivity')->name('admin.studentactivity');
+	Route::get('admin/laporan/hasil-tes-siswa', 'DashboardController@studentResult')->name('admin.studentresult');
 
 	// manage kategori game
 	Route::get('admin/kategori-game/tambah','GameCategoryController@create')->name('gamecategory.add');

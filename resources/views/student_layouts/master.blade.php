@@ -84,11 +84,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">
-						<div id="fh5co-logo"><a href="index.html">Edukasi<span>.</span></a></div>
+						<div id="fh5co-logo"><a href="/siswa">Edukasi<span>.</span></a></div>
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
-						<li class="btn-cta2"><a href="{{ route('student.profil') }}"><span style="width:80px;height: 40px;text-align:center;padding:10px">Profil</span></a></li>
+						<li class="btn-cta3"><a href="{{ route('student.profil') }}"><span style="width:80px;height: 40px;text-align:center;padding:10px">Profil</span></a></li>
 						<li class="btn-cta1"><a href="#">
 							<a href="{{ route('logout') }}"
 								onclick="event.preventDefault();

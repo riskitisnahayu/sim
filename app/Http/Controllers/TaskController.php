@@ -49,20 +49,6 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //       'description'    => 'required',
-        //       'choice_answer'  => 'required',
-        //       'is_answer'      => 'required',
-        // ],
-        //
-        // [
-        //      'description.required'     => 'Deskripsi soal harus diisi!',
-        //      'choice_answer.required'     => 'Deskripsi pilihan harus diisi!',
-        //      'is_answer.required'      => 'Jawaban benar harus diisi!',
-        //  ]
-        //
-        // );
-
         DB::beginTransaction();
         // dd($request);
 
@@ -116,7 +102,7 @@ class TaskController extends Controller
 
         Alert::success('Sukses', 'Soal berhasil ditambahkan!');
 
-        //  // redirect menggunakan url lengkap sedangkan route menggunakan route name
+        //redirect menggunakan url lengkap sedangkan route menggunakan route name
         return redirect()->route('admin.banksoal');
 
     }
@@ -202,7 +188,6 @@ class TaskController extends Controller
         $answers = [];
         $choices = ['a', 'b', 'c', 'd'];
         for ($i=0; $i < @count($request->answer); $i++) {
-            // for ($j=0; $j < @count($request->answer[$i]); $j++) {
                 $answers[$i] = [
                     'choice'        => $choices[$i],
                     'choice_answer' => $request->answer[$i],
@@ -213,9 +198,7 @@ class TaskController extends Controller
                 ];
             // }
         }
-        // dd($answers);
         $existing_task->answers()->createMany($answers);
-        // dd($answers);
 
         DB::commit();
 

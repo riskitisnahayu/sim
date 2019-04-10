@@ -90,6 +90,7 @@
 				</div>
 				<div class="row" style="margin-top: 30px; margin-bottom:20px">
 	            	<div class="col-md-12 text-center">
+						<button type="button" class="btn btn-default" onclick="location.href='/siswa'">Kembali</button>
 						<input type="submit" class="btn btn-success" value="Buka soal">
 	              	</div>
 	            </div>

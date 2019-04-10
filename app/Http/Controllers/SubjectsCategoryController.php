@@ -25,13 +25,15 @@ class SubjectsCategoryController extends Controller
     public function store(Request $request) // untuk menghandel form tambah data
     {
        $this->validate($request, [
-             'name'          => 'required',
-             'description'   => 'required',
+             'name'          => 'required|max:191',
+             'description'   => 'required|max:191',
        ],
 
        [
-            'name.required'         => 'Nama harus diisi!',
+            'name.required'    => 'Nama harus diisi!',
+            'name.max'         => 'Nama tidak boleh lebih dari 191!',
             'description.required'  => 'Deskripsi harus diisi!',
+            'description.max'  => 'Deskripsi tidak boleh lebih dari 191!',
         ]
     );
 
@@ -40,7 +42,7 @@ class SubjectsCategoryController extends Controller
        $subjectscategories->description=$request->description;
        $subjectscategories->save();
 
-       Alert::success('Sukses', 'Kategori game berhasil ditambahkan!');
+       Alert::success('Sukses', 'Mata pelajaran berhasil ditambahkan!');
 
         // redirect menggunakan url lengkap sedangkan route menggunakan route name
         return redirect()->route('admin.subjectscategory');
@@ -62,13 +64,15 @@ class SubjectsCategoryController extends Controller
     public function update(Request $request, $id) // untuk menghandel form edit data
     {
         $this->validate($request, [
-              'name'          => 'required',
-              'description'   => 'required',
+            'name'          => 'required|max:191',
+            'description'   => 'required|max:191',
         ],
 
         [
-             'name.required'         => 'Nama harus diisi!',
-             'description.required'  => 'Deskripsi harus diisi!',
+            'name.required'    => 'Nama harus diisi!',
+            'name.max'         => 'Nama tidak boleh lebih dari 191!',
+            'description.required'  => 'Deskripsi harus diisi!',
+            'description.max'  => 'Deskripsi tidak boleh lebih dari 191!',
          ]
      );
 
@@ -77,7 +81,7 @@ class SubjectsCategoryController extends Controller
         $subjectscategories->description = $request->description;
         $subjectscategories->save();
 
-        Alert::success('Sukses', 'Kategori game berhasil diubah!');
+        Alert::success('Sukses', 'Mata pelajaran berhasil diubah!');
         return redirect()->route('admin.subjectscategory');
     }
 

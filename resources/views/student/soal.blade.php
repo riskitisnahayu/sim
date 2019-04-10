@@ -48,7 +48,7 @@
 							<tbody>
 								@foreach ($tasks as $key => $task)
 									<tr>
-										<td style="text-align:left;width:10px">{{ $key+1 }}.</td>
+										<td style="text-align:left;width:10px" valign="top">{{ $key+1 }}.</td>
 										@if (!($task->image))
 											<td colspan="4" style="text-align:left">{{ $task->description }}</td>
 										@endif
@@ -61,9 +61,9 @@
 									</tr>
 									@endif
 									<tr>
+										<td></td>
 										@foreach ($answers[$key] as $key => $answer)
-											<td></td>
-											<td style="text-align: left; padding-left:15px;width:200px">
+											<td style="text-align: left; padding-left:15px;width:25%">
 												<label class="radio-inline">
 													<input type="radio" value="{{$choices[$key]}}" name="answer{{$loop->parent->index+1}}" class="styled"  id="rd{{$key+1}}">
 													{{ $choices[$key].". ".$answer->choice_answer }}

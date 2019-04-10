@@ -43,7 +43,7 @@
                     <td>{{ 'App\Student'::where('id',$value->student_id)->get()->first()->class}}</td>
                     <td>{{ $value->taskMaster->subjectscategory->name}}</td>
                     <td>{{ $value->taskMaster->title }}</td>
-                    <td>{{ $value->score}}</td>
+                    <td>{{ $value->score}},00 dari 100,00</td>
                     <td>{{ Carbon\Carbon::parse($value->created_at)->toFormattedDateString() }}</td>
                     <td>{{ Carbon\Carbon::parse($value->created_at)->format('H:i:s') }}</td>
                 </tr>

@@ -17,7 +17,6 @@ class EbookController extends Controller
         {
             $ebooks = EBook::all();
             $subjectscategories = SubjectsCategory::all();
-            //  // dd($ebooks);
             return view('ebook.index', compact('ebooks', 'subjectscategories'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
         }
 
@@ -33,12 +32,12 @@ class EbookController extends Controller
 
                $this->validate($request, [
                      'image'         => 'required',
-                     'title'          => 'required',
+                     'title'         => 'required|max:190',
                      'subjectscategories_id'      => 'required',
                      'class'         => 'required',
-                     'semester'         => 'required',
-                     'author'        => 'required',
-                     'publisher'     => 'required',
+                     'semester'      => 'required',
+                     'author'        => 'required|max:190',
+                     'publisher'     => 'required|max:190',
                      'year'          => 'required',
                      'url'           => 'required|regex:' . $regex,
                 ],
@@ -46,11 +45,14 @@ class EbookController extends Controller
                 [
                     'image.required'     => 'Gambar harus diisi!',
                     'title.required'     => 'Judul harus diisi!',
+                    'title.max'          => 'Judul terlalu panjang!',
                     'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
-                    'class.required'      => 'Kelas harus diisi!',
+                    'class.required'     => 'Kelas harus diisi!',
                     'semester.required'  => 'Semester harus diisi!',
-                    'author.required'    => 'Penulis harus diisi!',
-                    'publisher.required' => 'Penerbit harus diisi!',
+                    'author.required'    => 'Nama penulis harus diisi!',
+                    'author.max'         => 'Nama penulis terlalu panjang!',
+                    'publisher.required' => 'Nama penerbit harus diisi!',
+                    'publisher.max'      => 'Nama penerbit terlalu panjang!',
                     'year.required'      => 'Tahun harus diisi!',
                     'url.required'       => 'Url harus diisi!',
                 ]
@@ -83,7 +85,6 @@ class EbookController extends Controller
         public function show($id) // untuk menampilkan/ melihat data
         {
             $ebooks = EBook::find($id);
-               // dd($ebooks);
             $subjectscategories = SubjectsCategory::all();
             return view('ebook.detail', compact('ebooks','subjectscategories'));
         }
@@ -100,26 +101,29 @@ class EbookController extends Controller
             $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
             $this->validate($request, [
-                'title'          => 'required',
+                'title'          => 'required|max:190',
                 'subjectscategories_id'      => 'required',
                 'class'         => 'required',
                 'semester'      => 'required',
-                'author'        => 'required',
-                'publisher'     => 'required',
+                'author'        => 'required|max:190',
+                'publisher'     => 'required|max:190',
                 'year'          => 'required',
                 'url'           => 'required|regex:' . $regex,
         ],
 
         [
              'title.required'     => 'Judul harus diisi!',
+             'title.max'          => 'Judul terlalu panjang!',
              'subjectscategories_id.required'      => 'Mata pelajaran harus diisi!',
              'class.required'      => 'Kelas harus diisi!',
-             'semester.required'  => 'Semester harus diisi!',
-             'author.required'    => 'Penulis harus diisi!',
-             'publisher.required' => 'Penerbit harus diisi!',
+             'semester.required'   => 'Semester harus diisi!',
+             'author.required'     => 'Nama penulis harus diisi!',
+             'author.max'          => 'Nama penulis terlalu panjang!',
+             'publisher.required'  => 'Nama penerbit harus diisi!',
+             'publisher.max'       => 'Nama penulis terlalu panjang!',
              'year.required'      => 'Tahun harus diisi!',
              'url.required'       => 'Url harus diisi!',
-
+             'url.regex'       => 'Format url tidak valid!',
          ]
      );
 
@@ -134,7 +138,6 @@ class EbookController extends Controller
             $ebooks->year=$request->year;
             $ebooks->url=$request->url;
 
-            // if ($request->file('image') != NOTNULL)
             if (!empty($request->file('image')))
             {
                 $image   = $request->file('image');
@@ -178,7 +181,6 @@ class EbookController extends Controller
             $ebooks = EBook::where('subjectscategories_id', $request->subjectscategories)
                             ->where('class', $request->class)
                             ->get();
-                            // dd($ebooks);
             return response()->json([
                 'error' => false,
                 'status' => 'success',

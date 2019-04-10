@@ -70,15 +70,17 @@ class DashboardController extends Controller
 
     public function updateProfil(Request $request){
         $this->validate($request, [
-                 'name'          => 'required',
-                 'username'      => 'required',
-                 'email'         => 'required|email|unique:users',
+                 'name'          => 'required|max:191',
+                 'username'      => 'required|max:191',
+                 'email'         => 'required|email',
            ],
 
            [
-                'name.required'          => 'Nama harus diisi!',
-                'username.required'      => 'Username harus diisi!',
-                'email.required'         => 'Email harus diisi!',
+                'name.required'     => 'Nama harus diisi!',
+                'name.max'          => 'Nama terlalu panjang!',
+                'username.required' => 'Username harus diisi!',
+                'username.max'      => 'Username terlalu panjang!',
+                'email.required'    => 'Email harus diisi!',
             ]
 
        );

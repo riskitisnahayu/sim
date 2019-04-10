@@ -45,8 +45,8 @@
                                 ---- Pilih Jenis Kelamin ----
                             @endif
                         </option>
-                        <option value="laki-laki">Laki-laki</option>
-                        <option value="perempuan">Perempuan</option>
+                        <option value="laki-laki" {{collect(old('jenis_kelamin'))->contains('laki-laki') ? 'selected':''}}>Laki-laki</option>
+                        <option value="perempuan" {{collect(old('jenis_kelamin'))->contains('perempuan') ? 'selected':''}}>Perempuan</option>
                     </select>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                 <div class="form-group">
         			<label class="control-label col-lg-2">Email</label>
         			<div class="col-lg-10">
-        				<input type="email" class="form-control" name="email" placeholder="email" value="{{ old('email') }}">
+        				<input type="text" class="form-control" name="email" placeholder="email" value="{{ old('email') }}">
         			</div>
         		</div>
                 <div class="form-group">
@@ -133,9 +133,9 @@
                                     ---- Pilih Kelas ---
                                 @endif
                             </option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
+                            <option value="7" {{collect(old('class'))->contains('7') ? 'selected':''}}>7</option>
+                            <option value="8" {{collect(old('class'))->contains('8') ? 'selected':''}}>8</option>
+                            <option value="9" {{collect(old('class'))->contains('9') ? 'selected':''}}>9</option>
                         </select>
         			</div>
         		</div>
@@ -144,10 +144,10 @@
         	</fieldset>
 
             <div class="row" style="margin-top: 10px;">
-              <div class="col-md-12" style="text-align: center;">
-                <button type="submit" class="btn btn-success">Registrasi</button>
-                <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registerasi-anak';">Batal</button>
-              </div>
+                <div class="col-md-12" style="text-align: center;">
+                    <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registerasi-anak';">Batal</button>
+                    <button type="submit" class="btn btn-success">Registrasi</button>
+                </div>
             </div>
         </form>
 

@@ -49,7 +49,7 @@
                 <div class="form-group">
         			<label class="control-label col-lg-2">Email</label>
         			<div class="col-lg-10">
-        				<input type="email" class="form-control" name="email" value="{{ $siswa->user['email'] }}">
+        				<input type="text" class="form-control" name="email" value="{{ $siswa->user['email'] }}">
         			</div>
         		</div>
                 <div class="form-group">
@@ -132,8 +132,8 @@
 
             <div class="row" style="margin-top: 10px;">
               <div class="col-md-12" style="text-align: center;">
-                <button type="submit" class="btn btn-success">Simpan</button>
                 <button type="button" class="btn btn-danger" onclick="location.href='/orangtua/registerasi-anak';">Batal</button>
+                <button type="submit" class="btn btn-success">Simpan</button>
               </div>
             </div>
         </form>

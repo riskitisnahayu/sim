@@ -16,7 +16,6 @@ use App\User;
 use App\Task;
 use App\Answer;
 use Auth;
-use Illuminate\Support\Carbon;
 
 class StudentController extends Controller
 {
@@ -165,8 +164,7 @@ class StudentController extends Controller
             'score' => 0,
             'true_answer' =>  0,
             'wrong_answer' =>  0,
-            'duration' => 0,
-
+            'duration' => 0
         ]);
         $delete = StudentAnswer::where('taskmaster_id', $request->taskmaster_id)->where('student_id', $student_id->id)->delete();
         //buat cek jwbn
@@ -231,7 +229,7 @@ class StudentController extends Controller
                         ->leftJoin('answers','tasks.id','answers.task_id')
                         ->where('tasks.taskmaster_id',$taskMaster->id)
                         ->where('answers.is_answer',1)
-                        ->select('tasks.description','tasks.discussion','answers.choice')
+                        ->select('tasks.image','tasks.description','tasks.discussion','answers.choice')
                         ->get();
 
                 // dd($tasks);
@@ -383,6 +381,20 @@ class StudentController extends Controller
             'error'  => false,
             'status' => 'success',
             'result' => $user
+        ]);
+    }
+
+    public function api_getScore(Request $request)
+    {
+        // $student = Student::where('user_id',Auth::user()->id);
+        // $studenttask = StudentTask::where('student_id',$student->get()->first()->id);
+        $student_task = Studenttask::find($request->id);
+        $student_task->score = $request->score;
+        $student_task->save();
+        return response()->json([
+            'error'  => false,
+            'status' => 'success',
+            'result' => $student_task
         ]);
     }
 }

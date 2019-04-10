@@ -37,8 +37,13 @@
 				</div>
 			</div>
 			<div class="row" style="margin-top: 30px; margin-bottom:20px">
-				<div class="col-md-12 text-center">
+				{{-- <div class="col-md-12 text-center">
 					<button type="submit" class="btn btn-success">Submit</button>
+				</div> --}}
+				<div class="col-md-12 text-center animate-box">
+					<button type="button" class="btn btn-default" onclick="location.href='/siswa'">Kembali</button>
+					<button type="submit" class="btn btn-success">Submit</button>
+					{{-- <button type="submit" class="btn btn-primary btn-lg btn-learn">Submit</button> --}}
 				</div>
             </div>
 			</form>

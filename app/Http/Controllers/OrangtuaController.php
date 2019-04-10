@@ -30,22 +30,14 @@ class OrangtuaController extends Controller
         $regencies = Regency::all()->sortBy('name');
         $districts = District::all()->sortBy('name');
         $ortu = User::where('id', Auth::user()->id)->with('orangtua')->first();
-        // dd($ortu);
         return view('orangtua.registeration', compact('provinces','regencies','districts', 'ortu'));
     }
 
     public function studentActivity(Request $request)
     {
         $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
-        // $siswa = User::where('type', 'Siswa')->whereHas('student', function ($query) use($ortu) {
-        //     $query->where('orangtua_id', $ortu->id);
-        // })->with(['student' => function($query) use($ortu)
-        // {
-        //     $query->where('orangtua_id', $ortu->id);
-        // }])->with('logActivity')->get();
         $siswa = $ortu->student->pluck('user_id');
         $activities = LogActivity::whereIn('user_id', $siswa)->with('user.student')->orderBy('user_id', 'desc')->get();
-        // dd($activity);
 
         return view('orangtua.student_activity',compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10);
     }
@@ -68,14 +60,12 @@ class OrangtuaController extends Controller
     {
         $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
         $siswa = Student::where('orangtua_id', $ortu->id)->get();
-        // dd($ortu->id);
         return view('orangtua.index',compact('siswa'))->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
     public function detailProfil()
     {
         $ortu = Orangtua::where('user_id', Auth::user()->id)->first();
-           // dd($user);
         return view('orangtua.profil_detail',compact('ortu'));
     }
 
@@ -87,15 +77,19 @@ class OrangtuaController extends Controller
 
     public function updateProfil(Request $request){
         $this->validate($request, [
-                 'name'          => 'required',
-                 'username'      => 'required',
-                 'email'         => 'required|email',
+                 'name'          => 'required|max:191',
+                 'username'      => 'required|max:191',
+                 'email'         => 'required|email|max:191',
            ],
 
            [
-                'name.required'          => 'Nama harus diisi!',
-                'username.required'      => 'Username harus diisi!',
-                'email.required'         => 'Email harus diisi!',
+                'name.required'         => 'Nama harus diisi!',
+                'name.max'              => 'Nama terlalu panjang!',
+                'username.required'     => 'Username harus diisi!',
+                'username.max'          => 'Username terlalu panjang!',
+                'email.required'        => 'Email harus diisi!',
+                'email.email'           => 'Format email tidak valid!',
+                'email.max'             => 'Email terlali panjang!',
             ]
 
        );
@@ -108,7 +102,7 @@ class OrangtuaController extends Controller
        // $ortu->password=$request->password;
        $ortu->save();
 
-       Alert::success('Sukses', 'Data orangtua berhasil diubah!');
+       Alert::success('Sukses', 'Data orang tua berhasil diubah!');
 
        return redirect()->route('orangtua.profil.detail');
     }
@@ -134,6 +128,8 @@ class OrangtuaController extends Controller
                [
                    'oldPassword.required'            => 'Password lama harus diisi!',
                    'password.required'               => 'Password baru harus diisi!',
+                   'password.min'                    => 'Password minimal 6 karakter!',
+                   'password.confirmed'             => 'Konfirmasi password tidak sesuai!',
                    'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
                 ]
             );
@@ -150,7 +146,9 @@ class OrangtuaController extends Controller
                ],
                [
                    'oldPassword.required'           => 'Password lama harus diisi!',
-                   'password.required'           => 'Password baru harus diisi!',
+                   'password.required'              => 'Password baru harus diisi!',
+                   'password.min'                   => 'Password minimal 6 karakter!',
+                   'password.confirmed'             => 'Konfirmasi password tidak sesuai!',
                    'password_confirmation.required' => 'Konfirmasi password baru harus diisi!',
                 ]
             );
@@ -213,30 +211,38 @@ class OrangtuaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-                 'name'          => 'required',
+                 'name'          => 'required|max:191',
                  'jenis_kelamin' => 'required',
-                 'username'      => 'required',
-                 'email'         => 'required',
+                 'username'      => 'required|unique:users|max:191',
+                 'email'         => 'required|unique:users|email|max:191',
                  'password'      => 'required|min:6',
                  'orangtua_id'   => 'required',
                  'province_id'   => 'required',
                  'regency_id'    => 'required',
                  'district_id'   => 'required',
-                 'school_name'   => 'required',
+                 'school_name'   => 'required|max:255',
                  'class'         => 'required',
            ],
 
            [
                 'name.required'          => 'Nama harus diisi!',
+                'name.max'               => 'Nama terlalu panjang!',
                 'jenis_kelamin.required' => 'Jenis kelamin harus diisi!',
                 'username.required'      => 'Username harus diisi!',
+                'username.unique'        => 'Username sudah terpakai!',
+                'username.max'           => 'Username terlalu panjang!',
                 'email.required'         => 'Email harus diisi!',
+                'email.unique'           => 'Email sudah terpakai!',
+                'email.email'            => 'Format email tidak valid!',
+                'email.max'              => 'Email terlalu panjang!',
                 'password.required'      => 'Password harus diisi!',
+                'password.min'           => 'Password minimal 6 karakter!',
                 'orangtua_id.required'   => 'Id orangtua harus diisi!',
                 'province_id.required'   => 'Provinsi harus diisi!',
                 'regency_id.required'    => 'Kota/kabupaten harus diisi!',
                 'district_id.required'   => 'Kecamatan harus diisi!',
                 'school_name.required'   => 'Nama sekolah harus diisi!',
+                'school_name.max'        => 'Nama sekolah terlalu panjang!',
                 'class.required'         => 'Kelas harus diisi!',
             ]
 
@@ -309,30 +315,38 @@ class OrangtuaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-                 'name'          => 'required',
+                 'name'          => 'required|max:191',
                  'jenis_kelamin' => 'required',
-                 'username'      => 'required',
-                 'email'         => 'required',
+                 'username'      => 'required|max:191',
+                 'email'         => 'required|email|max:191',
                  // 'password'      => 'required',
                  // 'orangtua_id'   => 'required',
                  'province_id'   => 'required',
                  'regency_id'    => 'required',
                  'district_id'   => 'required',
-                 'school_name'   => 'required',
+                 'school_name'   => 'required|max:255',
                  'class'         => 'required',
            ],
 
            [
                 'name.required'          => 'Nama harus diisi!',
+                'name.max'               => 'Nama terlalu panjang!',
                 'jenis_kelamin.required' => 'Jenis kelamin harus diisi!',
                 'username.required'      => 'Username harus diisi!',
+                // 'username.unique'        => 'Username sudah terpakai!',
+                'username.max'           => 'Username terlalu panjang!',
                 'email.required'         => 'Email harus diisi!',
+                // 'email.unique'           => 'Email sudah terpakai!',
+                'email.email'            => 'Format email tidak valid!',
+                'email.max'              => 'Email terlalu panjang!',
                 // 'password.required'      => 'Password harus diisi!',
+
                 'orangtua_id.required'   => 'Id orangtua harus diisi!',
                 'province_id.required'   => 'Provinsi harus diisi!',
                 'regency_id.required'    => 'Kota/kabupaten harus diisi!',
                 'district_id.required'   => 'Kecamatan harus diisi!',
                 'school_name.required'   => 'Nama sekolah harus diisi!',
+                'school_name.max'        => 'Nama sekolah terlalu panjang!',
                 'class.required'         => 'Kelas harus diisi!',
             ]
 
@@ -351,6 +365,8 @@ class OrangtuaController extends Controller
               [
                   'oldPassword.required'            => 'Password lama harus diisi!',
                   'password.required'               => 'Password baru harus diisi!',
+                  'password.min'                    => 'Password baru minimal 6 karakter!',
+                  'password.confirmed'              => 'Konfirmasi password tidak sesuai!',
                   'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
                ]
            );
@@ -364,6 +380,8 @@ class OrangtuaController extends Controller
               [
                   'oldPassword.required'            => 'Password lama harus diisi!',
                   'password.required'               => 'Password baru harus diisi!',
+                  'password.min'                    => 'Password baru minimal 6 karakter!',
+                  'password.confirmed'              => 'Konfirmasi password tidak sesuai!',
                   'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
                ]
            );
@@ -493,10 +511,8 @@ class OrangtuaController extends Controller
                 'email.required'         => 'Email harus diisi!',
             ]
        );
-       // dd($id);
        $data = Orangtua::where('user_id', $id)->first(); //dimana user_id itu nama kolom di tabel ortu, dan diambil id dari tabel ortu
        $ortu = User::where('id',$data->user_id)->first();
-       // dd($ortu);
        $ortu->name=$request->name;
        $ortu->username=$request->username;
        $ortu->email=$request->email;
@@ -512,7 +528,6 @@ class OrangtuaController extends Controller
     {
         $data = Orangtua::where('user_id',$id)->first();
         $ortu = User::where('id',$data->user_id)->first();
-        // dd($ortu);
         if (Hash::check($request->oldPassword, $ortu->password))
         {
             $this->validate($request, [
@@ -523,6 +538,8 @@ class OrangtuaController extends Controller
                [
                    'oldPassword.required'            => 'Password lama harus diisi!',
                    'password.required'               => 'Password baru harus diisi!',
+                   'password.min'                    => 'Password baru minimal 6 karakter!',
+                   'password.confirmed'              => 'Konfirmasi password tidak sesuai!',
                    'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
                 ]
             );
@@ -537,7 +554,9 @@ class OrangtuaController extends Controller
                ],
                [
                    'oldPassword.required'           => 'Password lama harus diisi!',
-                   'password.required'           => 'Password baru harus diisi!',
+                   'password.required'              => 'Password baru harus diisi!',
+                   'password.min'                   => 'Password baru minimal 6 karakter!',
+                   'password.confirmed'             => 'Konfirmasi password tidak sesuai!',
                    'password_confirmation.required' => 'Konfirmasi password baru harus diisi!',
                 ]
             );
@@ -553,7 +572,6 @@ class OrangtuaController extends Controller
     {
         $data = Student::where('user_id',$id)->first();
         $siswa = User::where('id',$data->user_id)->first();
-        // dd($data);
         if (Hash::check($request->oldPassword, $siswa->password))
         {
             $this->validate($request, [
@@ -564,6 +582,8 @@ class OrangtuaController extends Controller
                [
                    'oldPassword.required'            => 'Password lama harus diisi!',
                    'password.required'               => 'Password baru harus diisi!',
+                   'password.min'                    => 'Password baru minimal 6 karakter!',
+                   'password.confirmed'              => 'Konfirmasi password tidak sesuai!',
                    'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
                 ]
             );
@@ -578,6 +598,8 @@ class OrangtuaController extends Controller
                [
                    'oldPassword.required'            => 'Password lama harus diisi!',
                    'password.required'               => 'Password baru harus diisi!',
+                   'password.min'                    => 'Password baru minimal 6 karakter!',
+                   'password.confirmed'              => 'Konfirmasi password tidak sesuai!',
                    'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
                 ]
             );

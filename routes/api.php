@@ -57,6 +57,9 @@ Route::middleware('auth:api')->get('/siswa/soal','StudentController@api_soal');
 // profil siswa
 Route::middleware('auth:api')->get('/siswa/profil/detail/{id}','StudentController@api_detailProfil');
 
+// jalan buat nampilin nilai siswa mengerjakan soal
+Route::middleware('auth:api')->post('/siswa/nilai','StudentController@api_getScore');
+
 // untuk kategori game
 Route::middleware('auth:api')->get('/gamecategory','GameCategoryController@api_getGameCategory');
 Route::middleware('auth:api')->get('/gamecategory/detail/{id}','GameCategoryController@api_show');

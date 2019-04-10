@@ -36,8 +36,8 @@
     	</fieldset>
         <div class="row" style="margin-top: 10px;">
           <div class="col-md-12" style="text-align: center;">
-            <button type="submit" class="btn btn-success">Simpan</button>
             <button type="button" class="btn btn-danger" onclick="location.href='/admin/kelola-kategori-game';">Batal</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
           </div>
         </div>
     </form>
