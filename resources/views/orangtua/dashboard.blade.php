@@ -39,7 +39,7 @@
     					</li>
                     @endforeach
 				@else
-					<span class="header">Tidak terhubung internet</span>	
+					<span class="header">Tidak terhubung internet.</span>	
 				@endif
 				</ul>
 			</div>

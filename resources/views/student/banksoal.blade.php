@@ -4,11 +4,11 @@
 <div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 	<div class="container">
 		<div class="row animate-box" style="background-color: white">
-			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+			<div class="col-md-8 col-md-offset-2 text-center" style="padding-top:20px">
 				<h2>Bank Soal</h2>
 		</div>
 		<form class="form-horizontal" action="{{ url('siswa/soal') }}"  method="get">
-			<div class="form-group">
+			<div class="form-group" style="padding-top:130px">
 			<label class="control-label col-lg-3">Mata Pelajaran</label>
 				<div class="col-lg-8">
 					<select class="form-control" name="subjectscategories" id="subjectscategories" onchange="checkform()">
@@ -73,23 +73,26 @@
 			<div class="form-group">
 			<label class="control-label col-lg-3">Tipe Soal</label>
     			<div class="col-lg-8">
-					<input type="text" class="form-control" name="tipe" placeholder="Pilihan Ganda" readonly>
+					<p style="padding-top:10px">Pilihan Ganda</p>
+					{{-- <input type="text" class="form-control" name="tipe" placeholder="Pilihan Ganda" readonly> --}}
     			</div>
     		</div>
 			<div class="form-group">
 			<label class="control-label col-lg-3">Jenis Soal</label>
     			<div class="col-lg-8">
-					<input type="text" class="form-control" name="jenis" placeholder="Latihan" readonly>
+					<p style="padding-top:10px">Latihan</p>
+					{{-- <input type="text" class="form-control" name="jenis" placeholder="Latihan" readonly> --}}
     				</div>
     			</div>
 				<div class="form-group">
 				<label class="control-label col-lg-3">Jumlah Soal</label>
-					<div class="col-lg-8">
-						<input type="text" class="form-control" name="total" placeholder="10" readonly>
+					<div class="col-lg-8" valign:top>
+						<p style="padding-top:10px">10</p>
+						{{-- <input type="text" class="form-control" name="total" placeholder="10" readonly> --}}
 					</div>
 				</div>
 				<div class="row" style="margin-top: 30px; margin-bottom:20px">
-	            	<div class="col-md-12 text-center">
+	            	<div class="col-md-12 text-center" style="padding-top:15px; padding-bottom: 10px">
 						<button type="button" class="btn btn-default" onclick="location.href='/siswa'">Kembali</button>
 						<input type="submit" class="btn btn-success" value="Buka soal">
 	              	</div>

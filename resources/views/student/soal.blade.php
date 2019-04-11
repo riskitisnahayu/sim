@@ -8,10 +8,10 @@
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 	<div class="container">
 		<div class="row animate-box" style="background-color: white">
-			<div class="col-md-12 text-center fh5co-heading">
+			<div class="col-md-12 text-center" style="padding-top:20px">
 				<h2>Soal</h2>
 					<div class="row" style="background-color: white; padding:25px">
-						<div class="form-group text-center"  style="padding:15px">
+						<div class="form-group text-center">
 							<label class="col-lg-12" style="font-size: 20px">Latihan Soal</label>
 						</div>
 						<table style="text-align:left">
@@ -36,7 +36,7 @@
 									<td style="padding-left:50px">:</td>
 									<td>
 										<!-- Todo : Ditengahke ben jos -->
-										<div class="row" style="padding-left: 66px">
+										<div class="row" style="padding-left: 66px;color:red">
 											<h4 id="demo" class=""></h4>
 										</div>
 									</td>
@@ -78,7 +78,7 @@
 							</tbody>
 						</table>
 						<div class="row" style="margin-top: 15px; margin-bottom:20px">
-							<div class="col-md-12 " style="text-align: center;">
+							<div class="col-md-12 " style="text-align: center;padding-top:20px">
 								<button type="submit" class="btn btn-success">Selesai</button>
 							</div>
 						</div>

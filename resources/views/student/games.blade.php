@@ -12,11 +12,12 @@
 	</div> --}}
 	<div class="container">
 		<div class="row animate-box" style="background-color: white">
-			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+			{{-- <div class="col-md-8 col-md-offset-2 text-center fh5co-heading"> --}}
+			<div class="col-md-8 col-md-offset-2 text-center" style="padding-top:20px">
 				<h2>Mini Games</h2>
 			</div>
 			<form class="form-horizontal" action="{!! route('student.games') !!}" enctype="multipart/form-data" method="get">
-			<div class="form-group">
+			<div class="form-group" style="padding-top:125px">
 				<label class="control-label col-sm-3">Kategori</label>
 				<div class="col-lg-8">
 					<select class="form-control" name="gamecategories_id">
@@ -40,7 +41,7 @@
 				{{-- <div class="col-md-12 text-center">
 					<button type="submit" class="btn btn-success">Submit</button>
 				</div> --}}
-				<div class="col-md-12 text-center animate-box">
+				<div class="col-md-12 text-center animate-box" style="padding-top:20px">
 					<button type="button" class="btn btn-default" onclick="location.href='/siswa'">Kembali</button>
 					<button type="submit" class="btn btn-success">Submit</button>
 					{{-- <button type="submit" class="btn btn-primary btn-lg btn-learn">Submit</button> --}}

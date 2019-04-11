@@ -7,10 +7,10 @@
 	<div id="fh5co-counter" class="fh5co-counters fh5co-bg-section animated">
 		<div class="container">
 			<div class="row animate-box" style="background-color: white">
-				<div class="col-md-12 text-center fh5co-heading">
+				<div class="col-md-12 text-center" style="padding-top:20px">
 					<h2>Soal</h2>
 						<div class="row" style="background-color: white; padding:25px">
-							<div class="form-group text-center"  style="padding:15px">
+							<div class="form-group text-center">
 								<label class="col-lg-12" style="font-size: 20px">Latihan Soal</label>
 							</div>
 							<table style="text-align:left">
@@ -58,12 +58,12 @@
 										<tr style="text-align:left">
 											<td>Jawaban</td>
 											<td style="padding-left:50px">:</td>
-											<td style="padding-left:20px">{{ $studentanswer[$key]->answer }}</td>
+											<td style="padding-left:20px;color:red">{{ $studentanswer[$key]->answer }}</td>
 										</tr>
 										<tr style="text-align:left">
 											<td>Kunci</td>
 											<td style="padding-left:50px">:</td>
-											<td style="padding-left:20px;color:red">{{ $task->choice }}</td>
+											<td style="padding-left:20px">{{ $task->choice }}</td>
 											<td></td>
 										</tr>
 										<tr style="text-align:left" valign="top">
@@ -79,7 +79,7 @@
 							</table>
 							<div class="row" style="margin-top: 15px; margin-bottom:20px">
 								<div class="col-md-12 " style="text-align: center;">
-									<button type="button" class="btn btn-success" onclick="location.href='/siswa';">OKE</button>
+									<button type="button" class="btn btn-success" onclick="location.href='/siswa';">Kembali</button>
 								</div>
 							</div>
 						</div>
