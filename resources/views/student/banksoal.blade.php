@@ -86,7 +86,7 @@
     			</div>
 				<div class="form-group">
 				<label class="control-label col-lg-3">Jumlah Soal</label>
-					<div class="col-lg-8" valign:top>
+					<div class="col-lg-8">
 						<p style="padding-top:10px">10</p>
 						{{-- <input type="text" class="form-control" name="total" placeholder="10" readonly> --}}
 					</div>
