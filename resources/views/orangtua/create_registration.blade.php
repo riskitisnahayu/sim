@@ -80,7 +80,7 @@
                             <select class="form-control" name="province_id" id="provinces" onchange="checkform()">
                                 <option value="">Pilih Provinsi</option>
                                 @foreach ($provinces as $key => $value)
-                                    <option value="{{$value->id}}" {{collect(old('provinces'))->contains($value->id) ? 'selected':''}}>{{ $value->name }}</option>
+                                    <option value="{{$value->id}}" {{collect(old('province_id'))->contains($value->id) ? 'selected':''}}>{{ $value->name }}</option>
                                 @endforeach
                             </select>
 					</div>
@@ -93,7 +93,7 @@
                         <select class="form-control" name="regency_id" id="regencies" onchange="checkform()">
                             <option value="">Pilih Kota/kabupaten</option>
                             @foreach ($regencies as $value)
-                                <option  class="{{$value->province_id}}" value="{{$value->id}}" {{collect(old('regencies'))->contains($value->id) ? 'selected':''}}>{{ $value->name }}</option>
+                                <option  class="{{$value->province_id}}" value="{{$value->id}}" {{collect(old('regency_id'))->contains($value->id) ? 'selected':''}}>{{ $value->name }}</option>
                             @endforeach
                         </select>
 					</div>
@@ -106,7 +106,7 @@
                         <select class="form-control" name="district_id" id="districts" onchange="checkform()">
                             <option value="" class="">Pilih Kecamatan</option>
                             @foreach ($districts as $item)
-                                <option class="{{$item->regency_id}}" value="{{$item->id}}"{{collect(old('districts'))->contains($item->id) ? 'selected':''}}>{{ $item->name }}</option>
+                                <option class="{{$item->regency_id}}" value="{{$item->id}}"{{collect(old('district_id'))->contains($item->id) ? 'selected':''}}>{{ $item->name }}</option>
                             @endforeach
                         </select>
 					</div>
