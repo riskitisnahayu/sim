@@ -522,38 +522,49 @@ class OrangtuaController extends Controller
         }
 
        // dd($data);
-       if (Hash::check($request->oldPassword, $data->password))
-       {
-           $data->password = Hash::make($request->password);
-           $this->validate($request, [
-                    'oldPassword'           => 'required',
-                    'password'              => 'required|min:6|confirmed',
-                    'password_confirmation' => 'required',
-              ],
-              [
-                  'oldPassword.required'            => 'Password lama harus diisi!',
-                  'password.required'               => 'Password baru harus diisi!',
-                  'password.min'                    => 'Password baru minimal 6 karakter!',
-                  'password.confirmed'              => 'Konfirmasi password tidak sesuai!',
-                  'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
-               ]
-           );
-          $data->save();
-       }else {
-           $this->validate($request, [
-                    'oldPassword'           => 'required',
-                    'password'              => 'required|min:6|confirmed',
-                    'password_confirmation' => 'required',
-              ],
-              [
-                  'oldPassword.required'            => 'Password lama harus diisi!',
-                  'password.required'               => 'Password baru harus diisi!',
-                  'password.min'                    => 'Password baru minimal 6 karakter!',
-                  'password.confirmed'              => 'Konfirmasi password tidak sesuai!',
-                  'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
-               ]
-           );
-           return redirect()->back()->with('error','Password tidak sesuai!');
+       if ($request->oldPassword != null) {
+           // $data->password = Hash::make($request->oldPassword);
+           // $data->save();
+
+           if (Hash::check($request->oldPassword, $data->password))
+           {
+               $data->password = Hash::make($request->password);
+
+                $this->validate($request, [
+                         'oldPassword'           => 'required',
+                         'password'              => 'required|min:6|confirmed',
+                         'password_confirmation' => 'required',
+                   ],
+                   [
+                       'oldPassword.required'            => 'Password lama harus diisi!',
+                       'password.required'               => 'Password baru harus diisi!',
+                       'password.min'                    => 'Password baru minimal 6 karakter!',
+                       'password.confirmed'              => 'Konfirmasi password tidak sesuai!',
+                       'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
+                    ]
+                );
+               $data->save();
+               // return "ha";
+           }
+           else {
+                   $this->validate($request, [
+                        'oldPassword'           => 'required',
+                        'password'              => 'required|min:6|confirmed',
+                        'password_confirmation' => 'required',
+                  ],
+                  [
+                      'oldPassword.required'            => 'Password lama harus diisi!',
+                      'password.required'               => 'Password baru harus diisi!',
+                      'password.min'                    => 'Password baru minimal 6 karakter!',
+                      'password.confirmed'              => 'Konfirmasi password tidak sesuai!',
+                      'password_confirmation.required'  => 'Konfirmasi password baru harus diisi!',
+                   ]
+               );
+               return redirect()->back()->with('error','Password tidak sesuai!');
+               // return "hi";
+           }
+           // dd(Hash::check('123456', $data->password));
+
        }
 
        $siswa = Student::find($id);
@@ -562,7 +573,7 @@ class OrangtuaController extends Controller
             'name'          => $request->name,
             'username'      => $request->username,
             'email'         => $request->email,
-            'password'      => bcrypt($request->password),
+            // 'password'      => bcrypt($request->password),
             'type'          => 'Siswa',
         ]);
 

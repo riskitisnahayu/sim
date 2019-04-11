@@ -24,7 +24,7 @@
     		<div class="form-group">
     			<label class="control-label col-lg-2">Nama mata pelajaran</label>
     			<div class="col-lg-10">
-    				<input type="text" class="form-control" name="name" value="{{ $subjectscategories->name }}">
+    				<input type="text" class="form-control" name="name" placeholder="Nama mata pelajaran" value="{{ $subjectscategories->name }}">
     			</div>
     		</div>
             <div class="form-group">

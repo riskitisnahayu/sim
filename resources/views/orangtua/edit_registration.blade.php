@@ -34,8 +34,8 @@
                     <label class="control-label col-lg-2">Jenis Kelamin</label>
                     <div class="col-lg-10">
                         <select class="form-control" name="jenis_kelamin">
-                               <option value="laki-laki" @if ($siswa->class == 'laki-laki') selected="selected" @endif>laki-laki</option>
-                               <option value="perempuan" @if ($siswa->class == 'perempuan') selected="selected" @endif>perempuan</option>
+                            <option value="laki-laki" @if ($siswa->jenis_kelamin == 'laki-laki') selected="selected" @endif>laki-laki</option>
+                            <option value="perempuan" @if ($siswa->jenis_kelamin == 'perempuan') selected="selected" @endif>perempuan</option>
                         </select>
                     </div>
                 </div>

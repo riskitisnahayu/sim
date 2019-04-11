@@ -17,8 +17,8 @@
                <th>Nama anak</th>
                <th>Kelas</th>
                <th>Mata pelajaran</th>
-               <th>Judul</th>
-               <th>Nilai</th>
+               <th style="width:230px">Judul</th>
+               <th style="width:200px">Nilai</th>
                <th>Tanggal</th>
                <th>Waktu</th>
            </tr>
