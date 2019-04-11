@@ -16,6 +16,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<ul class="media-list content-group">
+				@if($response)
                     @foreach ($response['articles'] as $key => $article)
                         <li class="media stack-media-on-mobile">
         					<div class="media-left">
@@ -37,6 +38,9 @@
     						</div>
     					</li>
                     @endforeach
+				@else
+					<span class="header">Tidak terhubung internet</span>	
+				@endif
 				</ul>
 			</div>
 		</div>
