@@ -32,7 +32,7 @@
 							@endif
 						</option>
 							@foreach($gamecategories as $value)
-								<option value="{{$value->id}}" {{collect(old('gamecategories'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
+								<option value="{{$value->id}}" {{collect($request->gamecategories_id)->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
 							@endforeach
 					</select>
 				</div>

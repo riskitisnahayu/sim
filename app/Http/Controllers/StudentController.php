@@ -44,7 +44,7 @@ class StudentController extends Controller
          }
          // dd($games);
          $gamecategories = GameCategory::all();
-         return view('student.games', compact('games','gamecategories'));
+         return view('student.games', compact('games','gamecategories', 'request'));
      }
 
      public function ebooks(Request $request){
@@ -85,7 +85,7 @@ class StudentController extends Controller
          }
          // dd($ebooks);
          $subjectscategories = SubjectsCategory::all();
-         return view('student.ebook', compact('ebooks','subjectscategories'));
+         return view('student.ebook', compact('ebooks','subjectscategories','request'));
      }
 
      public function bankSoal(Request $request){
@@ -102,7 +102,7 @@ class StudentController extends Controller
 
          $subjectscategories = SubjectsCategory::all();
          // dd($task_masters);
-         return view('student.banksoal', compact('task_masters','subjectscategories'));
+         return view('student.banksoal', compact('task_masters','subjectscategories','request'));
      }
 
      public function soal(Request $request)
@@ -119,7 +119,7 @@ class StudentController extends Controller
                                     ->where('semester', $request->semester)
                                     ->first()->tasks()->get();
          } else{
-             return redirect()->back()->with('error','Maaf, Soal tidak tersedia.');
+             return redirect()->back()->with('error','Maaf, Soal tidak tersedia.')->withInput();
          }
          $answers = [];
          foreach ($tasks as $key => $curr_task) {
@@ -139,7 +139,7 @@ class StudentController extends Controller
          $endTime = date_format($date,'M, d, Y h:i:s A');
 
         // $student_tasks =
-         return view('student.soal', compact('endTime','task_master','tasks','answers','choices','taskmaster_id'));
+         return view('student.soal', compact('endTime','task_master','tasks','answers','choices','taskmaster_id', 'request'));
      }
 
     public function soalResult(Request $request)

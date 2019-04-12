@@ -49,6 +49,7 @@
                     width: '100px',
                     targets: [ 0 ]
                 }],
+                order: [[ 5, "desc" ]],
                 dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                 language: {
                     search: '<span>Filter:</span> _INPUT_',

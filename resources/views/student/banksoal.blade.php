@@ -7,7 +7,7 @@
 			<div class="col-md-8 col-md-offset-2 text-center" style="padding-top:20px">
 				<h2>Bank Soal</h2>
 		</div>
-		<form class="form-horizontal" action="{{ url('siswa/soal') }}"  method="get">
+		<form class="form-horizontal" action="{{ url('siswa/soal') }}" method="get">
 			<div class="form-group" style="padding-top:130px">
 			<label class="control-label col-lg-3">Mata Pelajaran</label>
 				<div class="col-lg-8">
@@ -34,7 +34,7 @@
 			<label class="control-label col-lg-3">Kelas</label>
     			<div class="col-lg-8">
                     <select class="form-control" name="class" id="class">
-                        <option  selected disabled>
+                        <option selected disabled>
                             @if($errors->any())
                                 @if ($errors)
 
@@ -44,9 +44,9 @@
                                 --- Pilih Kelas ---
                             @endif
                         </option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                        <option value="7" {{collect(old('class'))->contains(7) ? 'selected':''}}>7</option>
+                        <option value="8" {{collect(old('class'))->contains(8) ? 'selected':''}}>8</option>
+                        <option value="9" {{collect(old('class'))->contains(9) ? 'selected':''}}>9</option>
                     </select>
     			</div>
     		</div>
@@ -64,9 +64,9 @@
 								--- Pilih Semester ---
 							@endif
 						</option>
-						<option value="I">I</option>
-						<option value="II">II</option>
-						<option value="Both">Both</option>
+						<option value="I" {{collect(old('semester'))->contains('I') ? 'selected':''}}>I</option>
+						<option value="II" {{collect(old('semester'))->contains('II') ? 'selected':''}}>II</option>
+						<option value="Both" {{collect(old('semester'))->contains('Both') ? 'selected':''}}>Both</option>
 					</select>
 				</div>
 			</div>
@@ -94,7 +94,7 @@
 				<div class="row" style="margin-top: 30px; margin-bottom:20px">
 	            	<div class="col-md-12 text-center" style="padding-top:15px; padding-bottom: 10px">
 						<button type="button" class="btn btn-default" onclick="location.href='/siswa'">Kembali</button>
-						<input type="submit" class="btn btn-success" value="Buka soal">
+						<button type="submit" class="btn btn-success" value="">Buka soal</button>
 	              	</div>
 	            </div>
 				@if (session('error'))

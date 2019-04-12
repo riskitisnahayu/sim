@@ -31,7 +31,7 @@
                             @endif
                         </option>
                             @foreach($subjectscategories as $value)
-                                <option value="{{$value->id}}" {{collect(old('subjectscategories'))->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
+                                <option value="{{$value->id}}" {{collect($request->subjectscategories_id)->contains($value->id) ? 'selected':''}}>{{$value->name}}</option>
                             @endforeach
                     </select>
                 </div>
@@ -50,9 +50,9 @@
                                 ---- Pilih Kelas ---
                             @endif
                         </option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                        <option value="7" @if($request->class == 7) selected @endif>7</option>
+                        <option value="8" @if($request->class == 8) selected @endif>8</option>
+                        <option value="9" @if($request->class == 9) selected @endif>9</option>
                     </select>
     			</div>
     		</div>
@@ -70,9 +70,9 @@
 								---- Pilih Semester ---
 							@endif
 						</option>
-						<option value="I">I</option>
-						<option value="II">II</option>
-						<option value="Both">Both</option>
+						<option value="I" @if($request->semester == 'I') selected @endif>I</option>
+						<option value="II" @if($request->semester == 'II') selected @endif>II</option>
+						<option value="Both" @if($request->semester == 'Both') selected @endif>Both</option>
 					</select>
 				</div>
 			</div>
