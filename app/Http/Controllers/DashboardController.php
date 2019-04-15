@@ -46,7 +46,8 @@ class DashboardController extends Controller
 
     public function studentActivity(Request $request)
     {
-        $activities = LogActivity::with('user.student.orangtua.user')->orderBy('created_at', 'desc')->get();
+        $activities = LogActivity::with('user_non_admin.student.orangtua.user')->orderBy('created_at', 'desc')->get();
+        // return $activities;
         return view('admin.student_activity', compact('activities'))->with('i', ($request->input('page', 1) - 1) * 10); //melempar data ke view
     }
 

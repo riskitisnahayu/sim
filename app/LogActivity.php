@@ -14,6 +14,10 @@ class LogActivity extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
+    public function user_non_admin()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'id')->where('type','=','Siswa');
+    }
 
     public function taskmaster()
     {
